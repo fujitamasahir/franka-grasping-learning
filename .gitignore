@@ -1,0 +1,25 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+mujoco_menagerie/
+runs/
+tensorboard/
+*.pt
+*.pth
+*.zip
+*.mp4
+*.gif
+
+# Experiment logs
+autonomous_logs/
+autonomous_v2_logs/
+bc_residual_sac_logs/
+eval_logs/
+tensorboard_logs/
+
+# Generated evaluation outputs
+autonomous_eval/
+autonomous_v2_eval/
+bc_residual_sac_eval/
