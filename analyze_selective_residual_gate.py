@@ -205,6 +205,8 @@ def main():
     parser.add_argument("--stage", choices=("exploratory", "confirmatory"),
                         default="exploratory")
     args = parser.parse_args()
+    if args.stage == "confirmatory" and not args.gate_config:
+        parser.error("Confirmatory evaluation requires --gate-config (frozen gate)")
 
     if args.calibration:
         calibration = load_pairs(args.calibration)
