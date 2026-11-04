@@ -1,0 +1,184 @@
+{
+  "calibration_seed_range": [
+    180000,
+    180499
+  ],
+  "final_evaluation_seed_range": [
+    190000,
+    191999
+  ],
+  "models": {
+    "7": {
+      "calibration_csv": "bc_results/sac_C_seed7_policy_gate_calibration500.csv",
+      "calibration_sha256": "3e74fcf2d3393b7d3c11e00443bffe8b1d13edeacc826f069621ef6011d3e681",
+      "checkpoint": "bc_residual_sac_runs/C_hard_shaped_seed7/best_model.zip",
+      "checkpoint_sha256": "35200bb580ad11bb96e560d5390a968faf55b8613ae8c57c3976f95fb0e8aa12",
+      "gate_json": "bc_results/policy_specific_gate_seed7.json",
+      "selected_quadrants": {
+        "safety": [],
+        "balanced": []
+      },
+      "calibration_quadrants": {
+        "EN": {
+          "episodes": 79,
+          "rescues": 0,
+          "regressions": 0
+        },
+        "ES": {
+          "episodes": 80,
+          "rescues": 1,
+          "regressions": 1
+        },
+        "WN": {
+          "episodes": 82,
+          "rescues": 0,
+          "regressions": 0
+        },
+        "WS": {
+          "episodes": 76,
+          "rescues": 2,
+          "regressions": 0
+        }
+      }
+    },
+    "19": {
+      "calibration_csv": "bc_results/sac_C_seed19_policy_gate_calibration500.csv",
+      "calibration_sha256": "6e18892118167325cc1389a4afcefdea325f3d672384de5d8967bd966b916782",
+      "checkpoint": "bc_residual_sac_runs/C_hard_shaped_seed19/best_model.zip",
+      "checkpoint_sha256": "91c5320567917027d2a058b8fe2c3a311380e219618d5303e644b5edd18f8f33",
+      "gate_json": "bc_results/policy_specific_gate_seed19.json",
+      "selected_quadrants": {
+        "safety": [],
+        "balanced": []
+      },
+      "calibration_quadrants": {
+        "EN": {
+          "episodes": 79,
+          "rescues": 0,
+          "regressions": 0
+        },
+        "ES": {
+          "episodes": 80,
+          "rescues": 1,
+          "regressions": 0
+        },
+        "WN": {
+          "episodes": 82,
+          "rescues": 0,
+          "regressions": 0
+        },
+        "WS": {
+          "episodes": 76,
+          "rescues": 2,
+          "regressions": 0
+        }
+      }
+    },
+    "73": {
+      "calibration_csv": "bc_results/sac_C_seed73_policy_gate_calibration500.csv",
+      "calibration_sha256": "728d29883817ec4d1386f1365fe2afbc748eb815279dccdd61c91200ce71ce4b",
+      "checkpoint": "bc_residual_sac_runs/C_hard_shaped_seed73/best_model.zip",
+      "checkpoint_sha256": "76864760310ac2566f39162b9f8c438f4033d69cb36401fde4f35ed79ee28031",
+      "gate_json": "bc_results/policy_specific_gate_seed73.json",
+      "selected_quadrants": {
+        "safety": [],
+        "balanced": []
+      },
+      "calibration_quadrants": {
+        "EN": {
+          "episodes": 79,
+          "rescues": 2,
+          "regressions": 0
+        },
+        "ES": {
+          "episodes": 80,
+          "rescues": 2,
+          "regressions": 0
+        },
+        "WN": {
+          "episodes": 82,
+          "rescues": 0,
+          "regressions": 2
+        },
+        "WS": {
+          "episodes": 76,
+          "rescues": 0,
+          "regressions": 0
+        }
+      }
+    },
+    "202": {
+      "calibration_csv": "bc_results/sac_C_seed202_policy_gate_calibration500.csv",
+      "calibration_sha256": "b24798b1da0ce5e6f6413f6a378187f7766003fd2f0ec0e82be4e61335a83981",
+      "checkpoint": "bc_residual_sac_runs/C_hard_shaped_seed202/best_model.zip",
+      "checkpoint_sha256": "3fd1cb3e3f91cab9c222eb0dc4126cce49f7b9795fa6ef34362de3ba55093988",
+      "gate_json": "bc_results/policy_specific_gate_seed202.json",
+      "selected_quadrants": {
+        "safety": [],
+        "balanced": []
+      },
+      "calibration_quadrants": {
+        "EN": {
+          "episodes": 79,
+          "rescues": 2,
+          "regressions": 0
+        },
+        "ES": {
+          "episodes": 80,
+          "rescues": 1,
+          "regressions": 0
+        },
+        "WN": {
+          "episodes": 82,
+          "rescues": 0,
+          "regressions": 0
+        },
+        "WS": {
+          "episodes": 76,
+          "rescues": 2,
+          "regressions": 0
+        }
+      }
+    },
+    "314": {
+      "calibration_csv": "bc_results/sac_C_seed314_policy_gate_calibration500.csv",
+      "calibration_sha256": "aac0a6aa65d0835e6391de54d3c7b25aaeab618bf325396cf2f730d542b345f0",
+      "checkpoint": "bc_residual_sac_runs/C_hard_shaped_seed314/best_model.zip",
+      "checkpoint_sha256": "207ccce4a6918989d4228ebccdeccb552b242e1fba5d353b80e2c35b219352c0",
+      "gate_json": "bc_results/policy_specific_gate_seed314.json",
+      "selected_quadrants": {
+        "safety": [
+          "EN",
+          "WN"
+        ],
+        "balanced": [
+          "EN",
+          "ES",
+          "WN"
+        ]
+      },
+      "calibration_quadrants": {
+        "EN": {
+          "episodes": 79,
+          "rescues": 8,
+          "regressions": 0
+        },
+        "ES": {
+          "episodes": 80,
+          "rescues": 6,
+          "regressions": 1
+        },
+        "WN": {
+          "episodes": 82,
+          "rescues": 6,
+          "regressions": 0
+        },
+        "WS": {
+          "episodes": 76,
+          "rescues": 2,
+          "regressions": 0
+        }
+      }
+    }
+  }
+}

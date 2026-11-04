@@ -1,0 +1,796 @@
+{
+  "evaluation_seeds": [
+    190000,
+    191999
+  ],
+  "calibration_seed_range": [
+    180000,
+    180499
+  ],
+  "episodes_per_sac_model": 2000,
+  "sac_training_seeds": [
+    7,
+    19,
+    73,
+    202,
+    314
+  ],
+  "shared_positions_and_bc_outcomes_verified": true,
+  "fixed_gate_config": "bc_results/selective_gate_exploratory1000_gate.json",
+  "per_seed": {
+    "7": {
+      "evaluation_csv": "bc_results/sac_C_seed7_policy_gate_final2000.csv",
+      "policy_gate_config": "bc_results/policy_specific_gate_seed7.json",
+      "selected_quadrants": {
+        "safety": [],
+        "balanced": []
+      },
+      "methods": {
+        "bc_only": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.75,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "always_sac": {
+          "successes": 1819,
+          "episodes": 2000,
+          "success_rate": 0.9095,
+          "rescues": 1,
+          "regressions": 16,
+          "net_improvement": -15,
+          "sac_activations": 2000,
+          "sac_activation_rate": 1.0,
+          "delta_vs_bc_pp": -0.75,
+          "delta_vs_always_sac_pp": 0.0,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_safety": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 336,
+          "sac_activation_rate": 0.168,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.75,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_balanced": {
+          "successes": 1833,
+          "episodes": 2000,
+          "success_rate": 0.9165,
+          "rescues": 1,
+          "regressions": 2,
+          "net_improvement": -1,
+          "sac_activations": 643,
+          "sac_activation_rate": 0.3215,
+          "delta_vs_bc_pp": -0.05,
+          "delta_vs_always_sac_pp": 0.7,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "policy_safety": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.75,
+          "delta_vs_matching_fixed_gate_pp": 0.0
+        },
+        "policy_balanced": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.75,
+          "delta_vs_matching_fixed_gate_pp": 0.05
+        }
+      },
+      "comparisons": {
+        "policy_safety_vs_fixed_safety": {
+          "wins": 0,
+          "losses": 0,
+          "net": 0,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_fixed_balanced": {
+          "wins": 2,
+          "losses": 1,
+          "net": 1,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_safety_vs_bc": {
+          "wins": 0,
+          "losses": 0,
+          "net": 0,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_bc": {
+          "wins": 0,
+          "losses": 0,
+          "net": 0,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_safety_vs_always": {
+          "wins": 16,
+          "losses": 1,
+          "net": 15,
+          "mcnemar_p": 0.000274658203125,
+          "holm_p_across_five_models": 0.0010986328125
+        },
+        "policy_balanced_vs_always": {
+          "wins": 16,
+          "losses": 1,
+          "net": 15,
+          "mcnemar_p": 0.000274658203125,
+          "holm_p_across_five_models": 0.0010986328125
+        }
+      }
+    },
+    "19": {
+      "evaluation_csv": "bc_results/sac_C_seed19_policy_gate_final2000.csv",
+      "policy_gate_config": "bc_results/policy_specific_gate_seed19.json",
+      "selected_quadrants": {
+        "safety": [],
+        "balanced": []
+      },
+      "methods": {
+        "bc_only": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.1,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "always_sac": {
+          "successes": 1832,
+          "episodes": 2000,
+          "success_rate": 0.916,
+          "rescues": 3,
+          "regressions": 5,
+          "net_improvement": -2,
+          "sac_activations": 2000,
+          "sac_activation_rate": 1.0,
+          "delta_vs_bc_pp": -0.1,
+          "delta_vs_always_sac_pp": 0.0,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_safety": {
+          "successes": 1833,
+          "episodes": 2000,
+          "success_rate": 0.9165,
+          "rescues": 0,
+          "regressions": 1,
+          "net_improvement": -1,
+          "sac_activations": 336,
+          "sac_activation_rate": 0.168,
+          "delta_vs_bc_pp": -0.05,
+          "delta_vs_always_sac_pp": 0.05,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_balanced": {
+          "successes": 1836,
+          "episodes": 2000,
+          "success_rate": 0.918,
+          "rescues": 3,
+          "regressions": 1,
+          "net_improvement": 2,
+          "sac_activations": 643,
+          "sac_activation_rate": 0.3215,
+          "delta_vs_bc_pp": 0.1,
+          "delta_vs_always_sac_pp": 0.2,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "policy_safety": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.1,
+          "delta_vs_matching_fixed_gate_pp": 0.05
+        },
+        "policy_balanced": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.1,
+          "delta_vs_matching_fixed_gate_pp": -0.1
+        }
+      },
+      "comparisons": {
+        "policy_safety_vs_fixed_safety": {
+          "wins": 1,
+          "losses": 0,
+          "net": 1,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_fixed_balanced": {
+          "wins": 1,
+          "losses": 3,
+          "net": -2,
+          "mcnemar_p": 0.625,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_safety_vs_bc": {
+          "wins": 0,
+          "losses": 0,
+          "net": 0,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_bc": {
+          "wins": 0,
+          "losses": 0,
+          "net": 0,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_safety_vs_always": {
+          "wins": 5,
+          "losses": 3,
+          "net": 2,
+          "mcnemar_p": 0.7265625,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_always": {
+          "wins": 5,
+          "losses": 3,
+          "net": 2,
+          "mcnemar_p": 0.7265625,
+          "holm_p_across_five_models": 1.0
+        }
+      }
+    },
+    "73": {
+      "evaluation_csv": "bc_results/sac_C_seed73_policy_gate_final2000.csv",
+      "policy_gate_config": "bc_results/policy_specific_gate_seed73.json",
+      "selected_quadrants": {
+        "safety": [],
+        "balanced": []
+      },
+      "methods": {
+        "bc_only": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.95,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "always_sac": {
+          "successes": 1815,
+          "episodes": 2000,
+          "success_rate": 0.9075,
+          "rescues": 4,
+          "regressions": 23,
+          "net_improvement": -19,
+          "sac_activations": 2000,
+          "sac_activation_rate": 1.0,
+          "delta_vs_bc_pp": -0.95,
+          "delta_vs_always_sac_pp": 0.0,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_safety": {
+          "successes": 1836,
+          "episodes": 2000,
+          "success_rate": 0.918,
+          "rescues": 2,
+          "regressions": 0,
+          "net_improvement": 2,
+          "sac_activations": 336,
+          "sac_activation_rate": 0.168,
+          "delta_vs_bc_pp": 0.1,
+          "delta_vs_always_sac_pp": 1.05,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_balanced": {
+          "successes": 1824,
+          "episodes": 2000,
+          "success_rate": 0.912,
+          "rescues": 2,
+          "regressions": 12,
+          "net_improvement": -10,
+          "sac_activations": 643,
+          "sac_activation_rate": 0.3215,
+          "delta_vs_bc_pp": -0.5,
+          "delta_vs_always_sac_pp": 0.45,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "policy_safety": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.95,
+          "delta_vs_matching_fixed_gate_pp": -0.1
+        },
+        "policy_balanced": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": 0.95,
+          "delta_vs_matching_fixed_gate_pp": 0.5
+        }
+      },
+      "comparisons": {
+        "policy_safety_vs_fixed_safety": {
+          "wins": 0,
+          "losses": 2,
+          "net": -2,
+          "mcnemar_p": 0.5,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_fixed_balanced": {
+          "wins": 12,
+          "losses": 2,
+          "net": 10,
+          "mcnemar_p": 0.012939453125,
+          "holm_p_across_five_models": 0.064697265625
+        },
+        "policy_safety_vs_bc": {
+          "wins": 0,
+          "losses": 0,
+          "net": 0,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_bc": {
+          "wins": 0,
+          "losses": 0,
+          "net": 0,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_safety_vs_always": {
+          "wins": 23,
+          "losses": 4,
+          "net": 19,
+          "mcnemar_p": 0.000310748815536499,
+          "holm_p_across_five_models": 0.0010986328125
+        },
+        "policy_balanced_vs_always": {
+          "wins": 23,
+          "losses": 4,
+          "net": 19,
+          "mcnemar_p": 0.000310748815536499,
+          "holm_p_across_five_models": 0.0010986328125
+        }
+      }
+    },
+    "202": {
+      "evaluation_csv": "bc_results/sac_C_seed202_policy_gate_final2000.csv",
+      "policy_gate_config": "bc_results/policy_specific_gate_seed202.json",
+      "selected_quadrants": {
+        "safety": [],
+        "balanced": []
+      },
+      "methods": {
+        "bc_only": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": -0.15,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "always_sac": {
+          "successes": 1837,
+          "episodes": 2000,
+          "success_rate": 0.9185,
+          "rescues": 9,
+          "regressions": 6,
+          "net_improvement": 3,
+          "sac_activations": 2000,
+          "sac_activation_rate": 1.0,
+          "delta_vs_bc_pp": 0.15,
+          "delta_vs_always_sac_pp": 0.0,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_safety": {
+          "successes": 1836,
+          "episodes": 2000,
+          "success_rate": 0.918,
+          "rescues": 2,
+          "regressions": 0,
+          "net_improvement": 2,
+          "sac_activations": 336,
+          "sac_activation_rate": 0.168,
+          "delta_vs_bc_pp": 0.1,
+          "delta_vs_always_sac_pp": -0.05,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_balanced": {
+          "successes": 1836,
+          "episodes": 2000,
+          "success_rate": 0.918,
+          "rescues": 6,
+          "regressions": 4,
+          "net_improvement": 2,
+          "sac_activations": 643,
+          "sac_activation_rate": 0.3215,
+          "delta_vs_bc_pp": 0.1,
+          "delta_vs_always_sac_pp": -0.05,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "policy_safety": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": -0.15,
+          "delta_vs_matching_fixed_gate_pp": -0.1
+        },
+        "policy_balanced": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": -0.15,
+          "delta_vs_matching_fixed_gate_pp": -0.1
+        }
+      },
+      "comparisons": {
+        "policy_safety_vs_fixed_safety": {
+          "wins": 0,
+          "losses": 2,
+          "net": -2,
+          "mcnemar_p": 0.5,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_fixed_balanced": {
+          "wins": 4,
+          "losses": 6,
+          "net": -2,
+          "mcnemar_p": 0.75390625,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_safety_vs_bc": {
+          "wins": 0,
+          "losses": 0,
+          "net": 0,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_bc": {
+          "wins": 0,
+          "losses": 0,
+          "net": 0,
+          "mcnemar_p": 1.0,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_safety_vs_always": {
+          "wins": 6,
+          "losses": 9,
+          "net": -3,
+          "mcnemar_p": 0.60723876953125,
+          "holm_p_across_five_models": 1.0
+        },
+        "policy_balanced_vs_always": {
+          "wins": 6,
+          "losses": 9,
+          "net": -3,
+          "mcnemar_p": 0.60723876953125,
+          "holm_p_across_five_models": 1.0
+        }
+      }
+    },
+    "314": {
+      "evaluation_csv": "bc_results/sac_C_seed314_policy_gate_final2000.csv",
+      "policy_gate_config": "bc_results/policy_specific_gate_seed314.json",
+      "selected_quadrants": {
+        "safety": [
+          "EN",
+          "WN"
+        ],
+        "balanced": [
+          "EN",
+          "ES",
+          "WN"
+        ]
+      },
+      "methods": {
+        "bc_only": {
+          "successes": 1834,
+          "episodes": 2000,
+          "success_rate": 0.917,
+          "rescues": 0,
+          "regressions": 0,
+          "net_improvement": 0,
+          "sac_activations": 0,
+          "sac_activation_rate": 0.0,
+          "delta_vs_bc_pp": 0.0,
+          "delta_vs_always_sac_pp": -4.4,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "always_sac": {
+          "successes": 1922,
+          "episodes": 2000,
+          "success_rate": 0.961,
+          "rescues": 91,
+          "regressions": 3,
+          "net_improvement": 88,
+          "sac_activations": 2000,
+          "sac_activation_rate": 1.0,
+          "delta_vs_bc_pp": 4.4,
+          "delta_vs_always_sac_pp": 0.0,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_safety": {
+          "successes": 1855,
+          "episodes": 2000,
+          "success_rate": 0.9275,
+          "rescues": 21,
+          "regressions": 0,
+          "net_improvement": 21,
+          "sac_activations": 336,
+          "sac_activation_rate": 0.168,
+          "delta_vs_bc_pp": 1.05,
+          "delta_vs_always_sac_pp": -3.35,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "fixed_balanced": {
+          "successes": 1879,
+          "episodes": 2000,
+          "success_rate": 0.9395,
+          "rescues": 45,
+          "regressions": 0,
+          "net_improvement": 45,
+          "sac_activations": 643,
+          "sac_activation_rate": 0.3215,
+          "delta_vs_bc_pp": 2.25,
+          "delta_vs_always_sac_pp": -2.15,
+          "delta_vs_matching_fixed_gate_pp": null
+        },
+        "policy_safety": {
+          "successes": 1894,
+          "episodes": 2000,
+          "success_rate": 0.947,
+          "rescues": 60,
+          "regressions": 0,
+          "net_improvement": 60,
+          "sac_activations": 692,
+          "sac_activation_rate": 0.346,
+          "delta_vs_bc_pp": 3.0,
+          "delta_vs_always_sac_pp": -1.4,
+          "delta_vs_matching_fixed_gate_pp": 1.95
+        },
+        "policy_balanced": {
+          "successes": 1898,
+          "episodes": 2000,
+          "success_rate": 0.949,
+          "rescues": 67,
+          "regressions": 3,
+          "net_improvement": 64,
+          "sac_activations": 1028,
+          "sac_activation_rate": 0.514,
+          "delta_vs_bc_pp": 3.2,
+          "delta_vs_always_sac_pp": -1.2,
+          "delta_vs_matching_fixed_gate_pp": 0.95
+        }
+      },
+      "comparisons": {
+        "policy_safety_vs_fixed_safety": {
+          "wins": 39,
+          "losses": 0,
+          "net": 39,
+          "mcnemar_p": 3.637978807091713e-12,
+          "holm_p_across_five_models": 1.8189894035458565e-11
+        },
+        "policy_balanced_vs_fixed_balanced": {
+          "wins": 46,
+          "losses": 27,
+          "net": 19,
+          "mcnemar_p": 0.034415913668175036,
+          "holm_p_across_five_models": 0.13766365467270014
+        },
+        "policy_safety_vs_bc": {
+          "wins": 60,
+          "losses": 0,
+          "net": 60,
+          "mcnemar_p": 1.734723475976807e-18,
+          "holm_p_across_five_models": 8.673617379884035e-18
+        },
+        "policy_balanced_vs_bc": {
+          "wins": 67,
+          "losses": 3,
+          "net": 64,
+          "mcnemar_p": 9.694461487914918e-17,
+          "holm_p_across_five_models": 4.847230743957459e-16
+        },
+        "policy_safety_vs_always": {
+          "wins": 3,
+          "losses": 31,
+          "net": -28,
+          "mcnemar_p": 7.660128176212311e-07,
+          "holm_p_across_five_models": 3.830064088106155e-06
+        },
+        "policy_balanced_vs_always": {
+          "wins": 0,
+          "losses": 24,
+          "net": -24,
+          "mcnemar_p": 1.1920928955078125e-07,
+          "holm_p_across_five_models": 5.960464477539062e-07
+        }
+      }
+    }
+  },
+  "cross_seed_descriptive_summary": {
+    "bc_only": {
+      "success_rate_mean": 0.917,
+      "success_rate_sd_sample": 0.0,
+      "success_rate_min": 0.917,
+      "success_rate_max": 0.917,
+      "delta_vs_bc_pp_mean": 0.0,
+      "delta_vs_bc_pp_sd_sample": 0.0,
+      "improved_model_count_vs_bc": 0,
+      "worsened_model_count_vs_bc": 0
+    },
+    "always_sac": {
+      "success_rate_mean": 0.9225,
+      "success_rate_sd_sample": 0.02199147562124924,
+      "success_rate_min": 0.9075,
+      "success_rate_max": 0.961,
+      "delta_vs_bc_pp_mean": 0.55,
+      "delta_vs_bc_pp_sd_sample": 2.199147562124925,
+      "improved_model_count_vs_bc": 2,
+      "worsened_model_count_vs_bc": 3
+    },
+    "fixed_safety": {
+      "success_rate_mean": 0.9194000000000001,
+      "success_rate_sd_sample": 0.00457438520459306,
+      "success_rate_min": 0.9165,
+      "success_rate_max": 0.9275,
+      "delta_vs_bc_pp_mean": 0.24,
+      "delta_vs_bc_pp_sd_sample": 0.4574385204593072,
+      "improved_model_count_vs_bc": 3,
+      "worsened_model_count_vs_bc": 1
+    },
+    "fixed_balanced": {
+      "success_rate_mean": 0.9208000000000001,
+      "success_rate_sd_sample": 0.010738947806931543,
+      "success_rate_min": 0.912,
+      "success_rate_max": 0.9395,
+      "delta_vs_bc_pp_mean": 0.38,
+      "delta_vs_bc_pp_sd_sample": 1.0738947806931554,
+      "improved_model_count_vs_bc": 3,
+      "worsened_model_count_vs_bc": 2
+    },
+    "policy_safety": {
+      "success_rate_mean": 0.923,
+      "success_rate_sd_sample": 0.0134164078649987,
+      "success_rate_min": 0.917,
+      "success_rate_max": 0.947,
+      "delta_vs_bc_pp_mean": 0.6,
+      "delta_vs_bc_pp_sd_sample": 1.3416407864998738,
+      "improved_model_count_vs_bc": 1,
+      "worsened_model_count_vs_bc": 0
+    },
+    "policy_balanced": {
+      "success_rate_mean": 0.9234,
+      "success_rate_sd_sample": 0.014310835055998616,
+      "success_rate_min": 0.917,
+      "success_rate_max": 0.949,
+      "delta_vs_bc_pp_mean": 0.64,
+      "delta_vs_bc_pp_sd_sample": 1.4310835055998654,
+      "improved_model_count_vs_bc": 1,
+      "worsened_model_count_vs_bc": 0
+    }
+  },
+  "holm_adjusted_p_values": {
+    "policy_safety_vs_fixed_safety": {
+      "314": 1.8189894035458565e-11,
+      "73": 1.0,
+      "202": 1.0,
+      "7": 1.0,
+      "19": 1.0
+    },
+    "policy_balanced_vs_fixed_balanced": {
+      "73": 0.064697265625,
+      "314": 0.13766365467270014,
+      "19": 1.0,
+      "202": 1.0,
+      "7": 1.0
+    },
+    "policy_safety_vs_bc": {
+      "314": 8.673617379884035e-18,
+      "7": 1.0,
+      "19": 1.0,
+      "73": 1.0,
+      "202": 1.0
+    },
+    "policy_balanced_vs_bc": {
+      "314": 4.847230743957459e-16,
+      "7": 1.0,
+      "19": 1.0,
+      "73": 1.0,
+      "202": 1.0
+    },
+    "policy_safety_vs_always": {
+      "314": 3.830064088106155e-06,
+      "7": 0.0010986328125,
+      "73": 0.0010986328125,
+      "202": 1.0,
+      "19": 1.0
+    },
+    "policy_balanced_vs_always": {
+      "314": 5.960464477539062e-07,
+      "7": 0.0010986328125,
+      "73": 0.0010986328125,
+      "202": 1.0,
+      "19": 1.0
+    }
+  },
+  "statistical_note": "Exact paired tests condition on each frozen model and position set. The five model seeds are the unit for cross-seed generalization; shared positions do not create 10,000 independent observations. Holm adjustment is within each pre-specified five-test comparison family."
+}
