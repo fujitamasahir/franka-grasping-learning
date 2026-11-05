@@ -23,3 +23,5 @@ tensorboard_logs/
 autonomous_eval/
 autonomous_v2_eval/
 bc_residual_sac_eval/
+# Separate SAC experiment artifacts
+bc_residual_sac_runs/
