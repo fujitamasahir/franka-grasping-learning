@@ -1,0 +1,61 @@
+{
+  "stage": "exploratory",
+  "evaluation_csv": "bc_results/sac_C_seed456_final1000.csv",
+  "evaluation_seeds": [
+    130000,
+    130999
+  ],
+  "calibration_sha256": "2bd19cd2086c481fd03b13fb714dc970ee8163acd553bda0582ecb83b275bc63",
+  "selected_quadrants": {
+    "safety": [
+      "EN"
+    ],
+    "balanced": [
+      "EN",
+      "WS"
+    ]
+  },
+  "methods": {
+    "bc_only": {
+      "successes": 939,
+      "rescues": 0,
+      "regressions": 0,
+      "sac_episodes": 0,
+      "episodes": 1000,
+      "success_rate": 0.939,
+      "delta_vs_bc_pp": 0.0,
+      "mcnemar_p_vs_bc": 1.0
+    },
+    "always_sac": {
+      "successes": 957,
+      "rescues": 22,
+      "regressions": 4,
+      "sac_episodes": 1000,
+      "episodes": 1000,
+      "success_rate": 0.957,
+      "delta_vs_bc_pp": 1.8,
+      "mcnemar_p_vs_bc": 0.0005335211753845215
+    },
+    "safety": {
+      "successes": 955,
+      "rescues": 16,
+      "regressions": 0,
+      "sac_episodes": 169,
+      "episodes": 1000,
+      "success_rate": 0.955,
+      "delta_vs_bc_pp": 1.6,
+      "mcnemar_p_vs_bc": 3.0517578125e-05
+    },
+    "balanced": {
+      "successes": 960,
+      "rescues": 22,
+      "regressions": 1,
+      "sac_episodes": 347,
+      "episodes": 1000,
+      "success_rate": 0.96,
+      "delta_vs_bc_pp": 2.1,
+      "mcnemar_p_vs_bc": 5.7220458984375e-06
+    }
+  },
+  "note": "Exploratory: previous evaluation results have already been inspected."
+}
