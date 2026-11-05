@@ -17,13 +17,21 @@ class ResidualPenaltyInterventionTests(unittest.TestCase):
             "reward_mode": "shaped",
         }
         if coefficient is not None:
-            kwargs["residual_penalty_coef"] = coefficient
+            kwargs["residual_penalty_coefficient"] = coefficient
         return BCResidualEnv(**kwargs)
 
     def test_default_coefficient_preserves_original_penalty(self):
         env = self.make_env()
         try:
+            self.assertEqual(env.residual_penalty_coefficient, 0.005)
             self.assertEqual(env.residual_penalty_coef, 0.005)
+        finally:
+            env.close()
+
+    def test_abbreviated_keyword_remains_backward_compatible(self):
+        env = BCResidualEnv(bc_model=BC, residual_penalty_coef=0.020)
+        try:
+            self.assertEqual(env.residual_penalty_coefficient, 0.020)
         finally:
             env.close()
 

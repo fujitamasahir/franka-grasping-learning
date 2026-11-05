@@ -48,7 +48,7 @@ All 10 training runs completed with the expected snapshots, configuration, evalu
 
 ## 6. Residual Action Regularization
 
-The controlled environment change exposes `residual_penalty_coef` (default 0.005) and logs the task reward, shaping reward, residual-action penalty, normalized residual norm, commanded and applied corrections, clipping difference, and action saturation. The trainer records per-episode aggregates from the existing rollout info and does not add environment steps for diagnostics. The default run settings were preserved for Arm A; Arm B used 0.020. No SAC weights were changed after training, and no evaluation outcomes were used to alter conditions.
+The controlled environment change exposes `residual_penalty_coefficient` (default 0.005); the earlier abbreviated `residual_penalty_coef` keyword remains a backward-compatible alias. It logs the task reward, shaping reward, residual-action penalty, normalized residual norm, commanded and applied corrections, clipping difference, and action saturation. The trainer records per-episode aggregates from the existing rollout info and does not add environment steps for diagnostics. The default run settings were preserved for Arm A; Arm B used 0.020. No SAC weights were changed after training, and no evaluation outcomes were used to alter conditions.
 
 On the 30k Final evaluations, Arm B’s mean applied-command residual norm was 3.12 mm across seeds, versus 4.06 mm for Arm A. Mean action-saturation frequency was 4.48% for B and 7.13% for A. The association is consistent with the intended regularization effect, but the saturation response varied by seed and is not evidence that residual magnitude alone caused success changes.
 

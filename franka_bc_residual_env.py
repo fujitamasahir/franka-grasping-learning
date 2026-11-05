@@ -23,7 +23,8 @@ class BCResidualEnv(gym.Wrapper):
         hard_inner_range=0.12,
         hard_fraction=0.90,
         reward_mode="sparse",
-        residual_penalty_coef=0.005,
+        residual_penalty_coefficient=0.005,
+        residual_penalty_coef=None,
     ):
         if sampling_mode not in ("uniform", "hard"):
             raise ValueError("sampling_mode must be 'uniform' or 'hard'")
@@ -54,9 +55,18 @@ class BCResidualEnv(gym.Wrapper):
         self.hard_inner_range = float(hard_inner_range)
         self.hard_fraction = float(hard_fraction)
         self.reward_mode = reward_mode
-        if residual_penalty_coef < 0:
-            raise ValueError("residual_penalty_coef must be >= 0")
-        self.residual_penalty_coef = float(residual_penalty_coef)
+        # Keep the old abbreviated keyword as a backward-compatible alias.
+        if residual_penalty_coef is not None:
+            if (
+                residual_penalty_coefficient != 0.005
+                and residual_penalty_coefficient != residual_penalty_coef
+            ):
+                raise ValueError("Specify only one residual penalty coefficient")
+            residual_penalty_coefficient = residual_penalty_coef
+        if residual_penalty_coefficient < 0:
+            raise ValueError("residual_penalty_coefficient must be >= 0")
+        self.residual_penalty_coefficient = float(residual_penalty_coefficient)
+        self.residual_penalty_coef = self.residual_penalty_coefficient
 
         self.action_space = spaces.Box(
             low=-1.0, high=1.0, shape=(3,), dtype=np.float32
@@ -198,7 +208,7 @@ class BCResidualEnv(gym.Wrapper):
             task_reward += 20.0
         elif truncated:
             task_reward -= 5.0
-        residual_action_penalty = -self.residual_penalty_coef * float(
+        residual_action_penalty = -self.residual_penalty_coefficient * float(
             np.sum(residual ** 2)
         )
 

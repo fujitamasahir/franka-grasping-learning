@@ -235,7 +235,7 @@ def make_env(args, sampling_mode):
         hard_inner_range=args.hard_inner_range,
         hard_fraction=args.hard_fraction,
         reward_mode=args.reward_mode,
-        residual_penalty_coef=args.residual_penalty_coef,
+        residual_penalty_coefficient=args.residual_penalty_coef,
     )
 
 
