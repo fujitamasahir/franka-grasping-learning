@@ -1,0 +1,59 @@
+{
+  "study": "SAC Regression Diagnostics: historical observational phase",
+  "seeds": [
+    811,
+    823,
+    827,
+    829,
+    839
+  ],
+  "tensorboard_sources": {
+    "811": "bc_residual_sac_logs/stability_C_seed811/SAC_1/events.out.tfevents.1793823404.Masahirononotobukkukonpyuta-1642.local.73691.0",
+    "823": "bc_residual_sac_logs/stability_C_seed823/SAC_1/events.out.tfevents.1793823618.Masahirononotobukkukonpyuta-1642.local.73744.0",
+    "827": "bc_residual_sac_logs/stability_C_seed827/SAC_1/events.out.tfevents.1793823835.Masahirononotobukkukonpyuta-1642.local.73991.0",
+    "829": "bc_residual_sac_logs/stability_C_seed829/SAC_1/events.out.tfevents.1793824057.Masahirononotobukkukonpyuta-1642.local.74360.0",
+    "839": "bc_residual_sac_logs/stability_C_seed839/SAC_1/events.out.tfevents.1793824279.Masahirononotobukkukonpyuta-1642.local.74531.0"
+  },
+  "available_metrics": [
+    "actor_loss",
+    "critic_loss",
+    "entropy_coefficient",
+    "entropy_coefficient_loss",
+    "training_mean_episode_reward",
+    "training_mean_episode_length",
+    "training_rollout_success_rate"
+  ],
+  "not_available_metrics": [
+    "mean_residual_action_norm",
+    "max_residual_action_norm",
+    "residual_action_norm_mm",
+    "action_saturation_frequency",
+    "effective_residual_correction",
+    "commanded_applied_residual_difference",
+    "task_reward_component",
+    "shaping_reward_component",
+    "residual_action_penalty_component",
+    "TD_error",
+    "Q1_Q2_disagreement"
+  ],
+  "critic_loss_is_not_td_error": true,
+  "q_value_disagreement_measured": false,
+  "focus_transitions": [
+    [
+      811,
+      20000,
+      30000
+    ],
+    [
+      827,
+      10000,
+      20000
+    ],
+    [
+      829,
+      20000,
+      30000
+    ]
+  ],
+  "interpretation": "Exploratory associations only; training metrics were not manipulated and repeated checkpoints share models and evaluation positions."
+}

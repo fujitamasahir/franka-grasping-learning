@@ -23,6 +23,7 @@ class BCResidualEnv(gym.Wrapper):
         hard_inner_range=0.12,
         hard_fraction=0.90,
         reward_mode="sparse",
+        residual_penalty_coef=0.005,
     ):
         if sampling_mode not in ("uniform", "hard"):
             raise ValueError("sampling_mode must be 'uniform' or 'hard'")
@@ -53,6 +54,9 @@ class BCResidualEnv(gym.Wrapper):
         self.hard_inner_range = float(hard_inner_range)
         self.hard_fraction = float(hard_fraction)
         self.reward_mode = reward_mode
+        if residual_penalty_coef < 0:
+            raise ValueError("residual_penalty_coef must be >= 0")
+        self.residual_penalty_coef = float(residual_penalty_coef)
 
         self.action_space = spaces.Box(
             low=-1.0, high=1.0, shape=(3,), dtype=np.float32
@@ -61,6 +65,54 @@ class BCResidualEnv(gym.Wrapper):
         self.previous_distance = 0.0
         self.previous_lift = 0.0
         self.hard_sampled = False
+
+    def training_state_dict(self):
+        """Capture state needed to resume at a saved SAC step boundary."""
+        base = self.env
+        state_spec = mujoco.mjtState.mjSTATE_INTEGRATION
+        integration_state = np.empty(
+            mujoco.mj_stateSize(base.model, state_spec), dtype=np.float64
+        )
+        mujoco.mj_getState(base.model, base.data, integration_state, state_spec)
+        return {
+            "integration_state": integration_state,
+            "ctrl": base.data.ctrl.copy(),
+            "cube_x": base.cube_x,
+            "cube_y": base.cube_y,
+            "initial_z": base.initial_z,
+            "base_ctrl": base.ctrl.copy(),
+            "gripper_command": base.gripper_command,
+            "base_previous_distance": base.previous_distance,
+            "hold_steps": base.hold_steps,
+            "base_rng": base.np_random.bit_generator.state,
+            "current_obs": None if self.current_obs is None else self.current_obs.copy(),
+            "previous_distance": self.previous_distance,
+            "previous_lift": self.previous_lift,
+            "hard_sampled": self.hard_sampled,
+        }
+
+    def load_training_state_dict(self, state):
+        base = self.env
+        state_spec = mujoco.mjtState.mjSTATE_INTEGRATION
+        mujoco.mj_setState(
+            base.model, base.data, state["integration_state"], state_spec
+        )
+        base.data.ctrl[:] = state["ctrl"]
+        mujoco.mj_forward(base.model, base.data)
+        base.cube_x = state["cube_x"]
+        base.cube_y = state["cube_y"]
+        base.initial_z = state["initial_z"]
+        base.ctrl = state["base_ctrl"].copy()
+        base.gripper_command = state["gripper_command"]
+        base.previous_distance = state["base_previous_distance"]
+        base.hold_steps = state["hold_steps"]
+        base.np_random.bit_generator.state = state["base_rng"]
+        self.current_obs = (
+            None if state["current_obs"] is None else state["current_obs"].copy()
+        )
+        self.previous_distance = state["previous_distance"]
+        self.previous_lift = state["previous_lift"]
+        self.hard_sampled = state["hard_sampled"]
 
     def _sample_position(self):
         """Sample 90% outside the BC square, 10% inside by default."""
@@ -131,16 +183,24 @@ class BCResidualEnv(gym.Wrapper):
         )
         # BC retains full control of the gripper.
         final_action[3] = bc_action[3]
+        commanded_residual_m = residual * self.residual_meters
+        applied_residual_m = (
+            final_action[:3] - bc_action[:3]
+        ) * self.env.max_move
+        residual_clip_difference_m = commanded_residual_m - applied_residual_m
 
         obs, _, terminated, truncated, info = self.env.step(final_action)
         self.current_obs = obs.copy()
 
-        # Identical sparse task reward for all three experimental arms.
-        reward = -0.01 - 0.005 * float(np.sum(residual ** 2))
+        # Keep task, regularization, and shaping terms separately observable.
+        task_reward = -0.01
         if info["is_success"]:
-            reward += 20.0
+            task_reward += 20.0
         elif truncated:
-            reward -= 5.0
+            task_reward -= 5.0
+        residual_action_penalty = -self.residual_penalty_coef * float(
+            np.sum(residual ** 2)
+        )
 
         distance = float(info["distance"])
         lift = float(info["lift_height"])
@@ -159,7 +219,7 @@ class BCResidualEnv(gym.Wrapper):
                 10.0 * distance_progress
                 + 15.0 * lift_progress
             )
-            reward += shaping_reward
+        reward = task_reward + residual_action_penalty + shaping_reward
 
         self.previous_distance = distance
         self.previous_lift = lift
@@ -173,6 +233,18 @@ class BCResidualEnv(gym.Wrapper):
             residual_norm=float(
                 np.linalg.norm(residual * self.residual_meters)
             ),
+            residual_action_norm=float(np.linalg.norm(residual)),
+            residual_action_max_abs=float(np.max(np.abs(residual))),
+            action_saturated=bool(np.any(np.abs(residual) >= 0.95)),
+            commanded_residual_xyz_m=commanded_residual_m.copy(),
+            applied_residual_xyz_m=applied_residual_m.copy(),
+            residual_clip_difference_xyz_m=residual_clip_difference_m.copy(),
+            applied_residual_norm_m=float(np.linalg.norm(applied_residual_m)),
+            residual_clip_difference_norm_m=float(
+                np.linalg.norm(residual_clip_difference_m)
+            ),
+            task_reward=float(task_reward),
+            residual_action_penalty=float(residual_action_penalty),
             bc_action=bc_action.copy(),
             executed_action=final_action.copy(),
         )

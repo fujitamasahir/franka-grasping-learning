@@ -1,0 +1,91 @@
+sac_seed,metric,status,source
+811,actor_loss,available,bc_residual_sac_logs/stability_C_seed811/SAC_1/events.out.tfevents.1793823404.Masahirononotobukkukonpyuta-1642.local.73691.0
+811,critic_loss,available,bc_residual_sac_logs/stability_C_seed811/SAC_1/events.out.tfevents.1793823404.Masahirononotobukkukonpyuta-1642.local.73691.0
+811,entropy_coefficient,available,bc_residual_sac_logs/stability_C_seed811/SAC_1/events.out.tfevents.1793823404.Masahirononotobukkukonpyuta-1642.local.73691.0
+811,entropy_coefficient_loss,available,bc_residual_sac_logs/stability_C_seed811/SAC_1/events.out.tfevents.1793823404.Masahirononotobukkukonpyuta-1642.local.73691.0
+811,training_mean_episode_reward,available,bc_residual_sac_logs/stability_C_seed811/SAC_1/events.out.tfevents.1793823404.Masahirononotobukkukonpyuta-1642.local.73691.0
+811,training_mean_episode_length,available,bc_residual_sac_logs/stability_C_seed811/SAC_1/events.out.tfevents.1793823404.Masahirononotobukkukonpyuta-1642.local.73691.0
+811,training_rollout_success_rate,available,bc_residual_sac_logs/stability_C_seed811/SAC_1/events.out.tfevents.1793823404.Masahirononotobukkukonpyuta-1642.local.73691.0
+811,mean_residual_action_norm,Not Available,not logged during original training
+811,max_residual_action_norm,Not Available,not logged during original training
+811,residual_action_norm_mm,Not Available,not logged during original training
+811,action_saturation_frequency,Not Available,not logged during original training
+811,effective_residual_correction,Not Available,not logged during original training
+811,commanded_applied_residual_difference,Not Available,not logged during original training
+811,task_reward_component,Not Available,not logged during original training
+811,shaping_reward_component,Not Available,not logged during original training
+811,residual_action_penalty_component,Not Available,not logged during original training
+811,TD_error,Not Available,not logged during original training
+811,Q1_Q2_disagreement,Not Available,not logged during original training
+823,actor_loss,available,bc_residual_sac_logs/stability_C_seed823/SAC_1/events.out.tfevents.1793823618.Masahirononotobukkukonpyuta-1642.local.73744.0
+823,critic_loss,available,bc_residual_sac_logs/stability_C_seed823/SAC_1/events.out.tfevents.1793823618.Masahirononotobukkukonpyuta-1642.local.73744.0
+823,entropy_coefficient,available,bc_residual_sac_logs/stability_C_seed823/SAC_1/events.out.tfevents.1793823618.Masahirononotobukkukonpyuta-1642.local.73744.0
+823,entropy_coefficient_loss,available,bc_residual_sac_logs/stability_C_seed823/SAC_1/events.out.tfevents.1793823618.Masahirononotobukkukonpyuta-1642.local.73744.0
+823,training_mean_episode_reward,available,bc_residual_sac_logs/stability_C_seed823/SAC_1/events.out.tfevents.1793823618.Masahirononotobukkukonpyuta-1642.local.73744.0
+823,training_mean_episode_length,available,bc_residual_sac_logs/stability_C_seed823/SAC_1/events.out.tfevents.1793823618.Masahirononotobukkukonpyuta-1642.local.73744.0
+823,training_rollout_success_rate,available,bc_residual_sac_logs/stability_C_seed823/SAC_1/events.out.tfevents.1793823618.Masahirononotobukkukonpyuta-1642.local.73744.0
+823,mean_residual_action_norm,Not Available,not logged during original training
+823,max_residual_action_norm,Not Available,not logged during original training
+823,residual_action_norm_mm,Not Available,not logged during original training
+823,action_saturation_frequency,Not Available,not logged during original training
+823,effective_residual_correction,Not Available,not logged during original training
+823,commanded_applied_residual_difference,Not Available,not logged during original training
+823,task_reward_component,Not Available,not logged during original training
+823,shaping_reward_component,Not Available,not logged during original training
+823,residual_action_penalty_component,Not Available,not logged during original training
+823,TD_error,Not Available,not logged during original training
+823,Q1_Q2_disagreement,Not Available,not logged during original training
+827,actor_loss,available,bc_residual_sac_logs/stability_C_seed827/SAC_1/events.out.tfevents.1793823835.Masahirononotobukkukonpyuta-1642.local.73991.0
+827,critic_loss,available,bc_residual_sac_logs/stability_C_seed827/SAC_1/events.out.tfevents.1793823835.Masahirononotobukkukonpyuta-1642.local.73991.0
+827,entropy_coefficient,available,bc_residual_sac_logs/stability_C_seed827/SAC_1/events.out.tfevents.1793823835.Masahirononotobukkukonpyuta-1642.local.73991.0
+827,entropy_coefficient_loss,available,bc_residual_sac_logs/stability_C_seed827/SAC_1/events.out.tfevents.1793823835.Masahirononotobukkukonpyuta-1642.local.73991.0
+827,training_mean_episode_reward,available,bc_residual_sac_logs/stability_C_seed827/SAC_1/events.out.tfevents.1793823835.Masahirononotobukkukonpyuta-1642.local.73991.0
+827,training_mean_episode_length,available,bc_residual_sac_logs/stability_C_seed827/SAC_1/events.out.tfevents.1793823835.Masahirononotobukkukonpyuta-1642.local.73991.0
+827,training_rollout_success_rate,available,bc_residual_sac_logs/stability_C_seed827/SAC_1/events.out.tfevents.1793823835.Masahirononotobukkukonpyuta-1642.local.73991.0
+827,mean_residual_action_norm,Not Available,not logged during original training
+827,max_residual_action_norm,Not Available,not logged during original training
+827,residual_action_norm_mm,Not Available,not logged during original training
+827,action_saturation_frequency,Not Available,not logged during original training
+827,effective_residual_correction,Not Available,not logged during original training
+827,commanded_applied_residual_difference,Not Available,not logged during original training
+827,task_reward_component,Not Available,not logged during original training
+827,shaping_reward_component,Not Available,not logged during original training
+827,residual_action_penalty_component,Not Available,not logged during original training
+827,TD_error,Not Available,not logged during original training
+827,Q1_Q2_disagreement,Not Available,not logged during original training
+829,actor_loss,available,bc_residual_sac_logs/stability_C_seed829/SAC_1/events.out.tfevents.1793824057.Masahirononotobukkukonpyuta-1642.local.74360.0
+829,critic_loss,available,bc_residual_sac_logs/stability_C_seed829/SAC_1/events.out.tfevents.1793824057.Masahirononotobukkukonpyuta-1642.local.74360.0
+829,entropy_coefficient,available,bc_residual_sac_logs/stability_C_seed829/SAC_1/events.out.tfevents.1793824057.Masahirononotobukkukonpyuta-1642.local.74360.0
+829,entropy_coefficient_loss,available,bc_residual_sac_logs/stability_C_seed829/SAC_1/events.out.tfevents.1793824057.Masahirononotobukkukonpyuta-1642.local.74360.0
+829,training_mean_episode_reward,available,bc_residual_sac_logs/stability_C_seed829/SAC_1/events.out.tfevents.1793824057.Masahirononotobukkukonpyuta-1642.local.74360.0
+829,training_mean_episode_length,available,bc_residual_sac_logs/stability_C_seed829/SAC_1/events.out.tfevents.1793824057.Masahirononotobukkukonpyuta-1642.local.74360.0
+829,training_rollout_success_rate,available,bc_residual_sac_logs/stability_C_seed829/SAC_1/events.out.tfevents.1793824057.Masahirononotobukkukonpyuta-1642.local.74360.0
+829,mean_residual_action_norm,Not Available,not logged during original training
+829,max_residual_action_norm,Not Available,not logged during original training
+829,residual_action_norm_mm,Not Available,not logged during original training
+829,action_saturation_frequency,Not Available,not logged during original training
+829,effective_residual_correction,Not Available,not logged during original training
+829,commanded_applied_residual_difference,Not Available,not logged during original training
+829,task_reward_component,Not Available,not logged during original training
+829,shaping_reward_component,Not Available,not logged during original training
+829,residual_action_penalty_component,Not Available,not logged during original training
+829,TD_error,Not Available,not logged during original training
+829,Q1_Q2_disagreement,Not Available,not logged during original training
+839,actor_loss,available,bc_residual_sac_logs/stability_C_seed839/SAC_1/events.out.tfevents.1793824279.Masahirononotobukkukonpyuta-1642.local.74531.0
+839,critic_loss,available,bc_residual_sac_logs/stability_C_seed839/SAC_1/events.out.tfevents.1793824279.Masahirononotobukkukonpyuta-1642.local.74531.0
+839,entropy_coefficient,available,bc_residual_sac_logs/stability_C_seed839/SAC_1/events.out.tfevents.1793824279.Masahirononotobukkukonpyuta-1642.local.74531.0
+839,entropy_coefficient_loss,available,bc_residual_sac_logs/stability_C_seed839/SAC_1/events.out.tfevents.1793824279.Masahirononotobukkukonpyuta-1642.local.74531.0
+839,training_mean_episode_reward,available,bc_residual_sac_logs/stability_C_seed839/SAC_1/events.out.tfevents.1793824279.Masahirononotobukkukonpyuta-1642.local.74531.0
+839,training_mean_episode_length,available,bc_residual_sac_logs/stability_C_seed839/SAC_1/events.out.tfevents.1793824279.Masahirononotobukkukonpyuta-1642.local.74531.0
+839,training_rollout_success_rate,available,bc_residual_sac_logs/stability_C_seed839/SAC_1/events.out.tfevents.1793824279.Masahirononotobukkukonpyuta-1642.local.74531.0
+839,mean_residual_action_norm,Not Available,not logged during original training
+839,max_residual_action_norm,Not Available,not logged during original training
+839,residual_action_norm_mm,Not Available,not logged during original training
+839,action_saturation_frequency,Not Available,not logged during original training
+839,effective_residual_correction,Not Available,not logged during original training
+839,commanded_applied_residual_difference,Not Available,not logged during original training
+839,task_reward_component,Not Available,not logged during original training
+839,shaping_reward_component,Not Available,not logged during original training
+839,residual_action_penalty_component,Not Available,not logged during original training
+839,TD_error,Not Available,not logged during original training
+839,Q1_Q2_disagreement,Not Available,not logged during original training
