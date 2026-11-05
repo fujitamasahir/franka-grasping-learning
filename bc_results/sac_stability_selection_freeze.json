@@ -1,0 +1,229 @@
+{
+  "purpose": "Freeze checkpoint selection before opening final evaluation outcomes",
+  "selection_a": "max validation success on fixed 40 episodes; tie by fewer mean successful steps; chronological tie remains earliest",
+  "selection_b": "max validation success on fixed 500 episodes; same tie-break",
+  "validation_a_seeds": [
+    61000,
+    61039
+  ],
+  "validation_b_seeds": [
+    210000,
+    210499
+  ],
+  "final_evaluation_seeds": [
+    220000,
+    221999
+  ],
+  "candidates": [
+    10000,
+    20000,
+    30000
+  ],
+  "selections": [
+    {
+      "sac_seed": 811,
+      "selection_a_step": 30000,
+      "selection_b_step": 30000,
+      "selected_same_checkpoint": true,
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 119.38461538461539,
+          "validation_b_rate": 0.924,
+          "validation_b_mean_successful_steps": 119.65367965367966,
+          "validation_b_successes": 462,
+          "validation_b_csv_sha256": "c81bfc47d0d122accdc0dbc3485bb02e41160265bc7e3df7883bf9565de9f6cf",
+          "validation_a_history_sha256": "03838c4458d78b6070282724debeeef3ef2397b65a8bf8073167db8f0acb7edc",
+          "checkpoint_sha256": "b7458b2aa43244c646715932a8203656b378f8ffd0d06c775219c15570eb7b17"
+        },
+        {
+          "timesteps": 20000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 119.8974358974359,
+          "validation_b_rate": 0.926,
+          "validation_b_mean_successful_steps": 119.98488120950324,
+          "validation_b_successes": 463,
+          "validation_b_csv_sha256": "4d5d2cfa76c89003a89212549954e2aa2e1f8fbd5529e20b6cd1c6c0b3612bcf",
+          "validation_a_history_sha256": "03838c4458d78b6070282724debeeef3ef2397b65a8bf8073167db8f0acb7edc",
+          "checkpoint_sha256": "692688a9f0d436e85060cd45a415ad7a22c1727d240bc50dbd70da674a2edf86"
+        },
+        {
+          "timesteps": 30000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 118.23076923076923,
+          "validation_b_rate": 0.958,
+          "validation_b_mean_successful_steps": 115.89561586638831,
+          "validation_b_successes": 479,
+          "validation_b_csv_sha256": "d831f57d617d1db80523100095258f7cb9067661bc2b77d2d83643ddd9d98a44",
+          "validation_a_history_sha256": "03838c4458d78b6070282724debeeef3ef2397b65a8bf8073167db8f0acb7edc",
+          "checkpoint_sha256": "c676357e20e90dabe18e3d153035f2ea61d869ec25f8215199a5d6764b4e6249"
+        }
+      ]
+    },
+    {
+      "sac_seed": 823,
+      "selection_a_step": 20000,
+      "selection_b_step": 20000,
+      "selected_same_checkpoint": true,
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 119.8974358974359,
+          "validation_b_rate": 0.92,
+          "validation_b_mean_successful_steps": 119.44565217391305,
+          "validation_b_successes": 460,
+          "validation_b_csv_sha256": "54d46ed69ab4eb2aee1e12e7b8ade21a9249c1b0b559fb5a90ee0423310b85d7",
+          "validation_a_history_sha256": "1965417fd4de7c6c69663dae9202fa154d6673eb310acd74186d9b27caed188f",
+          "checkpoint_sha256": "153420743b13bbbad781c1ced50a8d59d378a48071ad07cb5aee32aaa40618ac"
+        },
+        {
+          "timesteps": 20000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 119.3076923076923,
+          "validation_b_rate": 0.94,
+          "validation_b_mean_successful_steps": 117.34468085106383,
+          "validation_b_successes": 470,
+          "validation_b_csv_sha256": "7a1167b48f6e6c31e07e4a8989bc06ff8817050b2efe1ee1ca4b16c3262eed58",
+          "validation_a_history_sha256": "1965417fd4de7c6c69663dae9202fa154d6673eb310acd74186d9b27caed188f",
+          "checkpoint_sha256": "f8519dac187eb999f5da07e9611d17634c01b764bc314d0daf2fe9a8e024b236"
+        },
+        {
+          "timesteps": 30000,
+          "validation_a_rate": 0.95,
+          "validation_a_mean_successful_steps": 118.26315789473684,
+          "validation_b_rate": 0.928,
+          "validation_b_mean_successful_steps": 118.22198275862068,
+          "validation_b_successes": 464,
+          "validation_b_csv_sha256": "0c67df26fc9f54138bd7d14b0ad7ffb17b83cc54e4049e5820987fcbd739a489",
+          "validation_a_history_sha256": "1965417fd4de7c6c69663dae9202fa154d6673eb310acd74186d9b27caed188f",
+          "checkpoint_sha256": "e7512752fc1eee1b7d4ac1b098189f44d7b14d828af6068a467e2211aaf1e2ea"
+        }
+      ]
+    },
+    {
+      "sac_seed": 827,
+      "selection_a_step": 10000,
+      "selection_b_step": 10000,
+      "selected_same_checkpoint": true,
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 120.25641025641026,
+          "validation_b_rate": 0.918,
+          "validation_b_mean_successful_steps": 119.96949891067538,
+          "validation_b_successes": 459,
+          "validation_b_csv_sha256": "592fd40694a738e4a66ce690fcca383f3a3d0192274d3092b1a1f6c71c0d5fd4",
+          "validation_a_history_sha256": "c8f689f499096d59a6db261520c4f4d038a6184f18f2621c5d8e876c5682749d",
+          "checkpoint_sha256": "0f20660ec055b2f554668ee7677bf549f7848738c3e7bc53ec100fcf157c8c9e"
+        },
+        {
+          "timesteps": 20000,
+          "validation_a_rate": 0.95,
+          "validation_a_mean_successful_steps": 121.26315789473684,
+          "validation_b_rate": 0.878,
+          "validation_b_mean_successful_steps": 121.37129840546697,
+          "validation_b_successes": 439,
+          "validation_b_csv_sha256": "d127e85c57a61ba1abf0d25bb0604da20d693f1d0449d97b03f4db29318fd43c",
+          "validation_a_history_sha256": "c8f689f499096d59a6db261520c4f4d038a6184f18f2621c5d8e876c5682749d",
+          "checkpoint_sha256": "7a1ad288f3b29873a5fa2cf54e65acecc1eaa74de4ec5fa67b94f480e11bc0ae"
+        },
+        {
+          "timesteps": 30000,
+          "validation_a_rate": 0.925,
+          "validation_a_mean_successful_steps": 118.70270270270271,
+          "validation_b_rate": 0.902,
+          "validation_b_mean_successful_steps": 118.22838137472284,
+          "validation_b_successes": 451,
+          "validation_b_csv_sha256": "b7256a5c9e0d773a87f7cd1277cc016fd2682b724a1ea149a4f781ed26213519",
+          "validation_a_history_sha256": "c8f689f499096d59a6db261520c4f4d038a6184f18f2621c5d8e876c5682749d",
+          "checkpoint_sha256": "0424ca6a5eb7c64beca6cb7b1e2c41dacd28c12c14e14a3bc4c189f96be8c072"
+        }
+      ]
+    },
+    {
+      "sac_seed": 829,
+      "selection_a_step": 20000,
+      "selection_b_step": 20000,
+      "selected_same_checkpoint": true,
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 120.33333333333333,
+          "validation_b_rate": 0.916,
+          "validation_b_mean_successful_steps": 119.82532751091703,
+          "validation_b_successes": 458,
+          "validation_b_csv_sha256": "f2bb2ad0b17eb04f500fd815c38ed10572a2952977f55f663badcb343d68bb0a",
+          "validation_a_history_sha256": "1a6c70e5542844897e6f06ff0a5ad3e771d81b0bfbc78b3d467f66dd77826904",
+          "checkpoint_sha256": "f438fbd669e0c67ebe9310fd6cae2b7c10bec7b16fc69ccf378608a2192b6093"
+        },
+        {
+          "timesteps": 20000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 117.6923076923077,
+          "validation_b_rate": 0.94,
+          "validation_b_mean_successful_steps": 117.4,
+          "validation_b_successes": 470,
+          "validation_b_csv_sha256": "6574cee7e42c3ad00473bd7c9f3874a8a3f3711ebb9efcc9d79767bf06254223",
+          "validation_a_history_sha256": "1a6c70e5542844897e6f06ff0a5ad3e771d81b0bfbc78b3d467f66dd77826904",
+          "checkpoint_sha256": "101cd1912c7a1cdbb90ec391fbf83da42de020e1aa5f3cb80d009163af9799de"
+        },
+        {
+          "timesteps": 30000,
+          "validation_a_rate": 0.95,
+          "validation_a_mean_successful_steps": 120.10526315789474,
+          "validation_b_rate": 0.896,
+          "validation_b_mean_successful_steps": 118.89285714285714,
+          "validation_b_successes": 448,
+          "validation_b_csv_sha256": "f5619dd8ba5dc3cbdd39ecce1a5121e38d35bdfa8d8d312d5bb6c1572a79c811",
+          "validation_a_history_sha256": "1a6c70e5542844897e6f06ff0a5ad3e771d81b0bfbc78b3d467f66dd77826904",
+          "checkpoint_sha256": "f6a778745da5ee677e5b1467a0125defcddaf6b28d3f02b1c2331aedb0b824f3"
+        }
+      ]
+    },
+    {
+      "sac_seed": 839,
+      "selection_a_step": 30000,
+      "selection_b_step": 20000,
+      "selected_same_checkpoint": false,
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 119.94871794871794,
+          "validation_b_rate": 0.928,
+          "validation_b_mean_successful_steps": 119.56896551724138,
+          "validation_b_successes": 464,
+          "validation_b_csv_sha256": "fa7f3fcbff9d53c15a6e1405806966daf77817fd6b3d3158795e08876dcdf2e6",
+          "validation_a_history_sha256": "74f9d871048c198545846bab8bfc7984ef5aedd862019ecf6ea4a62a972e087f",
+          "checkpoint_sha256": "83956dbf0606c38be7a9b3fd7bf32883d32598a9a7238291a89f3c157c7493bf"
+        },
+        {
+          "timesteps": 20000,
+          "validation_a_rate": 0.975,
+          "validation_a_mean_successful_steps": 118.17948717948718,
+          "validation_b_rate": 0.93,
+          "validation_b_mean_successful_steps": 115.68817204301075,
+          "validation_b_successes": 465,
+          "validation_b_csv_sha256": "e2c482d972d26b06bf2c3ebf9f4c5172b76eeabcef865e8caa33b32a0e0dd9bf",
+          "validation_a_history_sha256": "74f9d871048c198545846bab8bfc7984ef5aedd862019ecf6ea4a62a972e087f",
+          "checkpoint_sha256": "ff08ecf52f4d6b91c2814a9f8f7023418c60b4b929705b74e9da560ba94f06f0"
+        },
+        {
+          "timesteps": 30000,
+          "validation_a_rate": 1.0,
+          "validation_a_mean_successful_steps": 119.6,
+          "validation_b_rate": 0.906,
+          "validation_b_mean_successful_steps": 117.2008830022075,
+          "validation_b_successes": 453,
+          "validation_b_csv_sha256": "a8e7dd213feb08bcb928e3383b61f9d02b16ec4a4e76c7085212512968cf5f8a",
+          "validation_a_history_sha256": "74f9d871048c198545846bab8bfc7984ef5aedd862019ecf6ea4a62a972e087f",
+          "checkpoint_sha256": "0e0c4aa6721ef53003f77641705903640ba326f8c9c1ee784117fdc3111fdb14"
+        }
+      ]
+    }
+  ]
+}

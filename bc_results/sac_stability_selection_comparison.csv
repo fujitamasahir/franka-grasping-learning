@@ -1,0 +1,6 @@
+sac_seed,selection_a_step,selection_a_validation_rate,selection_b_step,selection_b_validation_rate,selected_same_checkpoint,selection_a_successes,selection_a_success_rate,selection_a_rescue_count,selection_a_regression_count,selection_a_net_improvement,selection_a_mean_successful_steps,selection_a_bc_delta_pp,selection_b_successes,selection_b_success_rate,selection_b_rescue_count,selection_b_regression_count,selection_b_net_improvement,selection_b_mean_successful_steps,selection_b_bc_delta_pp
+811,30000,0.975,30000,0.958,True,1916,0.958,83,4,79,116.40553235908142,3.95,1916,0.958,83,4,79,116.40553235908142,3.95
+823,20000,0.975,20000,0.94,True,1878,0.939,49,8,41,117.30830670926518,2.05,1878,0.939,49,8,41,117.30830670926518,2.05
+827,10000,0.975,10000,0.918,True,1830,0.915,3,10,-7,119.91256830601093,-0.35,1830,0.915,3,10,-7,119.91256830601093,-0.35
+829,20000,0.975,20000,0.94,True,1890,0.945,59,6,53,117.42116402116402,2.65,1890,0.945,59,6,53,117.42116402116402,2.65
+839,30000,1.0,20000,0.93,False,1849,0.9245,67,55,12,117.12655489453759,0.6,1856,0.928,36,17,19,116.42726293103448,0.95

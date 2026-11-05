@@ -15,13 +15,15 @@ class FixedSeedSuccessEval(BaseCallback):
     """Select best checkpoints by success on fixed, uniform validation seeds."""
 
     def __init__(self, eval_env, run_dir, eval_freq=10000,
-                 n_eval_episodes=40, eval_seed=61000):
+                 n_eval_episodes=40, eval_seed=61000,
+                 save_trajectory_checkpoints=False):
         super().__init__()
         self.eval_env = eval_env
         self.run_dir = Path(run_dir)
         self.eval_freq = eval_freq
         self.n_eval_episodes = n_eval_episodes
         self.eval_seed = eval_seed
+        self.save_trajectory_checkpoints = save_trajectory_checkpoints
         self.best_rate = -1.0
         self.best_steps = float("inf")
         self.history = []
@@ -29,6 +31,18 @@ class FixedSeedSuccessEval(BaseCallback):
     def _on_step(self):
         if self.n_calls % self.eval_freq != 0:
             return True
+
+        # Optional snapshots at validation boundaries. This is separate from
+        # best_model selection and never changes its success/step tie-break.
+        if self.save_trajectory_checkpoints:
+            checkpoint_path = (
+                self.run_dir / f"checkpoint_{self.num_timesteps}.zip"
+            )
+            if checkpoint_path.exists():
+                raise FileExistsError(
+                    f"Refusing to overwrite {checkpoint_path}"
+                )
+            self.model.save(str(checkpoint_path.with_suffix("")))
 
         successes = 0
         successful_steps = []
@@ -130,6 +144,7 @@ def main(args):
         run_dir=run_dir,
         eval_freq=args.eval_freq,
         n_eval_episodes=args.eval_episodes,
+        save_trajectory_checkpoints=args.save_trajectory_checkpoints,
     )
 
     model = SAC(
@@ -192,4 +207,9 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--eval-freq", type=int, default=10000)
     parser.add_argument("--eval-episodes", type=int, default=40)
+    parser.add_argument(
+        "--save-trajectory-checkpoints",
+        action="store_true",
+        help="Save a separate SAC snapshot at every evaluation boundary.",
+    )
     main(parser.parse_args())
