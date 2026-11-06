@@ -37,7 +37,11 @@ def main():
       rr=[r for r in cells if r['architecture']==h and r['checkpoint']=='selected']
       h1h4.append([h,pct(np.mean([float(x['success_rate']) for x in rr])),f'{np.mean([float(x["gain_pp"]) for x in rr]):+.2f}',
           f'{np.mean([int(x["rescue"]) for x in rr]):.1f}',f'{np.mean([int(x["regression"]) for x in rr]):.1f}',
-          f'{np.mean([int(x["mean_bc_calls"]) for x in rr]):.1f}',f'{np.mean([int(x["always_on_sac_calls"]) for x in rr]):.0f}'])
+          f'{np.mean([int(x["mean_bc_calls"]) for x in rr]):.1f}',f'{np.mean([float(x["sac_activation_rate"]) for x in rr])*100:.1f}%',
+          f'{np.mean([int(x["always_on_sac_calls"]) for x in rr]):.0f}',
+          f'{np.mean([float(x["mean_residual_norm_m"]) for x in rr])*1000:.2f}',
+          f'{np.mean([float(x["saturation_rate"]) for x in rr])*100:.2f}%',
+          f'{np.mean([float(x["intervention_rate"]) for x in rr])*100:.2f}%'])
     cost=[];sac_hours=[];bc_train=[]
     for h in ('H1','H4'):
         rr=[r for r in cells if r['architecture']==h and r['checkpoint']=='selected']
@@ -136,7 +140,7 @@ The primary differential benefit is computed from each architecture's own BC bas
 
 {table(['Checkpoint family','BC seed','SAC seed','Gain H1 (pp)','Gain H4 (pp)','Difference-in-gains (pp)'],gain_table)}
 
-{table(['Horizon','Mean selected success','Mean gain (pp)','Mean rescue','Mean regression','BC calls / ep','SAC calls / ep'],h1h4)}
+{table(['Horizon','Mean selected success','Mean gain (pp)','Mean rescue','Mean regression','BC calls / ep','SAC activation','SAC calls / ep','Residual norm (mm)','Saturation','Intervention'],h1h4)}
 
 ## Rescue and Regression
 
