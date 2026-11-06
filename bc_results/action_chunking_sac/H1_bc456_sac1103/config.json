@@ -1,0 +1,28 @@
+{
+  "architecture": "H1",
+  "bc_seed": 456,
+  "sac_seed": 1103,
+  "timesteps": 30000,
+  "checkpoint_steps": [
+    10000,
+    20000,
+    30000
+  ],
+  "bc_sha256": "3aa91475cb6609aed31df2ee5a40446666ab5a243a31a66769ce071ce8313512",
+  "protocol_sha256": "90eec69f7852c34f2685cef291b0a03a5e8dcd8885279ba279ef61ad21a09638",
+  "settings": {
+    "learning_rate": 0.0003,
+    "buffer_size": 50000,
+    "learning_starts": 1000,
+    "batch_size": 128,
+    "gamma": 0.99,
+    "train_freq": 1,
+    "gradient_steps": 1,
+    "ent_coef": "auto",
+    "device": "cpu",
+    "policy_hidden_layers": [
+      256,
+      256
+    ]
+  }
+}

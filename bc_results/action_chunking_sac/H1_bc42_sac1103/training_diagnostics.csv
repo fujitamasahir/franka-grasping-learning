@@ -1,0 +1,4 @@
+timesteps,episodes,successes,success_rate,mean_episode_steps
+10000,40,32,0.8,129.95
+20000,40,34,0.85,126.675
+30000,40,33,0.825,125.55
