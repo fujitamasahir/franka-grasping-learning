@@ -108,12 +108,16 @@ def evaluate_residual(model,bc_path,seeds,tag):
     return _rows(final)
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--phase',choices=['bc-validation','sac-validation','bc-final','sac-final']);p.add_argument('--arch',choices=['H1','H4']);p.add_argument('--bc-seed',type=int);p.add_argument('--sac-seed',type=int);p.add_argument('--step',type=int);p.add_argument('--model')
+    p=argparse.ArgumentParser();p.add_argument('--phase',choices=['bc-validation','bc-sac-validation','sac-validation','bc-final','sac-final']);p.add_argument('--arch',choices=['H1','H4']);p.add_argument('--bc-seed',type=int);p.add_argument('--sac-seed',type=int);p.add_argument('--step',type=int);p.add_argument('--model')
     a=p.parse_args();archs=[a.arch] if a.arch else ['H1','H4'];bcs=[a.bc_seed] if a.bc_seed else [42,123,456]
-    if a.phase in ('bc-validation','bc-final'):
-        seeds=range(270000,270500) if a.phase=='bc-validation' else range(290000,292000)
+    if a.phase in ('bc-validation','bc-sac-validation','bc-final'):
+        seeds=range(270000,270500) if a.phase=='bc-validation' else (range(280000,280500) if a.phase=='bc-sac-validation' else range(290000,292000))
         for h in archs:
-            for b in bcs:evaluate_bc(f'bc_models/action_chunking/{h}_seed{b}.pt',seeds,f'bc_{a.phase.split("-")[1]}_{h}_seed{b}')
+            for b in bcs:
+                tag={'bc-validation':f'bc_validation_{h}_seed{b}',
+                     'bc-sac-validation':f'bc_sac_validation_{h}_seed{b}',
+                     'bc-final':f'bc_final_{h}_seed{b}'}[a.phase]
+                evaluate_bc(f'bc_models/action_chunking/{h}_seed{b}.pt',seeds,tag)
     elif a.phase=='sac-validation':
         raise RuntimeError('Use train_action_chunk_sac.py milestone validation or provide explicit checkpoint orchestration')
     else:

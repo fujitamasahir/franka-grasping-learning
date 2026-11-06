@@ -31,3 +31,5 @@ bc_results/action_chunking_sac/**/replay_buffer_*.pkl
 bc_results/action_chunking_sac/**/resume_state_*.pkl
 bc_results/action_chunking_eval/*.partial.csv
 bc_results/action_chunking_eval/invalid_pre_scale_fix/
+bc_results/action_chunking_eval/invalid_pre_paired_baseline/
+bc_results/action_chunking_sac/invalid_pre_paired_baseline/

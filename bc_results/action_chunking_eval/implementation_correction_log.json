@@ -17,5 +17,33 @@
       "episodes": 500,
       "disposition": "excluded from all analyses"
     }
-  ]
+  ],
+  "checkpoint_pairing_issue": {
+    "issue": "The first SAC checkpoint callback attempted to pair 280000-280499 SAC validation rows with BC rows from 270000-270499, causing a seed-key mismatch before any checkpoint selection statistic was computed.",
+    "protocol_amendment": "The preregistration now requires BC rollouts on the same 280000-280499 SAC validation positions for the paired regression criterion; all other conditions and Final seeds remain unchanged.",
+    "outcome_inspection_before_amendment": false,
+    "checkpoint_attempt_status": "abandoned and excluded; the first H1/BC42/SAC1103 run was trained to 10000 steps and is being retrained under the amended paired-baseline procedure.",
+    "preserved_artifacts": [
+      {
+        "path": "bc_results/action_chunking_sac/invalid_pre_paired_baseline/H1_bc42_sac1103/config.json",
+        "sha256": "6f18e71ab5a2662ce1c99fd73aeb4ed8074f2de656b8a819591c871ec80accbf",
+        "bytes": 614
+      },
+      {
+        "path": "bc_results/action_chunking_sac/invalid_pre_paired_baseline/H1_bc42_sac1103/checkpoint_10000.zip",
+        "sha256": "5e3c9be0fa293add73a1a39c7e4e4def799e769a660864b0784ae251c42c34f9",
+        "bytes": 3196529
+      },
+      {
+        "path": "bc_results/action_chunking_sac/invalid_pre_paired_baseline/H1_bc42_sac1103/validation_episodes_10000.csv",
+        "sha256": "670e902a0982000fb0182d0b6d7d346b8a9a292ba979940ff17c0c63e66c8e02",
+        "bytes": 98582
+      },
+      {
+        "path": "bc_results/action_chunking_eval/invalid_pre_paired_baseline/H1_bc42_sac1103_step10000.csv",
+        "sha256": "670e902a0982000fb0182d0b6d7d346b8a9a292ba979940ff17c0c63e66c8e02",
+        "bytes": 98582
+      }
+    ]
+  }
 }

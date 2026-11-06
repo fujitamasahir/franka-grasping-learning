@@ -112,7 +112,7 @@ The SAC observation has 17 values: environment state (12), the exact planned act
 
 ## Experimental Protocol
 
-BC validation uses shared seeds 270000–270499. SAC checkpoint validation uses shared seeds 280000–280499, plus a separate 40-position diagnostic panel at 300000–300039 that does not select checkpoints. Selection is highest validation success, then fewest regressions against its paired BC, shortest successful episode, then earliest checkpoint. Selection hashes were frozen before Final evaluation. Final uses shared seeds 290000–291999. BC Final rollouts are reused across associated SAC policies. Final fixed-30k and selected policies are evaluated separately, except identical checkpoints are evaluated once and reused. Episode outputs are append-resumable CSVs. Source code, test outputs, data provenance, model hashes, and selection hashes are recorded with the artifacts.
+BC architecture validation uses shared seeds 270000–270499. SAC checkpoint validation and its paired BC regression baseline use the same shared positions 280000–280499. A separate 40-position training diagnostic panel (300000–300039) does not select checkpoints. Selection is highest validation success, then fewest regressions against the same-position BC, shortest successful episode, then earliest checkpoint. Selection hashes were frozen before Final evaluation. Final uses shared seeds 290000–291999. BC Final rollouts are reused across associated SAC policies. Final fixed-30k and selected policies are evaluated separately, except identical checkpoints are evaluated once and reused. Episode outputs are append-resumable CSVs. Source code, test outputs, data provenance, model hashes, and selection hashes are recorded with the artifacts.
 
 ## BC Results
 
@@ -125,6 +125,8 @@ Final BC success, mean episode BC calls, inference latency, and episode executio
 The historical `fair_wide_expert_seed42.pt` is not used as a matched baseline: it was trained from a different, randomly subsampled dataset and does not provide temporally reliable H4 targets. Its prior results are contextual only.
 
 During validation implementation QA, an initial partial set used the environment defaults (`max_move=0.025 m`, `max_time=12 s`) instead of checkpoint values (`0.15 m`, `16 s`). These rollouts were invalidated and excluded; all six corrected BC validations were rerun with the checkpoint settings. The correction log records hashes and episode counts. No Final seed or training/model-selection decision was exposed to these discarded rollouts.
+
+The first SAC validation callback also exposed that a paired regression count requires BC outcomes on the same 280000–280499 positions. The callback stopped before computing a selection statistic; that single 10k training attempt and its rollouts were preserved and excluded. The protocol amendment adds the matched BC-only evaluation on those SAC validation positions. The 18-run crossed design and all other conditions remain unchanged, and no Final outcome was inspected.
 
 ## SAC Results
 
@@ -209,7 +211,7 @@ Use these results to decide whether a small ACT or diffusion-policy baseline is 
 2. Verify the protocol SHA in `bc_results/action_chunking_protocol.sha256` and the dataset audit hashes.
 3. Run `.venv/bin/python -m unittest discover -p 'test_*.py' -v`.
 4. Train BC: `.venv/bin/python train_action_chunk_bc.py`.
-5. Generate BC validation rollouts: `.venv/bin/python evaluate_action_chunking.py --phase bc-validation`.
+5. Generate BC architecture validation rollouts: `.venv/bin/python evaluate_action_chunking.py --phase bc-validation`; generate paired BC checkpoint-selection baselines: `.venv/bin/python evaluate_action_chunking.py --phase bc-sac-validation`.
 6. Train the 18 crossed SAC runs: `.venv/bin/python train_action_chunk_sac.py`; resume an interrupted run with `--resume --arch H1 --bc-seed 42 --sac-seed 1103` (choose the interrupted tuple).
 7. Freeze validation selections: `.venv/bin/python freeze_action_chunk_selections.py`.
 8. Run BC Final and then SAC Final: `.venv/bin/python evaluate_action_chunking.py --phase bc-final`; `.venv/bin/python evaluate_action_chunking.py --phase sac-final`.

@@ -20,7 +20,7 @@ def write_rows(path,rows):
         w.writerows(rows);f.flush();os.fsync(f.fileno())
 
 def load_bc_rows(arch,bcs):
-    path=Path(f'bc_results/action_chunking_eval/bc_validation_{arch}_seed{bcs}.csv')
+    path=Path(f'bc_results/action_chunking_eval/bc_sac_validation_{arch}_seed{bcs}.csv')
     with path.open(newline='') as f:return list(csv.DictReader(f))
 
 class Milestones(BaseCallback):

@@ -89,7 +89,7 @@
     "spatial_gate": false,
     "adaptive_gate": false,
     "position_range_m": 0.2,
-    "sampling": "hard, 90% outside inner \u00b10.12m square, 10% inside",
+    "sampling": "hard, 90% outside inner ±0.12m square, 10% inside",
     "reward": "same shaped reward terms as existing BCResidualEnv",
     "training_steps": 30000,
     "checkpoints": [
@@ -118,7 +118,7 @@
         1123
       ],
       "runs": 18,
-      "unit": "BC-seed \u00d7 SAC-seed crossed within each architecture; not 18 independent BC replications"
+      "unit": "BC-seed × SAC-seed crossed within each architecture; not 18 independent BC replications"
     },
     "hyperparameters": {
       "learning_rate": 0.0003,
@@ -173,7 +173,12 @@
     ],
     "final_sac_configs": "all 18 crossed SAC models evaluated at fixed 30k and selected step; identical checkpoints evaluated once and reused",
     "BC_final_baselines": "H1/H4 x BC seed; reuse identical BC rollouts across associated SAC seeds",
-    "illustrative_trajectory_seed": 290042
+    "illustrative_trajectory_seed": 290042,
+    "sac_checkpoint_paired_bc_baseline_seed_range_inclusive": [
+      280000,
+      280499
+    ],
+    "sac_checkpoint_paired_bc_baseline": "Evaluate every H1/H4 BC seed on the SAC checkpoint Validation positions 280000-280499; compute checkpoint-selection regressions only against the same-position BC result. The separate BC architecture validation remains 270000-270499."
   },
   "metrics": {
     "primary": [
@@ -216,7 +221,15 @@
     "SAC always acts each step and the task remains simulation-only."
   ],
   "related_work": [
-    "Ankile et al., From Imitation to Refinement \u2014 Residual RL for Precise Assembly, arXiv:2407.16677.",
+    "Ankile et al., From Imitation to Refinement — Residual RL for Precise Assembly, arXiv:2407.16677.",
     "Ankile et al., Residual Off-Policy RL for Finetuning Behavior Cloning Policies, arXiv:2509.19301."
+  ],
+  "protocol_amendments": [
+    {
+      "date": "2026-11-06",
+      "before_checkpoint_validation_outcomes_were_used_for_selection": true,
+      "reason": "Checkpoint regression counts must compare SAC and its paired BC policy on identical initial positions. The previously specified BC validation positions 270000-270499 are disjoint from SAC checkpoint validation positions 280000-280499.",
+      "change": "Add a BC-only rollout for each of the six frozen BC models on 280000-280499, stored separately and used only to compute paired checkpoint-selection regression counts. All other conditions, including the disjoint Final range, remain as preregistered."
+    }
   ]
 }
