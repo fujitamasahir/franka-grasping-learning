@@ -6,7 +6,7 @@ from stable_baselines3 import SAC
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.monitor import Monitor
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
-from action_chunking import sha256,verify_protocol
+from action_chunking import sha256,verify_protocol,pair_rollout_rows
 
 ROOT=Path('bc_results/action_chunking_sac');SEEDS=(1103,1117,1123);BCSEEDS=(42,123,456)
 
@@ -45,10 +45,11 @@ class Milestones(BaseCallback):
         # Import evaluator to share exact deterministic rollout implementation.
         from evaluate_action_chunking import evaluate_residual
         rows=evaluate_residual(self.model,self.bc_path,range(280000,280500),f'{self.arch}_bc{self.bcs}_sac{self.sacs}_step{step}')
+        paired=pair_rollout_rows(bc,rows,range(280000,280500))
         out=self.run/f'validation_episodes_{step}.csv';write_rows(out,rows)
-        base={int(r['seed']):r for r in bc};resc=reg=succ=0;steps_success=[]
-        for r in rows:
-            b=bool(int(base[int(r['seed'])]['success']));s=bool(int(r['success']))
+        resc=reg=succ=0;steps_success=[]
+        for b,r in paired:
+            b=bool(int(b['success']));s=bool(int(r['success']))
             resc+=int(not b and s);reg+=int(b and not s);succ+=int(s)
             if s:steps_success.append(int(r['steps']))
         summary={'timesteps':step,'successes':succ,'episodes':len(rows),'success_rate':succ/len(rows),

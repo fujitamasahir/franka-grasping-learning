@@ -3,7 +3,7 @@ import torch
 import unittest,tempfile
 from pathlib import Path
 
-from action_chunking import ActionChunkBC, BCActionChunkController, build_windows
+from action_chunking import ActionChunkBC, BCActionChunkController, build_windows, pair_rollout_rows
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
 
 
@@ -42,6 +42,13 @@ def test_controller_h1_replans_every_step_and_resume_keeps_plan():
 
 
 class ActionChunkingTests(unittest.TestCase):
+    def test_paired_outcomes_require_identical_seed_positions(self):
+        baseline=[{'seed':10,'success':0},{'seed':11,'success':1}]
+        policy=[{'seed':10,'success':1},{'seed':11,'success':0}]
+        self.assertEqual(len(pair_rollout_rows(baseline,policy,[10,11])),2)
+        with self.assertRaises(ValueError):pair_rollout_rows(baseline,policy[:1])
+        with self.assertRaises(ValueError):pair_rollout_rows(baseline,policy,[10,12])
+
     def test_data_windows_and_controller_timing(self):
         test_windows_share_valid_starts_and_never_cross_episode()
         test_controller_executes_four_cached_actions_then_replans()

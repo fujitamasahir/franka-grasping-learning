@@ -22,6 +22,25 @@ def sha256(path):
     return h.hexdigest()
 
 
+def pair_rollout_rows(baseline_rows, policy_rows, expected_seeds=None):
+    """Validate shared deterministic positions before paired success analysis."""
+    def index(rows, label):
+        result = {}
+        for row in rows:
+            seed = int(row['seed'])
+            if seed in result:
+                raise ValueError(f'Duplicate {label} evaluation seed {seed}')
+            result[seed] = row
+        return result
+    baseline = index(baseline_rows, 'baseline')
+    policy = index(policy_rows, 'policy')
+    if set(baseline) != set(policy):
+        raise ValueError('Paired baseline and policy evaluations use different positions')
+    if expected_seeds is not None and set(baseline) != set(map(int, expected_seeds)):
+        raise ValueError('Paired evaluations do not match the preregistered seed set')
+    return [(baseline[s], policy[s]) for s in sorted(baseline)]
+
+
 def verify_protocol():
     protocol = json.loads(PROTOCOL_PATH.read_text(encoding='utf-8'))
     declared = PROTOCOL_SHA_PATH.read_text(encoding='utf-8').split()[0]
