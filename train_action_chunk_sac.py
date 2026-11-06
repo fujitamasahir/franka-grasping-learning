@@ -29,7 +29,13 @@ class Milestones(BaseCallback):
         self.done=set()
         p=self.run/'validation.csv'
         if p.exists():
-            with p.open(newline='') as f:self.done={int(r['timesteps']) for r in csv.DictReader(f)}
+            with p.open(newline='') as f:validated={int(r['timesteps']) for r in csv.DictReader(f)}
+            d=self.run/'training_diagnostics.csv'
+            diagnosed=set()
+            if d.exists():
+                with d.open(newline='') as f:diagnosed={int(r['timesteps']) for r in csv.DictReader(f)}
+            self.done={n for n in validated & diagnosed if (self.run/f'replay_buffer_{n}.pkl').is_file()
+                       and (self.run/f'resume_state_{n}.pkl').is_file()}
     def _on_step(self):
         step=int(self.num_timesteps)
         if step not in (10000,20000,30000) or step in self.done:return True
@@ -47,7 +53,15 @@ class Milestones(BaseCallback):
             if s:steps_success.append(int(r['steps']))
         summary={'timesteps':step,'successes':succ,'episodes':len(rows),'success_rate':succ/len(rows),
                  'rescue':resc,'regression':reg,'mean_success_steps':float(np.mean(steps_success)) if steps_success else ''}
-        write_rows(self.run/'validation.csv',[summary]);self.done.add(step)
+        write_rows(self.run/'validation.csv',[summary])
+        # Preregistered small diagnostic panel is recorded separately and never
+        # participates in selecting a checkpoint.
+        diag=evaluate_residual(self.model,self.bc_path,range(300000,300040),
+            f'training_diagnostic_{self.arch}_bc{self.bcs}_sac{self.sacs}_step{step}')
+        drow={'timesteps':step,'episodes':len(diag),'successes':sum(int(r['success']) for r in diag),
+              'success_rate':sum(int(r['success']) for r in diag)/len(diag),
+              'mean_episode_steps':float(np.mean([int(r['steps']) for r in diag]))}
+        write_rows(self.run/'training_diagnostics.csv',[drow])
         # Exact model/replay/environment/RNG milestone for interruption recovery.
         replay=self.run/f'replay_buffer_{step}.pkl';state_path=self.run/f'resume_state_{step}.pkl'
         self.model.save_replay_buffer(str(replay))
@@ -58,6 +72,7 @@ class Milestones(BaseCallback):
             'total_steps':mon.total_steps,'current_reset_info':dict(mon.current_reset_info)},
             'numpy_rng':np.random.get_state(),'python_rng':random.getstate(),'torch_rng':torch.get_rng_state()}
         with state_path.open('wb') as f:pickle.dump(state,f,pickle.HIGHEST_PROTOCOL);f.flush();os.fsync(f.fileno())
+        self.done.add(step)
         print(f'{self.run.name}: saved and validated {step}/30000',flush=True)
         return True
 
