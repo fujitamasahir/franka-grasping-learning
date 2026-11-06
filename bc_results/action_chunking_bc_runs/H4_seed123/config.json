@@ -1,0 +1,24 @@
+{
+  "max_epochs": 100,
+  "batch_size": 256,
+  "learning_rate": 0.0003,
+  "patience": 15,
+  "minimum_improvement": 1e-06,
+  "optimizer": "Adam",
+  "split_seed": 20261106,
+  "horizon": 4,
+  "seed": 123,
+  "model_path": "bc_models/action_chunking/H4_seed123.pt",
+  "protocol_sha256": "1475c55a1cac671452869babf5a15083abf389680bd129d49dc2237be6e61f4b",
+  "dataset_sources": {
+    "demonstrations/franka_expert_train.npz": "a3a9dd94da325ee8135ce41195814ada6146c728ddc81fbd2d3a087c495cce5d",
+    "demonstrations/franka_expert_wide.npz": "f1ea8f7b6d47d30b44c38eeaf36ec370f5f764a90f7f1855c2331bfd1a15281b"
+  },
+  "training_episodes": 270,
+  "validation_episodes": 30,
+  "training_windows": 31029,
+  "validation_windows": 3448,
+  "training_targets": 124116,
+  "validation_targets": 13792,
+  "parameter_count": 20240
+}
