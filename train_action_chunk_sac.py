@@ -19,6 +19,15 @@ def write_rows(path,rows):
         if fresh:w.writeheader()
         w.writerows(rows);f.flush();os.fsync(f.fileno())
 
+def write_milestone_once(path,row):
+    path=Path(path)
+    if path.exists():
+        with path.open(newline='',encoding='utf-8') as f:old=list(csv.DictReader(f))
+        matched=[r for r in old if int(r['timesteps'])==int(row['timesteps'])]
+        if len(matched)>1:raise RuntimeError(f'Duplicate milestone rows already present in {path}')
+        if matched:return
+    write_rows(path,[row])
+
 def load_bc_rows(arch,bcs):
     path=Path(f'bc_results/action_chunking_eval/bc_sac_validation_{arch}_seed{bcs}.csv')
     with path.open(newline='') as f:return list(csv.DictReader(f))
@@ -55,7 +64,7 @@ class Milestones(BaseCallback):
             if s:steps_success.append(int(r['steps']))
         summary={'timesteps':step,'successes':succ,'episodes':len(rows),'success_rate':succ/len(rows),
                  'rescue':resc,'regression':reg,'mean_success_steps':float(np.mean(steps_success)) if steps_success else ''}
-        write_rows(self.run/'validation.csv',[summary])
+        write_milestone_once(self.run/'validation.csv',summary)
         # Preregistered small diagnostic panel is recorded separately and never
         # participates in selecting a checkpoint.
         diag=evaluate_residual(self.model,self.bc_path,range(300000,300040),
@@ -63,7 +72,7 @@ class Milestones(BaseCallback):
         drow={'timesteps':step,'episodes':len(diag),'successes':sum(int(r['success']) for r in diag),
               'success_rate':sum(int(r['success']) for r in diag)/len(diag),
               'mean_episode_steps':float(np.mean([int(r['steps']) for r in diag]))}
-        write_rows(self.run/'training_diagnostics.csv',[drow])
+        write_milestone_once(self.run/'training_diagnostics.csv',drow)
         # Exact model/replay/environment/RNG milestone for interruption recovery.
         replay=self.run/f'replay_buffer_{step}.pkl';state_path=self.run/f'resume_state_{step}.pkl'
         self.model.save_replay_buffer(str(replay))
