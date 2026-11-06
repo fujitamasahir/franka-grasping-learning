@@ -84,6 +84,7 @@ def main():
     checkpoint_audit = []
     for seed in SEEDS:
         for arm in ARMS:
+            candidates = []
             run = RUNS / f"replication_{arm}_seed{seed}"
             config_path = run / "config.json"
             config = json.loads(config_path.read_text(encoding="utf-8"))
