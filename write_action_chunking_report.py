@@ -30,6 +30,7 @@ def main():
     fixed_table=[]
     for r in cells:
       if r['checkpoint']=='fixed30k':fixed_table.append([r['architecture'],r['bc_seed'],r['sac_seed'],pct(r['success_rate']),f'{float(r["gain_pp"]):+.2f}',r['rescue'],r['regression'],r['net_improvement']])
+    gain_table=[[r['checkpoint'],r['bc_seed'],r['sac_seed'],f'{float(r["gain_h1_pp"]):+.2f}',f'{float(r["gain_h4_pp"]):+.2f}',f'{float(r["difference_in_gains_pp"]):+.2f}'] for r in gains]
     h1h4=[]
     for h in ('H1','H4'):
       rr=[r for r in cells if r['architecture']==h and r['checkpoint']=='selected']
@@ -127,6 +128,10 @@ Selected-checkpoint absolute success, success gain relative to the matching BC p
 Fixed 30k results are shown separately so validation selection effects remain visible:
 
 {table(['H','BC seed','SAC seed','Success','Gain (pp)','Rescue','Regression','Net'],fixed_table)}
+
+The primary differential benefit is computed from each architecture's own BC baseline:
+
+{table(['Checkpoint family','BC seed','SAC seed','Gain H1 (pp)','Gain H4 (pp)','Difference-in-gains (pp)'],gain_table)}
 
 {table(['Horizon','Mean selected success','Mean gain (pp)','Mean rescue','Mean regression','BC calls / ep','SAC calls / ep'],h1h4)}
 
