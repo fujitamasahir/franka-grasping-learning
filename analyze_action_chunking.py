@@ -57,6 +57,11 @@ def main():
              'mean_bc_latency_ms':float(np.mean([float(x['bc_mean_latency_ms']) for x in rows])),
              'mean_sac_latency_ms':float(np.mean([float(x['sac_mean_latency_ms']) for x in rows])),
              'mean_episode_seconds':float(np.mean([float(x['episode_wall_seconds']) for x in rows])),
+             'mean_first_close_step':float(np.mean([float(x['first_close_step']) for x in rows if x['first_close_step']!=''])) if any(x['first_close_step']!='' for x in rows) else '',
+             'mean_first_lift_step':float(np.mean([float(x['first_lift_step']) for x in rows if x['first_lift_step']!=''])) if any(x['first_lift_step']!='' for x in rows) else '',
+             'mean_closed_fraction':float(np.mean([float(x['closed_fraction']) for x in rows])),
+             'mean_first_close_chunk_phase':float(np.mean([int(x['first_close_step'])% (1 if h=='H1' else 4) for x in rows if x['first_close_step']!=''])) if any(x['first_close_step']!='' for x in rows) else '',
+             'mean_first_lift_chunk_phase':float(np.mean([int(x['first_lift_step'])% (1 if h=='H1' else 4) for x in rows if x['first_lift_step']!=''])) if any(x['first_lift_step']!='' for x in rows) else '',
              'mean_residual_norm_m':float(np.mean([float(x['mean_residual_norm_m']) for x in rows])),
              'saturation_rate':float(np.mean([float(x['saturation_rate']) for x in rows])),
              'intervention_rate':float(np.mean([float(x['intervention_rate']) for x in rows]))}
@@ -70,6 +75,9 @@ def main():
        rows=bc[(h,b)];succ=sum(int(x['success']) for x in rows);n=len(rows)
        bc_rows.append({'architecture':h,'bc_seed':b,'episodes':n,'successes':succ,'success_rate':succ/n,
           'mean_steps':float(np.mean([int(x['steps']) for x in rows])),
+          'mean_first_close_step':float(np.mean([int(x['first_close_step']) for x in rows if x['first_close_step']!=''])) if any(x['first_close_step']!='' for x in rows) else '',
+          'mean_closed_fraction':float(np.mean([float(x['closed_fraction']) for x in rows])),
+          'failed_region_counts':json.dumps({q:sum(int(x['region']==q and int(x['success'])==0) for x in rows) for q in ('EN','ES','WN','WS')},sort_keys=True),
           'mean_bc_calls':float(np.mean([int(x['bc_inference_calls']) for x in rows])),
           'mean_bc_latency_ms':float(np.mean([float(x['bc_mean_latency_ms']) for x in rows])),
           'mean_episode_seconds':float(np.mean([float(x['episode_wall_seconds']) for x in rows]))})
@@ -144,6 +152,7 @@ def main():
             g=sum(int(base[k]['success'])==1 and int(pol[k]['success'])==0 for k in seeds)
             regions.append({'architecture':h,'bc_seed':b,'sac_seed':s,'checkpoint':label,'region':region,'episodes':len(seeds),
                 'bc_successes':sum(int(base[k]['success']) for k in seeds),'sac_successes':sum(int(pol[k]['success']) for k in seeds),
+                'bc_failures':sum(1-int(base[k]['success']) for k in seeds),'sac_failures':sum(1-int(pol[k]['success']) for k in seeds),
                 'rescue':r,'regression':g,'net_improvement':r-g})
     write_csv(OUT/'regional_rescue_regression.csv',regions)
     # Checkpoint selection effect and learning curve summaries.
