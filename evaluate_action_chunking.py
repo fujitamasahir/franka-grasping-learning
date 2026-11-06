@@ -25,12 +25,13 @@ def _save(path,rows):
 def _region(x,y):return ('E' if x>=.55 else 'W')+('N' if y>=0 else 'S')
 
 def evaluate_bc(bc_path,seeds,tag):
-    OUT.mkdir(parents=True,exist_ok=True);final=OUT/f'{tag}.csv';partial=OUT/f'{tag}.partial.csv'
-    path=partial if partial.exists() else final
-    if final.exists() and not partial.exists():
+    OUT.mkdir(parents=True,exist_ok=True);final=OUT/f'{tag}.csv';partial=OUT/f'{tag}.partial.csv';seeds=list(seeds)
+    if final.exists():
         rows=_rows(final)
-        if len(rows)==len(list(seeds)):return rows
-        raise FileExistsError(f'Refusing to overwrite incomplete result {final}')
+        if len(rows)==len(seeds):return rows
+        if partial.exists():raise FileExistsError(f'Both final and partial outputs exist: {final}')
+        final.replace(partial)
+    path=partial
     done={int(r['seed']) for r in _rows(path)};model,ck=load_bc_policy(bc_path);h=int(ck['horizon'])
     controller=BCActionChunkController(model,ck['obs_mean'].numpy(),ck['obs_std'].numpy(),h)
     env=FrankaAutonomousEnv(position_range=.20)
@@ -58,7 +59,8 @@ def evaluate_bc(bc_path,seeds,tag):
         out.append(row);_save(path,[row])
         if int(seed)==290042 and tag=='bc_final_H4_seed42':save_trace(tag,'BC',traj)
     env.close()
-    if path==partial:partial.replace(final)
+    if final.exists():raise FileExistsError(f'Refusing to overwrite complete result {final}')
+    partial.replace(final)
     return _rows(final)
 
 def save_trace(tag,method,steps):
@@ -68,12 +70,13 @@ def save_trace(tag,method,steps):
     p.write_text(json.dumps({'label':'selected illustrative example; not representative','steps':steps},indent=2)+'\n')
 
 def evaluate_residual(model,bc_path,seeds,tag):
-    OUT.mkdir(parents=True,exist_ok=True);final=OUT/f'{tag}.csv';partial=OUT/f'{tag}.partial.csv';path=partial if partial.exists() else final
-    seeds=list(seeds)
-    if final.exists() and not partial.exists():
+    OUT.mkdir(parents=True,exist_ok=True);final=OUT/f'{tag}.csv';partial=OUT/f'{tag}.partial.csv';seeds=list(seeds)
+    if final.exists():
         rows=_rows(final)
         if len(rows)==len(seeds):return rows
-        raise FileExistsError(f'Refusing to overwrite incomplete result {final}')
+        if partial.exists():raise FileExistsError(f'Both final and partial outputs exist: {final}')
+        final.replace(partial)
+    path=partial
     done={int(r['seed']) for r in _rows(path)}
     e=FrankaChunkAwareResidualEnv(bc_path,.20,.005,'uniform',.12,.90,'shaped',.005)
     out=[]
@@ -100,7 +103,8 @@ def evaluate_residual(model,bc_path,seeds,tag):
         out.append(row);_save(path,[row])
         if int(seed)==290042 and tag=='sac_final_fixed30k_H4_bc42_sac1103':save_trace(tag,'Residual_SAC',trace)
     e.close()
-    if path==partial:partial.replace(final)
+    if final.exists():raise FileExistsError(f'Refusing to overwrite complete result {final}')
+    partial.replace(final)
     return _rows(final)
 
 def main():
