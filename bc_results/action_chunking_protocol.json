@@ -1,0 +1,222 @@
+{
+  "study": "Action-Chunked Behavior Cloning and Residual SAC",
+  "protocol_status": "preregistered_before_training_and_new_validation_or_final_outcome_inspection",
+  "source_commit_sha": "10d607fe7cacaae3004c8a291348c5022e41f4a9",
+  "starting_branch": "experiment/sac-regularization-replication",
+  "experiment_branch": "experiment/action-chunked-bc-residual-rl",
+  "research_questions": {
+    "RQ1": "Does H4 action chunking change BC grasping performance with matched training data and observations?",
+    "RQ2": "Does closed-loop SAC residual improve H4 BC more reliably than H1 BC?",
+    "RQ3": "How do action chunking, rescue, regression, and variability interact across BC/SAC seeds?",
+    "RQ4": "Does H4 reduce BC inference frequency while increasing demand for within-chunk SAC corrections?"
+  },
+  "hypotheses": [
+    "Chunking may improve temporal consistency or reduce responsiveness.",
+    "Stepwise residual SAC may correct open-loop chunk errors.",
+    "H4 plus SAC may reduce regressions or increase net improvement relative to its own H4 BC baseline.",
+    "BC and SAC seed effects may be heterogeneous; no superiority is assumed."
+  ],
+  "dataset": {
+    "files": [
+      "demonstrations/franka_expert_train.npz",
+      "demonstrations/franka_expert_wide.npz"
+    ],
+    "sha256": {
+      "demonstrations/franka_expert_train.npz": "a3a9dd94da325ee8135ce41195814ada6146c728ddc81fbd2d3a087c495cce5d",
+      "demonstrations/franka_expert_wide.npz": "f1ea8f7b6d47d30b44c38eeaf36ec370f5f764a90f7f1855c2331bfd1a15281b"
+    },
+    "audit_path": "bc_results/action_chunking_data_audit.json",
+    "audit_sha256": "682ee7a4da0ba1f6add803d1d94ffa5d5af1c3e51227e9542e1854c4fd77d39a",
+    "combine_rule": "concatenate original unsampled train and wide successful episodes; remap wide episode IDs +200",
+    "split": "fixed shared episode-level split from action_chunking_data_audit.json",
+    "fair_dataset_excluded": "fair_wide_expert.npz is randomly subsampled and has nonconsecutive observation times; never use for H4 targets"
+  },
+  "bc_models": {
+    "H1": {
+      "input_dim": 12,
+      "backbone": [
+        128,
+        128
+      ],
+      "output": "one XYZ tanh action and one gripper logit",
+      "closed_loop_replan_every_steps": 1
+    },
+    "H4": {
+      "input_dim": 12,
+      "backbone": [
+        128,
+        128
+      ],
+      "output": "4 XYZ tanh actions and 4 gripper logits",
+      "chunk_horizon": 4,
+      "open_loop_execution_steps": 4
+    },
+    "common_training": {
+      "seeds": [
+        42,
+        123,
+        456
+      ],
+      "episode_split_shared": true,
+      "max_epochs": 100,
+      "batch_size": 256,
+      "optimizer": "Adam",
+      "learning_rate": 0.0003,
+      "early_stopping": "held-out demonstration validation loss, patience 15, min improvement 1e-6",
+      "loss": "mean SmoothL1 XYZ + 0.25 * mean binary cross-entropy gripper",
+      "observation_normalization": "mean/std fit on training episode observations only; std floor 1e-4",
+      "train_start_observations": "same H4-valid start windows for H1 and H4",
+      "H1_targets": "action[t]",
+      "H4_targets": "action[t:t+4], same episode and 0.1s adjacent time continuity",
+      "extra_supervision": "H4 has four action targets per start versus one for H1"
+    },
+    "checkpoint_selection": "lowest held-out demo validation loss; no Final access"
+  },
+  "sac": {
+    "algorithm": "Stable-Baselines3 SAC, MlpPolicy",
+    "observation_dim": 17,
+    "observation_layout": [
+      "12D environment state",
+      "exact currently planned 4D BC action",
+      "normalized chunk phase"
+    ],
+    "chunk_phase": "H1 always 0; H4 current index/(H-1), values 0, 1/3, 2/3, 1",
+    "residual_action_dim": 3,
+    "residual_xyz_limit_m_per_axis": 0.005,
+    "residual_penalty_coefficient": 0.005,
+    "gripper": "BC only",
+    "BC_frozen": true,
+    "spatial_gate": false,
+    "adaptive_gate": false,
+    "position_range_m": 0.2,
+    "sampling": "hard, 90% outside inner \u00b10.12m square, 10% inside",
+    "reward": "same shaped reward terms as existing BCResidualEnv",
+    "training_steps": 30000,
+    "checkpoints": [
+      10000,
+      20000,
+      30000
+    ],
+    "training_seeds": [
+      1103,
+      1117,
+      1123
+    ],
+    "crossed_design": {
+      "architectures": [
+        "H1",
+        "H4"
+      ],
+      "bc_seeds": [
+        42,
+        123,
+        456
+      ],
+      "sac_seeds": [
+        1103,
+        1117,
+        1123
+      ],
+      "runs": 18,
+      "unit": "BC-seed \u00d7 SAC-seed crossed within each architecture; not 18 independent BC replications"
+    },
+    "hyperparameters": {
+      "learning_rate": 0.0003,
+      "buffer_size": 50000,
+      "learning_starts": 1000,
+      "batch_size": 128,
+      "gamma": 0.99,
+      "train_freq": 1,
+      "gradient_steps": 1,
+      "ent_coef": "auto",
+      "device": "cpu",
+      "policy_hidden_layers": [
+        256,
+        256
+      ]
+    },
+    "periodic_training_eval": {
+      "seed_range_inclusive": [
+        300000,
+        300039
+      ],
+      "episodes_per_checkpoint": 40,
+      "purpose": "training diagnostics only; not checkpoint selection"
+    }
+  },
+  "evaluation": {
+    "bc_validation_seed_range_inclusive": [
+      270000,
+      270499
+    ],
+    "sac_validation_seed_range_inclusive": [
+      280000,
+      280499
+    ],
+    "final_seed_range_inclusive": [
+      290000,
+      291999
+    ],
+    "shared_positions_within_each_phase": true,
+    "deterministic_policy_inference": true,
+    "final_selection_freeze_before_final": true,
+    "bc_models_evaluated": [
+      "H1 seeds 42,123,456",
+      "H4 seeds 42,123,456"
+    ],
+    "SAC_checkpoint_eval": "all 10k/20k/30k on shared SAC validation; select separately for each (architecture, BC seed, SAC seed)",
+    "checkpoint_rule": [
+      "highest validation success",
+      "fewest regressions against corresponding BC on the same validation positions",
+      "shortest mean successful episode steps",
+      "earliest checkpoint"
+    ],
+    "final_sac_configs": "all 18 crossed SAC models evaluated at fixed 30k and selected step; identical checkpoints evaluated once and reused",
+    "BC_final_baselines": "H1/H4 x BC seed; reuse identical BC rollouts across associated SAC seeds",
+    "illustrative_trajectory_seed": 290042
+  },
+  "metrics": {
+    "primary": [
+      "H1/H4 BC success",
+      "Gain_H1=success(H1+SAC)-success(H1 BC)",
+      "Gain_H4=success(H4+SAC)-success(H4 BC)",
+      "Difference-in-Gains=Gain_H4-Gain_H1"
+    ],
+    "secondary": [
+      "absolute success",
+      "rescue",
+      "regression",
+      "net improvement",
+      "conditional rescue/regression rates",
+      "episode length",
+      "failed region",
+      "first gripper close and closed fraction",
+      "BC/SAC inference calls and latency",
+      "episode wall-clock time",
+      "residual norm",
+      "saturation",
+      "intervention rate",
+      "chunk boundary at first close/lift/terminal"
+    ],
+    "compute": "SAC is always active; no inference-saving claim for SAC calls; H4 is expected to reduce BC replanning frequency only"
+  },
+  "statistics": {
+    "hierarchy": "crossed BC seed and SAC seed; positions are paired/reused, not independent training replicates",
+    "descriptive": "per BC seed, per SAC seed, per architecture cell, mean and sample SD across seed factors; report all individual cells",
+    "primary_uncertainty": "10,000-replicate hierarchical bootstrap: resample 3 BC seed indices and 3 SAC seed indices independently with replacement, form Cartesian 3x3 crossed cells per replicate; percentile 95% intervals",
+    "position_tests": "two-sided exact McNemar per paired initial position for BC-vs-SAC and H1-vs-H4 BC comparisons; Holm correction within architecture and fixed/selected comparison families",
+    "no_pseudoreplication": "2,000 positions are not independent model-training seeds; only 3 BC and 3 SAC seeds limit population inference"
+  },
+  "limitations": [
+    "Single Franka grasping task and lightweight state MLP; not ACT or Diffusion Policy.",
+    "Source trajectories are successful scripted expert demonstrations.",
+    "Only three BC and three SAC seeds.",
+    "H4 receives four times as many future action labels per starting state.",
+    "Horizon H=4 is a single preregistered chunk size.",
+    "SAC always acts each step and the task remains simulation-only."
+  ],
+  "related_work": [
+    "Ankile et al., From Imitation to Refinement \u2014 Residual RL for Precise Assembly, arXiv:2407.16677.",
+    "Ankile et al., Residual Off-Policy RL for Finetuning Behavior Cloning Policies, arXiv:2509.19301."
+  ]
+}
