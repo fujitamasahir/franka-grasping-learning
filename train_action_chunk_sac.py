@@ -6,7 +6,7 @@ from stable_baselines3 import SAC
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.monitor import Monitor
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
-from action_chunking import sha256,verify_protocol,pair_rollout_rows
+from action_chunking import sha256,verify_protocol,pair_rollout_rows,validate_rollout_seed_set
 
 ROOT=Path('bc_results/action_chunking_sac');SEEDS=(1103,1117,1123);BCSEEDS=(42,123,456)
 
@@ -42,6 +42,7 @@ class Milestones(BaseCallback):
         model_path=self.run/f'checkpoint_{step}.zip'
         self.model.save(str(model_path.with_suffix('')))
         bc=load_bc_rows(self.arch,self.bcs)
+        validate_rollout_seed_set(bc,range(280000,280500),'paired BC checkpoint-validation baseline')
         # Import evaluator to share exact deterministic rollout implementation.
         from evaluate_action_chunking import evaluate_residual
         rows=evaluate_residual(self.model,self.bc_path,range(280000,280500),f'{self.arch}_bc{self.bcs}_sac{self.sacs}_step{step}')

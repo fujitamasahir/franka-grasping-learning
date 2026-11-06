@@ -3,7 +3,7 @@ import torch
 import unittest,tempfile
 from pathlib import Path
 
-from action_chunking import ActionChunkBC, BCActionChunkController, build_windows, pair_rollout_rows
+from action_chunking import ActionChunkBC, BCActionChunkController, build_windows, pair_rollout_rows, validate_rollout_seed_set
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
 
 
@@ -46,8 +46,10 @@ class ActionChunkingTests(unittest.TestCase):
         baseline=[{'seed':10,'success':0},{'seed':11,'success':1}]
         policy=[{'seed':10,'success':1},{'seed':11,'success':0}]
         self.assertEqual(len(pair_rollout_rows(baseline,policy,[10,11])),2)
+        self.assertEqual(set(validate_rollout_seed_set(baseline,[10,11])),{10,11})
         with self.assertRaises(ValueError):pair_rollout_rows(baseline,policy[:1])
         with self.assertRaises(ValueError):pair_rollout_rows(baseline,policy,[10,12])
+        with self.assertRaises(ValueError):validate_rollout_seed_set(baseline,[10,12])
 
     def test_data_windows_and_controller_timing(self):
         test_windows_share_valid_starts_and_never_cross_episode()

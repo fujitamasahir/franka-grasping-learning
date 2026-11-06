@@ -22,8 +22,8 @@ def sha256(path):
     return h.hexdigest()
 
 
-def pair_rollout_rows(baseline_rows, policy_rows, expected_seeds=None):
-    """Validate shared deterministic positions before paired success analysis."""
+def validate_rollout_seed_set(rows, expected_seeds, label='evaluation'):
+    """Check rollout completeness and uniqueness before calculating metrics."""
     def index(rows, label):
         result = {}
         for row in rows:
@@ -32,8 +32,24 @@ def pair_rollout_rows(baseline_rows, policy_rows, expected_seeds=None):
                 raise ValueError(f'Duplicate {label} evaluation seed {seed}')
             result[seed] = row
         return result
-    baseline = index(baseline_rows, 'baseline')
-    policy = index(policy_rows, 'policy')
+    result = index(rows, label)
+    if set(result) != set(map(int, expected_seeds)):
+        raise ValueError(f'{label} evaluations do not match the preregistered seed set')
+    return result
+
+
+def pair_rollout_rows(baseline_rows, policy_rows, expected_seeds=None):
+    """Validate shared deterministic positions before paired success analysis."""
+    baseline = {}
+    policy = {}
+    for row in baseline_rows:
+        seed=int(row['seed'])
+        if seed in baseline:raise ValueError(f'Duplicate baseline evaluation seed {seed}')
+        baseline[seed]=row
+    for row in policy_rows:
+        seed=int(row['seed'])
+        if seed in policy:raise ValueError(f'Duplicate policy evaluation seed {seed}')
+        policy[seed]=row
     if set(baseline) != set(policy):
         raise ValueError('Paired baseline and policy evaluations use different positions')
     if expected_seeds is not None and set(baseline) != set(map(int, expected_seeds)):
