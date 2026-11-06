@@ -15,6 +15,7 @@ def main():
     boot=read(ROOT/'difference_in_gains_bootstrap.csv');tests=read(ROOT/'paired_mcnemar.csv');bct=read(ROOT/'h1_vs_h4_bc_mcnemar.csv')
     variability=read(ROOT/'seed_variability.csv');regions=read(ROOT/'regional_rescue_regression.csv');sel=read(ROOT/'checkpoint_selection_effect.csv')
     protocol=json.loads(Path('bc_results/action_chunking_protocol.json').read_text());freeze=json.loads(Path('bc_results/action_chunking_checkpoint_selections.json').read_text())
+    correction=json.loads(Path('bc_results/action_chunking_eval/implementation_correction_log.json').read_text())
     # BC architecture-level descriptive results.
     bc_table=[]
     for h in ('H1','H4'):
@@ -118,6 +119,8 @@ Final BC success, mean episode BC calls, inference latency, and episode executio
 {table(['Horizon','BC seed','Final success','Successes','Mean steps','Mean first close step'],bc_cells)}
 
 The historical `fair_wide_expert_seed42.pt` is not used as a matched baseline: it was trained from a different, randomly subsampled dataset and does not provide temporally reliable H4 targets. Its prior results are contextual only.
+
+During validation implementation QA, an initial partial set used the environment defaults (`max_move=0.025 m`, `max_time=12 s`) instead of checkpoint values (`0.15 m`, `16 s`). These rollouts were invalidated and excluded; all six corrected BC validations were rerun with the checkpoint settings. The correction log records hashes and episode counts. No Final seed or training/model-selection decision was exposed to these discarded rollouts.
 
 ## SAC Results
 

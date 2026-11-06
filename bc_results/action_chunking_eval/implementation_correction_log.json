@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-06",
+  "issue": "BC evaluation initially retained FrankaAutonomousEnv defaults (max_move 0.025 m and max_time 12 s) instead of the frozen checkpoint settings (0.15 m and 16 s). This made those initial validation rollouts invalid.",
+  "correction": "Set max_move and max_time from the frozen BC checkpoint before corrected validation; reran all six BC policies on their prescribed validation seed range.",
+  "final_seed_range_touched": false,
+  "training_or_model_selection_changed": false,
+  "excluded_files": [
+    {
+      "path": "bc_results/action_chunking_eval/invalid_pre_scale_fix/bc_validation_H1_seed123.csv",
+      "sha256": "65a9cb05a055c7b35b85ce133659ab9458ab8c0e0de69bde59364691d483391d",
+      "episodes": 225,
+      "disposition": "excluded from all analyses"
+    },
+    {
+      "path": "bc_results/action_chunking_eval/invalid_pre_scale_fix/bc_validation_H1_seed42.csv",
+      "sha256": "cd260284615e8a41822240f64a8a55a5453601419541bca035c63bfcf3a1858f",
+      "episodes": 500,
+      "disposition": "excluded from all analyses"
+    }
+  ]
+}
