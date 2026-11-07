@@ -1,0 +1,13 @@
+{
+  "applied_noise_identical_for_R1_R4_and_all_models_at_each_seed_sigma": true,
+  "base_noise_schedule_identical_all_cells_by_evaluation_seed": true,
+  "configurations": 18,
+  "deterministic_repeat_model_seed42_R1_sigma10_seed322000": true,
+  "episodes": 360,
+  "same_initial_positions_all_conditions": true,
+  "smoke_seed_range_inclusive": [
+    322000,
+    322019
+  ],
+  "timing_fields_excluded_from_determinism_check": true
+}
