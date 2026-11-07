@@ -1,0 +1,9 @@
+{
+  "status": "superseded preliminary software smoke; not used for calibration, threshold selection, or research outcome claims",
+  "protocol_sha256_recorded_in_rows": "30795930440967d32044e73968f75941eb9cd0f319705b69e6c52fb7677c3692",
+  "episodes": 540,
+  "cells": 27,
+  "reason_superseded": "After these rows were generated, the protocol was amended before Calibration to record a 1 mm stationarity criterion and a separate smoke2 range; the old protocol artifact was not committed. The rows and their metadata are preserved unmodified. Official implementation and stationarity validation is the 720-episode smoke2 run under the committed protocol hash.",
+  "threshold_used_in_preliminary_adaptive_smoke_m": 0.0075,
+  "threshold_outcome_tuning": false
+}

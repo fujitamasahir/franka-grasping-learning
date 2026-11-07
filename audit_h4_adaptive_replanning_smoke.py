@@ -37,7 +37,8 @@ def main():
     for m in (42,123,456):
       for mm in (0,5,10):
        for s,a in rows_by[m,'Adaptive',mm].items():
-        chosen=int(a['chosen_interval']);branch=rows_by[m,'R4' if chosen==4 else 'WarmupR1',mm][s]
+        chosen=int(a['chosen_interval']) if a['chosen_interval'] else 4
+        branch=rows_by[m,'R4' if chosen==4 else 'WarmupR1',mm][s]
         if any(a[k]!=branch[k] for k in branch_fields):raise ValueError(f'Adaptive branch mismatch: model {m}, noise {mm}, seed {s}')
         w=rows_by[m,'WarmupR1',mm][s]
         if a['estimated_sigma_m']!=w['estimated_sigma_m']:raise ValueError(f'Estimator prefix mismatch at {m}/{mm}/{s}')

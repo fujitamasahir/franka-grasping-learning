@@ -1,7 +1,8 @@
 import unittest
+import inspect
 import numpy as np
 
-from evaluate_h4_adaptive_replanning import estimate_sigma
+from evaluate_h4_adaptive_replanning import estimate_sigma, choose_replanning_interval
 
 
 class AdaptiveEstimatorTests(unittest.TestCase):
@@ -21,6 +22,12 @@ class AdaptiveEstimatorTests(unittest.TestCase):
         with self.assertRaises(ValueError): estimate_sigma(np.zeros((19,2)))
         bad=np.zeros((20,2));bad[3,1]=np.nan
         with self.assertRaises(ValueError): estimate_sigma(bad)
+
+    def test_threshold_rule_is_pure_and_uses_inclusive_r4_boundary(self):
+        self.assertEqual(tuple(inspect.signature(choose_replanning_interval).parameters),('sigma_hat','threshold_m'))
+        self.assertEqual(choose_replanning_interval(.005,.005),4)
+        self.assertEqual(choose_replanning_interval(.00501,.005),1)
+        with self.assertRaises(ValueError): choose_replanning_interval(float('nan'),.005)
 
 
 if __name__=='__main__': unittest.main()

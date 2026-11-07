@@ -24,11 +24,19 @@ def estimate_sigma(observations):
     if a.shape!=(20,2) or not np.isfinite(a).all(): raise ValueError('Estimator requires 20 finite XY observations')
     return float(np.sqrt((np.var(a[:,0],ddof=1)+np.var(a[:,1],ddof=1))/2.0))
 
+def choose_replanning_interval(sigma_hat, threshold_m):
+    """Pure decision rule; its API has no true-sigma, state, seed, or outcome input."""
+    estimate=float(sigma_hat);threshold=float(threshold_m)
+    if not np.isfinite(estimate) or not np.isfinite(threshold):raise ValueError('Finite estimate and frozen threshold required')
+    return 4 if estimate<=threshold else 1
+
 def rollout(model,ck,model_seed,controller_name,sigma,seed,threshold,checkpoint_hash,protocol_hash,trace=False):
     env=FrankaAutonomousEnv(position_range=.20);env.max_move=float(ck['max_move']);env.max_time=float(ck['max_time'])
+    if not np.isclose(env.control_dt,float(ck['control_dt'])):
+        env.close();raise ValueError('Environment timestep differs from frozen checkpoint')
     max_steps=int(round(env.max_time/env.control_dt));base,applied=make_noise_schedule(seed,sigma,NOISE_SEED,max_steps)
     ctrl=BCActionChunkController(model,ck['obs_mean'].numpy(),ck['obs_std'].numpy(),int(ck['horizon']),replan_interval=1 if controller_name=='R1' else 4)
-    obs,_=env.reset(seed=int(seed)); obs_noisy=apply_observation_noise(obs,applied[0]);start=time.perf_counter()
+    obs,_=env.reset(seed=int(seed)); initial_xy=env.data.xpos[env.cube_id][:2].copy(); obs_noisy=apply_observation_noise(obs,applied[0]);start=time.perf_counter()
     ctrl.reset(obs_noisy);observed_xy=[[float(obs_noisy[3]),float(obs_noisy[4])]]
     gt_xy=[[float(env.data.xpos[env.cube_id][0]),float(env.data.xpos[env.cube_id][1])]]
     total_return=0.;steps=0;closes=[];lift='';closed=0;estimated=None
@@ -50,13 +58,13 @@ def rollout(model,ck,model_seed,controller_name,sigma,seed,threshold,checkpoint_
         if controller_name in ('Adaptive','WarmupR1') and not decision and steps==20:
             if len(observed_xy)!=20: raise RuntimeError(f'Expected 20 estimator observations, got {len(observed_xy)}')
             estimated=estimate_sigma(observed_xy)
-            chosen=(1 if controller_name=='WarmupR1' else (4 if estimated<=threshold else 1));decision=True
+            chosen=(1 if controller_name=='WarmupR1' else choose_replanning_interval(estimated,threshold));decision=True
             ctrl.replan_interval=chosen
         ctrl.advance(next_noisy)
     elapsed=time.perf_counter()-start;lat=np.asarray(ctrl.inference_latencies,dtype=float);x,y=float(info['cube_x']),float(info['cube_y'])
     gt=np.asarray(gt_xy[:20],float);motion=float(np.max(np.linalg.norm(gt-gt[0],axis=1))) if len(gt) else 0.
     row={'seed':int(seed),'model_seed':model_seed,'controller':controller_name,'threshold_m':'' if threshold is None else threshold,'noise_sigma_m':sigma,
-      'noise_generation_seed':NOISE_SEED,'success':int(bool(info['is_success'])),'steps':steps,'return':total_return,'cube_x':x,'cube_y':y,'region':region(x,y),
+      'noise_generation_seed':NOISE_SEED,'success':int(bool(info['is_success'])),'steps':steps,'return':total_return,'cube_x':x,'cube_y':y,'region':region(float(initial_xy[0]),float(initial_xy[1])),
       'first_close_step':closes[0] if closes else '','first_lift_step':lift,'closed_fraction':closed/steps,'bc_inference_calls':ctrl.inference_calls,
       'bc_total_inference_ms':float(lat.sum()*1000),'bc_mean_latency_ms':float(lat.mean()*1000),'episode_wall_seconds':elapsed,
       'estimated_sigma_m':'' if estimated is None else estimated,'chosen_interval':'' if chosen is None else chosen,'decision_made':int(decision),
@@ -69,17 +77,43 @@ def validate_rows(rows,seeds,m,r,controller,threshold,sigma,ckhash,prothash):
     for x in rows:
         got.append(int(x['seed']))
         if int(x['model_seed'])!=m or x['controller']!=controller or not np.isclose(float(x['noise_sigma_m']),sigma,rtol=0,atol=1e-12): raise ValueError('Cell mismatch')
+        if int(x['noise_generation_seed'])!=NOISE_SEED:raise ValueError('Noise generation seed mismatch')
         if x['checkpoint_sha256']!=ckhash or x['protocol_sha256']!=prothash: raise ValueError('Provenance mismatch')
-        if (x['threshold_m']=='' and threshold is not None) or (x['threshold_m']!='' and threshold is not None and not np.isclose(float(x['threshold_m']),threshold)):raise ValueError('Threshold mismatch')
+        if threshold is None and x['threshold_m']!='':raise ValueError('Unexpected threshold in fixed/Calibration row')
+        if threshold is not None and (x['threshold_m']=='' or not np.isclose(float(x['threshold_m']),threshold)):raise ValueError('Threshold mismatch')
         if int(x['success']) not in (0,1) or len(x['base_noise_sha256'])!=64 or len(x['applied_noise_sha256'])!=64:raise ValueError('Malformed row')
+        if int(x['steps'])<1 or int(x['bc_inference_calls'])<1 or int(x['decision_made']) not in (0,1):raise ValueError('Invalid episode counters')
+        nums=[float(x[k]) for k in ('return','cube_x','cube_y','closed_fraction','bc_total_inference_ms','bc_mean_latency_ms','episode_wall_seconds','stationarity_gt_max_displacement_m')]
+        if not np.isfinite(nums).all() or not 0<=nums[3]<=1 or nums[4]<0 or nums[5]<0 or nums[6]<=0 or nums[7]<0:raise ValueError('Non-finite/invalid measurements')
+        if x['region'] not in ('EN','ES','WN','WS'):raise ValueError('Invalid position region')
+        if controller in ('Adaptive','WarmupR1'):
+            if int(x['decision_made']):
+                if x['estimated_sigma_m']=='' or x['chosen_interval'] not in ('1','4') or int(x['steps_before_decision'])!=20:raise ValueError('Invalid adaptive decision record')
+                if not np.isfinite(float(x['estimated_sigma_m'])):raise ValueError('Non-finite sigma estimate')
+            elif x['estimated_sigma_m']!='' or x['chosen_interval']!='':raise ValueError('Estimate/interval present without a decision')
+        elif int(x['decision_made']) or x['estimated_sigma_m']!='' or x['chosen_interval']!=str(1 if controller=='R1' else 4):
+            raise ValueError('Invalid fixed-controller decision fields')
     if len(got)!=len(set(got)) or got!=sorted(got) or not set(got)<=set(seeds): raise ValueError('Duplicate, unordered, or unexpected seed')
     return set(got)
 
 def run(a):
+    if (OUT/'.STOP_AFTER_CELL').exists():
+        print('Stop marker exists; refusing to start another cell. Remove it only when deliberately resuming.',flush=True)
+        return
     if not PROTOCOL.exists() or not PROTOCOL_SHA.exists(): raise FileNotFoundError('Preregistered protocol and SHA required')
     ph=PROTOCOL_SHA.read_text().split()[0]
     if sha256(PROTOCOL)!=ph: raise RuntimeError('Protocol hash mismatch')
     protocol=json.loads(PROTOCOL.read_text());m=a.model_seed;ckpath=Path(f'bc_models/action_chunking/H4_seed{m}.pt');ckhash=sha256(ckpath)
+    if a.phase=='calibration':
+        smoke=OUT/'smoke2_integrity_audit.json'
+        if not smoke.exists() or not json.loads(smoke.read_text()).get('smoke_passed'):
+            raise RuntimeError('Passing preregistered smoke2 audit is required before Calibration')
+    if a.phase=='final':
+        frozen_path=OUT/'frozen_threshold.json'
+        if not frozen_path.exists():raise RuntimeError('Calibration-frozen threshold is required before Final')
+        frozen=json.loads(frozen_path.read_text())
+        if frozen['protocol_sha256']!=ph or a.threshold is None or not np.isclose(a.threshold,frozen['selected_threshold_m'],rtol=0,atol=1e-12):
+            raise RuntimeError('Final threshold does not match frozen Calibration threshold/protocol')
     if ckhash!=protocol['frozen_models'][str(m)]['sha256']:raise RuntimeError('Frozen checkpoint mismatch')
     model,ck=load_bc_policy(ckpath)
     if int(ck['horizon'])!=4 or int(ck['seed'])!=m:raise RuntimeError('Unexpected frozen model architecture/seed')
@@ -118,6 +152,10 @@ def run(a):
         validate_rows(rows,seeds,m,None,controller,threshold,sigma_mm/1000,ckhash,ph)
         if len(rows)!=len(seeds):raise RuntimeError('Cell incomplete')
         part.replace(final);print(f'Completed {final}',flush=True)
+        stop=OUT/'.STOP_AFTER_CELL'
+        if stop.exists():
+            print('Honoring .STOP_AFTER_CELL at a complete cell boundary; outputs are safe to resume.',flush=True)
+            return
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('--phase',choices=('smoke','smoke2','calibration','final'),required=True);p.add_argument('--model-seed',type=int,choices=(42,123,456),required=True);p.add_argument('--noise-mm',type=int,choices=(0,5,10));p.add_argument('--threshold',type=float);a=p.parse_args();OUT.mkdir(parents=True,exist_ok=True)

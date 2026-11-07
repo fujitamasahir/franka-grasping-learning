@@ -1,0 +1,160 @@
+{
+  "adaptive_outcomes_from_complete_branches": true,
+  "calibration_seed_range_inclusive": [
+    330000,
+    330299
+  ],
+  "calibration_selected_fixed_baseline": "R4",
+  "candidate_thresholds": [
+    {
+      "equally_weighted_mean_inference_calls": 66.39296296296295,
+      "equally_weighted_success_rate_pct": 90.85185185185186,
+      "selection_frequency_by_noise": {
+        "0": {
+          "R1": 0,
+          "R4": 900,
+          "n": 900
+        },
+        "10": {
+          "R1": 900,
+          "R4": 0,
+          "n": 900
+        },
+        "5": {
+          "R1": 426,
+          "R4": 474,
+          "n": 900
+        }
+      },
+      "threshold_m": 0.005
+    },
+    {
+      "equally_weighted_mean_inference_calls": 54.06814814814815,
+      "equally_weighted_success_rate_pct": 91.03703703703704,
+      "selection_frequency_by_noise": {
+        "0": {
+          "R1": 0,
+          "R4": 900,
+          "n": 900
+        },
+        "10": {
+          "R1": 891,
+          "R4": 9,
+          "n": 900
+        },
+        "5": {
+          "R1": 0,
+          "R4": 900,
+          "n": 900
+        }
+      },
+      "threshold_m": 0.0075
+    },
+    {
+      "equally_weighted_mean_inference_calls": 41.377037037037034,
+      "equally_weighted_success_rate_pct": 90.62962962962963,
+      "selection_frequency_by_noise": {
+        "0": {
+          "R1": 0,
+          "R4": 900,
+          "n": 900
+        },
+        "10": {
+          "R1": 426,
+          "R4": 474,
+          "n": 900
+        },
+        "5": {
+          "R1": 0,
+          "R4": 900,
+          "n": 900
+        }
+      },
+      "threshold_m": 0.01
+    }
+  ],
+  "complete_cell_count": 27,
+  "estimate_diagnostics_by_true_noise_mm": {
+    "0": {
+      "max_m": 5.378125271042301e-09,
+      "mean_m": 4.831765366667577e-11,
+      "median_m": 0.0,
+      "min_m": 0.0,
+      "n": 900,
+      "nearest_nominal_bucket_accuracy_pct": 100.0,
+      "sd_m": 3.5300068197396055e-10
+    },
+    "10": {
+      "max_m": 0.013167775082943367,
+      "mean_m": 0.009918916932307554,
+      "median_m": 0.009918530660987532,
+      "min_m": 0.00693563742273453,
+      "n": 900,
+      "nearest_nominal_bucket_accuracy_pct": 99.0,
+      "sd_m": 0.001110325451871494
+    },
+    "5": {
+      "max_m": 0.006583887260918797,
+      "mean_m": 0.004959458465953136,
+      "median_m": 0.004959264059376869,
+      "min_m": 0.0034678194180369545,
+      "n": 900,
+      "nearest_nominal_bucket_accuracy_pct": 100.0,
+      "sd_m": 0.0005551627828185359
+    }
+  },
+  "executed_calibration_episodes": 8100,
+  "fixed_R1_labels_not_used_for_adaptive_R1_branch": true,
+  "fixed_baselines": {
+    "R1": {
+      "equally_weighted_mean_inference_calls": 121.26481481481483,
+      "equally_weighted_success_rate_pct": 88.96296296296296
+    },
+    "R4": {
+      "equally_weighted_mean_inference_calls": 29.831111111111113,
+      "equally_weighted_success_rate_pct": 90.22222222222221
+    }
+  },
+  "nearest_sigma_confusion_counts": {
+    "0": {
+      "0": 900,
+      "10": 0,
+      "5": 0
+    },
+    "10": {
+      "0": 0,
+      "10": 891,
+      "5": 9
+    },
+    "5": {
+      "0": 0,
+      "10": 0,
+      "5": 900
+    }
+  },
+  "protocol_sha256": "a212e07da4b00b4c444454482b8547b4058c518076991e09c5038edcd728df0f",
+  "selected_calibration_summary": {
+    "equally_weighted_mean_inference_calls": 54.06814814814815,
+    "equally_weighted_success_rate_pct": 91.03703703703704,
+    "selection_frequency_by_noise": {
+      "0": {
+        "R1": 0,
+        "R4": 900,
+        "n": 900
+      },
+      "10": {
+        "R1": 891,
+        "R4": 9,
+        "n": 900
+      },
+      "5": {
+        "R1": 0,
+        "R4": 900,
+        "n": 900
+      }
+    },
+    "threshold_m": 0.0075
+  },
+  "selected_threshold_m": 0.0075,
+  "selection_rule": "highest equally weighted success; then fewer mean BC inference calls; then smaller threshold"
+}

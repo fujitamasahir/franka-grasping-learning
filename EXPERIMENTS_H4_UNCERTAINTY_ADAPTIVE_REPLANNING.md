@@ -32,6 +32,8 @@ over noisy cube XY at observation times 0–19. It receives no true σ, clean co
 
 Before Calibration, 720 smoke episodes on seeds 333000–333019 passed completeness, pairing, switch timing, and branch-equivalence checks. Across all models and noise levels, maximum ground-truth cube displacement in the first 20 steps was **1.90e−10 m**, below the preregistered 1 mm stationarity criterion. Ground truth was used only for this audit. Smoke `sigma_hat` medians were 0, 5.075, and 10.150 mm for true σ of 0, 5, and 10 mm (60 episodes per level). The smoke threshold was used only to exercise code; it did not inform Calibration selection.
 
+The earlier 540-episode smoke run used an earlier protocol-file SHA. It is retained with that hash as preliminary software evidence and excluded from threshold selection; the official post-amendment smoke2 is the 720-episode run above. A pre-Final reporting correction makes `region` derive from initial reset position rather than terminal cube position. Calibration does not select thresholds by region, and the Final audit verifies each initial-position region.
+
 ## 7. Adaptive Replanning Controller
 
 R1 always replans at every step. R4 consumes each four-action chunk. Adaptive executes R4 for 20 control steps, estimates uncertainty once, and then continues at one fixed interval for the remainder. This is episode-level switching, not per-step adaptation. Switching occurs on a four-action boundary, avoiding half-consumed chunks. Adaptive versus Fixed R1 is an end-to-end comparison because R1 does not share the R4 warm-up; Adaptive versus Fixed R4 shares the first 20-step trajectory.
@@ -42,17 +44,51 @@ An additional warm-up-matched branch executes R4 for 20 steps, then R1 regardles
 
 The protocol SHA-256 is recorded in `bc_results/h4_adaptive_replanning_protocol.sha256`. Calibration uses 300 shared positions per BC seed and noise level. One global threshold is selected from 5.0, 7.5, and 10.0 mm by equally weighted success across nine model-seed × noise cells. Ties are resolved by fewer inference calls, then the smaller threshold. Fixed R1/R4 are measured on the same seeds; the better fixed method is selected from Calibration only. The frozen threshold is stored before Final begins.
 
-Calibration output and selected threshold: **pending completed Calibration**.
+Calibration completed with 300 positions for each of 3 BC seeds × 3 noise levels (2,700 positions × three executed complete branches: Fixed R1, Fixed R4, and Warmup-R1). The three candidate adaptive outcomes were derived from complete, smoke-verified paths: select the Fixed R4 trajectory when the R4-prefix estimate is under threshold, otherwise the separately executed Warmup-R1 trajectory. Fixed R1 labels were not used to stand in for a switched R1 trajectory.
+
+| Global threshold | Equal-weighted Adaptive success | Mean inference calls/episode | R1 selection at 0 / 5 / 10 mm |
+|---:|---:|---:|---:|
+| 5.0 mm | 90.852% | 66.39 | 0% / 47.3% / 100% |
+| **7.5 mm (selected)** | **91.037%** | **54.07** | **0% / 0% / 99.0% |
+| 10.0 mm | 90.630% | 41.38 | 0% / 0% / 47.3% |
+
+Fixed R1 achieved an equal-weighted 88.963% with 121.26 mean inference calls; Fixed R4 achieved 90.222% with 29.83 calls. Fixed R4 was the Calibration-selected fixed baseline. The threshold was selected solely by the preregistered highest-success rule (no tie-break was needed) and is frozen in `bc_results/h4_adaptive_replanning/frozen_threshold.json` before Final.
+
+The estimator's Calibration mean/median estimates were approximately 0/0 mm for true 0 mm, 4.959/4.959 mm for true 5 mm, and 9.919/9.919 mm for true 10 mm (900 estimates per level). Nearest nominal-sigma bucket agreement was 100%, 100%, and 99.0%, respectively; this is a descriptive diagnostic, not an input to the controller.
 
 ## 9. Final Evaluation Protocol
 
 Final covers seeds 331000–331999 for each of three controllers, three BC models, and three noise conditions: 27,000 episodes. All conditions share initial positions and absolute-step-indexed noise. Each cell is written append-safely to a separate CSV with checkpoint/protocol/noise hashes. A clean interruption leaves `.partial.csv` files that the evaluator resumes after validating schema, order, uniqueness, and provenance. Do not edit conditions based on Final outcomes.
 
-Final completion and integrity audit: **pending; inspect no success rates before all 27 cells pass**.
+Final completion and integrity audit: **in progress; the final holdout outcomes are not summarized until all 27 cells pass**.
 
-## 10–16. Results, Statistics, Costs, and Failure Analysis
+## 10. Success Rate Results
 
-Populate these sections only after the full Final seed sets pass audit. Report success equally weighted across the nine model × noise cells; paired differences and beneficial/harmful transitions per BC seed and noise; exact McNemar tests with Holm correction; paired bootstrap intervals jointly resampling position indices across controllers and noise; sigma-hat distribution and switching frequency; inference calls, inference time, wall time, control steps; and EN/ES/WN/WS summaries. Position-level intervals are conditional on the three fixed policies and sampled positions, not evidence of a broad population of trained policies. Failures must be separated into early termination, uncertainty misclassification, threshold choice, R1/R4 branch limitations, and timing/software defects where evidence permits.
+Pending the complete, audited Final position set. Report all 27 cells, per-noise, per-model, and equal-weighted rates.
+
+## 11. Comparison with Fixed R1/R4
+
+Pending Final. Adaptive versus R1 is end-to-end because of the R4 warm-up; Adaptive versus R4 shares the initial trajectory.
+
+## 12. Uncertainty Estimation Accuracy
+
+Smoke estimates are summarized in Section 6. Final sigma-hat distributions and switching accuracy by actual σ remain pending.
+
+## 13. Beneficial and Harmful Outcome Analysis
+
+Pending Final paired transitions. Report exact rescue/harmful counts per model and noise; do not infer switched R1 outcomes from fixed R1 labels.
+
+## 14. Inference Cost
+
+Pending Final. Report inference calls and time, wall-clock time, and control steps separately.
+
+## 15. Statistical Interpretation
+
+Pending complete Final analysis. Use paired position bootstrap and exact McNemar tests with Holm adjustment. Intervals are conditional on three frozen policies and do not quantify generalization to arbitrary training seeds.
+
+## 16. Failure Analysis
+
+Pending complete Final audit. Distinguish episodes ending before a decision, noisy-estimate decisions, calibrated-threshold limitations, fixed-branch limitations, and software/timing defects when supported by evidence.
 
 ## 17. Limitations
 
@@ -68,7 +104,7 @@ If warranted by the completed result, evaluate realistic temporally correlated p
 
 ## 20. Reproduction Instructions
 
-Run `audit_h4_adaptive_replanning_smoke.py` after the smoke cells are complete. Run `.venv/bin/python evaluate_h4_adaptive_replanning.py --phase calibration --model-seed 42` and likewise for seeds 123 and 456; analyze with `analyze_h4_adaptive_calibration.py`. Freeze the resulting threshold before running each Final model seed. Use `audit_h4_adaptive_replanning_final.py` and `analyze_h4_adaptive_replanning.py` only after all 27 Final cells pass. The global `.study_run.lock` prevents concurrent writers.
+Run `audit_h4_adaptive_replanning_smoke.py` after the smoke cells are complete. Run `.venv/bin/python evaluate_h4_adaptive_replanning.py --phase calibration --model-seed 42` and likewise for seeds 123 and 456; analyze with `analyze_h4_adaptive_calibration.py`. Freeze the resulting threshold before running each Final model seed. Read the threshold from `bc_results/h4_adaptive_replanning/frozen_threshold.json`, then run `.venv/bin/python evaluate_h4_adaptive_replanning.py --phase final --model-seed SEED --threshold THRESHOLD` sequentially for 42, 123, and 456. The evaluator resumes validated `.partial.csv` files. To stop cleanly at a complete cell boundary, create `bc_results/h4_adaptive_replanning/.STOP_AFTER_CELL`; after the process exits, remove that marker before resuming. Use `audit_h4_adaptive_replanning_final.py --allow-incomplete` for count-only progress or the same audit without the flag after all 27 cells pass. Run `MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python analyze_h4_adaptive_replanning.py` only after the complete audit. The global `.study_run.lock` prevents concurrent writers.
 
 ### References
 
