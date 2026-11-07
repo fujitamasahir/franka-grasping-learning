@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 from stable_baselines3 import SAC
 from franka_autonomous_env import FrankaAutonomousEnv
-from action_chunking import load_bc_policy,BCActionChunkController
+from action_chunking import load_bc_policy,BCActionChunkController,sha256
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
 
 OUT=Path('bc_results/action_chunking_eval')

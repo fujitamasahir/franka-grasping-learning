@@ -37,7 +37,7 @@ def main():
       rr=[r for r in cells if r['architecture']==h and r['checkpoint']=='selected']
       h1h4.append([h,pct(np.mean([float(x['success_rate']) for x in rr])),f'{np.mean([float(x["gain_pp"]) for x in rr]):+.2f}',
           f'{np.mean([int(x["rescue"]) for x in rr]):.1f}',f'{np.mean([int(x["regression"]) for x in rr]):.1f}',
-          f'{np.mean([int(x["mean_bc_calls"]) for x in rr]):.1f}',f'{np.mean([float(x["sac_activation_rate"]) for x in rr])*100:.1f}%',
+          f'{np.mean([float(x["mean_bc_calls"]) for x in rr]):.1f}',f'{np.mean([float(x["sac_activation_rate"]) for x in rr])*100:.1f}%',
           f'{np.mean([int(x["always_on_sac_calls"]) for x in rr]):.0f}',
           f'{np.mean([float(x["mean_residual_norm_m"]) for x in rr])*1000:.2f}',
           f'{np.mean([float(x["saturation_rate"]) for x in rr])*100:.2f}%',

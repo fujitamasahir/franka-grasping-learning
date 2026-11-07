@@ -45,5 +45,27 @@
         "bytes": 98582
       }
     ]
+  },
+  "final_evaluation_startup_issue": {
+    "issue": "The SAC Final orchestrator referenced sha256 for frozen checkpoint verification without importing the shared helper, so it stopped before opening or rolling out any SAC Final model.",
+    "correction": "Imported the existing action_chunking.sha256 helper. No rollout row, model score, or Final success outcome had been read when fixing this startup-only NameError.",
+    "final_seed_range_touched": false,
+    "training_or_model_selection_changed": false,
+    "duplicate_rollout_cleanup": {
+      "path": "bc_results/action_chunking_eval/sac_final_fixed30k_H1_bc42_sac1103.csv",
+      "rows_before": 2042,
+      "duplicate_seed_rows_removed": 42,
+      "rows_after": 2000,
+      "unique_seed_range": [
+        290000,
+        291999
+      ],
+      "method": "Kept the first appended row for each protocol seed; no success or performance fields were used to choose rows."
+  },
+  "report_generation_issue": {
+    "issue": "The report renderer cast a fractional mean BC inference-call count to int.",
+    "correction": "Changed the renderer to parse mean_bc_calls as float and regenerated the report.",
+    "evaluation_or_analysis_data_changed": false
+  }
   }
 }
