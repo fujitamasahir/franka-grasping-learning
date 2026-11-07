@@ -7,6 +7,8 @@ from action_chunking import ActionChunkBC, BCActionChunkController, build_window
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
 from evaluate_h4_replanning import FIELDS, exclusive_run_lock, validate_rows
 from analyze_h4_replanning import exact_mcnemar, holm, paired_bootstrap_ci
+from evaluate_h4_observation_noise import apply_observation_noise, make_noise_schedule
+from franka_autonomous_env import FrankaAutonomousEnv
 
 
 def test_windows_share_valid_starts_and_never_cross_episode():
@@ -129,6 +131,41 @@ class ActionChunkingTests(unittest.TestCase):
                 with self.assertRaises(RuntimeError):
                     with exclusive_run_lock(lock): pass
             self.assertFalse(lock.exists())
+
+    def test_observation_noise_changes_only_cube_and_relative_xy(self):
+        obs=np.arange(12,dtype=np.float32)
+        noisy=apply_observation_noise(obs,np.array([.01,-.02],np.float32))
+        expected=np.array([3,4,6,7])
+        np.testing.assert_array_equal(np.flatnonzero(noisy!=obs),expected)
+        self.assertAlmostEqual(float(noisy[3]-obs[3]),.01,places=6)
+        self.assertAlmostEqual(float(noisy[6]-obs[6]),.01,places=6)
+        self.assertAlmostEqual(float(noisy[4]-obs[4]),-.02,places=6)
+        self.assertAlmostEqual(float(noisy[7]-obs[7]),-.02,places=6)
+        np.testing.assert_array_equal(apply_observation_noise(obs,np.zeros(2,np.float32)),obs)
+        np.testing.assert_array_equal(obs,np.arange(12,dtype=np.float32))
+
+    def test_noise_schedule_is_seed_step_indexed_and_paired_across_conditions(self):
+        base_a,n5_a=make_noise_schedule(321042,.005,20261106,160)
+        base_b,n10_b=make_noise_schedule(321042,.010,20261106,160)
+        base_other,_=make_noise_schedule(321043,.005,20261106,160)
+        np.testing.assert_array_equal(base_a,base_b)
+        np.testing.assert_allclose(n10_b,2*n5_a,rtol=1e-6,atol=1e-9)
+        self.assertFalse(np.array_equal(base_a,base_other))
+        self.assertEqual(base_a.shape,(161,2))
+        self.assertFalse(np.array_equal(base_a[4],base_a[5]))
+
+    def test_policy_observation_noise_does_not_change_environment_state(self):
+        env=FrankaAutonomousEnv(position_range=.20)
+        try:
+            obs,_=env.reset(seed=321100)
+            qpos=env.data.qpos.copy();cube=env.data.xpos[env.cube_id].copy()
+            noisy=apply_observation_noise(obs,np.array([.01,-.01],np.float32))
+            np.testing.assert_array_equal(env.data.qpos,qpos)
+            np.testing.assert_array_equal(env.data.xpos[env.cube_id],cube)
+            self.assertEqual(float(noisy[5]),float(obs[5]))
+            self.assertEqual(float(noisy[10]),float(obs[10]))
+            self.assertEqual(float(noisy[11]),float(obs[11]))
+        finally: env.close()
 
     def test_wrapper_alignment_xyz_only_and_resume(self):
         with tempfile.TemporaryDirectory() as tmp:

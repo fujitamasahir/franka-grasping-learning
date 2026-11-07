@@ -1,0 +1,161 @@
+{
+  "artifacts": [
+    "EXPERIMENTS_H4_OBSERVATION_NOISE.md",
+    "bc_results/h4_observation_noise/*.csv",
+    "bc_results/h4_observation_noise/*.json",
+    "bc_results/h4_observation_noise/*.svg",
+    "bc_results/h4_observation_noise/*.png"
+  ],
+  "base_commit": "74ba64d2c36459075e71ace5ea8fdad60434d460",
+  "branch": "experiment/h4-observation-noise",
+  "conditions": {
+    "noise_standard_deviation_m": [
+      0.0,
+      0.005,
+      0.01
+    ],
+    "noise_target": "independent zero-mean Gaussian error in observed cube X and Y only; apply the same X/Y offsets to observation entries CubeXYZ[0:2] (indices 3,4) and RelativeXYZ[0:2] (indices 6,7); do not change indices 0:3, 5, 8:12; no clipping",
+    "replanning_intervals": {
+      "R1": {
+        "actions_used": [
+          0
+        ],
+        "interval_steps": 1
+      },
+      "R4": {
+        "actions_used": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "interval_steps": 4
+      }
+    }
+  },
+  "environment": {
+    "class": "FrankaAutonomousEnv",
+    "control_dt_s": 0.1,
+    "max_move_m": 0.15,
+    "max_time_s": 16.0,
+    "position_range_m": 0.2,
+    "success_rule": "existing criterion: lift >=0.10m sustained for >=5 control steps",
+    "true_state_and_physics": "unchanged"
+  },
+  "evaluation": {
+    "configuration_count": 18,
+    "deterministic_policy_inference": true,
+    "episodes_per_configuration": 1000,
+    "final_seed_range_inclusive": [
+      321000,
+      321999
+    ],
+    "legacy_action_trace_check": {
+      "evaluation_seed": 290042,
+      "interval": "R4",
+      "model_seed": 42,
+      "purpose": "software regression only"
+    },
+    "outputs": "separate files in bc_results/h4_observation_noise/; append-safe partial CSVs, strict row/schema/seed/hash validation, exclusive study lock, no overwrite",
+    "sequential_execution": true,
+    "shared_initial_positions_across_all_configurations": true,
+    "smoke_seed_range_inclusive": [
+      322000,
+      322019
+    ],
+    "software_regression_seed_range_inclusive": [
+      310000,
+      310019
+    ],
+    "total_final_episodes": 18000
+  },
+  "frozen_models": {
+    "123": {
+      "path": "bc_models/action_chunking/H4_seed123.pt",
+      "provenance_path": "bc_results/action_chunking_bc_runs/H4_seed123/summary.json",
+      "sha256": "5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c"
+    },
+    "42": {
+      "path": "bc_models/action_chunking/H4_seed42.pt",
+      "provenance_path": "bc_results/action_chunking_bc_runs/H4_seed42/summary.json",
+      "sha256": "41cda0af609e3064ba8e485a4ef81289c319472b08d1f710d96b30f6cb470557"
+    },
+    "456": {
+      "path": "bc_models/action_chunking/H4_seed456.pt",
+      "provenance_path": "bc_results/action_chunking_bc_runs/H4_seed456/summary.json",
+      "sha256": "649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706"
+    }
+  },
+  "hypotheses": [
+    "Noise may reduce, preserve, or increase the R4\u2212R1 success gap; no direction is assumed.",
+    "The noise interaction may vary across BC training seeds.",
+    "R1 and R4 are compared on shared initial positions and a coupled, step-indexed XY noise schedule."
+  ],
+  "integrity_checks": [
+    "Checkpoint SHA against the prior H4 report and training provenance before/after evaluation.",
+    "At sigma=0, R1/R4 outcomes, step timing, inference counts, close/lift timing, and terminal chunk index match saved previous H4 replanning Final rows on seeds 310000\u2013310019.",
+    "R4 sigma=0 actions/chunk indices on saved trace seed 290042 match within 1e-7.",
+    "Only policy observations at indices 3,4,6,7 are perturbed; true environment state/physics/termination unchanged.",
+    "Per-episode base noise digest matches across R1/R4 and all sigma levels; applied-noise digest matches R1/R4 at each sigma.",
+    "Each of 18 Final files has exactly 1,000 ordered, unique seeds 321000\u2013321999; all paired positions match exactly.",
+    "Paired beneficial/harmful arithmetic and model hashes verified.",
+    "No old or previous H4 result files overwritten."
+  ],
+  "noise": {
+    "algorithm": "For each episode, initialize numpy.random.Generator(PCG64(SeedSequence([noise_generation_seed, evaluation_seed]))); draw standard_normal((161,2)) as float32 once. Array row t is the absolute environment control-step t XY standard-normal pair, independent of policy inference calls. Multiply the same base array by sigma in meters for applied errors. R1/R4 and all sigma levels therefore share the same base noise at each (evaluation_seed, control_step).",
+    "noise_generation_seed": 20261106,
+    "numpy_version": "2.5.4",
+    "recorded_row_digests": [
+      "base_noise_sha256",
+      "applied_noise_sha256"
+    ],
+    "schedule_rows": 161,
+    "stateless_with_respect_to_controller_calls": true
+  },
+  "outcomes": {
+    "primary": [
+      "Gap(seed,sigma)=Success(R4,sigma)\u2212Success(R1,sigma) for each BC seed and each sigma.",
+      "NoiseInteraction(seed,sigma)=Gap(seed,sigma)\u2212Gap(seed,0) for sigma=0.005m and 0.010m."
+    ],
+    "secondary": [
+      "Success rate",
+      "R4\u2212R1 gap",
+      "paired beneficial/harmful transitions",
+      "success degradation from sigma=0 for each interval",
+      "inference calls and latency",
+      "episode steps and wall time",
+      "first gripper-close and first-lift steps",
+      "EN/ES/WN/WS success and paired transitions"
+    ]
+  },
+  "policy": {
+    "architecture": "existing state-conditioned H4 MLP BC",
+    "gripper_convention": ">=0 open, <0 close",
+    "horizon": 4,
+    "normalization": "checkpoint observation mean/std, unchanged",
+    "output_shape": [
+      4,
+      4
+    ],
+    "training_or_updates": "none; no BC/SAC training, parameter updates, reward changes, SAC, or learned gate"
+  },
+  "protocol_status": "preregistered_before_smoke_and_final_outcomes",
+  "research_questions": {
+    "RQ1": "Does R4 retain its success-rate advantage over R1 under noisy object-position observations?",
+    "RQ2": "Does increased observation noise change the performance difference between frequent feedback and temporally consistent open-loop execution?",
+    "RQ3": "Are the effects consistent across the three frozen BC training seeds?"
+  },
+  "statistics": {
+    "bootstrap": "10,000 paired percentile bootstrap resamples of the 1,000 evaluation seeds; resample a seed index jointly across all six interval\u00d7noise outcomes within each BC model. Fixed bootstrap RNG seed 20261107. Report 95% CIs for Gap and NoiseInteraction contrasts.",
+    "exact_tests": "Exact two-sided McNemar for R4 vs R1 within each sigma; Holm correction across the three BC seeds separately at each sigma. Exact McNemar for each noisy-vs-clean comparison within the same model and interval; Holm correction across all 12 noisy-vs-clean tests.",
+    "regional": "Exploratory EN/ES/WN/WS summaries and transition counts, no confirmatory claim.",
+    "seed_level": "Report all three model-specific results, directional consistency, and descriptive mean/median/sample SD/range across only three trained BC seeds; no population-level superiority claim.",
+    "timing": "Inference latency and episode wall time descriptive due sequential hardware-load sensitivity.",
+    "unit": "evaluation seed/initial position paired within each frozen model; do not treat positions as independent trained policies"
+  },
+  "stopping_conditions": [
+    "Stop and preserve outputs on any duplicate seed, schema/hash/position mismatch, concurrent writer lock, or checkpoint mutation.",
+    "Do not change noise levels, noise generation seed, control conditions, success rule, or evaluation seeds after Final outcomes are inspected."
+  ],
+  "study": "Observation Noise Robustness of Frozen H4 Replanning Policies"
+}
