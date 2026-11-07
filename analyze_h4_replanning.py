@@ -17,7 +17,11 @@ BOOTSTRAPS=10000
 
 
 def read_config(model_seed, interval):
+    recovery_label=''
     p=OUT/f'final_H4_seed{model_seed}_R{interval}.csv'
+    if not p.is_file() and model_seed==456 and interval==1:
+        recovery_label='_recovery1'
+        p=OUT/f'final_H4_seed{model_seed}_R{interval}{recovery_label}.csv'
     if not p.is_file(): raise FileNotFoundError(p)
     with p.open(newline='',encoding='utf-8') as f:
         reader=csv.DictReader(f)
@@ -28,7 +32,7 @@ def read_config(model_seed, interval):
     digest=sha256(model_path); protocol_hash=PROTOCOL_SHA.read_text().split()[0]
     validate_rows(rows,seeds,model_seed,interval,digest,protocol_hash)
     if len(rows)!=2000: raise ValueError(f'Expected 2000 rows in {p}')
-    meta=json.loads((OUT/f'final_H4_seed{model_seed}_R{interval}.json').read_text())
+    meta=json.loads((OUT/f'final_H4_seed{model_seed}_R{interval}{recovery_label}.json').read_text())
     if meta['checkpoint_sha256']!=digest or meta['protocol_sha256']!=protocol_hash:
         raise ValueError(f'Metadata provenance mismatch for {p}')
     return {int(r['seed']):r for r in rows}

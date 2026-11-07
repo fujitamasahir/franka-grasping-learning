@@ -5,7 +5,7 @@ from pathlib import Path
 
 from action_chunking import ActionChunkBC, BCActionChunkController, build_windows, pair_rollout_rows, validate_rollout_seed_set
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
-from evaluate_h4_replanning import FIELDS, validate_rows
+from evaluate_h4_replanning import FIELDS, exclusive_run_lock, validate_rows
 from analyze_h4_replanning import exact_mcnemar, holm, paired_bootstrap_ci
 
 
@@ -120,6 +120,15 @@ class ActionChunkingTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_rows([row(10),row(10)],range(10,12),42,2,'checkpoint','protocol')
         with self.assertRaises(ValueError):validate_rows([row(11),row(10)],range(10,12),42,2,'checkpoint','protocol')
         with self.assertRaises(ValueError):validate_rows([row(10)],range(10,12),42,2,'different','protocol')
+
+    def test_h4_evaluator_rejects_concurrent_writer_lock(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            lock=Path(tmp)/'eval.lock'
+            with exclusive_run_lock(lock):
+                self.assertTrue(lock.exists())
+                with self.assertRaises(RuntimeError):
+                    with exclusive_run_lock(lock): pass
+            self.assertFalse(lock.exists())
 
     def test_wrapper_alignment_xyz_only_and_resume(self):
         with tempfile.TemporaryDirectory() as tmp:

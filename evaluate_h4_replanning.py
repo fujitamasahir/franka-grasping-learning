@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import time
+from contextlib import contextmanager
 from pathlib import Path
 
 import numpy as np
@@ -67,6 +68,23 @@ def append_row(path, row, new_file):
         f.flush(); os.fsync(f.fileno())
 
 
+@contextmanager
+def exclusive_run_lock(path):
+    """Prevent overlapping writers for the same evaluation configuration."""
+    path=Path(path)
+    try:
+        fd=os.open(path,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
+    except FileExistsError as exc:
+        raise RuntimeError(f'Another or stale evaluation lock exists: {path}; preserve and inspect it before proceeding') from exc
+    try:
+        with os.fdopen(fd,'w',encoding='utf-8') as f:
+            f.write(json.dumps({'pid':os.getpid(),'created_unix':time.time()})+'\n')
+            f.flush();os.fsync(f.fileno())
+        yield
+    finally:
+        path.unlink(missing_ok=True)
+
+
 def rollout(model, checkpoint, model_seed, interval, seed, checkpoint_hash, protocol_hash, trace=False):
     env = FrankaAutonomousEnv(position_range=.20)
     env.max_move = float(checkpoint['max_move'])
@@ -110,12 +128,7 @@ def rollout(model, checkpoint, model_seed, interval, seed, checkpoint_hash, prot
     return row, trace_rows
 
 
-def main():
-    p=argparse.ArgumentParser()
-    p.add_argument('--model-seed',type=int,choices=(42,123,456),required=True)
-    p.add_argument('--interval',type=int,choices=(1,2,4),required=True)
-    p.add_argument('--phase',choices=('smoke','final'),required=True)
-    a=p.parse_args()
+def run_evaluation(a):
     if not PROTOCOL.exists() or not PROTOCOL_SHA.exists():
         raise FileNotFoundError('Preregistered protocol and SHA sidecar are required')
     expected_protocol_hash=PROTOCOL_SHA.read_text().split()[0]
@@ -140,10 +153,11 @@ def main():
         raise RuntimeError('Unexpected training position range in frozen checkpoint')
     seeds_cfg=protocol['evaluation'][a.phase]
     seeds=range(seeds_cfg[0],seeds_cfg[1]+1)
-    tag=f'{a.phase}_H4_seed{a.model_seed}_R{a.interval}'
+    suffix=f'_{a.run_label}' if a.run_label else ''
+    tag=f'{a.phase}_H4_seed{a.model_seed}_R{a.interval}{suffix}'
     final=OUT/f'{tag}.csv'; partial=OUT/f'{tag}.partial.csv'; meta=OUT/f'{tag}.json'
     OUT.mkdir(parents=True,exist_ok=True)
-    config={'phase':a.phase,'model_seed':a.model_seed,'interval':a.interval,'seed_range_inclusive':list(seeds_cfg),
+    config={'phase':a.phase,'model_seed':a.model_seed,'interval':a.interval,'run_label':a.run_label,'seed_range_inclusive':list(seeds_cfg),
             'checkpoint_path':str(model_path),'checkpoint_sha256':checkpoint_hash,'protocol_sha256':actual_protocol_hash,
             'horizon':4,'environment':protocol['environment']}
     if final.exists():
@@ -174,6 +188,21 @@ def main():
     if final.exists(): raise FileExistsError(f'Refusing to overwrite {final}')
     partial.replace(final)
     print(f'Completed {final}: {len(rows)} episodes',flush=True)
+
+
+def main():
+    p=argparse.ArgumentParser()
+    p.add_argument('--model-seed',type=int,choices=(42,123,456),required=True)
+    p.add_argument('--interval',type=int,choices=(1,2,4),required=True)
+    p.add_argument('--phase',choices=('smoke','final'),required=True)
+    p.add_argument('--run-label',default='',help='Use a separate, auditable output name for a full recovery run')
+    a=p.parse_args()
+    if a.run_label and not all(ch.isalnum() or ch in '-_' for ch in a.run_label):
+        raise ValueError('run-label may contain only letters, digits, hyphen, and underscore')
+    OUT.mkdir(parents=True,exist_ok=True)
+    tag=f'{a.phase}_H4_seed{a.model_seed}_R{a.interval}{("_"+a.run_label) if a.run_label else ""}'
+    with exclusive_run_lock(OUT/f'{tag}.lock'):
+        run_evaluation(a)
 
 
 if __name__=='__main__': main()
