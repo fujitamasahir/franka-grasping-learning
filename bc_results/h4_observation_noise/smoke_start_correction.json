@@ -1,0 +1,8 @@
+{
+  "stage": "pre-Final smoke start, before any rollout or result file creation",
+  "issue": "The evaluator initially looked up phase keys named smoke/final, while the preregistered JSON stores smoke_seed_range_inclusive and final_seed_range_inclusive.",
+  "impact": "Execution stopped before reading the seed range. No episode ran and no smoke or Final result file was created.",
+  "correction": "Read the existing preregistered *_seed_range_inclusive fields without changing the protocol.",
+  "protocol_changed": false,
+  "final_outcomes_inspected": false
+}

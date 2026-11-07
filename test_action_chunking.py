@@ -7,7 +7,7 @@ from action_chunking import ActionChunkBC, BCActionChunkController, build_window
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
 from evaluate_h4_replanning import FIELDS, exclusive_run_lock, validate_rows
 from analyze_h4_replanning import exact_mcnemar, holm, paired_bootstrap_ci
-from evaluate_h4_observation_noise import apply_observation_noise, make_noise_schedule
+from evaluate_h4_observation_noise import apply_observation_noise, make_noise_schedule, phase_seed_range
 from franka_autonomous_env import FrankaAutonomousEnv
 
 
@@ -153,6 +153,12 @@ class ActionChunkingTests(unittest.TestCase):
         self.assertFalse(np.array_equal(base_a,base_other))
         self.assertEqual(base_a.shape,(161,2))
         self.assertFalse(np.array_equal(base_a[4],base_a[5]))
+
+    def test_noise_evaluator_reads_preregistered_phase_ranges(self):
+        ranges={'smoke_seed_range_inclusive':[322000,322019],'final_seed_range_inclusive':[321000,321999]}
+        self.assertEqual(phase_seed_range(ranges,'smoke'),[322000,322019])
+        self.assertEqual(phase_seed_range(ranges,'final'),[321000,321999])
+        with self.assertRaises(KeyError):phase_seed_range(ranges,'validation')
 
     def test_policy_observation_noise_does_not_change_environment_state(self):
         env=FrankaAutonomousEnv(position_range=.20)

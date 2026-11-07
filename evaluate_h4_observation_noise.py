@@ -52,6 +52,13 @@ def apply_observation_noise(observation, xy_noise):
 def region(x,y): return ('E' if x>=.55 else 'W')+('N' if y>=0 else 'S')
 
 
+def phase_seed_range(evaluation,phase):
+    if phase in evaluation:return evaluation[phase]
+    key=f'{phase}_seed_range_inclusive'
+    if key not in evaluation:raise KeyError(f'Missing preregistered seed range for phase {phase}')
+    return evaluation[key]
+
+
 def read_rows(path):
     with path.open(newline='',encoding='utf-8') as f:
         reader=csv.DictReader(f)
@@ -142,7 +149,7 @@ def run(a):
     model,ck=load_bc_policy(model_path)
     if int(ck['horizon'])!=4 or int(ck['seed'])!=a.model_seed:raise RuntimeError('Unexpected checkpoint architecture/seed')
     sigma=a.noise_mm/1000.0
-    seed_range=protocol['evaluation'][a.phase]
+    seed_range=phase_seed_range(protocol['evaluation'],a.phase)
     seeds=range(seed_range[0],seed_range[1]+1)
     tag=f'{a.phase}_H4_seed{a.model_seed}_R{a.interval}_noise{a.noise_mm}mm'
     final=OUT/f'{tag}.csv';partial=OUT/f'{tag}.partial.csv';meta=OUT/f'{tag}.json'
