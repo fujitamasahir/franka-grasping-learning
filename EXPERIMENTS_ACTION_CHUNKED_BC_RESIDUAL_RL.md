@@ -136,8 +136,8 @@ The primary differential benefit is computed from each architecture's own BC bas
 
 | Horizon | Mean selected success | Mean gain (pp) | Mean rescue | Mean regression | BC calls / ep | SAC activation | SAC calls / ep | Residual norm (mm) | Saturation | Intervention |
 |---|---|---|---|---|---|---|---|---|---|---|
-| H1 | 87.95% | +4.53 | 120.1 | 29.4 | 124.3 | 100.0% | 248607 | 2.70 | 5.31% | 100.00% |
-| H4 | 95.33% | +0.96 | 25.3 | 6.1 | 30.5 | 100.0% | 241174 | 2.45 | 2.84% | 100.00% |
+| H1 | 87.95% | +4.53 | 120.1 | 29.4 | 124.3 | 100.0% | 124.3 | 2.70 | 5.31% | 100.00% |
+| H4 | 95.33% | +0.96 | 25.3 | 6.1 | 30.5 | 100.0% | 120.6 | 2.45 | 2.84% | 100.00% |
 
 ## Rescue and Regression
 
@@ -183,8 +183,8 @@ H1 replans BC every step. H4 replans once per four steps, so the measured BC cal
 
 | Horizon | BC calls / episode | BC latency (ms) | SAC latency (ms) | Residual episode time (s) | SAC calls / episode |
 |---|---|---|---|---|---|
-| H1 | 127.2 | 0.034 | 0.098 | 0.384 | 248607 |
-| H4 | 30.8 | 0.040 | 0.099 | 0.369 | 241174 |
+| H1 | 127.2 | 0.034 | 0.098 | 0.384 | 124.3 |
+| H4 | 30.8 | 0.040 | 0.099 | 0.369 | 120.6 |
 
 BC optimization time by training seed:
 

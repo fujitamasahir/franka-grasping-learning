@@ -63,8 +63,8 @@
       "method": "Kept the first appended row for each protocol seed; no success or performance fields were used to choose rows."
   },
   "report_generation_issue": {
-    "issue": "The report renderer cast a fractional mean BC inference-call count to int.",
-    "correction": "Changed the renderer to parse mean_bc_calls as float and regenerated the report.",
+    "issue": "The report renderer cast a fractional mean BC inference-call count to int and displayed total SAC inference calls across 2,000 episodes under a per-episode heading.",
+    "correction": "Changed the renderer to parse mean_bc_calls as float, divide SAC call totals by episode count, and regenerated the report.",
     "evaluation_or_analysis_data_changed": false
   }
   }
