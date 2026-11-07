@@ -5,6 +5,8 @@ from pathlib import Path
 
 from action_chunking import ActionChunkBC, BCActionChunkController, build_windows, pair_rollout_rows, validate_rollout_seed_set
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
+from evaluate_h4_replanning import FIELDS, validate_rows
+from analyze_h4_replanning import exact_mcnemar, holm, paired_bootstrap_ci
 
 
 def test_windows_share_valid_starts_and_never_cross_episode():
@@ -95,6 +97,29 @@ class ActionChunkingTests(unittest.TestCase):
         self.assertEqual(restored.replan_interval,4)
         wrong=BCActionChunkController(m,np.zeros(12),np.ones(12),4,replan_interval=2)
         with self.assertRaises(ValueError):wrong.load_state_dict(state)
+
+    def test_h4_exact_paired_analysis_and_holm(self):
+        baseline={i:{'success':int(i in (0,1,2))} for i in range(5)}
+        comparison={0:{'success':1},1:{'success':0},2:{'success':0},3:{'success':1},4:{'success':1}}
+        result=exact_mcnemar(baseline,comparison)
+        self.assertEqual((result['baseline_success_comparison_failure'],result['baseline_failure_comparison_success']),(2,2))
+        self.assertEqual(result['exact_two_sided_p'],1.0)
+        self.assertEqual(holm([.01,.04,.03]),[.03,.06,.06])
+        ci=paired_bootstrap_ci(baseline,comparison,123)
+        self.assertEqual(ci,paired_bootstrap_ci(baseline,comparison,123))
+
+    def test_h4_resume_rows_validate_seed_order_and_provenance(self):
+        def row(seed):
+            d={k:'0' for k in FIELDS}
+            d.update({'seed':str(seed),'model_seed':'42','replan_interval':'2','success':'1','steps':'10',
+                'return':'1.0','cube_x':'0.55','cube_y':'0.0','region':'EN','closed_fraction':'0.5',
+                'bc_inference_calls':'5','bc_total_inference_ms':'1.0','bc_mean_latency_ms':'0.2',
+                'episode_wall_seconds':'0.1','checkpoint_sha256':'checkpoint','protocol_sha256':'protocol'})
+            return d
+        self.assertEqual(validate_rows([row(10)],range(10,12),42,2,'checkpoint','protocol'),{10})
+        with self.assertRaises(ValueError):validate_rows([row(10),row(10)],range(10,12),42,2,'checkpoint','protocol')
+        with self.assertRaises(ValueError):validate_rows([row(11),row(10)],range(10,12),42,2,'checkpoint','protocol')
+        with self.assertRaises(ValueError):validate_rows([row(10)],range(10,12),42,2,'different','protocol')
 
     def test_wrapper_alignment_xyz_only_and_resume(self):
         with tempfile.TemporaryDirectory() as tmp:
