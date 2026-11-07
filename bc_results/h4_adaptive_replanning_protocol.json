@@ -1,0 +1,207 @@
+{
+  "branch": "experiment/h4-uncertainty-adaptive-replanning",
+  "calibration": {
+    "adaptive_candidate_rollout_method": "Evaluate Fixed R1, Fixed R4, and a complete warm-up-matched R4-first-20-then-R1 branch once per calibration position. For each candidate threshold, use only the estimated sigma from that shared R4 prefix to select the outcome from Fixed R4 (identical full trajectory) or the separately executed warm-up-matched R1 branch. Never infer a switched R1 outcome from the Fixed R1 label.",
+    "branch_equivalence_verified_in_smoke": true,
+    "each_candidate_uses_complete_adaptive_rollouts": false,
+    "episodes_per_seed_noise_cell": 300,
+    "fixed_baselines_evaluated_once": true,
+    "model_seeds": [
+      42,
+      123,
+      456
+    ],
+    "noise_sigma_m": [
+      0.0,
+      0.005,
+      0.01
+    ],
+    "objective": "maximize equal-weight mean success over 3 models x 3 noise conditions, averaging the same 300 positions per cell",
+    "seed_range_inclusive": [
+      330000,
+      330299
+    ],
+    "threshold_is_global": true,
+    "tie_break": "fewest mean BC inference calls, then smaller threshold"
+  },
+  "candidate_thresholds_m": [
+    0.005,
+    0.0075,
+    0.01
+  ],
+  "controllers": {
+    "Adaptive": "execute R4 for first 20 control steps, estimate once, then use R4 when sigma_hat <= frozen global threshold else R1 for rest of episode; no continuous adaptation",
+    "R1": "fixed one-step replanning",
+    "R4": "fixed four-step action chunk execution",
+    "gripper_convention": "existing model convention unchanged",
+    "horizon": 4
+  },
+  "environment": {
+    "class": "FrankaAutonomousEnv",
+    "control_dt_s": 0.1,
+    "max_move_m": 0.15,
+    "max_time_s": 16.0,
+    "position_range_m": 0.2,
+    "success_rule": "existing lift >= 0.10 m sustained for >= 5 steps",
+    "true_state_physics_reward_normalization_unchanged": true
+  },
+  "estimator": {
+    "assumption": "cube approximately stationary through first 20 control steps",
+    "formula": "sqrt((sample_variance_x_ddof1 + sample_variance_y_ddof1)/2)",
+    "inputs": "only noisy policy observations; no true sigma, clean position, error vector, hidden state, success labels, or evaluation seed feature",
+    "motion_audit": "ground-truth cube displacement during first 20 steps is diagnostic only and never passed to controller",
+    "name": "initial-window noisy XY sample standard deviation",
+    "observation_indices": [
+      3,
+      4
+    ],
+    "stationarity_audit_acceptance_threshold_m": 0.001,
+    "switch_timing": "after 20 R4-executed control steps at the four-step chunk boundary",
+    "window_observations_t": [
+      0,
+      19
+    ]
+  },
+  "evaluation": {
+    "configuration_count": 27,
+    "controllers": [
+      "R1",
+      "R4",
+      "Adaptive"
+    ],
+    "episodes_per_final_cell": 1000,
+    "final_seed_range_inclusive": [
+      331000,
+      331999
+    ],
+    "model_seeds": [
+      42,
+      123,
+      456
+    ],
+    "noise_sigma_m": [
+      0.0,
+      0.005,
+      0.01
+    ],
+    "sequential": true,
+    "shared_initial_positions": true,
+    "smoke2_seed_range_inclusive": [
+      333000,
+      333019
+    ],
+    "smoke_seed_range_inclusive": [
+      332000,
+      332019
+    ],
+    "total_final_episodes": 27000
+  },
+  "failure_and_stopping_conditions": [
+    "stop Calibration if stationarity assumption is materially violated and no pre-Final valid estimator is specified",
+    "preserve outputs on schema/hash/position/noise mismatch or duplicate seed",
+    "stop compute at user-requested approximately 08:00 local time at a complete-cell or append-safe episode boundary; record incomplete cells and resume instructions",
+    "never select or retune threshold from Final outcomes"
+  ],
+  "frozen_models": {
+    "123": {
+      "path": "bc_models/action_chunking/H4_seed123.pt",
+      "sha256": "5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c"
+    },
+    "42": {
+      "path": "bc_models/action_chunking/H4_seed42.pt",
+      "sha256": "41cda0af609e3064ba8e485a4ef81289c319472b08d1f710d96b30f6cb470557"
+    },
+    "456": {
+      "path": "bc_models/action_chunking/H4_seed456.pt",
+      "sha256": "649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706"
+    }
+  },
+  "hypotheses": [
+    "A simple sample-variance estimate may distinguish coarse noise levels, subject to cube-motion stationarity.",
+    "A globally calibrated episode-level R4-to-R1 switching rule may improve equal-weight calibration performance over fixed intervals.",
+    "Adaptive execution may retain some R4 benefit at lower uncertainty and reduce harmful outcomes at higher uncertainty.",
+    "Effects may be heterogeneous across the three BC seeds; no directional Final outcome is assumed."
+  ],
+  "integrity_checks": [
+    "protocol SHA fixed before calibration and final",
+    "model hashes verified before and after evaluation",
+    "20-step estimator reads only noisy observation cube XY",
+    "cube-motion ground truth used only in separate diagnostic output",
+    "identical position/noise schedules across controllers by seed",
+    "threshold selected using Calibration outcomes only and frozen before Final",
+    "first 20 actions are R4; switch at chunk boundary without half-consumed chunk",
+    "exact unique ordered seed ranges per file",
+    "append-safe partial CSV, strict metadata/schema/hash checks and exclusive lock",
+    "do not overwrite existing experiment data; retain corrupt partials and hashes",
+    "no training, checkpoint mutation, or final-based tuning"
+  ],
+  "noise": {
+    "clipping": false,
+    "generation_seed": 20261106,
+    "paired_by_evaluation_seed_and_absolute_control_step": true,
+    "same_xy_error_added_to_cube_and_relative_xy": true,
+    "sigma_m": [
+      0.0,
+      0.005,
+      0.01
+    ],
+    "source": "evaluate_h4_observation_noise.make_noise_schedule",
+    "targets_observation_indices": [
+      3,
+      4,
+      6,
+      7
+    ]
+  },
+  "outcomes": {
+    "primary": "overall grasp success equally weighted across 3 BC seeds x 3 noise conditions",
+    "primary_comparisons": [
+      "Adaptive vs Fixed R1",
+      "Adaptive vs Fixed R4",
+      "Adaptive vs Calibration-selected best fixed baseline"
+    ],
+    "secondary": [
+      "per-noise and per-BC-seed success",
+      "estimated sigma distribution and coarse classification diagnostic",
+      "switch frequency",
+      "success conditional on chosen interval",
+      "paired beneficial/harmful transitions",
+      "inference calls/time",
+      "episode wall time and steps",
+      "region success",
+      "stationarity audit",
+      "decision failure diagnostics"
+    ]
+  },
+  "precalibration_corrections": [
+    {
+      "change": "Evaluator now reads the protocol phase-specific *_seed_range_inclusive field directly.",
+      "data_impact": "No rollout or outcome row was produced by the failed invocation; corrected smoke was rerun from empty outputs.",
+      "issue": "Initial smoke invocation used a seed-range key alias absent from the new protocol schema and exited before the first rollout.",
+      "protocol_frozen_before_calibration": true
+    },
+    {
+      "change": "Preserved preliminary smoke files with their original SHA; preregistered a separate smoke2 seed range 333000-333019 and includes WarmupR1 for equivalence checks.",
+      "data_impact": "Preliminary outputs are not used for Calibration; smoke2 outputs are validated against the amended protocol before Calibration.",
+      "issue": "Post-smoke protocol amendments changed the protocol SHA after preliminary smoke outputs were written, and branch-equivalence testing required a warm-up-matched R1 path.",
+      "protocol_frozen_before_calibration": true
+    }
+  ],
+  "related_work_positioning": "A controlled evaluation of an execution rule, not a claim that adaptive replanning itself is novel; distinguish from ACT, Diffusion Policy, ResiP, ResFiT, and prior adaptive action chunking.",
+  "research_questions": [
+    "Can noisy cube-position observations alone estimate episode-level observation uncertainty?",
+    "Can a globally calibrated uncertainty threshold improve over fixed R1 and R4 over mixed observation noise?",
+    "Can adaptive switching retain the clean-observation R4 advantage and reduce high-noise regressions?",
+    "Are results directionally consistent across three frozen BC training seeds?"
+  ],
+  "source_commit": "f0214311b56a8a254a71d118f49748348f1dac09",
+  "source_protocol_sha256": "901eb426f1088e3c309ff9b6f59100832af8e1646761249c72937b18c35775cb",
+  "statistics": {
+    "bootstrap": "10,000 paired resamples of position indices jointly across controllers and noise within each fixed model; equal-weight summary across nine model x noise cells",
+    "interpretation": "conditional position uncertainty only; three trained models do not support precise population inference over future BC training seeds",
+    "paired_unit": "shared evaluation seed/initial position within each frozen model and noise schedule",
+    "tests": "exact two-sided McNemar by model seed and noise for prespecified controller comparisons; Holm correction by comparison family"
+  },
+  "status": "preregistered before smoke, calibration, and final outcomes",
+  "study": "Uncertainty-Aware Adaptive Replanning for Frozen H4 Behavior Cloning"
+}

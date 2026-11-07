@@ -1,0 +1,310 @@
+{
+  "adaptive_branch_equivalence_checks": 180,
+  "adaptive_matches_fixed_R4_or_warmup_R1_branch_exactly": true,
+  "adaptive_threshold_used_for_smoke_m": 0.0075,
+  "applied_noise_paired_by_sigma": true,
+  "base_noise_paired_across_all_conditions": true,
+  "cells": 36,
+  "configurations": [
+    {
+      "controller": "R1",
+      "csv_sha256": "1ddb860f3d60b961d5b7eacb6f06cb5c7b780f5f55e7a52f8e58fdc641c596d9",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "b50de6c170ba4233513fcacb2669d0de4def902dac6e35bd32cc9622a763980c",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "bed14ae17ebdb303b1c84b7ba8900fa61eb51265d1c9bcbe4b518a93d2e31049",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "f1ada8d00c3d4647e5ad5984783c4010cd82d3cf2e2e0dcd8d4d983f1eb6ed6a",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "c6347c57a0af3f08b4c9590112f0b81589cc99e8435ac0f97cb610386db10acc",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "f8e33cd3d5e6c775aaa66e16ea099c402c63ee24874081c3733b630c8bd3045e",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 10
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "9f8623f196236c472ca3c1bd25a8d6b8758aaee221fe75dbfcf700a69c3d0e14",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 0
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "836d20735da57608b6c4bd93705430de7cebe62f4ab08ab1a6b8f08fad97a000",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 5
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "7762a60d47be1a2b29c76738d5961adc83aa380c569c74322f011bd7b68b94aa",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 10
+    },
+    {
+      "controller": "WarmupR1",
+      "csv_sha256": "39c222594c70dec6fa3505a2f3dda80b256cb8ac568f3015d77632213031bdc6",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 0
+    },
+    {
+      "controller": "WarmupR1",
+      "csv_sha256": "9260ba802cff2519c7eb234451b55db8a46502e3facaf8d235eea35d6cbd1c46",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 5
+    },
+    {
+      "controller": "WarmupR1",
+      "csv_sha256": "986fa93efbae8a7ffecf9d498d1ba83d80a85b23c140f6894c4d865ffdff98e1",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "e744bc5f68c5bf5818f27463e69377d3cf231386d1385ffa506ffa5485ea0e7c",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "6dd85d4d0a591656a84e777e7f3a72a53fa003f637fe1c0e9d4ef4afd70b75f1",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "3dfcd23f6b77ef941aa4f3dde276717938935cf6960a8cd4a0db0e1d8cb735ae",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "0cb47baf92750d437660b6725ab89f24626bcde4bf2fbf4f4442be7a72bbf3fe",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "81302bcf665adaad2b701a0305d71fe447e245603301e75b85df5360fa7d81af",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "93064f46f61e538494bc10632063729d7f525d2ce200beb4abc643ad49c0613b",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 10
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "9caad1d39ba19c300526aabd63bb82be228825bb85e19650ee0a8fcc3dc7bc45",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 0
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "ac0f8eab94743379cd9579d468f3d41dd9789c8916e98bf4cf5a669984897b7f",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 5
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "0d86bcc449b7efb15c61df4c0a50f935990052f7655a953a69b6fcd66537116f",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 10
+    },
+    {
+      "controller": "WarmupR1",
+      "csv_sha256": "0f95232b23f64b773ae5438fb077358428bc33288cd2a52332271548ee0f173d",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 0
+    },
+    {
+      "controller": "WarmupR1",
+      "csv_sha256": "96041217d6b52d86f0e87dde1e6335bcc033c70c4fe21faf4acee226c769d374",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 5
+    },
+    {
+      "controller": "WarmupR1",
+      "csv_sha256": "0c8c38a34c229dbab6b059b6a942a114b79ebf673d320ee26893d7c4d9ec3b73",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "bb727b8310d91d86811d2040fa40fc5c992314d98d44662e1cc9091743bcfebf",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "a17f41c8796b8f41d3bcfcb4ad10f7ac6b91f4db5b1f6f1dfac8220a1b6b22b5",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "6311b57d7f535d57c71effc2bc6c02bb22a29dc56947dd0fbdbe1a4fa89df2b8",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "481927371d2416965a28151a4eb9781e3a08ef42c27fde78116eb09cabe42a8a",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "ebad371e80e0917cc6a5f9f221a720af42026fa35775a18ac02492937da4c14d",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "441ca831163cd6f606c2e8719efd49e60699fb7e22b3d87602f4ce079e4fe64c",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 10
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "09f5a7a4a74c9357a717475b041da856caa64f5a857c5d55169f3457a5ca7616",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 0
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "55b6aa96198cbdb0981fd02256df29ccbc8cb1b5a4327f01957200f9ed6ebccd",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 5
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "25a29def6ce7f97b8aaff88117c3e24fe9ad3e75feb1031f03f9f42093710ad8",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 10
+    },
+    {
+      "controller": "WarmupR1",
+      "csv_sha256": "70e07eb753ab2d6e9ffea6f78d5376ae8214627778712307f9bbd32a60003d58",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 0
+    },
+    {
+      "controller": "WarmupR1",
+      "csv_sha256": "f31cc5fd493480ba1df39c31dbc392d48a9854736f82ddae7ae21bc28ec3a103",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 5
+    },
+    {
+      "controller": "WarmupR1",
+      "csv_sha256": "f68df7e3a9787cd39bf1a4738fb486292771fa515b45813c794d5d5b018fad55",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 10
+    }
+  ],
+  "episodes": 720,
+  "estimated_sigma_summary_m": {
+    "0": {
+      "max": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "n": 60
+    },
+    "10": {
+      "max": 0.012418739196651,
+      "median": 0.0101495280795335,
+      "min": 0.006625688343030228,
+      "n": 60
+    },
+    "5": {
+      "max": 0.006209369634425105,
+      "median": 0.005074760390164086,
+      "min": 0.0033128431469048006,
+      "n": 60
+    }
+  },
+  "max_ground_truth_cube_displacement_first_20_steps_m": 1.9016279334042755e-10,
+  "positions_paired_across_all_conditions": true,
+  "seed_range_inclusive": [
+    333000,
+    333001,
+    333002,
+    333003,
+    333004,
+    333005,
+    333006,
+    333007,
+    333008,
+    333009,
+    333010,
+    333011,
+    333012,
+    333013,
+    333014,
+    333015,
+    333016,
+    333017,
+    333018,
+    333019
+  ],
+  "smoke_outcomes_not_used_for_threshold_selection": true,
+  "smoke_passed": true,
+  "stationarity_criterion_m": 0.001
+}
