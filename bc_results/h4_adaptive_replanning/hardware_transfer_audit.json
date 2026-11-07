@@ -126,6 +126,10 @@
       "sha256": "649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706"
     }
   },
+  "python_syntax_checks": {
+    "files": 78,
+    "passed": true
+  },
   "regression_checks": [
     {
       "controller": "R1",
@@ -366,5 +370,12 @@
     "errors_reason": "Missing unrelated SAC baseline bc_models/fair_wide_expert_seed42.pt; all H4/adaptive tests passed",
     "passed": 28,
     "run": 32
+  },
+  "unit_tests_after_baseline_transfer": {
+    "baseline_sha256": "576746e46fee14ac7281b8cbec449b95e766564952c96533fa49a7c84cdb5b8b",
+    "command": "MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python -m unittest discover -v",
+    "errors": 0,
+    "passed": 33,
+    "run": 33
   }
 }

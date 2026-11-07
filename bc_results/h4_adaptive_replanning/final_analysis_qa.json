@@ -1,0 +1,30 @@
+{
+  "adaptive_selected_R4_exact_trajectory_matches": 6042,
+  "all_unit_tests_passed": 33,
+  "exact_mcnemar_checks_against_scipy_binomtest": 18,
+  "figure_files": [
+    "01_success_vs_noise.png",
+    "02_adaptive_improvement.png",
+    "03_estimated_vs_actual_noise.png",
+    "04_switch_frequency.png",
+    "05_inference_cost_vs_success.png",
+    "06_beneficial_harmful_transitions.png",
+    "01_success_vs_noise.svg",
+    "02_adaptive_improvement.svg",
+    "03_estimated_vs_actual_noise.svg",
+    "04_switch_frequency.svg",
+    "05_inference_cost_vs_success.svg",
+    "06_beneficial_harmful_transitions.svg"
+  ],
+  "final_cell_success_sums_verified": 27,
+  "final_integrity_audit_sha256": "a3d42e799dac94066dc133b3325cdd2891def35b4874c4ff568ab7a64d1089ec",
+  "final_summary_sha256": "d0860afc5173dc5936c0f593100cfe53ddb6c86ce3b61639c6adb116725c442f",
+  "maximum_initial_window_ground_truth_displacement_m": 2.013191974685098e-10,
+  "model_hashes_verified_after_run": true,
+  "paired_transition_arithmetic_checks": 18,
+  "partial_files": 0,
+  "passed": true,
+  "pooled_diagnostic_episode_count_per_noise": 3000,
+  "previous_complete_csv_hashes_unchanged": 21,
+  "python_syntax_files_passed": 78
+}
