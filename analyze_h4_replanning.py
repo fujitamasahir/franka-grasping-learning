@@ -107,7 +107,7 @@ def summarize(rows):
             successes=sum(int(r['success']) for r in current.values())
             cell[f'R{interval}']={'successes':successes,'episodes':len(current),'success_rate_pct':100*successes/len(current),
                 'mean_inference_calls':float(np.mean([int(r['bc_inference_calls']) for r in current.values()])),
-                'mean_inference_latency_ms_per_call':float(1000*sum(float(r['bc_total_inference_ms']) for r in current.values())/
+                'mean_inference_latency_ms_per_call':float(sum(float(r['bc_total_inference_ms']) for r in current.values())/
                     sum(int(r['bc_inference_calls']) for r in current.values())),
                 'mean_total_inference_ms':float(np.mean([float(r['bc_total_inference_ms']) for r in current.values()])),
                 'mean_episode_wall_seconds':float(np.mean([float(r['episode_wall_seconds']) for r in current.values()])),
@@ -182,14 +182,20 @@ def make_figures(rows, summary):
             ax.annotate(f'{s}/R{i}',(c['mean_inference_calls'],c['success_rate_pct']),xytext=(4,3),textcoords='offset points',fontsize=8)
     ax.set_xlabel('Mean BC inference calls per episode');ax.set_ylabel('Grasp success (%)');ax.grid(alpha=.25)
     savefig(fig,'inference_calls_vs_success')
-    # 4. Wall-clock runtime decomposition.
-    fig,ax=plt.subplots(figsize=(8,4.8));x=np.arange(9);labels=[];infer=[];other=[]
+    # 4. Separate y scales keep millisecond inference visible next to full episodes.
+    fig,(ax_wall,ax_infer)=plt.subplots(1,2,figsize=(10,4.8))
+    x=np.arange(9);labels=[];infer=[];wall=[]
     for s in MODEL_SEEDS:
         for i in INTERVALS:
             c=summary['per_model'][str(s)][f'R{i}'];labels.append(f'{s}\nR{i}')
-            infer.append(c['mean_total_inference_ms']/1000);other.append(max(0,c['mean_episode_wall_seconds']-c['mean_total_inference_ms']/1000))
-    ax.bar(x,infer,label='BC inference time',color='#4477AA');ax.bar(x,other,bottom=infer,label='Other measured episode time',color='#BBBBBB')
-    ax.set_xticks(x,labels);ax.set_ylabel('Mean episode time (s)');ax.set_xlabel('BC seed / runtime interval');ax.legend(frameon=False);ax.grid(axis='y',alpha=.25)
+            infer.append(c['mean_total_inference_ms']);wall.append(c['mean_episode_wall_seconds'])
+    ax_wall.bar(x,wall,color='#999999')
+    ax_wall.set_ylabel('Mean total episode wall time (s)');ax_wall.set_title('Full episode runtime')
+    ax_wall.set_xticks(x,labels);ax_wall.set_xlabel('BC seed / replanning interval');ax_wall.grid(axis='y',alpha=.25)
+    ax_infer.bar(x,infer,color='#4477AA')
+    ax_infer.set_ylabel('Mean total BC inference time (ms)');ax_infer.set_title('Policy inference cost')
+    ax_infer.set_xticks(x,labels);ax_infer.set_xlabel('BC seed / replanning interval');ax_infer.grid(axis='y',alpha=.25)
+    fig.tight_layout()
     savefig(fig,'episode_runtime')
     # 5. Regional rates with region sample counts.
     fig,axes=plt.subplots(2,2,figsize=(9,6.5),sharey=True)
@@ -203,6 +209,35 @@ def make_figures(rows, summary):
     axes[0,0].set_ylabel('Success (%)');axes[1,0].set_ylabel('Success (%)');axes[0,0].legend(frameon=False,fontsize=8)
     fig.suptitle('Regional grasp success (n shown per model and region)');fig.tight_layout()
     savefig(fig,'regional_success')
+
+
+def write_summary_csv(summary):
+    path=OUT/'summary_table.csv'
+    if path.exists():raise FileExistsError(f'Refusing to overwrite {path}')
+    fields=['bc_seed','interval','successes','episodes','success_rate_pct','gain_vs_R1_pp',
+        'mean_inference_calls','mean_inference_latency_ms_per_call','mean_total_inference_ms',
+        'mean_episode_wall_seconds','mean_control_steps','mean_successful_episode_steps',
+        'mean_first_close_step','mean_first_lift_step','paired_comparison','rescue','regression',
+        'net_improvement','exact_mcnemar_p','holm_adjusted_p','paired_ci_low_pp','paired_ci_high_pp']
+    with path.open('w',newline='',encoding='utf-8') as f:
+        writer=csv.DictWriter(f,fieldnames=fields,lineterminator='\n');writer.writeheader()
+        for seed in MODEL_SEEDS:
+            model=summary['per_model'][str(seed)]
+            for interval in INTERVALS:
+                cell=model[f'R{interval}']
+                cmp=model['paired_comparisons'].get(f'R{interval}_vs_R1') if interval>1 else None
+                ci=cmp['paired_difference_95pct_bootstrap_ci_pp'] if cmp else ('','')
+                writer.writerow({'bc_seed':seed,'interval':f'R{interval}','successes':cell['successes'],'episodes':cell['episodes'],
+                    'success_rate_pct':cell['success_rate_pct'],'gain_vs_R1_pp':0 if interval==1 else cmp['difference_pp'],
+                    'mean_inference_calls':cell['mean_inference_calls'],'mean_inference_latency_ms_per_call':cell['mean_inference_latency_ms_per_call'],
+                    'mean_total_inference_ms':cell['mean_total_inference_ms'],'mean_episode_wall_seconds':cell['mean_episode_wall_seconds'],
+                    'mean_control_steps':cell['mean_control_steps'],'mean_successful_episode_steps':cell['mean_successful_episode_steps'],
+                    'mean_first_close_step':cell['mean_first_close_step'],'mean_first_lift_step':cell['mean_first_lift_step'],
+                    'paired_comparison':'' if cmp is None else f'R{interval}_vs_R1','rescue':'' if cmp is None else cmp['rescue'],
+                    'regression':'' if cmp is None else cmp['regression'],'net_improvement':'' if cmp is None else cmp['net_improvement'],
+                    'exact_mcnemar_p':'' if cmp is None else cmp['exact_two_sided_p'],
+                    'holm_adjusted_p':'' if cmp is None else cmp['holm_adjusted_p_across_3_models'],
+                    'paired_ci_low_pp':'' if cmp is None else ci[0],'paired_ci_high_pp':'' if cmp is None else ci[1]})
 
 
 def savefig(fig, stem):
@@ -227,7 +262,8 @@ def main():
     if out.exists():raise FileExistsError(f'Refusing to overwrite {out}')
     out.write_text(json.dumps(summary,indent=2,sort_keys=True)+'\n')
     make_figures(rows,summary)
-    print(f'Wrote {out} and five SVG/PNG figure pairs')
+    write_summary_csv(summary)
+    print(f'Wrote {out}, summary table, and five SVG/PNG figure pairs')
 
 
 if __name__=='__main__':main()

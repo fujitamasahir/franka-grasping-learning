@@ -1,0 +1,10 @@
+{
+  "affected_field": "per_model[*].R*.mean_inference_latency_ms_per_call",
+  "conditions_changed": false,
+  "correction": "Use sum(episode_total_inference_ms)/sum(inference_calls), with no additional unit conversion. Recompute summary and figures from unchanged raw Final CSVs.",
+  "impact": "Only this descriptive derived field was inflated 1000x. Raw CSV latency fields, success outcomes, inference-call counts, total inference times, tests, and position-level statistics are unaffected.",
+  "issue": "summary latency-per-call field was scaled from milliseconds to milliseconds a second time",
+  "original_summary_path": "bc_results/h4_replanning/summary.json",
+  "original_summary_sha256": "f34ccfd00132ba63d95796e5fc38cb47753a9cd680b836512504cf13098e1e7b",
+  "preserved_original_summary": "bc_results/h4_replanning/summary_initial_latency_scale_error.json"
+}
