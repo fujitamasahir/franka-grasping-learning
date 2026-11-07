@@ -56,6 +56,46 @@ class ActionChunkingTests(unittest.TestCase):
         test_controller_executes_four_cached_actions_then_replans()
         test_controller_h1_replans_every_step_and_resume_keeps_plan()
 
+    def test_h4_runtime_replanning_intervals_and_gripper_alignment(self):
+        class IndexedChunks(torch.nn.Module):
+            def __init__(self):
+                super().__init__(); self.calls=0
+            def forward(self, obs):
+                self.calls += 1
+                xyz=torch.tensor([[[float(self.calls*10+i),0.,0.] for i in range(4)]]).repeat(len(obs),1,1)
+                grip=torch.tensor([[1.,-1.,1.,-1.]]).repeat(len(obs),1)
+                return xyz,grip
+        for interval, expected_indices in ((1,[0,0,0,0,0]),(2,[0,1,0,1,0]),(4,[0,1,2,3,0])):
+            m=IndexedChunks(); c=BCActionChunkController(m,np.zeros(12),np.ones(12),4,replan_interval=interval)
+            action=c.reset(np.zeros(12))
+            seen=[]
+            for step in range(5):
+                seen.append((c.chunk_index,float(action[0]),float(action[3])))
+                # A terminal transition must not cause another inference.
+                if step == 4:
+                    self.assertFalse(c.advance(np.zeros(12),terminated=True))
+                    break
+                replanned=c.advance(np.zeros(12))
+                action=c.planned_action
+                if replanned: self.assertEqual(c.chunk_index,0)
+            self.assertEqual([x[0] for x in seen],expected_indices)
+            for index, value, grip in seen:
+                self.assertEqual(int(value)%10,index)
+                self.assertEqual(grip,1.0 if index%2==0 else -1.0)
+            self.assertEqual(m.calls,c.inference_calls)
+            self.assertEqual(m.calls,(5+interval-1)//interval)
+
+    def test_h4_default_interval_is_backward_compatible_and_state_checked(self):
+        m=ActionChunkBC(4)
+        legacy=BCActionChunkController(m,np.zeros(12),np.ones(12),4)
+        self.assertEqual(legacy.replan_interval,4)
+        legacy.reset(np.zeros(12));state=legacy.state_dict()
+        restored=BCActionChunkController(m,np.zeros(12),np.ones(12),4)
+        restored.load_state_dict(state)
+        self.assertEqual(restored.replan_interval,4)
+        wrong=BCActionChunkController(m,np.zeros(12),np.ones(12),4,replan_interval=2)
+        with self.assertRaises(ValueError):wrong.load_state_dict(state)
+
     def test_wrapper_alignment_xyz_only_and_resume(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'h4.pt';model=ActionChunkBC(4)

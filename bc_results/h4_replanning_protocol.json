@@ -1,0 +1,141 @@
+{
+  "analysis_artifacts": [
+    "EXPERIMENTS_H4_REPLANNING_ABLATION.md",
+    "bc_results/h4_replanning/summary.json",
+    "bc_results/h4_replanning/*.csv",
+    "bc_results/h4_replanning/*.svg",
+    "bc_results/h4_replanning/*.png"
+  ],
+  "base_commit": "163edcbe93d6ea44d494cf29b36e9e1a92c92081",
+  "branch": "experiment/h4-replanning-ablation",
+  "conditions": {
+    "R1": {
+      "execute_indices": [
+        0
+      ],
+      "replan_interval": 1
+    },
+    "R2": {
+      "execute_indices": [
+        0,
+        1
+      ],
+      "replan_interval": 2
+    },
+    "R4": {
+      "equivalence_target": "original H4 runtime behavior",
+      "execute_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "replan_interval": 4
+    }
+  },
+  "environment": {
+    "control_dt": 0.1,
+    "dynamics": "existing FrankaAutonomousEnv, unchanged",
+    "initial_positions": "same deterministic reset seeds across all model/interval cells",
+    "max_move": 0.15,
+    "max_time": 16.0,
+    "position_range": 0.2,
+    "success": "existing FrankaAutonomousEnv criterion: lift >= 0.10m sustained for >=5 control steps"
+  },
+  "evaluation": {
+    "deterministic_inference": true,
+    "episodes_per_model_interval": 2000,
+    "final": [
+      310000,
+      311999
+    ],
+    "no_overwrite": true,
+    "order": "sequential by model seed 42,123,456 and interval R1,R2,R4",
+    "resume": "append-safe partial CSV; validate complete schema, row values, unique ordered seeds, checkpoint and protocol hashes; preserve and stop on inconsistency",
+    "saved_trace_check": {
+      "model_seed": 42,
+      "purpose": "software equivalence only",
+      "seed": 290042
+    },
+    "smoke": [
+      312000,
+      312019
+    ],
+    "software_compatibility_seed_range_inclusive": [
+      290000,
+      290019
+    ],
+    "total_final_episodes": 18000
+  },
+  "frozen_models": {
+    "123": {
+      "path": "bc_models/action_chunking/H4_seed123.pt",
+      "provenance_path": "bc_results/action_chunking_bc_runs/H4_seed123/summary.json",
+      "sha256": "5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c"
+    },
+    "42": {
+      "path": "bc_models/action_chunking/H4_seed42.pt",
+      "provenance_path": "bc_results/action_chunking_bc_runs/H4_seed42/summary.json",
+      "sha256": "41cda0af609e3064ba8e485a4ef81289c319472b08d1f710d96b30f6cb470557"
+    },
+    "456": {
+      "path": "bc_models/action_chunking/H4_seed456.pt",
+      "provenance_path": "bc_results/action_chunking_bc_runs/H4_seed456/summary.json",
+      "sha256": "649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706"
+    }
+  },
+  "hypotheses": {
+    "H1": "R4 may outperform R1 because executing a temporally consistent four-action plan avoids unnecessary replanning.",
+    "H2": "R1 may outperform R4 because frequent observations allow faster state-error correction.",
+    "H3": "R2 may provide a compromise between temporal consistency and feedback frequency.",
+    "H4": "R4 should require fewer BC inference calls; this need not reduce total episode runtime proportionally."
+  },
+  "outcomes": {
+    "primary": "paired grasp success difference R4 minus R1 for each frozen BC model",
+    "secondary": [
+      "R2 minus R1 and R4 minus R2",
+      "paired rescue/regression/both transitions",
+      "BC inference calls and latency",
+      "total inference time",
+      "episode wall time",
+      "control steps",
+      "successful episode length",
+      "first gripper close",
+      "first lift",
+      "success by EN/ES/WN/WS region"
+    ]
+  },
+  "policy": {
+    "architecture": "state-conditioned H4 MLP BC",
+    "backbone": [
+      128,
+      128
+    ],
+    "gripper": "BC sign convention; >=0 open, <0 close",
+    "horizon": 4,
+    "input_dim": 12,
+    "normalization": "checkpoint obs_mean and obs_std unchanged",
+    "output_shape": [
+      4,
+      4
+    ],
+    "training": "none; checkpoints frozen"
+  },
+  "protocol_status": "preregistered_before_new_final_evaluation_outcomes",
+  "research_question": "Does executing cached action chunks open-loop improve grasping success compared with replanning more frequently using the same trained action-chunked policy?",
+  "statistics": {
+    "independence": "do not treat shared evaluation positions as independent policy replications or 6000 rows as independently trained policies; only three BC training seeds; no population-level superiority claim",
+    "multiplicity": "Holm correction across the three per-model tests within each comparison family; R4-R1 designated primary",
+    "paired_difference_ci": "95% paired bootstrap interval over evaluation positions within each fixed model; conditional on fixed model and position distribution",
+    "paired_positions": "same 2000 positions for all nine cells; per-model exact two-sided McNemar R4 vs R1 (primary), R2 vs R1 secondary, R4 vs R2 descriptive",
+    "regions": "exploratory; fixed EN/ES/WN/WS boundaries from existing evaluation convention",
+    "seed_level": "mean, median, sample SD, min, max, direction across three frozen BC seeds; descriptive only"
+  },
+  "stopping_conditions": [
+    "Stop if checkpoint hash/provenance or normalization/configuration mismatch.",
+    "Stop if R4 fails historical outcome/episode-length/inference-count compatibility checks.",
+    "Stop and preserve partial files if schema, seed uniqueness/range/order, hashes, or paired initial positions are inconsistent.",
+    "Do not change model, environment, seed range, success criterion, or interval after inspecting new Final outcomes."
+  ],
+  "study": "Frozen H4 BC Replanning Frequency Ablation"
+}

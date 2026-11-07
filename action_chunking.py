@@ -190,12 +190,16 @@ def predict_chunk(model, obs, obs_mean, obs_std):
 
 
 class BCActionChunkController:
-    """Caches H actions and exposes the exact action planned for the next step."""
-    def __init__(self, model, obs_mean, obs_std, horizon):
+    """Caches H actions with a separately configurable runtime replan interval."""
+    def __init__(self, model, obs_mean, obs_std, horizon, replan_interval=None):
         self.model = model
         self.obs_mean = np.asarray(obs_mean, np.float32)
         self.obs_std = np.asarray(obs_std, np.float32)
         self.horizon = int(horizon)
+        # Preserve legacy behavior: an omitted interval consumes the full chunk.
+        self.replan_interval = self.horizon if replan_interval is None else int(replan_interval)
+        if self.replan_interval not in (1, 2, 4) or self.replan_interval > self.horizon:
+            raise ValueError('replan_interval must be one of 1, 2, or 4 and no greater than horizon')
         self.cached_actions = None
         self.chunk_index = 0
         self.inference_calls = 0
@@ -226,7 +230,7 @@ class BCActionChunkController:
     def advance(self, next_obs, terminated=False, truncated=False):
         if terminated or truncated:
             return False
-        if self.horizon == 1 or self.chunk_index + 1 >= self.horizon:
+        if self.chunk_index + 1 >= self.replan_interval:
             self.plan(next_obs)
             return True
         self.chunk_index += 1
@@ -235,6 +239,7 @@ class BCActionChunkController:
     def state_dict(self):
         return {
             'horizon': self.horizon,
+            'replan_interval': self.replan_interval,
             'cached_actions': None if self.cached_actions is None else self.cached_actions.copy(),
             'chunk_index': int(self.chunk_index),
             'inference_calls': int(self.inference_calls),
@@ -244,6 +249,9 @@ class BCActionChunkController:
     def load_state_dict(self, state):
         if int(state['horizon']) != self.horizon:
             raise ValueError('Chunk controller horizon differs from saved state')
+        saved_interval = int(state.get('replan_interval', self.horizon))
+        if saved_interval != self.replan_interval:
+            raise ValueError('Chunk controller replan interval differs from saved state')
         cached = state['cached_actions']
         self.cached_actions = None if cached is None else np.asarray(cached, np.float32).copy()
         self.chunk_index = int(state['chunk_index'])
