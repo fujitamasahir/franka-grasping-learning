@@ -1,0 +1,25 @@
+{
+  "checkpoint_path": "bc_models/action_chunking/H4_seed123.pt",
+  "checkpoint_sha256": "5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c",
+  "environment": {
+    "class": "FrankaAutonomousEnv",
+    "control_dt_s": 0.1,
+    "max_move_m": 0.15,
+    "max_time_s": 16.0,
+    "position_range_m": 0.2,
+    "success_rule": "existing criterion: lift >=0.10m sustained for >=5 control steps",
+    "true_state_and_physics": "unchanged"
+  },
+  "horizon": 4,
+  "interval": 4,
+  "model_seed": 123,
+  "noise_algorithm": "For each episode, initialize numpy.random.Generator(PCG64(SeedSequence([noise_generation_seed, evaluation_seed]))); draw standard_normal((161,2)) as float32 once. Array row t is the absolute environment control-step t XY standard-normal pair, independent of policy inference calls. Multiply the same base array by sigma in meters for applied errors. R1/R4 and all sigma levels therefore share the same base noise at each (evaluation_seed, control_step).",
+  "noise_generation_seed": 20261106,
+  "noise_sigma_m": 0.005,
+  "phase": "final",
+  "protocol_sha256": "901eb426f1088e3c309ff9b6f59100832af8e1646761249c72937b18c35775cb",
+  "seed_range_inclusive": [
+    321000,
+    321999
+  ]
+}
