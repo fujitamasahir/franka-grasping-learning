@@ -1,0 +1,337 @@
+{
+  "base_commit": "91536ec015ceba16f5269ff5105015066be08da5",
+  "branch": "experiment/h4-kalman-online-dynamic-replanning",
+  "controllers": {
+    "OneShot": "Frozen Kalman estimator once at t20 from noisy observations0..19; R4 warmup,7.5mm initial threshold; no calibration",
+    "Online": "Same frozen Kalman at t20,24,...,80; t-20..t-1 window;7.5mm initial and6.5/8.5mm strict hysteresis; no calibration",
+    "R1": "Frozen H4, always new prediction and action index 0.",
+    "R4": "Frozen H4, consume indices 0,1,2,3.",
+    "horizon": 4,
+    "initial_interval": 4,
+    "initial_switch_counting": "Count a t20 change from the R4 warm-up as a switch; distinguish it from subsequent switches and post-change detection.",
+    "initial_threshold_m": 0.0075,
+    "switch_R1_to_R4_strictly_below_m": 0.0065,
+    "switch_R4_to_R1_strictly_above_m": 0.0085
+  },
+  "environment": {
+    "class": "FrankaAutonomousEnv",
+    "control_dt_s": 0.1,
+    "max_move_m": 0.15,
+    "max_time_s": 16.0,
+    "position_range_m": 0.2,
+    "success_rule": "existing lift >= 0.10 m sustained for >= 5 steps",
+    "true_state_physics_reward_normalization_unchanged": true
+  },
+  "estimator": {
+    "decision_steps": [
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48,
+      52,
+      56,
+      60,
+      64,
+      68,
+      72,
+      76,
+      80
+    ],
+    "fixed_configuration": {
+      "acceleration_std_m_s2": 0.05,
+      "dt_s": 0.1,
+      "initial_position_covariance": "candidate R",
+      "initial_velocity_std_m_s": 0.1,
+      "internal_R_floor_m2": 1e-12,
+      "sigma_grid_m": [
+        0,
+        0.03,
+        0.00025
+      ]
+    },
+    "formula": "Frozen kalman_noise(noisy_xy)[sigma_m]",
+    "input": "noisy cube XY only, observation indices 3:5",
+    "no_ground_truth_access": true,
+    "phase_limited": true,
+    "sample_count": 20,
+    "source": "kalman_noise_estimator.py",
+    "switch_execution": "At decision t after action t-1, consume completed old chunk then replan from observation t with new interval. Always start fresh at action index 0, including R1-to-R4. No extra inference at terminal states.",
+    "window_at_decision_t": "observation indices t-20 through t-1 inclusive; exclude current observation t"
+  },
+  "evaluation": {
+    "cells_per_phase": 24,
+    "controllers": [
+      "R1",
+      "R4",
+      "OneShot",
+      "Online"
+    ],
+    "example_seeds": {
+      "final": 361000,
+      "smoke": 362000
+    },
+    "expected_episodes": {
+      "final": 24000,
+      "smoke": 240
+    },
+    "final": [
+      361000,
+      361999
+    ],
+    "legacy_regression_seeds": [],
+    "model_seeds": [
+      42,
+      123,
+      456
+    ],
+    "paired_initial_positions": true,
+    "profiles": [
+      "clean_to_noisy",
+      "noisy_to_clean"
+    ],
+    "run_order": "model seed, profile, controller; ascending evaluation seed",
+    "sequential": true,
+    "smoke": [
+      362000,
+      362009
+    ],
+    "trace": "Full trace for first seed per cell; prefix hashes and all decision/window records per episode"
+  },
+  "frozen_models": {
+    "123": {
+      "path": "bc_models/action_chunking/H4_seed123.pt",
+      "sha256": "5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c"
+    },
+    "42": {
+      "path": "bc_models/action_chunking/H4_seed42.pt",
+      "sha256": "41cda0af609e3064ba8e485a4ef81289c319472b08d1f710d96b30f6cb470557"
+    },
+    "456": {
+      "path": "bc_models/action_chunking/H4_seed456.pt",
+      "sha256": "649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706"
+    }
+  },
+  "frozen_source_sha256": {
+    "action_chunking.py": "442217081eaa59a0560f9fcd8ddf56cf537f3a6b55a7e5c8a7f8f47c5ccb9d02",
+    "evaluate_h4_dynamic_replanning.py": "8dec46589bf11d28ec5dc2126bc6228cdb05b504ee27526fb925c591a5a3231d",
+    "franka_ai_env.py": "40e80687a1ed0656cd4af173f8d67a1bedc2dffd6827dcc8204199f4fb91e2e7",
+    "franka_autonomous_env.py": "a82a0beca99f37574ac33a8cc078ca7f90d422c30b5f6ac92d42c050b283c39f",
+    "h4_dynamic_controller.py": "a87cad1d934c49b462f8a6c681cc520e1268adb41b77f271ae63ada52535873c",
+    "h4_kalman_online_rule.py": "7b231da1c0a03d3e23c408ee5b6e51f2b1f27a95538a98788d79b2410caa8686",
+    "kalman_noise_estimator.py": "9b78ed1b5213397fdbb566e5faca95446fea4e698e945cb6392cea012ea8efae"
+  },
+  "gates": [
+    "Committed unchanged preregistration and source hashes",
+    "Independent estimator Final accepted with all16 gates and integrity audit/manifest preserved",
+    "Smoke240 rows and24 cells with software integrity, finite estimates, observation-only rule API, exact windows, switch timing and paired absolute-step noise. No stationary-object gate and no success-rate selection.",
+    "Final may start only after passing complete Smoke audit; no calibration or optimization",
+    "Final outcomes analyzed only after all24 cells and24000 episodes pass full audit"
+  ],
+  "hypotheses": [
+    "Online may help by reacting aftert40 but the effect may be zero/negative.",
+    "Both-direction switching can change efficiency; detection validity does not guarantee better control."
+  ],
+  "independent_validation_evidence": {
+    "bc_results/h4_kalman_independent_validation/dataset_manifest.json": "80a538d852dd17d2f742f395e9bd29d5755ba073c3e075e4e2db45181569dafc",
+    "bc_results/h4_kalman_independent_validation/integrity_audit.json": "7c596c097db2c77f03500815c0dcf6c942c6bdd0a7a9eca34fdefc7281b3c977",
+    "bc_results/h4_kalman_independent_validation/summary.json": "c11108a776b14a474e4a6224f6d60757898f3112ddf760c580c95a8ff3730709"
+  },
+  "noise": {
+    "change_step": 40,
+    "controller_receives_profile_or_true_sigma_or_transition_time": false,
+    "generation_seed": 20261110,
+    "implementation": "Reuse make_noise_schedule(seed,1.0,20261106,160); float32 base[absolute step] multiplied by float32 profile sigma. Shape (161,2), SeedSequence([noise_seed,evaluation_seed]), NumPy PCG64. Perturb only observed cube and relative XY. Never modify physics.",
+    "profiles": {
+      "clean_to_noisy": [
+        0.0,
+        0.01
+      ],
+      "noisy_to_clean": [
+        0.01,
+        0.0
+      ]
+    }
+  },
+  "outcomes": {
+    "primary": "Online minus OneShot, equal-weight3 frozen models x2 dynamic profiles. OneShot/Online both use identical frozen Kalman estimator.",
+    "secondary": [
+      "Online vs OneShot constant clean/noisy separately",
+      "Online vs R1 and R4 all profiles and per dynamic profile",
+      "Per-model and per-profile success",
+      "Paired beneficial/harmful, both-success, both-failure",
+      "Estimate error vs RMS injected sigma within each window, transition vs post-change-only windows",
+      "Bidirectional switches, appropriate-switch delay, missing and unnecessary switches",
+      "Inference calls/time, wall time, decisions, steps under each interval",
+      "Stationarity audit"
+    ]
+  },
+  "prior_protected_untracked_files": {
+    "bc_results/h4_kalman_independent_validation/diagnostic_sequences.jsonl": "3cfc8dbf011acbc6d2500102f124a66963ba6fd6e77ca0f0de90e7e6880c9f0d",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352000.json": "1ef276ca5ab46a0a55bccbc655387cab799e05a46af68f892af213b5c5ce6624",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352001.json": "3095580cbbd667ea1f937ac59df5c4cb4225d8f05394896540f6ac5e12b46435",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352002.json": "a6ec9303c6030ed4b27c5157f3c27f61ecdd2e67f238d48d2a8a5f163da8b8f0",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352003.json": "2b26ed143c5caf266d24818d8ec7934b62f936ab7fab95777a241ff0cafae09e",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352004.json": "da25a894118c121560ce9ba8dab3608f832c89c895eee581fa2436688db343c6",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352005.json": "438f6e527b24eeaa734133e3a206ec7f0ff08b0856cadcc86ab4bee9f82dc061",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352006.json": "a898261e0cde2f617f62b22bd5c7340510ac64732701cf6ea60cc1ea96cfb312",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352007.json": "293e4f11ea01708eaa8e4a6244a728f997237035c6a4c1a76e02a5f686166fc3",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352008.json": "0c450adc0d33aea70fdf4a366503dc45fc9f4ac88b1cad506238fb352d6045d5",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352009.json": "a4e1b02e0e5e7d301007f632908f0ee9e59ce8abf71bb820fd73fe1812868b83",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352010.json": "20c3a1ad88efa9a46ea7bfd71b0e75a668ee0c3e35ed33e5bf2c8796c41ba759",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352011.json": "ffb33f432b2d42ad87338fbe6661479e2b38387040c7af23d03de13a0b64341a",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352012.json": "7c74f5b81a14af0fc6438bfbfcba7386f8f2be51c6edf325bbb9a50fedeb57e9",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352013.json": "5b27187b5e3c0b6b16b8ab62ed4ccd56961b5873d5c6433f7b73e28b94550013",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352014.json": "bb10fe34064300d64c133442b3f4be0c425710a268c26043caf38ef652dfb7d8",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352015.json": "db5156a935bb3ac9f996316f29543675cc25371fb4ba6c6f91b0efe1f08bb927",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352016.json": "8936a195c29b4a43ff4ed9da3af44dd399809a3b124a4b3ceaec2f01a981ddb7",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352017.json": "5003807575e3984ea63ff4b000fadff7b838d85a5fbf33bc50adb065e779adda",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352018.json": "0a847f099b80c5990b2ae957ac2dab653e1b0c4678919b8187685baff5e1c680",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R1_352019.json": "04ea30a03de2642a6a816372fdbed9aef6094cd9cb311b4c752411d8b686ea69",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352000.json": "6df546aa7c119ce6dc92788c5238671d36f6edd28dec176a1625d6a764c3bf48",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352001.json": "173125e836f3867414e9e9d18ec6b6a9af7507eb1fe8db1ea14391842349071f",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352002.json": "da532a8e8704aab82c9b513824fac16b881bd52284c549deed68f7468b4a560c",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352003.json": "cf275ce828bdf856f6f067e9f2b52f1250c0c121438c7ce131b1c02331029a2b",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352004.json": "875e6c7ef004195cab0cf9b348b697d608731c9ce17b4bb83bb100f4c3486eb8",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352005.json": "98f8fe9229e1fc2a12acc9f6d770d6f6dc4cb8bd30bfe2d9ca2d95348f5a95a5",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352006.json": "95957ffba3ee38e5cb2e0286486fe224702ec130b04a22b7d308d16b0311eb8d",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352007.json": "7db2c785b0390fa26a90551655b7114974c8b2c863ec115c5e5c2caee872c3aa",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352008.json": "e95c4b3378cdde01f019e85d8663ca37754047c338ca76119763476b3281909e",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352009.json": "65eb15d305156ad246738f66d070794e0bbfba9e4b0d188596cd94ce2f2fb4ff",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352010.json": "8d1a853e29e4270178981be1b6ea5b0c9b201d397f6396fe0078100ac51fe232",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352011.json": "0a02f6dc686bab65ba6d5bee4a548ae736082b1bf8a71da66e6226257fb6363d",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352012.json": "38b0cfedcec86cc9956da45bff62a7331a8fff791c5b1e8f177cf12fcc8cfc03",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352013.json": "a58589bef8ac7b782181fa44ef1cdd5cf1e7c0fde679c1d454dd692fc1ccc779",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352014.json": "ff98f5e68390966e45c521c0874b4ed6f4d374b6d41195dbd4fc465d86dc1ca9",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352015.json": "e8864db0875abefce64aefcd96d667669db9346d617f88a52d4eb7b1a0ceb61d",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352016.json": "ce211dea68137a777f67c435b7e2f88e1773ddf23f21432271dad7bf813b23b0",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352017.json": "64e6461f60362be2917ee455a9c43c59feebeb4d7f932faf256e1158fbb11f03",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352018.json": "198f28972384452a8a87f8a663f54a8299f2ba37fdd7b4e27374dd099cb8e130",
+    "bc_results/h4_kalman_independent_validation/trajectory_123_R4_352019.json": "f598f52c5333467f50ec1147286ee32120d93175293a725a8ace5af8542da98c",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352000.json": "6d43a4b8fc0f783bd106cb7444a4189b2028eea699e0dc2589ded616d0c33157",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352001.json": "49083273cfbbb571b49fdd4fb8ec87d22507aa3c9c6dd4117b291d75070a4e40",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352002.json": "120ba0ad0ce12228f6f2d47f39340a574cd189c9b48d7ce9e3bf64e7c2b8152a",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352003.json": "10f83d8e823b511c97fe4eeac6c9a7a187197be5f2d7f1c6efd04ab121583374",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352004.json": "064792e525854f0152f822e4232ac41b94fde46de17bc6d48c31ccf77b8ccbfb",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352005.json": "fedfe43ca7dae9c3050399fdd774b144e52ff611788111eed99a3d697c151cd8",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352006.json": "4e5a04e1e1d0b66f467ecc7aa9cc447cb57cb7a996dd07458313496ed1cd4aae",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352007.json": "9ee3b0740053961c327ff6bbbd2ab3a43dde5791f536ebbf3d1192ac7f3492fd",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352008.json": "f5b76adbb7972650612864908d8cae7e92485d3f1bf44765f88e5b9daa61adc8",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352009.json": "a5a3277f542e37d8da0ea017fa4e788d1b55936276859f22d369183bd793d03c",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352010.json": "dbc2c392ce5eaccbfb668f881d6e2281dc6a6f00a497a6a13931d6027180a743",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352011.json": "1a7050dd5afc2ab7e079e9b5e9396af5052e37df5166313451593663c3b96785",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352012.json": "234c633a9f01436972f8e250f1a59230e647a15a89f30c69e77ba580b207697a",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352013.json": "9d3ca211cd18f53c7a30b2c4c65847acfa0d5e29a3fde759547f060c310533b6",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352014.json": "7c4aee3e1a89ae3da7f04644217bfa746c2350caf828fadb51fede33fe0cc493",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352015.json": "bf821370604dcb80d72921cba1770649b11ae12b43920ca98bf4e285d917de64",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352016.json": "eca9ac052d05f0acda027ecb834c1d575634095bc27388a19217025351edfb40",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352017.json": "903d44fac8f6f456e4f12ef4c893e674a22610d342551882f8e5c50bfdbe17d9",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352018.json": "33c507b96609b11b23d3fde55d9b132ef0c1ec80748c0d57a567fa661302dbce",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R1_352019.json": "85a57c61883cfd05a68d09fe6cac9b4c9cc902367f5fb1b08911ae50828726cb",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352000.json": "0bb97b79b9daef404000ff63e8faeec004f5d63ccab5c4c5a84943b3bbb086f4",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352001.json": "ad4d144b664af32aeff07823d3f692a934e7b68bfd01016e4428ec4360ddbfde",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352002.json": "6860102bce995190b5c477653025a1838877fb504088102fb82ba001e3350c09",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352003.json": "e5bdb86fd3ac20f6913c43cf956c465b0a921100a48a03ae22ba6061405a45a7",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352004.json": "e91e8032ecd7800531cd36538d7870f803a5c1154339d4b206e656ae701b90f1",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352005.json": "0d7897efc895f894f6c6ab704d454de1b216c227a3653667725f56d2583ceb52",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352006.json": "067334432a19ac3eeee8b37ed8452582d92482e5832a909103185771537a2acf",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352007.json": "9a175ac3b21d133e7014d6dfa0844414f4a98d4249ea15e57f8a85133394edae",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352008.json": "837514cd68c028ad155270dd7457ff3382cdb4f39b481c82320c37672bce6882",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352009.json": "7d3473f71602e2b56dd67fa39cf990892ca74c903c1b923468328590debf5d14",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352010.json": "611f6ecad2093f4965863fd53f642f7fa69fef3a08d6848656830db691cc55f0",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352011.json": "db6c4fbf890c2b56399509d5ff65b6cebbd62c0efbfcf6ef223708a6cef3f4f8",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352012.json": "034f21af3c3cae70ac7cad617dbe43cb15b38145980f947e9904918f3b722701",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352013.json": "f1fd40d6458be93f7a8887f22edc03502ab645f7e38f29b749ac6ea0fc6ab71a",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352014.json": "29a06aad30b4b16cbe4b993988d560d29020e820537e8489351a1bd1a56d333a",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352015.json": "7e1f6e1a6e4f36298d204c0362dffce75a7a07d8ed8b9a7ecafee2b8b8207574",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352016.json": "3a86993463eaaecc542398b0e3d937065a439deee6839fee1cfbd336ea85ad1a",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352017.json": "3042c78838cb11519c82e2bb2ad1f858e80a064aeb6ddd094d665cd5796338f2",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352018.json": "3b7ee5a94b3ca0693f32e25e52eff72acf2082cee03ff52fff9bb6e8d4196295",
+    "bc_results/h4_kalman_independent_validation/trajectory_42_R4_352019.json": "da9e52e62ef516f6e1c56cdcbfaad3e85dc2a667dcdd8a3666ad71b48061c5c7",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352000.json": "0aa7adc8e0ba1c7808abffef2b8e9de3a55f192748c8e6fe305fd8be8719e811",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352001.json": "8e3f4067311ccbdfd598a76106e5ad23740e83480ba4a36aabcb2367691e9b40",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352002.json": "6c7430711a3b19c7170d88fdf49d69667ff7997b5b86ab06cc2f7d7f31f48918",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352003.json": "478e5f41d898e6fbfc81014ba815a9182dd589bfc71b07671f21c44189dc2929",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352004.json": "8236f2a583e66992ad3ea44b1f4e02a261d934e371aff1ac0d595020f56dc551",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352005.json": "671896dac1d4e85fc85253cf9872c83fe99da19a0694667c991c7b9ee92fea0e",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352006.json": "44b2175254e7d13e8ce47381dfe5959ebaf3afb13b8c673cbbb242deb7bd88bc",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352007.json": "b7e78421dfc72b449073a9df416c38ca103971dfab61513213a357011c2b06b5",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352008.json": "f8a9ab80ea1b216dd24a0871cd7de465da1fa1dde984698cf69762d0c4ece72a",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352009.json": "c3892a8557e08b2a8850d0d5f2dfe77e7a7412b64b403479f7ba01457e099603",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352010.json": "3c040b866681d7c7e82d74e7c0b9d2465b54f5fad9dfe3b8c9c6591de03ce178",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352011.json": "f5145f5c3f9977634200e6175d4eaa47326f36c1f5b2ae505abe09ab302b61c3",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352012.json": "23099b459d8277fef9f82fa8a3326ecbcef8a645110beb6ab89e60b3939efeca",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352013.json": "426fe538d5ebe61663248bd2bf33ddb6269a44157384cdbce536a79d1ad8d2e7",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352014.json": "fdbf0e8fe22b1d1798cb770e916cfafc5459fb54145fccd29386cfa6b17e3752",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352015.json": "fe3b00fd274e69af6dfcb9ca3e423a33d18a3a2bbc40f05937cf6d3ecc4d6ff3",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352016.json": "1f8269bfb978f400063101e8202fa870019faa9d207efae80293754033b944cc",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352017.json": "a2e0543ab658721802e2b68462311aacc332d2896d8a4a6ad850fb6022f2ff60",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352018.json": "6a91996f874185104b5df30f99ed2dbba5bf95c2837531745fd3e92f0da9a42d",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R1_352019.json": "76f093cdf975498fd93ecdc0b6795c477765833362eb9938c9f297961dba8640",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352000.json": "51162fa3b4a2df3a9888afe3307576f721de4a63b029c65357bf2e0cab6a1ffd",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352001.json": "bbc32588ced4e79017d6a158645fbeb7709c97a98a5d153dc1173a004a8e952d",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352002.json": "ea8710d181ccc10746794ed165052f0440fc5eddd346b774ad9f68c75860b54e",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352003.json": "387d393b068d40e589bc8cec6fc7995c9b2203a38d9a0e3c88c7c2d1b276d799",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352004.json": "8ec396d0eb271edd76bed35425d67f5351c8fad7bbc8a7825cbc3878aff59fcc",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352005.json": "21e3f6787e1134f0d3ec9c2958c547b1d3c32f2ff8da6622da6a547dff382af4",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352006.json": "7f70c95099c457f558ab91b2732a42a7ec1e98d919f29b68db0698269b80f281",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352007.json": "9bcf4270b5516a43bc60bfe08221e37b01488637fd940d41a4b391c541301aac",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352008.json": "6106a9d20148ccac3ce6f6d2dea4b04ea30a7e7510399ddd87baa66ce8a74efb",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352009.json": "8005e5e005e71d618f91c9c664c8213a34c966ab1445d0682b952c1cda06802a",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352010.json": "9e75c779ffce88c9400c4ccd40f4465b3996169ff7bd8485b4f220e7ad0b3f4d",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352011.json": "15cd2f560fc4527394717584c27186ada99de966a107ff39f18933f358d47de6",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352012.json": "4f13f00b437b85afab375ae653acff71679193a1280fe905fb1b42aadacd4e0c",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352013.json": "8e97c75dfb6e4b41f097ea5ca3f5dd13a64531a6e20ab26f4c96a8de63587e16",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352014.json": "3278bb319ed515e15a8d5d5a54a8ec8f03cb277fedd6e4cb18995a995772c58b",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352015.json": "28ac8c7fc9d91ffb59782f20d8b64df02cfccd3e881e944d5a433862364c006e",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352016.json": "b24f6951b7135e13226ef702e630cb475f8159fd3dc3120035d66760b272f4db",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352017.json": "f007b7e89065c76416caea3f334a10ad50be1f24fd5fe89daf2eef218eff62b4",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352018.json": "d53efb822c9f1aa09c4134fbfba335294837ec145c98572d579fd82275c0dbd7",
+    "bc_results/h4_kalman_independent_validation/trajectory_456_R4_352019.json": "34fd3c739f8751c1d52d152e4db2f0d220e155956440a5148ec9a2f1c8896185"
+  },
+  "research_cutoff": "2026-11-14T23:59:59-07:00",
+  "research_questions": [
+    "Does frozen Kalman Online improve closed-loop grasp success over frozen Kalman OneShot under dynamic noise?",
+    "What are model/profile-specific harmful transitions, switching delay and inference/runtime costs?"
+  ],
+  "seed_independence": "Smoke362000..362009 and Final361000..361999 disjoint from all previously specified ranges; noise_seed20261110 distinct. No acquisition during implementation.",
+  "software": {
+    "gymnasium": "1.4.0",
+    "machine": "arm64",
+    "menagerie_commit": "98a70c569c4c1b6da467a20012f766ee1f8dc521",
+    "mujoco": "3.17.0",
+    "numpy": "2.5.4",
+    "python": "3.12.10",
+    "torch": "2.15.0"
+  },
+  "software_gate": "No legacy stationary-cube acceptance criterion; true motion diagnostics are evaluator-only and do not gate this study.",
+  "source_adaptive_protocol_sha256": "a212e07da4b00b4c444454482b8547b4058c518076991e09c5038edcd728df0f",
+  "statistics": {
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261110,
+    "exact_tests": "Per-model/profile paired exact McNemar. Separate Holm families of6 for OneShot/R1/R4 baselines. No independent-policy pooled significance claim.",
+    "interpretation": "Positive primary mean with CI containing0 does not establish clear improvement. Report harmful/model-specific effects even if average positive.",
+    "paired_arithmetic": "Online successes minus baseline successes must equal beneficial minus harmful; preserve all discordant pairs.",
+    "paired_bootstrap": "Shared evaluation-position index vector jointly across all models/profiles/controllers; equal-weight six effects. Conditional on3 frozen models.",
+    "seed_descriptives": "For each model average its two dynamic effects; report mean, median, sample SD, min/max and direction consistency across three models.",
+    "timing": "Descriptive under uncontrolled hardware load; report calls separately."
+  },
+  "status": "Preregistered before Smoke/Final; implementation preparation only",
+  "stopping": [
+    "No stopping, retuning or settings changes based on partial Final outcomes; no intermediate performance summaries.",
+    "Stop preserving append-safe files on integrity failure, user interruption or hardware failure. Resume identical protocol.",
+    "Honor explicit .STOP_AFTER_CELL for logistical pauses only; never based on outcomes.",
+    "Hard cutoff after2026-11-14 America/Denver; preserve exact partial counts, no partial Final performance claims.",
+    "No new training, profiles, thresholds, estimator changes or calibration."
+  ],
+  "study": "Frozen Kalman Online vs Kalman OneShot closed-loop dynamic-noise grasping",
+  "switch_diagnostics": {
+    "desired_intervals": "For diagnostic labeling only, 0 mm -> R4, 10 mm -> R1.",
+    "detection_delay": "First actual switch at or after t40 entering the desired post-change interval, minus40; separately count already-correct-at40 and never-switched. Also report first decision selecting correct interval after40 regardless of a switch.",
+    "harmful": "Paired baseline-success/Online-failure; associational only, cannot attribute to one switch without matched counterfactual branch.",
+    "unnecessary": "Actual switch after t20 whose new interval disagrees with current nominal sigma label. Not a causal outcome attribution. Initial warm-up switch reported separately."
+  }
+}
