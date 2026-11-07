@@ -54,10 +54,12 @@ def main():
   cell_rows.append({'model_seed':m,'controller':c,'noise_mm':n,'successes':int(success[k].sum()),'episodes':1000,'success_rate_pct':100*float(success[k].mean()),
    'mean_inference_calls':float(calls.mean()),'mean_inference_latency_ms_per_call':float(tm.sum()/calls.sum()),'mean_total_inference_ms':float(tm.mean()),
    'mean_episode_wall_seconds':float(np.mean([float(x['episode_wall_seconds']) for x in rr])),'mean_steps':float(np.mean([int(x['steps']) for x in rr]))})
-  if c=='Adaptive':
-   aa=list(rows.values());ee=np.asarray([float(x['estimated_sigma_m']) for x in aa if x['estimated_sigma_m']!='']);dd=np.asarray([int(x['decision_made']) for x in aa]);chosen=[int(x['chosen_interval']) for x in aa if x['chosen_interval']!='']
+  if c=='Adaptive' and m==MODELS[-1]:
+   # Noise-level diagnostics pool all three frozen policies, rather than
+   # overwriting the first two policies with the last model's 1,000 rows.
+   aa=[cells[model,'Adaptive',n][s] for model in MODELS for s in SEEDS];ee=np.asarray([float(x['estimated_sigma_m']) for x in aa if x['estimated_sigma_m']!='']);dd=np.asarray([int(x['decision_made']) for x in aa]);chosen=[int(x['chosen_interval']) for x in aa if x['chosen_interval']!='']
    nearest=[min(NOISE,key=lambda q:abs(v-q/1000)) for v in ee]
-   estimates[str(n)]={'n_estimates':int(len(ee)),'mean_m':float(ee.mean()) if len(ee) else None,'median_m':float(np.median(ee)) if len(ee) else None,'sd_m':float(ee.std(ddof=1)) if len(ee)>1 else None,'min_m':float(ee.min()) if len(ee) else None,'max_m':float(ee.max()) if len(ee) else None,'nearest_nominal_sigma_bucket_accuracy_pct':100*float(np.mean(np.asarray(nearest)==n)) if len(ee) else None,'episodes_without_decision':int(1000-dd.sum())}
+   estimates[str(n)]={'n_estimates':int(len(ee)),'mean_m':float(ee.mean()) if len(ee) else None,'median_m':float(np.median(ee)) if len(ee) else None,'sd_m':float(ee.std(ddof=1)) if len(ee)>1 else None,'min_m':float(ee.min()) if len(ee) else None,'max_m':float(ee.max()) if len(ee) else None,'nearest_nominal_sigma_bucket_accuracy_pct':100*float(np.mean(np.asarray(nearest)==n)) if len(ee) else None,'episodes_without_decision':int(len(aa)-dd.sum())}
    switch[str(n)]={'n_decisions':int(dd.sum()),'R1':sum(x==1 for x in chosen),'R4':sum(x==4 for x in chosen),'R1_pct':100*sum(x==1 for x in chosen)/max(1,len(chosen)),'R4_pct':100*sum(x==4 for x in chosen)/max(1,len(chosen))}
    decided=[x for x in aa if x['chosen_interval']!='']
    conditional[str(n)]={str(i):{'n':sum(int(x['chosen_interval'])==i for x in decided),'successes':sum(int(x['success']) for x in decided if x['chosen_interval']==str(i)),'success_rate_pct':100*np.mean([int(x['success']) for x in decided if x['chosen_interval']==str(i)]) if any(x['chosen_interval']==str(i) for x in decided) else None} for i in (1,4)}
