@@ -1,6 +1,6 @@
 # Uncertainty-Aware Adaptive Replanning for Frozen H4 BC
 
-**Status: staged execution for transfer to a higher-performance Mac.** The estimator, smoke audit, preregistration, and resumable evaluator are in place. Calibration and holdout Final are intended to run sequentially. This report must be updated from the committed `calibration_summary.json` and final integrity/progress audit after execution; incomplete holdout results must not be analyzed as full-cell results.
+**Status: Calibration complete; Final paused for hardware transfer.** The preregistered protocol, estimator, smoke audit, resumable evaluator, and calibration are complete. Final was stopped at a complete cell boundary for the planned transfer to a higher-performance Mac. The count-only audit verifies 21/27 cells (21,000/27,000 episodes), with no partial cell files. No Final outcomes or performance statistics have been inspected or summarized. Resume the remaining six cells and run the full audit and analysis only after all 27 cells pass.
 
 ## 1. Abstract
 
@@ -21,6 +21,12 @@ Action Chunking with Transformers (ACT) predicts action sequences for bimanual m
 ## 5. Frozen Models and Environment
 
 The exact checkpoints are `bc_models/action_chunking/H4_seed{42,123,456}.pt`; their SHA-256 digests and the source commit are frozen in the protocol. The existing Franka environment, H4 architecture, observation normalization, action ranges, gripper convention, physics, reward, and success rule are unchanged. There is no training, SAC, policy update, or checkpoint selection.
+
+| BC training seed | Checkpoint SHA-256 |
+|---:|---|
+| 42 | `41cda0af609e3064ba8e485a4ef81289c319472b08d1f710d96b30f6cb470557` |
+| 123 | `5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c` |
+| 456 | `649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706` |
 
 ## 6. Observation Uncertainty Estimation
 
@@ -44,7 +50,7 @@ An additional warm-up-matched branch executes R4 for 20 steps, then R1 regardles
 
 The protocol SHA-256 is recorded in `bc_results/h4_adaptive_replanning_protocol.sha256`. Calibration uses 300 shared positions per BC seed and noise level. One global threshold is selected from 5.0, 7.5, and 10.0 mm by equally weighted success across nine model-seed × noise cells. Ties are resolved by fewer inference calls, then the smaller threshold. Fixed R1/R4 are measured on the same seeds; the better fixed method is selected from Calibration only. The frozen threshold is stored before Final begins.
 
-Calibration completed with 300 positions for each of 3 BC seeds × 3 noise levels (2,700 positions × three executed complete branches: Fixed R1, Fixed R4, and Warmup-R1). The three candidate adaptive outcomes were derived from complete, smoke-verified paths: select the Fixed R4 trajectory when the R4-prefix estimate is under threshold, otherwise the separately executed Warmup-R1 trajectory. Fixed R1 labels were not used to stand in for a switched R1 trajectory.
+Calibration completed with 300 shared evaluation seeds for each of 3 BC seeds × 3 noise levels, yielding 2,700 episodes per executed branch and 8,100 complete rollouts across Fixed R1, Fixed R4, and Warmup-R1. The three candidate adaptive outcomes were derived from complete, smoke-verified paths: select the Fixed R4 trajectory when the R4-prefix estimate is under threshold, otherwise the separately executed Warmup-R1 trajectory. Fixed R1 labels were not used to stand in for a switched R1 trajectory.
 
 | Global threshold | Equal-weighted Adaptive success | Mean inference calls/episode | R1 selection at 0 / 5 / 10 mm |
 |---:|---:|---:|---:|
@@ -60,7 +66,7 @@ The estimator's Calibration mean/median estimates were approximately 0/0 mm for 
 
 Final covers seeds 331000–331999 for each of three controllers, three BC models, and three noise conditions: 27,000 episodes. All conditions share initial positions and absolute-step-indexed noise. Each cell is written append-safely to a separate CSV with checkpoint/protocol/noise hashes. A clean interruption leaves `.partial.csv` files that the evaluator resumes after validating schema, order, uniqueness, and provenance. Do not edit conditions based on Final outcomes.
 
-Final completion and integrity audit: **in progress; the final holdout outcomes are not summarized until all 27 cells pass**.
+Final progress/integrity audit: **21/27 cells complete (21,000/27,000 rows), all complete cells passed provenance, ordering, pairing, and initial-position region checks; 0 incomplete files.** Complete cells are all nine conditions for BC seeds 42 and 123, plus all three controllers at 0 mm for BC seed 456. The six remaining cells are seed 456 at 5 and 10 mm × R1/R4/Adaptive. The count-only audit is `bc_results/h4_adaptive_replanning/final_progress_audit.json`. Final outcomes were deliberately not opened for performance analysis. No incomplete Final performance claims are made.
 
 ## 10. Success Rate Results
 
@@ -104,7 +110,9 @@ If warranted by the completed result, evaluate realistic temporally correlated p
 
 ## 20. Reproduction Instructions
 
-Run `audit_h4_adaptive_replanning_smoke.py` after the smoke cells are complete. Run `.venv/bin/python evaluate_h4_adaptive_replanning.py --phase calibration --model-seed 42` and likewise for seeds 123 and 456; analyze with `analyze_h4_adaptive_calibration.py`. Freeze the resulting threshold before running each Final model seed. Read the threshold from `bc_results/h4_adaptive_replanning/frozen_threshold.json`, then run `.venv/bin/python evaluate_h4_adaptive_replanning.py --phase final --model-seed SEED --threshold THRESHOLD` sequentially for 42, 123, and 456. The evaluator resumes validated `.partial.csv` files. To stop cleanly at a complete cell boundary, create `bc_results/h4_adaptive_replanning/.STOP_AFTER_CELL`; after the process exits, remove that marker before resuming. Use `audit_h4_adaptive_replanning_final.py --allow-incomplete` for count-only progress or the same audit without the flag after all 27 cells pass. Run `MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python analyze_h4_adaptive_replanning.py` only after the complete audit. The global `.study_run.lock` prevents concurrent writers.
+Run `audit_h4_adaptive_replanning_smoke.py` after the smoke cells are complete. Calibration is already complete and frozen at threshold `0.0075` (7.5 mm) in `bc_results/h4_adaptive_replanning/frozen_threshold.json`. On the target Mac, first copy the two ignored model checkpoints noted below, verify hashes, then resume with `.venv/bin/python evaluate_h4_adaptive_replanning.py --phase final --model-seed 456 --threshold 0.0075`. The evaluator skips the six already complete seed-456/0 mm cells and continues the remaining six cells in fixed order; no completed CSV should be removed or edited. The evaluator resumes validated `.partial.csv` files. To stop cleanly at a complete cell boundary, create `bc_results/h4_adaptive_replanning/.STOP_AFTER_CELL`; after the process exits, remove that marker before resuming. Use `audit_h4_adaptive_replanning_final.py --allow-incomplete` for count-only progress or the same audit without the flag after all 27 cells pass. Run `MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python analyze_h4_adaptive_replanning.py` only after the complete audit. The global `.study_run.lock` prevents concurrent writers.
+
+Checkpoint transfer note: the seed-42 checkpoint is tracked in the base repository, but seed-123 and seed-456 `.pt` files are gitignored and are not pushed. Copy those two unchanged files from the current Mac into the same paths on the target Mac and verify all three hashes against the protocol before resuming. No model files were committed by this study.
 
 ### References
 
