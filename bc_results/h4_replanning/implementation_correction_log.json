@@ -1,0 +1,9 @@
+{
+  "study": "Frozen H4 BC Replanning Frequency Ablation",
+  "stage": "software smoke test, before any new Final outcome evaluation",
+  "issue": "The first smoke invocation stopped during configuration validation because evaluator code compared checkpoint training position_range=0.12 m with evaluation position_range=0.20 m.",
+  "impact": "No rollout was executed and no smoke or Final result file was created by the failed invocation.",
+  "correction": "Validation now checks checkpoint training range provenance independently and preserves the preregistered ±0.20 m evaluation range. Episode wall time starts before the first policy inference, while excluding environment reset.",
+  "protocol_amendment_sha256": "682633025a7e80ec4f50ea03a905b28b2ff1d6d4cf9b2c312004ec32cfe25a8b",
+  "experimental_conditions_changed": false
+}

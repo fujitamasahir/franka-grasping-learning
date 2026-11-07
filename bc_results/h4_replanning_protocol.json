@@ -1,4 +1,12 @@
 {
+  "amendments": [
+    {
+      "before_final_outcomes_inspected": true,
+      "change": "Clarify these distinct ranges and validate checkpoint training provenance separately from the unchanged \u00b10.20m evaluation range. Also specify the paired bootstrap resample count and deterministic RNG seed. No evaluation condition, seed, checkpoint, or outcome rule changed.",
+      "date": "2026-11-06",
+      "reason": "A smoke-test validation check initially compared the checkpoint training position range (\u00b10.12m) to the evaluation position range (\u00b10.20m)."
+    }
+  ],
   "analysis_artifacts": [
     "EXPERIMENTS_H4_REPLANNING_ABLATION.md",
     "bc_results/h4_replanning/summary.json",
@@ -34,6 +42,7 @@
     }
   },
   "environment": {
+    "checkpoint_training_position_range": 0.12,
     "control_dt": 0.1,
     "dynamics": "existing FrankaAutonomousEnv, unchanged",
     "initial_positions": "same deterministic reset seeds across all model/interval cells",
@@ -126,7 +135,7 @@
   "statistics": {
     "independence": "do not treat shared evaluation positions as independent policy replications or 6000 rows as independently trained policies; only three BC training seeds; no population-level superiority claim",
     "multiplicity": "Holm correction across the three per-model tests within each comparison family; R4-R1 designated primary",
-    "paired_difference_ci": "95% paired bootstrap interval over evaluation positions within each fixed model; conditional on fixed model and position distribution",
+    "paired_difference_ci": "95% percentile paired bootstrap over 10000 resamples of the 2000 fixed evaluation positions within each fixed model; RNG seed 20261106; conditional on model and position distribution",
     "paired_positions": "same 2000 positions for all nine cells; per-model exact two-sided McNemar R4 vs R1 (primary), R2 vs R1 secondary, R4 vs R2 descriptive",
     "regions": "exploratory; fixed EN/ES/WN/WS boundaries from existing evaluation convention",
     "seed_level": "mean, median, sample SD, min, max, direction across three frozen BC seeds; descriptive only"

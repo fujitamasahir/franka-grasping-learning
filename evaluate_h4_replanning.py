@@ -75,8 +75,8 @@ def rollout(model, checkpoint, model_seed, interval, seed, checkpoint_hash, prot
         raise ValueError('Environment control timestep differs from frozen checkpoint config')
     controller = BCActionChunkController(model, checkpoint['obs_mean'].numpy(), checkpoint['obs_std'].numpy(),
                                         int(checkpoint['horizon']), replan_interval=interval)
-    obs, _ = env.reset(seed=int(seed)); controller.reset(obs)
-    start = time.perf_counter(); total_return = 0.; steps = 0; closes = []; lift_step = ''
+    obs, _ = env.reset(seed=int(seed)); start = time.perf_counter(); controller.reset(obs)
+    total_return = 0.; steps = 0; closes = []; lift_step = ''
     closed = 0; trace_rows = []
     while True:
         action = controller.planned_action.copy()
@@ -131,9 +131,13 @@ def main():
     model, ck=load_bc_policy(model_path)
     if int(ck['horizon']) != 4 or int(ck['seed']) != a.model_seed:
         raise RuntimeError('Checkpoint architecture or seed does not match preregistration')
-    for key in ('max_move','max_time','control_dt','position_range'):
+    for key in ('max_move','max_time','control_dt'):
         if not np.isclose(float(ck[key]),float(protocol['environment'][key])):
             raise RuntimeError(f'Checkpoint environment mismatch: {key}')
+    # position_range in a BC checkpoint is training provenance (±0.12 m),
+    # while this experiment deliberately evaluates at the preregistered ±0.20 m.
+    if not np.isclose(float(ck['position_range']),0.12):
+        raise RuntimeError('Unexpected training position range in frozen checkpoint')
     seeds_cfg=protocol['evaluation'][a.phase]
     seeds=range(seeds_cfg[0],seeds_cfg[1]+1)
     tag=f'{a.phase}_H4_seed{a.model_seed}_R{a.interval}'
