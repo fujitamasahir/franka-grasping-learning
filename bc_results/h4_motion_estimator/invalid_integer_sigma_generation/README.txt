@@ -1,0 +1,1 @@
+Invalid diagnostic replay: integer zero initial sigma produced an integer array, truncating the clean-to-noisy transition to zero. All derived replay statistics and figures here are excluded. Original actual physical trajectories were unaffected. Fixed float64 sigma arrays and added exact transition regression test. Protocol, estimator, gates unchanged.

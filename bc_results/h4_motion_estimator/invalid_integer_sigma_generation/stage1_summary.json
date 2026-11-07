@@ -1,0 +1,1049 @@
+{
+  "actual_trajectories": 120,
+  "by_model": {
+    "123": {
+      "motion_MAD": {
+        "moving": {
+          "0": {
+            "MAE_mm": 0.03321492413098621,
+            "bias_mm": 0.03321492413098621,
+            "classification_accuracy": 1.0,
+            "n": 1599,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 1.8678772795947494,
+            "bias_mm": 0.8629870376458827,
+            "classification_accuracy": 0.9418386491557224,
+            "n": 533,
+            "wrong_direction_actual_switches_per_decision": 0.0075046904315197,
+            "wrong_interval_fraction": 0.028142589118198873
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.0016883026002700837,
+            "bias_mm": 0.0016883026002700837,
+            "classification_accuracy": 1.0,
+            "n": 1115,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 2.027212973655969,
+            "bias_mm": 1.001739544823739,
+            "classification_accuracy": 0.9409395973154362,
+            "n": 745,
+            "wrong_direction_actual_switches_per_decision": 0.01879194630872483,
+            "wrong_interval_fraction": 0.05100671140939597
+          }
+        }
+      },
+      "position": {
+        "moving": {
+          "0": {
+            "MAE_mm": 0.9747323716826127,
+            "bias_mm": 0.9747323716826127,
+            "classification_accuracy": 1.0,
+            "n": 1599,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 0.9836583049940599,
+            "bias_mm": 0.4264754280572544,
+            "classification_accuracy": 1.0,
+            "n": 533,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.027172885854902094,
+            "bias_mm": 0.027172885854902094,
+            "classification_accuracy": 1.0,
+            "n": 1115,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 0.786139090136209,
+            "bias_mm": 0.14335035082257383,
+            "classification_accuracy": 0.9946308724832215,
+            "n": 745,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.016107382550335572
+          }
+        }
+      }
+    },
+    "42": {
+      "motion_MAD": {
+        "moving": {
+          "0": {
+            "MAE_mm": 0.03964121283581259,
+            "bias_mm": 0.03964121283581259,
+            "classification_accuracy": 1.0,
+            "n": 1684,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 1.7863738535948144,
+            "bias_mm": 0.7873208373537224,
+            "classification_accuracy": 0.9501779359430605,
+            "n": 562,
+            "wrong_direction_actual_switches_per_decision": 0.0071174377224199285,
+            "wrong_interval_fraction": 0.026690391459074734
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.0016932574967112866,
+            "bias_mm": 0.0016932574967112866,
+            "classification_accuracy": 1.0,
+            "n": 1117,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 2.0719633207791004,
+            "bias_mm": 1.0458645354022233,
+            "classification_accuracy": 0.9395973154362416,
+            "n": 745,
+            "wrong_direction_actual_switches_per_decision": 0.01879194630872483,
+            "wrong_interval_fraction": 0.052348993288590606
+          }
+        }
+      },
+      "position": {
+        "moving": {
+          "0": {
+            "MAE_mm": 1.130476233290852,
+            "bias_mm": 1.130476233290852,
+            "classification_accuracy": 1.0,
+            "n": 1684,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 0.9971617159969872,
+            "bias_mm": 0.46076263753728725,
+            "classification_accuracy": 1.0,
+            "n": 562,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.027979104477209495,
+            "bias_mm": 0.027979104477209495,
+            "classification_accuracy": 1.0,
+            "n": 1117,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 0.7991771687847092,
+            "bias_mm": 0.14163785356489206,
+            "classification_accuracy": 0.9946308724832215,
+            "n": 745,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.016107382550335572
+          }
+        }
+      }
+    },
+    "456": {
+      "motion_MAD": {
+        "moving": {
+          "0": {
+            "MAE_mm": 0.028994782725766687,
+            "bias_mm": 0.028994782725766687,
+            "classification_accuracy": 1.0,
+            "n": 1671,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 1.8199417534134879,
+            "bias_mm": 0.8169900134641491,
+            "classification_accuracy": 0.9461400359066428,
+            "n": 557,
+            "wrong_direction_actual_switches_per_decision": 0.008976660682226212,
+            "wrong_interval_fraction": 0.026929982046678635
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.001670181624097842,
+            "bias_mm": 0.001670181624097842,
+            "classification_accuracy": 1.0,
+            "n": 1061,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 2.050422629391917,
+            "bias_mm": 1.0474481117946475,
+            "classification_accuracy": 0.9408528198074277,
+            "n": 727,
+            "wrong_direction_actual_switches_per_decision": 0.017881705639614855,
+            "wrong_interval_fraction": 0.05089408528198074
+          }
+        }
+      },
+      "position": {
+        "moving": {
+          "0": {
+            "MAE_mm": 0.9437247322114412,
+            "bias_mm": 0.9437247322114412,
+            "classification_accuracy": 1.0,
+            "n": 1671,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 0.9753768217437749,
+            "bias_mm": 0.44355989323484063,
+            "classification_accuracy": 1.0,
+            "n": 557,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.027528294778170013,
+            "bias_mm": 0.027528294778170013,
+            "classification_accuracy": 1.0,
+            "n": 1061,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 0.7838479375529186,
+            "bias_mm": 0.1298502528224528,
+            "classification_accuracy": 0.9944979367262724,
+            "n": 727,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.016506189821182942
+          }
+        }
+      }
+    }
+  },
+  "checks": {
+    "coverage": true,
+    "detection_misses_clean_to_noisy": false,
+    "detection_misses_noisy_to_clean": true,
+    "detection_p90_clean_to_noisy": false,
+    "detection_p90_noisy_to_clean": true,
+    "moving_MAE_0mm": true,
+    "moving_MAE_10mm": true,
+    "moving_classification_0mm": true,
+    "moving_classification_10mm": false,
+    "moving_wrong_interval_0mm": true,
+    "moving_wrong_interval_10mm": true,
+    "moving_wrong_switch_0mm": true,
+    "moving_wrong_switch_10mm": true,
+    "relative_moving_MAE_reduction": true,
+    "stationary_MAE_0mm": true,
+    "stationary_MAE_10mm": false
+  },
+  "detection": {
+    "motion_MAD": {
+      "clean_to_noisy": {
+        "already_target_at40": 0,
+        "delays_steps": [],
+        "median_delay_steps": null,
+        "miss_fraction": 1.0,
+        "misses": 120,
+        "n": 120,
+        "p90_delay_steps": null,
+        "switches_detected": 0
+      },
+      "noisy_to_clean": {
+        "already_target_at40": 18,
+        "delays_steps": [
+          8,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          0,
+          8,
+          8,
+          4,
+          0,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          8,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          0,
+          8,
+          8,
+          4,
+          0,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          8,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          0,
+          8,
+          8,
+          4,
+          0,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          8,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          0,
+          8,
+          8,
+          4,
+          0,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          8,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          0,
+          8,
+          8,
+          4,
+          0,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          8,
+          4,
+          8,
+          8,
+          8,
+          8,
+          8,
+          0,
+          8,
+          8,
+          4,
+          0,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8
+        ],
+        "median_delay_steps": 8.0,
+        "miss_fraction": 0.05,
+        "misses": 6,
+        "n": 120,
+        "p90_delay_steps": 10.800000000000011,
+        "switches_detected": 114
+      }
+    },
+    "position": {
+      "clean_to_noisy": {
+        "already_target_at40": 0,
+        "delays_steps": [],
+        "median_delay_steps": null,
+        "miss_fraction": 1.0,
+        "misses": 120,
+        "n": 120,
+        "p90_delay_steps": null,
+        "switches_detected": 0
+      },
+      "noisy_to_clean": {
+        "already_target_at40": 0,
+        "delays_steps": [
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          16,
+          12,
+          16,
+          12,
+          8,
+          12,
+          12,
+          16,
+          12,
+          20,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          16,
+          12,
+          16,
+          12,
+          8,
+          12,
+          12,
+          16,
+          12,
+          20,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          16,
+          12,
+          16,
+          12,
+          8,
+          12,
+          12,
+          16,
+          12,
+          20,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          16,
+          12,
+          16,
+          12,
+          8,
+          12,
+          12,
+          16,
+          12,
+          20,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          16,
+          12,
+          16,
+          12,
+          8,
+          12,
+          12,
+          16,
+          12,
+          20,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          12,
+          16,
+          12,
+          12,
+          16,
+          12,
+          16,
+          12,
+          8,
+          12,
+          12,
+          16,
+          12,
+          20,
+          12,
+          12,
+          12,
+          16
+        ],
+        "median_delay_steps": 12.0,
+        "miss_fraction": 0.0,
+        "misses": 0,
+        "n": 120,
+        "p90_delay_steps": 16.0,
+        "switches_detected": 120
+      }
+    }
+  },
+  "limitations": "Offline clean-policy trajectory replay; candidate estimates did not control motion. Correlated windows and shared seeds are not independent training policies. Acceleration/noise are not universally identifiable.",
+  "metrics": {
+    "motion_MAD": {
+      "moving": {
+        "0": {
+          "MAE_mm": 0.033975928146086284,
+          "bias_mm": 0.033975928146086284,
+          "classification_accuracy": 1.0,
+          "n": 4954,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        },
+        "10": {
+          "MAE_mm": 1.8239880462443099,
+          "bias_mm": 0.8217371907733526,
+          "classification_accuracy": 0.9461259079903148,
+          "n": 1652,
+          "wrong_direction_actual_switches_per_decision": 0.007869249394673124,
+          "wrong_interval_fraction": 0.027239709443099273
+        }
+      },
+      "stationary": {
+        "0": {
+          "MAE_mm": 0.001684144769600808,
+          "bias_mm": 0.001684144769600808,
+          "classification_accuracy": 1.0,
+          "n": 3293,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        },
+        "10": {
+          "MAE_mm": 2.0498617911240644,
+          "bias_mm": 1.031556074444317,
+          "classification_accuracy": 0.9404600811907984,
+          "n": 2217,
+          "wrong_direction_actual_switches_per_decision": 0.01849345963013081,
+          "wrong_interval_fraction": 0.05142083897158322
+        }
+      }
+    },
+    "position": {
+      "moving": {
+        "0": {
+          "MAE_mm": 1.0172149912611244,
+          "bias_mm": 1.0172149912611244,
+          "classification_accuracy": 1.0,
+          "n": 4954,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        },
+        "10": {
+          "MAE_mm": 0.9854598369633314,
+          "bias_mm": 0.4439000399408463,
+          "classification_accuracy": 1.0,
+          "n": 1652,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        }
+      },
+      "stationary": {
+        "0": {
+          "MAE_mm": 0.027560870995717347,
+          "bias_mm": 0.027560870995717347,
+          "classification_accuracy": 1.0,
+          "n": 3293,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        },
+        "10": {
+          "MAE_mm": 0.7897690859256002,
+          "bias_mm": 0.1383479233516397,
+          "classification_accuracy": 0.9945872801082544,
+          "n": 2217,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.016238159675236806
+        }
+      }
+    }
+  },
+  "mixed_window_errors": {
+    "motion_MAD": {
+      "noisy_to_clean": {
+        "MAE_vs_window_RMS_mm": 3.874726261026259,
+        "n": 480
+      }
+    },
+    "position": {
+      "noisy_to_clean": {
+        "MAE_vs_window_RMS_mm": 0.8034796760237995,
+        "n": 480
+      }
+    }
+  },
+  "moving_MAE_relative_reduction": 0.5228109142689032,
+  "new_grasp_success_evaluation": false,
+  "paired_seed_bootstrap": {
+    "0": {
+      "mean_seed_equal_MAE_difference_mm": -0.9619644217793649,
+      "paired_seed_bootstrap_95pct_CI_mm": [
+        -1.0753965919385156,
+        -0.8527040612822082
+      ],
+      "unit": "20 paired reset/noise seeds; conditional on fixed policies and sampled trajectories"
+    },
+    "10": {
+      "mean_seed_equal_MAE_difference_mm": 0.8461785401649774,
+      "paired_seed_bootstrap_95pct_CI_mm": [
+        0.6804978216498857,
+        1.02222648117508
+      ],
+      "unit": "20 paired reset/noise seeds; conditional on fixed policies and sampled trajectories"
+    }
+  },
+  "protocol_sha256": "a3affb02d28299088ecadea7669559d489f38fd4ec61ed597948e3069933b3f3",
+  "replayed_sequences": 480,
+  "stage1_passed": false,
+  "stage2_authorized_by_gate": false,
+  "synthetic_stress": {
+    "acceleration": {
+      "motion_MAD": {
+        "moving": {
+          "0": {
+            "MAE_mm": 4.101730835226605e-06,
+            "bias_mm": 4.101730835226605e-06,
+            "classification_accuracy": 1.0,
+            "n": 1960,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 1.8654730628836649,
+            "bias_mm": 0.3937485995000222,
+            "classification_accuracy": 0.9071428571428571,
+            "n": 840,
+            "wrong_direction_actual_switches_per_decision": 0.011904761904761904,
+            "wrong_interval_fraction": 0.04880952380952381
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          },
+          "10": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          }
+        }
+      },
+      "position": {
+        "moving": {
+          "0": {
+            "MAE_mm": 14.200810012393337,
+            "bias_mm": 14.200810012393337,
+            "classification_accuracy": 0.1836734693877551,
+            "n": 1960,
+            "wrong_direction_actual_switches_per_decision": 0.02040816326530612,
+            "wrong_interval_fraction": 0.7755102040816326
+          },
+          "10": {
+            "MAE_mm": 6.450697038166488,
+            "bias_mm": 6.300282464432896,
+            "classification_accuracy": 1.0,
+            "n": 840,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          },
+          "10": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          }
+        }
+      }
+    },
+    "impact": {
+      "motion_MAD": {
+        "moving": {
+          "0": {
+            "MAE_mm": 0.0,
+            "bias_mm": 0.0,
+            "classification_accuracy": 1.0,
+            "n": 300,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 1.9374054260968987,
+            "bias_mm": 0.7301295111896258,
+            "classification_accuracy": 0.93,
+            "n": 100,
+            "wrong_direction_actual_switches_per_decision": 0.01,
+            "wrong_interval_fraction": 0.02
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.0,
+            "bias_mm": 0.0,
+            "classification_accuracy": 1.0,
+            "n": 1660,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 1.8970020893488124,
+            "bias_mm": 0.40469337322805016,
+            "classification_accuracy": 0.9027027027027027,
+            "n": 740,
+            "wrong_direction_actual_switches_per_decision": 0.013513513513513514,
+            "wrong_interval_fraction": 0.05675675675675676
+          }
+        }
+      },
+      "position": {
+        "moving": {
+          "0": {
+            "MAE_mm": 8.777602851757575,
+            "bias_mm": 8.777602851757575,
+            "classification_accuracy": 0.4,
+            "n": 300,
+            "wrong_direction_actual_switches_per_decision": 0.2,
+            "wrong_interval_fraction": 0.8
+          },
+          "10": {
+            "MAE_mm": 3.2368337447792324,
+            "bias_mm": 3.2096967870985407,
+            "classification_accuracy": 1.0,
+            "n": 100,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.0,
+            "bias_mm": 0.0,
+            "classification_accuracy": 1.0,
+            "n": 1660,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 0.8335701137484657,
+            "bias_mm": 0.07248821453701411,
+            "classification_accuracy": 0.9986486486486487,
+            "n": 740,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          }
+        }
+      }
+    },
+    "oscillation": {
+      "motion_MAD": {
+        "moving": {
+          "0": {
+            "MAE_mm": 6.419855781170188,
+            "bias_mm": 6.419855781170188,
+            "classification_accuracy": 1.0,
+            "n": 1960,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 2.543287251145557,
+            "bias_mm": 2.009596382419419,
+            "classification_accuracy": 0.9702380952380952,
+            "n": 840,
+            "wrong_direction_actual_switches_per_decision": 0.002380952380952381,
+            "wrong_interval_fraction": 0.005952380952380952
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          },
+          "10": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          }
+        }
+      },
+      "position": {
+        "moving": {
+          "0": {
+            "MAE_mm": 7.694837468645631,
+            "bias_mm": 7.694837468645631,
+            "classification_accuracy": 0.0,
+            "n": 1960,
+            "wrong_direction_actual_switches_per_decision": 0.02040816326530612,
+            "wrong_interval_fraction": 1.0
+          },
+          "10": {
+            "MAE_mm": 2.782743957863663,
+            "bias_mm": 2.766445391251279,
+            "classification_accuracy": 1.0,
+            "n": 840,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          },
+          "10": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          }
+        }
+      }
+    },
+    "static": {
+      "motion_MAD": {
+        "moving": {
+          "0": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          },
+          "10": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.0,
+            "bias_mm": 0.0,
+            "classification_accuracy": 1.0,
+            "n": 1960,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 1.8654734422959363,
+            "bias_mm": 0.3937488899243472,
+            "classification_accuracy": 0.9071428571428571,
+            "n": 840,
+            "wrong_direction_actual_switches_per_decision": 0.011904761904761904,
+            "wrong_interval_fraction": 0.04880952380952381
+          }
+        }
+      },
+      "position": {
+        "moving": {
+          "0": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          },
+          "10": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": 0.0,
+            "bias_mm": 0.0,
+            "classification_accuracy": 1.0,
+            "n": 1960,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 0.8608238623346174,
+            "bias_mm": 0.08970853509983054,
+            "classification_accuracy": 0.9988095238095238,
+            "n": 840,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          }
+        }
+      }
+    },
+    "velocity": {
+      "motion_MAD": {
+        "moving": {
+          "0": {
+            "MAE_mm": 1.4916886989679335e-06,
+            "bias_mm": 1.4916886989679335e-06,
+            "classification_accuracy": 1.0,
+            "n": 1960,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 1.8654734208501287,
+            "bias_mm": 0.3937488746082352,
+            "classification_accuracy": 0.9071428571428571,
+            "n": 840,
+            "wrong_direction_actual_switches_per_decision": 0.011904761904761904,
+            "wrong_interval_fraction": 0.04880952380952381
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          },
+          "10": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          }
+        }
+      },
+      "position": {
+        "moving": {
+          "0": {
+            "MAE_mm": 4.18330014309049,
+            "bias_mm": 4.18330014309049,
+            "classification_accuracy": 1.0,
+            "n": 1960,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          },
+          "10": {
+            "MAE_mm": 1.1812592172494356,
+            "bias_mm": 0.8889683678063663,
+            "classification_accuracy": 1.0,
+            "n": 840,
+            "wrong_direction_actual_switches_per_decision": 0.0,
+            "wrong_interval_fraction": 0.0
+          }
+        },
+        "stationary": {
+          "0": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          },
+          "10": {
+            "MAE_mm": null,
+            "bias_mm": null,
+            "classification_accuracy": null,
+            "n": 0,
+            "wrong_direction_actual_switches_per_decision": null,
+            "wrong_interval_fraction": null
+          }
+        }
+      }
+    }
+  },
+  "windows": 25192
+}
