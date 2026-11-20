@@ -1,0 +1,54 @@
+{
+  "clean": {
+    "appropriate_post_change_switch_delay_steps": {
+      "max": null,
+      "median": null,
+      "min": null,
+      "n": 0
+    },
+    "episodes": 60,
+    "episodes_without_any_switch": 60,
+    "interpretation": "Smoke-only nominal-noise labeling. Stationarity gate failed; not validated detection or causal outcome evidence.",
+    "missing_appropriate_post_change_switch": null,
+    "unnecessary_switches_after_initial_decision": 0
+  },
+  "clean_to_noisy": {
+    "appropriate_post_change_switch_delay_steps": {
+      "max": 24,
+      "median": 18.0,
+      "min": 8,
+      "n": 60
+    },
+    "episodes": 60,
+    "episodes_without_any_switch": 0,
+    "interpretation": "Smoke-only nominal-noise labeling. Stationarity gate failed; not validated detection or causal outcome evidence.",
+    "missing_appropriate_post_change_switch": 0,
+    "unnecessary_switches_after_initial_decision": 0
+  },
+  "noisy": {
+    "appropriate_post_change_switch_delay_steps": {
+      "max": null,
+      "median": null,
+      "min": null,
+      "n": 0
+    },
+    "episodes": 60,
+    "episodes_without_any_switch": 0,
+    "interpretation": "Smoke-only nominal-noise labeling. Stationarity gate failed; not validated detection or causal outcome evidence.",
+    "missing_appropriate_post_change_switch": null,
+    "unnecessary_switches_after_initial_decision": 0
+  },
+  "noisy_to_clean": {
+    "appropriate_post_change_switch_delay_steps": {
+      "max": 20,
+      "median": 12.0,
+      "min": 8,
+      "n": 60
+    },
+    "episodes": 60,
+    "episodes_without_any_switch": 0,
+    "interpretation": "Smoke-only nominal-noise labeling. Stationarity gate failed; not validated detection or causal outcome evidence.",
+    "missing_appropriate_post_change_switch": 0,
+    "unnecessary_switches_after_initial_decision": 0
+  }
+}

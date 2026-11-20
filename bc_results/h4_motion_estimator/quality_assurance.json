@@ -1,0 +1,16 @@
+{
+  "all_passed": true,
+  "all_unit_tests": 50,
+  "corrected_replay_exact_transition_test_passed": true,
+  "figures_png": 6,
+  "figures_svg": 6,
+  "full_integrity_audit": "stage1_integrity_audit.json",
+  "historical_tracked_files_unchanged": 1329,
+  "invalid_initial_replay_preserved": true,
+  "new_final_success_episodes": 0,
+  "no_estimator_ground_truth_input": true,
+  "no_threshold_or_estimator_retuning": true,
+  "stage1_gate": "failed",
+  "stage2_episodes": 0,
+  "syntax_files_passed": 90
+}

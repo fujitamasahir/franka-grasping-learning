@@ -1,0 +1,13 @@
+{
+  "architecture": "H1",
+  "seed": 42,
+  "best_epoch": 100,
+  "best_validation_loss": 0.0006288791202568382,
+  "training_seconds": 10.144172957981937,
+  "parameter_count": 18692,
+  "training_windows": 31029,
+  "validation_windows": 3448,
+  "training_action_targets": 31029,
+  "validation_action_targets": 3448,
+  "model_sha256": "a476c0cde9c0a68024fa5f6e7116c4a30e2080ff4d95a1fad058e9d8b091d261"
+}

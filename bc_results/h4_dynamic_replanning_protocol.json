@@ -1,0 +1,216 @@
+{
+  "base_commit": "f83df879d58b40efef82b2b4b649e5f1ed04c77a",
+  "branch": "experiment/h4-dynamic-uncertainty-replanning",
+  "controllers": {
+    "OneShot": "R4 first 20 steps, observations 0..19, 7.5 mm inclusive R4 decision at t20, frozen afterward; exact previous rule.",
+    "Online": "Same t20 rule as OneShot; rolling decisions every 4 steps t24..80; 6.5/8.5 mm hysteresis, frozen afterward.",
+    "R1": "Frozen H4, always new prediction and action index 0.",
+    "R4": "Frozen H4, consume indices 0,1,2,3.",
+    "horizon": 4,
+    "initial_interval": 4,
+    "initial_switch_counting": "Count a t20 change from the R4 warm-up as a switch; distinguish it from subsequent switches and post-change detection.",
+    "initial_threshold_m": 0.0075,
+    "switch_R1_to_R4_strictly_below_m": 0.0065,
+    "switch_R4_to_R1_strictly_above_m": 0.0085
+  },
+  "environment": {
+    "class": "FrankaAutonomousEnv",
+    "control_dt_s": 0.1,
+    "max_move_m": 0.15,
+    "max_time_s": 16.0,
+    "position_range_m": 0.2,
+    "success_rule": "existing lift >= 0.10 m sustained for >= 5 steps",
+    "true_state_physics_reward_normalization_unchanged": true
+  },
+  "estimator": {
+    "decision_steps": [
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48,
+      52,
+      56,
+      60,
+      64,
+      68,
+      72,
+      76,
+      80
+    ],
+    "formula": "sqrt((sample_variance_x_ddof1 + sample_variance_y_ddof1)/2)",
+    "input": "noisy cube XY only, observation indices 3:5",
+    "no_ground_truth_access": true,
+    "phase_limited": true,
+    "sample_count": 20,
+    "switch_execution": "At decision t after action t-1, consume completed old chunk then replan from observation t with new interval. Always start fresh at action index 0, including R1-to-R4. No extra inference at terminal states.",
+    "window_at_decision_t": "observation indices t-20 through t-1 inclusive; exclude current observation t"
+  },
+  "evaluation": {
+    "calibration": [
+      340000,
+      340299
+    ],
+    "cells_per_phase": 48,
+    "controllers": [
+      "R1",
+      "R4",
+      "OneShot",
+      "Online"
+    ],
+    "example_seeds": {
+      "calibration": 340000,
+      "final": 341000,
+      "smoke": 342000
+    },
+    "expected_episodes": {
+      "calibration": 14400,
+      "final": 48000,
+      "smoke": 960
+    },
+    "final": [
+      341000,
+      341999
+    ],
+    "legacy_regression_seeds": [
+      342000,
+      342001
+    ],
+    "model_seeds": [
+      42,
+      123,
+      456
+    ],
+    "paired_initial_positions": true,
+    "profiles": [
+      "clean",
+      "noisy",
+      "clean_to_noisy",
+      "noisy_to_clean"
+    ],
+    "run_order": "model seed, profile, controller; ascending evaluation seed",
+    "sequential": true,
+    "smoke": [
+      342000,
+      342019
+    ],
+    "trace": "First20 action/observation prefix hashes for pairing; detailed per-decision records for all episodes. Predetermined first seed in each phase has full trace."
+  },
+  "frozen_models": {
+    "123": {
+      "path": "bc_models/action_chunking/H4_seed123.pt",
+      "sha256": "5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c"
+    },
+    "42": {
+      "path": "bc_models/action_chunking/H4_seed42.pt",
+      "sha256": "41cda0af609e3064ba8e485a4ef81289c319472b08d1f710d96b30f6cb470557"
+    },
+    "456": {
+      "path": "bc_models/action_chunking/H4_seed456.pt",
+      "sha256": "649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706"
+    }
+  },
+  "gates": [
+    "Protocol/hash committed before new rollouts",
+    "All existing and new tests plus syntax checks",
+    "All 960 smoke episodes, pairing, legacy/prefix equivalence, window/timing checks and stationarity pass before Calibration",
+    "All 14400 Calibration episodes, integrity and stationarity pass before Final",
+    "Complete 48000 Final episodes and full integrity audit before outcome analysis"
+  ],
+  "hypotheses": [
+    "Online may help clean-to-noisy by switching to R1.",
+    "Online may recover efficiency and possibly success noisy-to-clean by returning to R4.",
+    "Constant conditions may preserve prior behavior with few switches.",
+    "Delay, estimation error and model heterogeneity may offset benefits."
+  ],
+  "noise": {
+    "change_step": 40,
+    "controller_receives_profile_or_true_sigma_or_transition_time": false,
+    "generation_seed": 20261106,
+    "implementation": "Reuse make_noise_schedule(seed,1.0,20261106,160); float32 base[absolute step] multiplied by float32 profile sigma. Shape (161,2), SeedSequence([noise_seed,evaluation_seed]), NumPy PCG64. Perturb only observed cube and relative XY. Never modify physics.",
+    "profiles": {
+      "clean": [
+        0.0,
+        0.0
+      ],
+      "clean_to_noisy": [
+        0.0,
+        0.01
+      ],
+      "noisy": [
+        0.01,
+        0.01
+      ],
+      "noisy_to_clean": [
+        0.01,
+        0.0
+      ]
+    }
+  },
+  "outcomes": {
+    "primary": "Online minus OneShot equally weighted over 3 models x 2 dynamic profiles; no constant profiles in primary.",
+    "secondary": [
+      "Online vs OneShot constant clean/noisy separately",
+      "Online vs R1 and R4 all profiles and per dynamic profile",
+      "Per-model and per-profile success",
+      "Paired beneficial/harmful, both-success, both-failure",
+      "Estimate error vs RMS injected sigma within each window, transition vs post-change-only windows",
+      "Bidirectional switches, appropriate-switch delay, missing and unnecessary switches",
+      "Inference calls/time, wall time, decisions, steps under each interval",
+      "Stationarity audit"
+    ]
+  },
+  "research_cutoff": "2026-11-14T23:59:59-07:00",
+  "research_questions": [
+    "Detect changes in observation noise from noisy observations only?",
+    "Improve success over OneShot under both dynamic profiles?",
+    "Recover R4 efficiency when observations become reliable?",
+    "How do effects, harmful transitions and cost vary across three frozen policies?"
+  ],
+  "software": {
+    "gymnasium": "1.4.0",
+    "machine": "arm64",
+    "menagerie_commit": "98a70c569c4c1b6da467a20012f766ee1f8dc521",
+    "mujoco": "3.17.0",
+    "numpy": "2.5.4",
+    "python": "3.12.10",
+    "torch": "2.15.0"
+  },
+  "source_adaptive_protocol_sha256": "a212e07da4b00b4c444454482b8547b4058c518076991e09c5038edcd728df0f",
+  "stationarity_gate": {
+    "ground_truth_is_diagnostic_only": true,
+    "material_failure": "Any Online decision window or OneShot initial window exceeding 1 mm XY during smoke or Calibration fails the gate; no Final. Also diagnose corresponding windows of fixed policies.",
+    "metric": "Maximum pairwise Euclidean XY displacement of true cube within each 20-observation window. Also report pairwise XYZ displacement, clean-position variance and maximum displacement from first sample.",
+    "no_outcome_selection_or_threshold_tuning": true,
+    "reason": "Reuse prior 1 mm stationarity tolerance, now for every estimation window. Cube XYZ movement reported separately because estimator measures XY.",
+    "threshold_m": 0.001
+  },
+  "statistics": {
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261107,
+    "exact_tests": "Two-sided exact McNemar in each fixed model/profile. Holm over six dynamic Online-vs-OneShot primary component tests; separate Holm family of six constant Online-vs-OneShot tests; 12 tests for Online-vs-R1 and 12 for Online-vs-R4. No pooled independent-policy significance test.",
+    "paired_arithmetic": "Online successes minus baseline successes must equal beneficial minus harmful; preserve all discordant pairs.",
+    "paired_bootstrap": "Use same sampled position indices jointly across models, profiles and controllers. Primary averages six fixed-model/profile effects. Intervals conditional on three frozen policies.",
+    "seed_descriptives": "For each model average its two dynamic effects; report mean, median, sample SD, min/max and direction consistency across three models.",
+    "timing": "Descriptive under uncontrolled hardware load; report calls separately."
+  },
+  "status": "preregistered before any new smoke, Calibration or Final rollout",
+  "stopping": [
+    "Preserve evidence and stop on corruption, duplicate/missing/unordered rows, schema/hash/config mismatch.",
+    "Stop before Final on material stationarity failure in smoke/Calibration; never repair estimator or move decision cutoff to obtain favorable results.",
+    "No extra profiles, thresholds, architectures, training or controller candidates.",
+    "Exclusive study writer lock; resumable fsync CSV rows; never overwrite completed outputs.",
+    "Honor STOP_AFTER_CELL at complete cell boundary; hard cutoff 2026-11-14 23:59:59 America/Denver, stop append-safely before further episode.",
+    "If stopped early, report exact counts, withhold Final performance analysis and clearly label unavailable deliverables."
+  ],
+  "study": "Phase-limited online uncertainty-aware replanning under dynamic observation noise",
+  "switch_diagnostics": {
+    "desired_intervals": "For diagnostic labeling only, 0 mm -> R4, 10 mm -> R1.",
+    "detection_delay": "First actual switch at or after t40 entering the desired post-change interval, minus40; separately count already-correct-at40 and never-switched. Also report first decision selecting correct interval after40 regardless of a switch.",
+    "harmful": "Paired baseline-success/Online-failure; associational only, cannot attribute to one switch without matched counterfactual branch.",
+    "unnecessary": "Actual switch after t20 whose new interval disagrees with current nominal sigma label. Not a causal outcome attribution. Initial warm-up switch reported separately."
+  }
+}

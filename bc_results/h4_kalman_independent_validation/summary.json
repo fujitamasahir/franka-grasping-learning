@@ -1,0 +1,5670 @@
+{
+  "criteria_by_estimator": {
+    "kalman": {
+      "all_passed": true,
+      "checks": {
+        "coverage": "PASS",
+        "detection_misses_clean_to_noisy": "PASS",
+        "detection_misses_noisy_to_clean": "PASS",
+        "detection_p90_clean_to_noisy": "PASS",
+        "detection_p90_noisy_to_clean": "PASS",
+        "moving_MAE_0mm": "PASS",
+        "moving_MAE_10mm": "PASS",
+        "moving_classification_0mm": "PASS",
+        "moving_classification_10mm": "PASS",
+        "moving_wrong_interval_0mm": "PASS",
+        "moving_wrong_interval_10mm": "PASS",
+        "moving_wrong_switch_0mm": "PASS",
+        "moving_wrong_switch_10mm": "PASS",
+        "relative_moving_MAE_reduction": "PASS",
+        "stationary_MAE_0mm": "PASS",
+        "stationary_MAE_10mm": "PASS"
+      },
+      "moving_MAE_relative_reduction": 0.5329198089178097
+    },
+    "motion_MAD": {
+      "all_passed": false,
+      "checks": {
+        "coverage": "PASS",
+        "detection_misses_clean_to_noisy": "PASS",
+        "detection_misses_noisy_to_clean": "PASS",
+        "detection_p90_clean_to_noisy": "FAIL",
+        "detection_p90_noisy_to_clean": "PASS",
+        "moving_MAE_0mm": "PASS",
+        "moving_MAE_10mm": "FAIL",
+        "moving_classification_0mm": "PASS",
+        "moving_classification_10mm": "FAIL",
+        "moving_wrong_interval_0mm": "PASS",
+        "moving_wrong_interval_10mm": "PASS",
+        "moving_wrong_switch_0mm": "PASS",
+        "moving_wrong_switch_10mm": "PASS",
+        "relative_moving_MAE_reduction": "FAIL",
+        "stationary_MAE_0mm": "PASS",
+        "stationary_MAE_10mm": "PASS"
+      },
+      "moving_MAE_relative_reduction": 0.034144458347205586
+    },
+    "position": {
+      "all_passed": false,
+      "checks": {
+        "coverage": "PASS",
+        "detection_misses_clean_to_noisy": "PASS",
+        "detection_misses_noisy_to_clean": "PASS",
+        "detection_p90_clean_to_noisy": "PASS",
+        "detection_p90_noisy_to_clean": "PASS",
+        "moving_MAE_0mm": "PASS",
+        "moving_MAE_10mm": "PASS",
+        "moving_classification_0mm": "PASS",
+        "moving_classification_10mm": "PASS",
+        "moving_wrong_interval_0mm": "PASS",
+        "moving_wrong_interval_10mm": "PASS",
+        "moving_wrong_switch_0mm": "PASS",
+        "moving_wrong_switch_10mm": "PASS",
+        "relative_moving_MAE_reduction": "FAIL",
+        "stationary_MAE_0mm": "PASS",
+        "stationary_MAE_10mm": "PASS"
+      },
+      "moving_MAE_relative_reduction": 0.0
+    }
+  },
+  "detection": {
+    "kalman": {
+      "clean_to_noisy": {
+        "already_target_at40": 0,
+        "delays_steps": [
+          20,
+          16,
+          24,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          20,
+          12,
+          16,
+          20,
+          20,
+          16,
+          24,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          20,
+          12,
+          16,
+          20,
+          20,
+          16,
+          24,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          20,
+          12,
+          16,
+          20,
+          20,
+          16,
+          24,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          20,
+          12,
+          16,
+          20,
+          20,
+          16,
+          24,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          20,
+          12,
+          16,
+          20,
+          20,
+          16,
+          24,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          20,
+          12,
+          16,
+          20
+        ],
+        "median_delay_steps": 16.0,
+        "miss_fraction": 0.0,
+        "misses": 0,
+        "n": 120,
+        "p90_delay_steps": 20.0,
+        "switches_detected": 120
+      },
+      "noisy_to_clean": {
+        "already_target_at40": 0,
+        "delays_steps": [
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          16,
+          20,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          16,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          16,
+          20,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          16,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          16,
+          20,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          16,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          16,
+          20,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          16,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          16,
+          20,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          16,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          16,
+          20,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          16,
+          12
+        ],
+        "median_delay_steps": 14.0,
+        "miss_fraction": 0.0,
+        "misses": 0,
+        "n": 120,
+        "p90_delay_steps": 20.0,
+        "switches_detected": 120
+      }
+    },
+    "motion_MAD": {
+      "clean_to_noisy": {
+        "already_target_at40": 0,
+        "delays_steps": [
+          24,
+          16,
+          20,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          24,
+          16,
+          32,
+          28,
+          16,
+          24,
+          20,
+          16,
+          24,
+          20,
+          24,
+          16,
+          20,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          16,
+          16,
+          32,
+          28,
+          16,
+          24,
+          20,
+          16,
+          24,
+          20,
+          24,
+          16,
+          20,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          24,
+          16,
+          32,
+          28,
+          16,
+          24,
+          20,
+          16,
+          24,
+          20,
+          24,
+          16,
+          20,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          24,
+          16,
+          32,
+          28,
+          16,
+          24,
+          20,
+          16,
+          24,
+          20,
+          24,
+          16,
+          20,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          24,
+          16,
+          32,
+          28,
+          16,
+          24,
+          20,
+          16,
+          24,
+          20,
+          24,
+          16,
+          20,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          24,
+          16,
+          32,
+          28,
+          16,
+          24,
+          20,
+          16,
+          24,
+          20
+        ],
+        "median_delay_steps": 20.0,
+        "miss_fraction": 0.0,
+        "misses": 0,
+        "n": 120,
+        "p90_delay_steps": 24.400000000000034,
+        "switches_detected": 120
+      },
+      "noisy_to_clean": {
+        "already_target_at40": 6,
+        "delays_steps": [
+          4,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          12,
+          12,
+          4,
+          8,
+          12,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          4,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          12,
+          12,
+          4,
+          8,
+          12,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          4,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          12,
+          12,
+          4,
+          8,
+          12,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          4,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          12,
+          12,
+          4,
+          8,
+          12,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          4,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          12,
+          12,
+          4,
+          8,
+          12,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          4,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8,
+          8,
+          12,
+          12,
+          4,
+          8,
+          12,
+          8,
+          8,
+          12,
+          8,
+          12,
+          8
+        ],
+        "median_delay_steps": 8.0,
+        "miss_fraction": 0.05,
+        "misses": 6,
+        "n": 120,
+        "p90_delay_steps": 12.0,
+        "switches_detected": 114
+      }
+    },
+    "position": {
+      "clean_to_noisy": {
+        "already_target_at40": 0,
+        "delays_steps": [
+          16,
+          16,
+          20,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          16,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          16,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          16,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          20,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          16,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          24,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          16,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          24,
+          16,
+          12,
+          16,
+          20,
+          16,
+          16,
+          16,
+          12,
+          16,
+          12,
+          20,
+          20,
+          20,
+          16,
+          12,
+          16,
+          20
+        ],
+        "median_delay_steps": 16.0,
+        "miss_fraction": 0.0,
+        "misses": 0,
+        "n": 120,
+        "p90_delay_steps": 20.0,
+        "switches_detected": 120
+      },
+      "noisy_to_clean": {
+        "already_target_at40": 0,
+        "delays_steps": [
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          12,
+          16,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          12,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          12,
+          16,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          12,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          12,
+          16,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          12,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          12,
+          16,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          12,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          12,
+          16,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          12,
+          12,
+          12,
+          12,
+          12,
+          16,
+          20,
+          16,
+          16,
+          12,
+          12,
+          16,
+          12,
+          8,
+          20,
+          12,
+          20,
+          12,
+          16,
+          8,
+          12,
+          12
+        ],
+        "median_delay_steps": 12.0,
+        "miss_fraction": 0.0,
+        "misses": 0,
+        "n": 120,
+        "p90_delay_steps": 20.0,
+        "switches_detected": 120
+      }
+    }
+  },
+  "independent_unit": "20 reset/noise indices shared across models, motion sources and profiles; conditional on3 policies",
+  "integrity_audit_sha256": "7c596c097db2c77f03500815c0dcf6c942c6bdd0a7a9eca34fdefc7281b3c977",
+  "kalman_accepted": true,
+  "metrics": {
+    "kalman": {
+      "moving": {
+        "0": {
+          "MAE_mm": 0.16802252816020025,
+          "bias_mm": 0.16802252816020025,
+          "classification_accuracy": 1.0,
+          "n": 3196,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        },
+        "10": {
+          "MAE_mm": 0.8412077596996246,
+          "bias_mm": -0.09605757196495619,
+          "classification_accuracy": 0.981226533166458,
+          "n": 3196,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0006257822277847309
+        }
+      },
+      "stationary": {
+        "0": {
+          "MAE_mm": 0.000579598145285935,
+          "bias_mm": 0.000579598145285935,
+          "classification_accuracy": 1.0,
+          "n": 2588,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        },
+        "10": {
+          "MAE_mm": 0.9153786707882535,
+          "bias_mm": 0.013717156105100442,
+          "classification_accuracy": 0.9806800618238022,
+          "n": 2588,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.02472952086553323
+        }
+      }
+    },
+    "motion_MAD": {
+      "moving": {
+        "0": {
+          "MAE_mm": 0.043622905818578826,
+          "bias_mm": 0.043622905818578826,
+          "classification_accuracy": 1.0,
+          "n": 3196,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        },
+        "10": {
+          "MAE_mm": 2.043322087662701,
+          "bias_mm": 0.7846631415627282,
+          "classification_accuracy": 0.9230287859824781,
+          "n": 3196,
+          "wrong_direction_actual_switches_per_decision": 0.015644555694618274,
+          "wrong_interval_fraction": 0.04881101376720901
+        }
+      },
+      "stationary": {
+        "0": {
+          "MAE_mm": 0.0011192142123388092,
+          "bias_mm": 0.0011192142123388092,
+          "classification_accuracy": 1.0,
+          "n": 2588,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        },
+        "10": {
+          "MAE_mm": 1.8511959152955266,
+          "bias_mm": 0.6149078234338194,
+          "classification_accuracy": 0.9273570324574961,
+          "n": 2588,
+          "wrong_direction_actual_switches_per_decision": 0.0038639876352395673,
+          "wrong_interval_fraction": 0.07921174652241113
+        }
+      }
+    },
+    "position": {
+      "moving": {
+        "0": {
+          "MAE_mm": 1.3012616290115724,
+          "bias_mm": 1.3012616290115724,
+          "classification_accuracy": 0.9949937421777222,
+          "n": 3196,
+          "wrong_direction_actual_switches_per_decision": 0.0006257822277847309,
+          "wrong_interval_fraction": 0.0037546933667083854
+        },
+        "10": {
+          "MAE_mm": 0.8594600353379958,
+          "bias_mm": 0.13829377532535492,
+          "classification_accuracy": 0.986232790988736,
+          "n": 3196,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0006257822277847309
+        }
+      },
+      "stationary": {
+        "0": {
+          "MAE_mm": 0.019218455537368208,
+          "bias_mm": 0.019218455537368208,
+          "classification_accuracy": 1.0,
+          "n": 2588,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        },
+        "10": {
+          "MAE_mm": 0.88345709597187,
+          "bias_mm": 0.11407632635440262,
+          "classification_accuracy": 1.0,
+          "n": 2588,
+          "wrong_direction_actual_switches_per_decision": 0.0,
+          "wrong_interval_fraction": 0.0
+        }
+      }
+    }
+  },
+  "mixed_windows": {
+    "kalman": {
+      "clean_to_noisy": {
+        "MAE_vs_window_RMS_mm": 1.0483188823647147,
+        "n": 480
+      },
+      "noisy_to_clean": {
+        "MAE_vs_window_RMS_mm": 1.0900486416897133,
+        "n": 480
+      }
+    },
+    "motion_MAD": {
+      "clean_to_noisy": {
+        "MAE_vs_window_RMS_mm": 3.877416864353783,
+        "n": 480
+      },
+      "noisy_to_clean": {
+        "MAE_vs_window_RMS_mm": 3.804180924370202,
+        "n": 480
+      }
+    },
+    "position": {
+      "clean_to_noisy": {
+        "MAE_vs_window_RMS_mm": 0.9226205114639859,
+        "n": 480
+      },
+      "noisy_to_clean": {
+        "MAE_vs_window_RMS_mm": 1.0110003738677136,
+        "n": 480
+      }
+    }
+  },
+  "no_grasp_success_evaluation": true,
+  "paired_seed_bootstrap": {
+    "kalman": {
+      "0": {
+        "MAE_difference_mm": -1.1195989646829638,
+        "paired_seed_bootstrap_95pct_CI_mm": [
+          -1.3483764405053784,
+          -0.9209383973115505
+        ]
+      },
+      "10": {
+        "MAE_difference_mm": -0.00990233049273132,
+        "paired_seed_bootstrap_95pct_CI_mm": [
+          -0.08999834879561448,
+          0.05619616413330519
+        ]
+      }
+    },
+    "motion_MAD": {
+      "0": {
+        "MAE_difference_mm": -1.2424969275904623,
+        "paired_seed_bootstrap_95pct_CI_mm": [
+          -1.5361271125149045,
+          -0.9922150055847312
+        ]
+      },
+      "10": {
+        "MAE_difference_mm": 1.1952923253310606,
+        "paired_seed_bootstrap_95pct_CI_mm": [
+          0.9477364473920944,
+          1.4819153452450635
+        ]
+      }
+    },
+    "position": {
+      "0": {
+        "MAE_difference_mm": 0.0,
+        "paired_seed_bootstrap_95pct_CI_mm": [
+          0.0,
+          0.0
+        ]
+      },
+      "10": {
+        "MAE_difference_mm": 0.0,
+        "paired_seed_bootstrap_95pct_CI_mm": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "parameters_changed_after_Final": false,
+  "per_seed": {
+    "352000": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "median_delay_steps": 24.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 24.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "median_delay_steps": 4.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 4.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.1,
+              "bias_mm": 0.1,
+              "classification_accuracy": 1.0,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.42105263157894735,
+              "bias_mm": 0.0894736842105262,
+              "classification_accuracy": 1.0,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 104,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9567307692307689,
+              "bias_mm": 0.5240384615384615,
+              "classification_accuracy": 1.0,
+              "n": 104,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.04249680930196879,
+              "bias_mm": 0.04249680930196879,
+              "classification_accuracy": 1.0,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 3.4279905285871157,
+              "bias_mm": 2.9829942229736734,
+              "classification_accuracy": 0.9578947368421052,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.015789473684210527
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.00027616631629644547,
+              "bias_mm": 0.00027616631629644547,
+              "classification_accuracy": 1.0,
+              "n": 104,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.6762845779179723,
+              "bias_mm": 0.597498719477372,
+              "classification_accuracy": 0.9423076923076923,
+              "n": 104,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.028846153846153848
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 1.4026126478846088,
+              "bias_mm": 1.4026126478846088,
+              "classification_accuracy": 1.0,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5348327359395374,
+              "bias_mm": 0.21117081141633465,
+              "classification_accuracy": 1.0,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.01821535702505362,
+              "bias_mm": 0.01821535702505362,
+              "classification_accuracy": 1.0,
+              "n": 104,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.1042926026883122,
+              "bias_mm": 0.6364413364283165,
+              "classification_accuracy": 1.0,
+              "n": 104,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352001": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5294117647058824,
+              "bias_mm": 0.08235294117647048,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.4830508474576272,
+              "bias_mm": -0.10169491525423745,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.018595952783712576,
+              "bias_mm": 0.018595952783712576,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.0946927172094818,
+              "bias_mm": 0.5324761137949482,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0010271848958127482,
+              "bias_mm": 0.0010271848958127482,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.8440670594438986,
+              "bias_mm": 1.4260103967304583,
+              "classification_accuracy": 0.9491525423728814,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.5660247518604662,
+              "bias_mm": 0.5660247518604662,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.6517713017617196,
+              "bias_mm": 0.30655604642316836,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.036248123678556794,
+              "bias_mm": 0.036248123678556794,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5867188457836874,
+              "bias_mm": 0.04935274631759587,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352002": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "median_delay_steps": 24.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 24.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              24,
+              24
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 24.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.16058394160583941,
+              "bias_mm": 0.16058394160583941,
+              "classification_accuracy": 1.0,
+              "n": 137,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9178832116788325,
+              "bias_mm": 0.6003649635036499,
+              "classification_accuracy": 1.0,
+              "n": 137,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.014598540145985401
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.1490825688073394,
+              "bias_mm": -1.139908256880734,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.03669724770642202
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.04100679956455661,
+              "bias_mm": 0.04100679956455661,
+              "classification_accuracy": 1.0,
+              "n": 137,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.8881639628057745,
+              "bias_mm": 1.825340833540149,
+              "classification_accuracy": 1.0,
+              "n": 137,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.116505365390789,
+              "bias_mm": -0.7488975188041921,
+              "classification_accuracy": 0.944954128440367,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 1.2543571486254819,
+              "bias_mm": 1.2543571486254819,
+              "classification_accuracy": 1.0,
+              "n": 137,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9513583111194895,
+              "bias_mm": 0.695004054865992,
+              "classification_accuracy": 1.0,
+              "n": 137,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.014598540145985401
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0026123643027713105,
+              "bias_mm": 0.0026123643027713105,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.0768649364260638,
+              "bias_mm": -1.072781449030663,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352003": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.17054263565891473,
+              "bias_mm": 0.17054263565891473,
+              "classification_accuracy": 1.0,
+              "n": 129,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5794573643410853,
+              "bias_mm": -0.257751937984496,
+              "classification_accuracy": 1.0,
+              "n": 129,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 115,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8543478260869564,
+              "bias_mm": 0.2804347826086954,
+              "classification_accuracy": 1.0,
+              "n": 115,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.04043821097603408,
+              "bias_mm": 0.04043821097603408,
+              "classification_accuracy": 1.0,
+              "n": 129,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.7626977173175666,
+              "bias_mm": -1.0227588991908676,
+              "classification_accuracy": 0.8449612403100775,
+              "n": 129,
+              "wrong_direction_actual_switches_per_decision": 0.09302325581395349,
+              "wrong_interval_fraction": 0.17054263565891473
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 115,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.5576725327227308,
+              "bias_mm": 0.06713873791215676,
+              "classification_accuracy": 0.8956521739130435,
+              "n": 115,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 1.2464901152953982,
+              "bias_mm": 1.2464901152953982,
+              "classification_accuracy": 1.0,
+              "n": 129,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7116657121818055,
+              "bias_mm": 0.043455034010284374,
+              "classification_accuracy": 1.0,
+              "n": 129,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.010400863327885831,
+              "bias_mm": 0.010400863327885831,
+              "classification_accuracy": 1.0,
+              "n": 115,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7751184871466935,
+              "bias_mm": 0.3634448421391831,
+              "classification_accuracy": 1.0,
+              "n": 115,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352004": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.2679738562091503,
+              "bias_mm": 0.2679738562091503,
+              "classification_accuracy": 1.0,
+              "n": 153,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9738562091503268,
+              "bias_mm": 0.21568627450980374,
+              "classification_accuracy": 1.0,
+              "n": 153,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 155,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.1387096774193548,
+              "bias_mm": 0.7451612903225806,
+              "classification_accuracy": 1.0,
+              "n": 155,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.08153901442373068,
+              "bias_mm": 0.08153901442373068,
+              "classification_accuracy": 1.0,
+              "n": 153,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 3.0839978705189366,
+              "bias_mm": 1.5141961489529738,
+              "classification_accuracy": 0.8823529411764706,
+              "n": 153,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 155,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.370019019802942,
+              "bias_mm": 1.9260821128926775,
+              "classification_accuracy": 0.9741935483870968,
+              "n": 155,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 2.2066575847889824,
+              "bias_mm": 2.2066575847889824,
+              "classification_accuracy": 1.0,
+              "n": 153,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.0555247745421876,
+              "bias_mm": 0.713416521191288,
+              "classification_accuracy": 1.0,
+              "n": 153,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0025522902895434543,
+              "bias_mm": 0.0025522902895434543,
+              "classification_accuracy": 1.0,
+              "n": 155,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2268905640747096,
+              "bias_mm": 0.9333989476158576,
+              "classification_accuracy": 1.0,
+              "n": 155,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352005": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.15714285714285714,
+              "bias_mm": 0.15714285714285714,
+              "classification_accuracy": 1.0,
+              "n": 140,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.85,
+              "bias_mm": -0.8285714285714286,
+              "classification_accuracy": 1.0,
+              "n": 140,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9375,
+              "bias_mm": 0.7610294117647058,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.03155721945651792,
+              "bias_mm": 0.03155721945651792,
+              "classification_accuracy": 1.0,
+              "n": 140,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.5311949965936589,
+              "bias_mm": -1.3330855623390525,
+              "classification_accuracy": 0.9,
+              "n": 140,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0020365059031009643,
+              "bias_mm": 0.0020365059031009643,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 3.213480521975748,
+              "bias_mm": 2.8212499907709936,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.9771959399100479,
+              "bias_mm": 0.9771959399100479,
+              "classification_accuracy": 1.0,
+              "n": 140,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7442302613041414,
+              "bias_mm": -0.6796280462184372,
+              "classification_accuracy": 1.0,
+              "n": 140,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.011728370539372842,
+              "bias_mm": 0.011728370539372842,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8800148859701952,
+              "bias_mm": 0.7712551695113679,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352006": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.12867647058823528,
+              "bias_mm": 0.12867647058823528,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9485294117647058,
+              "bias_mm": -0.9191176470588235,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 132,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8977272727272726,
+              "bias_mm": 0.011363636363636121,
+              "classification_accuracy": 1.0,
+              "n": 132,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.019360036859597668,
+              "bias_mm": 0.019360036859597668,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.752008891357695,
+              "bias_mm": -0.802453785933942,
+              "classification_accuracy": 0.75,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.058823529411764705,
+              "wrong_interval_fraction": 0.39705882352941174
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0008867203643558207,
+              "bias_mm": 0.0008867203643558207,
+              "classification_accuracy": 1.0,
+              "n": 132,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.0573013537769471,
+              "bias_mm": -0.06717873098006742,
+              "classification_accuracy": 0.9696969696969697,
+              "n": 132,
+              "wrong_direction_actual_switches_per_decision": 0.030303030303030304,
+              "wrong_interval_fraction": 0.045454545454545456
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 1.0307484319314355,
+              "bias_mm": 1.0307484319314355,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7199467816875383,
+              "bias_mm": -0.6831739399957548,
+              "classification_accuracy": 1.0,
+              "n": 136,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.016058677016753287,
+              "bias_mm": 0.016058677016753287,
+              "classification_accuracy": 1.0,
+              "n": 132,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8103784884949269,
+              "bias_mm": 0.07638948761799289,
+              "classification_accuracy": 1.0,
+              "n": 132,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352007": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.27531645569620256,
+              "bias_mm": 0.27531645569620256,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.1329113924050633,
+              "bias_mm": 0.588607594936709,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 142,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2922535211267605,
+              "bias_mm": 1.130281690140845,
+              "classification_accuracy": 1.0,
+              "n": 142,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.06300525664657171,
+              "bias_mm": 0.06300525664657171,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.0813707944205175,
+              "bias_mm": 1.4055678524842148,
+              "classification_accuracy": 0.9620253164556962,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 142,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.9574047269965509,
+              "bias_mm": 0.9362921033816503,
+              "classification_accuracy": 1.0,
+              "n": 142,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 2.132659305205422,
+              "bias_mm": 2.132659305205422,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2029031412875786,
+              "bias_mm": 0.8734518276805183,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.004063499815053567,
+              "bias_mm": 0.004063499815053567,
+              "classification_accuracy": 1.0,
+              "n": 142,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.3451336843499921,
+              "bias_mm": 1.2192343215205828,
+              "classification_accuracy": 1.0,
+              "n": 142,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352008": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.008823529411764706,
+              "bias_mm": 0.008823529411764706,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5588235294117648,
+              "bias_mm": -0.14705882352941158,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.0296610169491525,
+              "bias_mm": -0.597457627118644,
+              "classification_accuracy": 0.8983050847457628,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.3050847457627119
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.014174338295064448,
+              "bias_mm": 0.014174338295064448,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.6346955845279012,
+              "bias_mm": 1.0655600831320746,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0016587227374917173,
+              "bias_mm": 0.0016587227374917173,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.5690246113086173,
+              "bias_mm": 0.7468885105072754,
+              "classification_accuracy": 0.7966101694915254,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.3050847457627119
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.6389927634461198,
+              "bias_mm": 0.6389927634461198,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.508300303388882,
+              "bias_mm": 0.07845442043685709,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.027232455828531663,
+              "bias_mm": 0.027232455828531663,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.0842523606635,
+              "bias_mm": -0.48094740436723554,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352009": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.27848101265822783,
+              "bias_mm": 0.27848101265822783,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.3227848101265822,
+              "bias_mm": 0.5949367088607594,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.1825396825396826,
+              "bias_mm": 1.1825396825396826,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.0387416121029303,
+              "bias_mm": 0.0387416121029303,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.2693769808090782,
+              "bias_mm": 1.3469392403750506,
+              "classification_accuracy": 0.9493670886075949,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2469751966206812,
+              "bias_mm": 1.0109799063673783,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 1.601966476541071,
+              "bias_mm": 1.601966476541071,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.1351146253764723,
+              "bias_mm": 1.0222274272737422,
+              "classification_accuracy": 1.0,
+              "n": 158,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.012462662465698217,
+              "bias_mm": 0.012462662465698217,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2458123838009867,
+              "bias_mm": 1.2458123838009867,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352010": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              24,
+              16,
+              24,
+              24,
+              24,
+              24
+            ],
+            "median_delay_steps": 24.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 24.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            "median_delay_steps": 4.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 4.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.1201923076923077,
+              "bias_mm": 0.1201923076923077,
+              "classification_accuracy": 1.0,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.888221153846154,
+              "bias_mm": -0.42427884615384615,
+              "classification_accuracy": 0.9615384615384616,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.005555555555555556,
+              "bias_mm": 0.005555555555555556,
+              "classification_accuracy": 1.0,
+              "n": 90,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.0916666666666666,
+              "bias_mm": -0.041666666666666685,
+              "classification_accuracy": 1.0,
+              "n": 90,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.0877005544525013,
+              "bias_mm": 0.0877005544525013,
+              "classification_accuracy": 1.0,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.4985812379144319,
+              "bias_mm": -0.5224918792455037,
+              "classification_accuracy": 0.875,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.02403846153846154
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 90,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.49973877035548,
+              "bias_mm": -0.037396213075121365,
+              "classification_accuracy": 1.0,
+              "n": 90,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 1.48772298485903,
+              "bias_mm": 1.48772298485903,
+              "classification_accuracy": 1.0,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7428314375276313,
+              "bias_mm": -0.2417680361444012,
+              "classification_accuracy": 1.0,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.01695796117983974,
+              "bias_mm": 0.01695796117983974,
+              "classification_accuracy": 1.0,
+              "n": 90,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7817497105384056,
+              "bias_mm": 0.04814392220031369,
+              "classification_accuracy": 1.0,
+              "n": 90,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352011": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.16296296296296298,
+              "bias_mm": 0.16296296296296298,
+              "classification_accuracy": 1.0,
+              "n": 135,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8314814814814813,
+              "bias_mm": 0.12777777777777777,
+              "classification_accuracy": 1.0,
+              "n": 135,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9701834862385321,
+              "bias_mm": -0.7912844036697245,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.04740179983578134,
+              "bias_mm": 0.04740179983578134,
+              "classification_accuracy": 1.0,
+              "n": 135,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.4168366699785486,
+              "bias_mm": -0.6156839077411209,
+              "classification_accuracy": 0.9851851851851852,
+              "n": 135,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.070637205683796,
+              "bias_mm": 0.8044491159290024,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 1.2764197476682213,
+              "bias_mm": 1.2764197476682213,
+              "classification_accuracy": 1.0,
+              "n": 135,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7092252967998892,
+              "bias_mm": 0.2049593677911298,
+              "classification_accuracy": 1.0,
+              "n": 135,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.005124459072893871,
+              "bias_mm": 0.005124459072893871,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8623423560901624,
+              "bias_mm": -0.7059765356023087,
+              "classification_accuracy": 1.0,
+              "n": 109,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352012": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              32,
+              32,
+              32,
+              32,
+              32,
+              32
+            ],
+            "median_delay_steps": 32.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 32.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.08333333333333333,
+              "bias_mm": 0.08333333333333333,
+              "classification_accuracy": 1.0,
+              "n": 174,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.6609195402298851,
+              "bias_mm": -0.2931034482758618,
+              "classification_accuracy": 1.0,
+              "n": 174,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2698412698412698,
+              "bias_mm": -0.47619047619047594,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.035401136313794684,
+              "bias_mm": 0.035401136313794684,
+              "classification_accuracy": 1.0,
+              "n": 174,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.459764328289149,
+              "bias_mm": 2.1886000577148788,
+              "classification_accuracy": 1.0,
+              "n": 174,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.022988505747126436
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.002987895089753906,
+              "bias_mm": 0.002987895089753906,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.7982452954093608,
+              "bias_mm": -0.7893751506524324,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.1111111111111111
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.952633066402407,
+              "bias_mm": 0.952633066402407,
+              "classification_accuracy": 1.0,
+              "n": 174,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.6369766729449206,
+              "bias_mm": -0.23243088074868404,
+              "classification_accuracy": 1.0,
+              "n": 174,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.04031693252440067,
+              "bias_mm": 0.04031693252440067,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2293993984494727,
+              "bias_mm": -0.3923332331522079,
+              "classification_accuracy": 1.0,
+              "n": 126,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352013": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              28,
+              28,
+              28,
+              28,
+              28,
+              28
+            ],
+            "median_delay_steps": 28.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 28.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.05263157894736842,
+              "bias_mm": 0.05263157894736842,
+              "classification_accuracy": 1.0,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2342105263157894,
+              "bias_mm": -1.1394736842105264,
+              "classification_accuracy": 0.8105263157894737,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 110,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8909090909090909,
+              "bias_mm": -0.8909090909090909,
+              "classification_accuracy": 0.7818181818181819,
+              "n": 110,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.21818181818181817
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.03292585722600299,
+              "bias_mm": 0.03292585722600299,
+              "classification_accuracy": 1.0,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.4400613319401707,
+              "bias_mm": -0.11942428501109739,
+              "classification_accuracy": 0.8736842105263158,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.06315789473684211,
+              "wrong_interval_fraction": 0.11578947368421053
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0012051955312204466,
+              "bias_mm": 0.0012051955312204466,
+              "classification_accuracy": 1.0,
+              "n": 110,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.10541107324779,
+              "bias_mm": -1.282662770930363,
+              "classification_accuracy": 0.7272727272727273,
+              "n": 110,
+              "wrong_direction_actual_switches_per_decision": 0.05454545454545454,
+              "wrong_interval_fraction": 0.4
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.6849578151234508,
+              "bias_mm": 0.6849578151234508,
+              "classification_accuracy": 1.0,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2317328600807953,
+              "bias_mm": -0.9230753103816779,
+              "classification_accuracy": 0.8105263157894737,
+              "n": 190,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.021021667856416654,
+              "bias_mm": 0.021021667856416654,
+              "classification_accuracy": 1.0,
+              "n": 110,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7583807118890579,
+              "bias_mm": -0.6489793884472316,
+              "classification_accuracy": 1.0,
+              "n": 110,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352014": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.31862745098039214,
+              "bias_mm": 0.31862745098039214,
+              "classification_accuracy": 1.0,
+              "n": 102,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8480392156862745,
+              "bias_mm": -0.014705882352941234,
+              "classification_accuracy": 1.0,
+              "n": 102,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.002688172043010753,
+              "bias_mm": 0.002688172043010753,
+              "classification_accuracy": 1.0,
+              "n": 186,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7338709677419355,
+              "bias_mm": -0.2499999999999999,
+              "classification_accuracy": 1.0,
+              "n": 186,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.020080276055691928,
+              "bias_mm": 0.020080276055691928,
+              "classification_accuracy": 1.0,
+              "n": 102,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.630130296141016,
+              "bias_mm": 0.148220889485358,
+              "classification_accuracy": 0.6862745098039216,
+              "n": 102,
+              "wrong_direction_actual_switches_per_decision": 0.0784313725490196,
+              "wrong_interval_fraction": 0.11764705882352941
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.004375788583947884,
+              "bias_mm": 0.004375788583947884,
+              "classification_accuracy": 1.0,
+              "n": 186,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.601572947020961,
+              "bias_mm": 0.2353959859966439,
+              "classification_accuracy": 0.9139784946236559,
+              "n": 186,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.06451612903225806
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 1.7168231441140052,
+              "bias_mm": 1.7168231441140052,
+              "classification_accuracy": 0.9803921568627451,
+              "n": 102,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8199852700475975,
+              "bias_mm": 0.40563808663860595,
+              "classification_accuracy": 1.0,
+              "n": 102,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.02882951000594542,
+              "bias_mm": 0.02882951000594542,
+              "classification_accuracy": 1.0,
+              "n": 186,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7481946684708828,
+              "bias_mm": -0.3153768754928626,
+              "classification_accuracy": 1.0,
+              "n": 186,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352015": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "median_delay_steps": 24.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 24.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 6,
+            "delays_steps": [],
+            "median_delay_steps": null,
+            "miss_fraction": 1.0,
+            "misses": 6,
+            "n": 6,
+            "p90_delay_steps": null,
+            "switches_detected": 0
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.027439024390243903,
+              "bias_mm": 0.027439024390243903,
+              "classification_accuracy": 1.0,
+              "n": 164,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9237804878048781,
+              "bias_mm": 0.35670731707317077,
+              "classification_accuracy": 1.0,
+              "n": 164,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 124,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7862903225806452,
+              "bias_mm": -0.7379032258064517,
+              "classification_accuracy": 1.0,
+              "n": 124,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.024022852422975537,
+              "bias_mm": 0.024022852422975537,
+              "classification_accuracy": 1.0,
+              "n": 164,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.2439864256107374,
+              "bias_mm": 0.4718549705769591,
+              "classification_accuracy": 0.9390243902439024,
+              "n": 164,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0009103326612065994,
+              "bias_mm": 0.0009103326612065994,
+              "classification_accuracy": 1.0,
+              "n": 124,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.5467184234923397,
+              "bias_mm": -2.4941773663463573,
+              "classification_accuracy": 0.4032258064516129,
+              "n": 124,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.6290322580645161
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.6050449057228288,
+              "bias_mm": 0.6050449057228288,
+              "classification_accuracy": 1.0,
+              "n": 164,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.0564674082157064,
+              "bias_mm": 0.5810962452174417,
+              "classification_accuracy": 1.0,
+              "n": 164,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.027463011047432477,
+              "bias_mm": 0.027463011047432477,
+              "classification_accuracy": 1.0,
+              "n": 124,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5320498158136966,
+              "bias_mm": -0.4805126194506769,
+              "classification_accuracy": 1.0,
+              "n": 124,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352016": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.7860576923076923,
+              "bias_mm": 0.7860576923076923,
+              "classification_accuracy": 1.0,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.7139423076923077,
+              "bias_mm": 0.35817307692307687,
+              "classification_accuracy": 1.0,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 200,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5825,
+              "bias_mm": 0.36749999999999994,
+              "classification_accuracy": 1.0,
+              "n": 200,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.10902169106620421,
+              "bias_mm": 0.10902169106620421,
+              "classification_accuracy": 1.0,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.1476770392739866,
+              "bias_mm": 1.7479813027579036,
+              "classification_accuracy": 1.0,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 200,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.7562717644917756,
+              "bias_mm": 2.69222681241469,
+              "classification_accuracy": 1.0,
+              "n": 200,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 3.166862910780251,
+              "bias_mm": 3.166862910780251,
+              "classification_accuracy": 0.9326923076923077,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.009615384615384616,
+              "wrong_interval_fraction": 0.057692307692307696
+            },
+            "10": {
+              "MAE_mm": 1.2468614060499508,
+              "bias_mm": 1.0613516342111482,
+              "classification_accuracy": 1.0,
+              "n": 208,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.002987896404927096,
+              "bias_mm": 0.002987896404927096,
+              "classification_accuracy": 1.0,
+              "n": 200,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5761368862668745,
+              "bias_mm": 0.46509261945198277,
+              "classification_accuracy": 1.0,
+              "n": 200,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352017": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.16193181818181818,
+              "bias_mm": 0.16193181818181818,
+              "classification_accuracy": 1.0,
+              "n": 176,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9119318181818182,
+              "bias_mm": -0.71875,
+              "classification_accuracy": 0.9090909090909091,
+              "n": 176,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0043859649122807015,
+              "bias_mm": 0.0043859649122807015,
+              "classification_accuracy": 1.0,
+              "n": 114,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2017543859649122,
+              "bias_mm": -0.19298245614035084,
+              "classification_accuracy": 0.8771929824561403,
+              "n": 114,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.04985717447496906,
+              "bias_mm": 0.04985717447496906,
+              "classification_accuracy": 1.0,
+              "n": 176,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.2350886474795173,
+              "bias_mm": -0.18432575770797052,
+              "classification_accuracy": 0.75,
+              "n": 176,
+              "wrong_direction_actual_switches_per_decision": 0.056818181818181816,
+              "wrong_interval_fraction": 0.19318181818181818
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.000948293647928878,
+              "bias_mm": 0.000948293647928878,
+              "classification_accuracy": 1.0,
+              "n": 114,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.4206750916189999,
+              "bias_mm": -0.31155249650257066,
+              "classification_accuracy": 0.9473684210526315,
+              "n": 114,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.05263157894736842
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 1.2821787268689957,
+              "bias_mm": 1.2821787268689957,
+              "classification_accuracy": 1.0,
+              "n": 176,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8705016177953165,
+              "bias_mm": -0.5610376606142089,
+              "classification_accuracy": 0.9545454545454546,
+              "n": 176,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.01907289590943242,
+              "bias_mm": 0.01907289590943242,
+              "classification_accuracy": 1.0,
+              "n": 114,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.2492977738051751,
+              "bias_mm": 0.007657039160816256,
+              "classification_accuracy": 1.0,
+              "n": 114,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352018": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "median_delay_steps": 24.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 24.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              16,
+              16,
+              16,
+              16,
+              16,
+              16
+            ],
+            "median_delay_steps": 16.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 16.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.015625,
+              "bias_mm": 0.015625,
+              "classification_accuracy": 1.0,
+              "n": 128,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.6406250000000002,
+              "bias_mm": -0.2656249999999999,
+              "classification_accuracy": 1.0,
+              "n": 128,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 156,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5224358974358976,
+              "bias_mm": -0.15705128205128213,
+              "classification_accuracy": 1.0,
+              "n": 156,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.017594277804765357,
+              "bias_mm": 0.017594277804765357,
+              "classification_accuracy": 1.0,
+              "n": 128,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 2.4568148936257046,
+              "bias_mm": 2.3257560714334917,
+              "classification_accuracy": 1.0,
+              "n": 128,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.003042992212397257,
+              "bias_mm": 0.003042992212397257,
+              "classification_accuracy": 1.0,
+              "n": 156,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.9098208960762604,
+              "bias_mm": 1.6594394006695752,
+              "classification_accuracy": 1.0,
+              "n": 156,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.038461538461538464
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.7779259762676363,
+              "bias_mm": 0.7779259762676363,
+              "classification_accuracy": 1.0,
+              "n": 128,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.6828972201821477,
+              "bias_mm": -0.3067334990363252,
+              "classification_accuracy": 1.0,
+              "n": 128,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.054556732797231666,
+              "bias_mm": 0.054556732797231666,
+              "classification_accuracy": 1.0,
+              "n": 156,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.45000390915243116,
+              "bias_mm": -0.04547130173928593,
+              "classification_accuracy": 1.0,
+              "n": 156,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    },
+    "352019": {
+      "detection": {
+        "kalman": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        },
+        "motion_MAD": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "median_delay_steps": 8.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 8.0,
+            "switches_detected": 6
+          }
+        },
+        "position": {
+          "clean_to_noisy": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              20,
+              20,
+              20,
+              20,
+              20,
+              20
+            ],
+            "median_delay_steps": 20.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 20.0,
+            "switches_detected": 6
+          },
+          "noisy_to_clean": {
+            "already_target_at40": 0,
+            "delays_steps": [
+              12,
+              12,
+              12,
+              12,
+              12,
+              12
+            ],
+            "median_delay_steps": 12.0,
+            "miss_fraction": 0.0,
+            "misses": 0,
+            "n": 6,
+            "p90_delay_steps": 12.0,
+            "switches_detected": 6
+          }
+        }
+      },
+      "metrics": {
+        "kalman": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.011764705882352941,
+              "bias_mm": 0.011764705882352941,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.9558823529411765,
+              "bias_mm": 0.1558823529411764,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0,
+              "bias_mm": 0.0,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.6906779661016946,
+              "bias_mm": -0.13135593220338976,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "motion_MAD": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.015226505436317796,
+              "bias_mm": 0.015226505436317796,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.8925064114178025,
+              "bias_mm": 1.7220097201211977,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.0011713526749690779,
+              "bias_mm": 0.0011713526749690779,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 1.451573473366829,
+              "bias_mm": 0.6184287982285537,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        },
+        "position": {
+          "moving": {
+            "0": {
+              "MAE_mm": 0.6718114840130756,
+              "bias_mm": 0.6718114840130756,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.8286636809642743,
+              "bias_mm": 0.1999704473563435,
+              "classification_accuracy": 1.0,
+              "n": 170,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          },
+          "stationary": {
+            "0": {
+              "MAE_mm": 0.02615379456160463,
+              "bias_mm": 0.02615379456160463,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            },
+            "10": {
+              "MAE_mm": 0.5710368579230103,
+              "bias_mm": -0.08274400076636255,
+              "classification_accuracy": 1.0,
+              "n": 118,
+              "wrong_direction_actual_switches_per_decision": 0.0,
+              "wrong_interval_fraction": 0.0
+            }
+          }
+        }
+      }
+    }
+  },
+  "protocol_sha256": "81cb971261d9408cf4bf11f3bb045b4d5eff8d6c2d5be67717880de44596f708",
+  "seed_equal_moving_metrics": {
+    "kalman": {
+      "0": {
+        "MAE_mm": 0.16440533168248322,
+        "bias_mm": 0.16440533168248322,
+        "classification_accuracy": 1.0,
+        "wrong_direction_actual_switches_per_decision": 0.0,
+        "wrong_interval_fraction": 0.0
+      },
+      "10": {
+        "MAE_mm": 0.8421872104671477,
+        "bias_mm": -0.09192370031121073,
+        "classification_accuracy": 0.9840577843209422,
+        "wrong_direction_actual_switches_per_decision": 0.0,
+        "wrong_interval_fraction": 0.00072992700729927
+      }
+    },
+    "motion_MAD": {
+      "0": {
+        "MAE_mm": 0.04150736877498445,
+        "bias_mm": 0.04150736877498445,
+        "classification_accuracy": 1.0,
+        "wrong_direction_actual_switches_per_decision": 0.0,
+        "wrong_interval_fraction": 0.0
+      },
+      "10": {
+        "MAE_mm": 2.04738186629094,
+        "bias_mm": 0.733863671508666,
+        "classification_accuracy": 0.9177884809575634,
+        "wrong_direction_actual_switches_per_decision": 0.017512711716488084,
+        "wrong_interval_fraction": 0.05285181254238415
+      }
+    },
+    "position": {
+      "0": {
+        "MAE_mm": 1.2840042963654468,
+        "bias_mm": 1.2840042963654468,
+        "classification_accuracy": 0.9956542232277525,
+        "wrong_direction_actual_switches_per_decision": 0.0004807692307692308,
+        "wrong_interval_fraction": 0.0028846153846153848
+      },
+      "10": {
+        "MAE_mm": 0.852089540959879,
+        "bias_mm": 0.13844522756866823,
+        "classification_accuracy": 0.9882535885167464,
+        "wrong_direction_actual_switches_per_decision": 0.0,
+        "wrong_interval_fraction": 0.00072992700729927
+      }
+    }
+  },
+  "sequence_count": 480,
+  "stage2_automatically_authorized": false,
+  "trajectory_count": 120
+}

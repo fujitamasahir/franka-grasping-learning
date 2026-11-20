@@ -1,0 +1,105 @@
+{
+  "acceleration_stress": "Independent deterministic synthetic trajectories length160: static, constant velocity, constant acceleration, oscillation(period4), sparse impact; four noise profiles and20 replicates. Explicit same-observation decomposition: zero noise moving trajectory vs noisy stationary trajectory cannot be distinguished from observations alone. Stress not used for tuning or substitution for actual-motion gate.",
+  "base_commit": "981e928a40c7eb3b645cde282e1d72f790f6d9f2",
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261108,
+  "change_step": 40,
+  "decision_steps": "20,24,... through last available complete observation window; includes actual moving phases beyond80; this does not resume or extend the stopped controller",
+  "design": "Estimator-only offline replay of newly collected actual MuJoCo cube trajectories. Clean-observation frozen R1/R4 policies generate motion independently of candidate estimates. Replay identical observed trajectories/noise to both estimators; no estimator controls actions. No grasp success labels recorded or analyzed.",
+  "estimators": {
+    "position_variance": "sqrt(mean(axis sample variance ddof1)), same previous estimator",
+    "second_difference_MAD": "d=diff(y,n=2,axis=0); per-axis median absolute deviation around median(d); sigma_axis=MAD/(0.6744897501960817*sqrt(6)); pool sqrt(mean(sigma_axis**2)). 18 correlated differences from20 observations; no empirical tuning or finite-sample correction."
+  },
+  "examples": {
+    "model": 42,
+    "motion_source": "R4",
+    "seed": 350000
+  },
+  "forbidden": "No training, no Final grasp evaluation, no historical edits, no threshold tuning, no restarting failed study.",
+  "frozen_models": {
+    "123": {
+      "path": "bc_models/action_chunking/H4_seed123.pt",
+      "sha256": "5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c"
+    },
+    "42": {
+      "path": "bc_models/action_chunking/H4_seed42.pt",
+      "sha256": "41cda0af609e3064ba8e485a4ef81289c319472b08d1f710d96b30f6cb470557"
+    },
+    "456": {
+      "path": "bc_models/action_chunking/H4_seed456.pt",
+      "sha256": "649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706"
+    }
+  },
+  "input_restriction": "Only finite noisy cube XY array shape(20,2); no truth, sigma, RNG seed, labels or motion annotation.",
+  "limitations": "Second differences cancel affine motion but not acceleration/impacts. IID Gaussian sensor noise has variance6*sigma\u00b2 after difference, with correlated adjacent differences. MAD assumes centered Gaussian scale and may underestimate at n18. Noise transitions yield mixed heteroskedastic windows. Offline replay does not establish closed-loop reliability.",
+  "metrics": "MAE and bias vs window injected RMS sigma; classification at7.5mm for pure windows only; false switch decisions and actual hysteresis switches at fixed7.5initial /6.5/8.5mm. Mixed windows reported separately. Detection delay at dynamic change from first appropriate actual switch; misses separate. Position-shared paired episode bootstrap conditional on policies.",
+  "models": [
+    42,
+    123,
+    456
+  ],
+  "motion_diagnostic": "Post-estimation maximum pairwise true XY diameter: stationary<=1mm, moving>1mm. Also true acceleration RMS and XYZ diameter. Ground truth only after estimates generated.",
+  "motion_sources": [
+    "R1",
+    "R4"
+  ],
+  "noise_seed": 20261108,
+  "pass_criteria": {
+    "all_required": true,
+    "coverage": "At least100 moving pure-noise windows for each0/10mm and100 stationary pure windows each; all120 complete independent trajectories and480 paired sequences",
+    "dynamic_switch_detection_p90_steps_max_each_direction": 24,
+    "dynamic_switch_miss_fraction_max_each_direction": 0.05,
+    "moving_MAE_mm_max_each_noise": 2.0,
+    "moving_MAE_relative_reduction_vs_position_min": 0.25,
+    "moving_classification_accuracy_min_each_noise": 0.95,
+    "moving_false_selected_interval_fraction_max_each_noise": 0.05,
+    "moving_wrong_direction_actual_switch_rate_per_decision_max_each_noise": 0.05,
+    "stationary_MAE_mm_max_each_noise": 2.0,
+    "thresholds_fixed_before_data": true
+  },
+  "profiles": {
+    "clean": [
+      0,
+      0
+    ],
+    "clean_to_noisy": [
+      0,
+      0.01
+    ],
+    "noisy": [
+      0.01,
+      0.01
+    ],
+    "noisy_to_clean": [
+      0.01,
+      0
+    ]
+  },
+  "seeds": [
+    350000,
+    350001,
+    350002,
+    350003,
+    350004,
+    350005,
+    350006,
+    350007,
+    350008,
+    350009,
+    350010,
+    350011,
+    350012,
+    350013,
+    350014,
+    350015,
+    350016,
+    350017,
+    350018,
+    350019
+  ],
+  "sequence_count": 480,
+  "stage": 1,
+  "stage2": "Only eligible if every Stage1 criterion passes; separate preregistration required before24,000 trials. Any thresholds calibrated on independent Calibration only. Failed Stage1 stops large-scale evaluation.",
+  "trajectory_count": 120,
+  "window": 20
+}

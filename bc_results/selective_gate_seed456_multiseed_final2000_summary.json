@@ -1,0 +1,61 @@
+{
+  "stage": "confirmatory",
+  "evaluation_csv": "bc_results/sac_C_seed456_gate_multiseed_final2000.csv",
+  "evaluation_seeds": [
+    170000,
+    171999
+  ],
+  "calibration_sha256": "2bd19cd2086c481fd03b13fb714dc970ee8163acd553bda0582ecb83b275bc63",
+  "selected_quadrants": {
+    "safety": [
+      "EN"
+    ],
+    "balanced": [
+      "EN",
+      "WS"
+    ]
+  },
+  "methods": {
+    "bc_only": {
+      "successes": 1850,
+      "rescues": 0,
+      "regressions": 0,
+      "sac_episodes": 0,
+      "episodes": 2000,
+      "success_rate": 0.925,
+      "delta_vs_bc_pp": 0.0,
+      "mcnemar_p_vs_bc": 1.0
+    },
+    "always_sac": {
+      "successes": 1886,
+      "rescues": 53,
+      "regressions": 17,
+      "sac_episodes": 2000,
+      "episodes": 2000,
+      "success_rate": 0.943,
+      "delta_vs_bc_pp": 1.8,
+      "mcnemar_p_vs_bc": 1.919969240032143e-05
+    },
+    "safety": {
+      "successes": 1882,
+      "rescues": 32,
+      "regressions": 0,
+      "sac_episodes": 338,
+      "episodes": 2000,
+      "success_rate": 0.941,
+      "delta_vs_bc_pp": 1.6,
+      "mcnemar_p_vs_bc": 4.656612873077393e-10
+    },
+    "balanced": {
+      "successes": 1894,
+      "rescues": 44,
+      "regressions": 0,
+      "sac_episodes": 672,
+      "episodes": 2000,
+      "success_rate": 0.947,
+      "delta_vs_bc_pp": 2.2,
+      "mcnemar_p_vs_bc": 1.1368683772161603e-13
+    }
+  },
+  "note": "Confirmatory only if these seeds were untouched before freezing the gate."
+}

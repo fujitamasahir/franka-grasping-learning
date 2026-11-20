@@ -1,0 +1,3 @@
+checkpoint,mean_difference_in_gains_pp,sd_across_9_crossed_cells_pp,hierarchical_bootstrap_95_low_pp,hierarchical_bootstrap_95_high_pp,n_bc_training_seeds,n_sac_training_seeds,bootstrap_replicates
+fixed30k,-3.611111111111111,6.689720555532279,-10.416666666666666,2.5777777777777775,3,3,10000
+selected,-3.572222222222222,6.353400227000062,-11.216666666666667,0.827777777777778,3,3,10000

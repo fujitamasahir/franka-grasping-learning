@@ -1,0 +1,229 @@
+{
+  "applied_noise_shared_by_seed_sigma": true,
+  "base_noise_shared_by_seed": true,
+  "cells": [
+    {
+      "complete": true,
+      "controller": "R1",
+      "csv_sha256": "45af344d8b8b6c63862f7537d93e2aa7222099324f6f14055d82e8c9599a8d9e",
+      "model_seed": 42,
+      "noise_mm": 0,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R1",
+      "csv_sha256": "3d06e8deb447a4b9974e31f53e109d1df511d40cd9a42c2b69e78a8c49c090b9",
+      "model_seed": 42,
+      "noise_mm": 5,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R1",
+      "csv_sha256": "8230b4e704bda81f8b905d2532f8143bd8111622bb092d342f49481fe10d93d1",
+      "model_seed": 42,
+      "noise_mm": 10,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R4",
+      "csv_sha256": "8a40fa5876d217517be8c5aa9e53ee500ff924910894e3f9cc1c982d52f81a90",
+      "model_seed": 42,
+      "noise_mm": 0,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R4",
+      "csv_sha256": "85b9871d7e42cd61178b23573bb437fface9507632e149dd1eff8c4fed5abe31",
+      "model_seed": 42,
+      "noise_mm": 5,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R4",
+      "csv_sha256": "bcc2b1b5cca94b92fa8a689e52baa00c1a25afac29005b61f0db44ac14220f30",
+      "model_seed": 42,
+      "noise_mm": 10,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "Adaptive",
+      "csv_sha256": "d1144ec4907233713cada2478bf7177ddcf984b5a0a9919788e4d9a2db1c25a4",
+      "model_seed": 42,
+      "noise_mm": 0,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "Adaptive",
+      "csv_sha256": "0c0734ffce7c0f1a220a4cfbc31e3d4eb5196a0d2584d4e1d619363a23b04a7a",
+      "model_seed": 42,
+      "noise_mm": 5,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "Adaptive",
+      "csv_sha256": "dc91945ca2304e765eb7b3df6e2f112b8308c2e12a0f7abc38bd33b7adfd0f6e",
+      "model_seed": 42,
+      "noise_mm": 10,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R1",
+      "csv_sha256": "0775bf894f7b39372d6b117ee8156bfc38a201a0dbc734345a5b974ee0c4cd05",
+      "model_seed": 123,
+      "noise_mm": 0,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R1",
+      "csv_sha256": "b21cf2884f50b0d68b6d9386396a511657a196f927e9c741619b3962e662dd64",
+      "model_seed": 123,
+      "noise_mm": 5,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R1",
+      "csv_sha256": "cd85d9c3b4d832b3aebde5186eafc122cbe8dc516e62257838bdb10760bc342b",
+      "model_seed": 123,
+      "noise_mm": 10,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R4",
+      "csv_sha256": "6c376a6b05ccd848dcd803dae9252de96d52a4c4718622466e313c8b6a6f13ed",
+      "model_seed": 123,
+      "noise_mm": 0,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R4",
+      "csv_sha256": "331d2ee729bdaa5b75283bfebb4a24a3e7d17726a9d7f98b9e4d6a63014817c7",
+      "model_seed": 123,
+      "noise_mm": 5,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R4",
+      "csv_sha256": "5f0d2cb29f4bd4e215bf585d77afaeb6d2d8d4378ca9f60dff66dd2da7e88f08",
+      "model_seed": 123,
+      "noise_mm": 10,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "Adaptive",
+      "csv_sha256": "a9ecb1a604e9987d249e9e1333cd19f75757080c2245501cb4cec9ddf4b9b5f2",
+      "model_seed": 123,
+      "noise_mm": 0,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "Adaptive",
+      "csv_sha256": "e83697fb8e2efb95b733b7f666965138339a6058dbb48587a91d1f322d54d7f4",
+      "model_seed": 123,
+      "noise_mm": 5,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "Adaptive",
+      "csv_sha256": "1eaf6eef54729b87fb51f599b09a149319159a88c3df2aebe22fcc3f2c5bf817",
+      "model_seed": 123,
+      "noise_mm": 10,
+      "rows": 1000
+    },
+    {
+      "complete": true,
+      "controller": "R1",
+      "csv_sha256": "7828acb4a9b3008e5826a5768f179f3f5c6c3ff41a34b8b248a7c6a63cacfd77",
+      "model_seed": 456,
+      "noise_mm": 0,
+      "rows": 1000
+    },
+    {
+      "complete": false,
+      "controller": "R1",
+      "model_seed": 456,
+      "noise_mm": 5,
+      "rows": 0
+    },
+    {
+      "complete": false,
+      "controller": "R1",
+      "model_seed": 456,
+      "noise_mm": 10,
+      "rows": 0
+    },
+    {
+      "complete": true,
+      "controller": "R4",
+      "csv_sha256": "d65a04667d9fc49109f965fc75f0e4a95ddd874e180d55c9b8269ab4148ada9b",
+      "model_seed": 456,
+      "noise_mm": 0,
+      "rows": 1000
+    },
+    {
+      "complete": false,
+      "controller": "R4",
+      "model_seed": 456,
+      "noise_mm": 5,
+      "rows": 0
+    },
+    {
+      "complete": false,
+      "controller": "R4",
+      "model_seed": 456,
+      "noise_mm": 10,
+      "rows": 0
+    },
+    {
+      "complete": true,
+      "controller": "Adaptive",
+      "csv_sha256": "6f83d27fcc168b7cc9e9a614ad79e997a8d0605a87ee3ad2f6cf2ccef972f08b",
+      "model_seed": 456,
+      "noise_mm": 0,
+      "rows": 1000
+    },
+    {
+      "complete": false,
+      "controller": "Adaptive",
+      "model_seed": 456,
+      "noise_mm": 5,
+      "rows": 0
+    },
+    {
+      "complete": false,
+      "controller": "Adaptive",
+      "model_seed": 456,
+      "noise_mm": 10,
+      "rows": 0
+    }
+  ],
+  "complete_cells": 21,
+  "configuration_count": 27,
+  "expected_total_final_episodes": 27000,
+  "final_evaluation_complete": false,
+  "incomplete_files": [],
+  "initial_position_map_sha256": "607c499e436bdd4a8a0911771616b58f2300ff79ee058af7e4e83a1967d957c8",
+  "initial_positions_reconstructed_from_seeded_reset": true,
+  "protocol_sha256": "a212e07da4b00b4c444454482b8547b4058c518076991e09c5038edcd728df0f",
+  "seed_range_inclusive": [
+    331000,
+    331999
+  ],
+  "total_rows_written": 21000
+}

@@ -1,0 +1,753 @@
+{
+  "evaluation_seeds": [
+    170000,
+    171999
+  ],
+  "episodes_per_training_seed": 2000,
+  "sac_training_seeds": [
+    42,
+    123,
+    456
+  ],
+  "fixed_gate_config": "bc_results/selective_gate_exploratory1000_gate.json",
+  "selected_quadrants": {
+    "safety": [
+      "EN"
+    ],
+    "balanced": [
+      "EN",
+      "WS"
+    ]
+  },
+  "shared_initial_positions_and_bc_outcomes_verified": true,
+  "per_seed": {
+    "42": {
+      "evaluation_csv": "bc_results/sac_C_seed42_gate_multiseed_final2000.csv",
+      "evaluation_seeds": [
+        170000,
+        171999
+      ],
+      "methods": {
+        "bc_only": {
+          "successes": 1850,
+          "rescues": 0,
+          "regressions": 0,
+          "sac_episodes": 0,
+          "episodes": 2000,
+          "success_rate": 0.925,
+          "delta_vs_bc_pp": 0.0,
+          "mcnemar_p_vs_bc": 1.0,
+          "rescue_count": 0,
+          "regression_count": 0,
+          "net_improvement": 0,
+          "sac_activation_rate": 0.0,
+          "success_rate_vs_always_pp": 0.1,
+          "sac_episodes_saved_vs_always": 2000,
+          "sac_usage_reduction_vs_always": 1.0,
+          "mcnemar_vs_bc": {
+            "wins": 0,
+            "losses": 0,
+            "net": 0,
+            "mcnemar_p": 1.0
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 30,
+            "losses": 28,
+            "net": 2,
+            "mcnemar_p": 0.8956832138895903
+          }
+        },
+        "always_sac": {
+          "successes": 1848,
+          "rescues": 28,
+          "regressions": 30,
+          "sac_episodes": 2000,
+          "episodes": 2000,
+          "success_rate": 0.924,
+          "delta_vs_bc_pp": -0.1,
+          "mcnemar_p_vs_bc": 0.8956832138895903,
+          "rescue_count": 28,
+          "regression_count": 30,
+          "net_improvement": -2,
+          "sac_activation_rate": 1.0,
+          "success_rate_vs_always_pp": 0.0,
+          "sac_episodes_saved_vs_always": 0,
+          "sac_usage_reduction_vs_always": 0.0,
+          "mcnemar_vs_bc": {
+            "wins": 28,
+            "losses": 30,
+            "net": -2,
+            "mcnemar_p": 0.8956832138895903
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 0,
+            "losses": 0,
+            "net": 0,
+            "mcnemar_p": 1.0
+          }
+        },
+        "safety": {
+          "successes": 1846,
+          "rescues": 1,
+          "regressions": 5,
+          "sac_episodes": 338,
+          "episodes": 2000,
+          "success_rate": 0.923,
+          "delta_vs_bc_pp": -0.2,
+          "mcnemar_p_vs_bc": 0.21875,
+          "rescue_count": 1,
+          "regression_count": 5,
+          "net_improvement": -4,
+          "sac_activation_rate": 0.169,
+          "success_rate_vs_always_pp": -0.1,
+          "sac_episodes_saved_vs_always": 1662,
+          "sac_usage_reduction_vs_always": 0.831,
+          "mcnemar_vs_bc": {
+            "wins": 1,
+            "losses": 5,
+            "net": -4,
+            "mcnemar_p": 0.21875,
+            "holm_p_across_training_seeds": 0.4375
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 25,
+            "losses": 27,
+            "net": -2,
+            "mcnemar_p": 0.8898839652765371,
+            "holm_p_across_training_seeds": 1.0
+          }
+        },
+        "balanced": {
+          "successes": 1869,
+          "rescues": 24,
+          "regressions": 5,
+          "sac_episodes": 672,
+          "episodes": 2000,
+          "success_rate": 0.9345,
+          "delta_vs_bc_pp": 0.95,
+          "mcnemar_p_vs_bc": 0.0005461126565933228,
+          "rescue_count": 24,
+          "regression_count": 5,
+          "net_improvement": 19,
+          "sac_activation_rate": 0.336,
+          "success_rate_vs_always_pp": 1.05,
+          "sac_episodes_saved_vs_always": 1328,
+          "sac_usage_reduction_vs_always": 0.6639999999999999,
+          "mcnemar_vs_bc": {
+            "wins": 24,
+            "losses": 5,
+            "net": 19,
+            "mcnemar_p": 0.0005461126565933228,
+            "holm_p_across_training_seeds": 0.0010922253131866455
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 25,
+            "losses": 4,
+            "net": 21,
+            "mcnemar_p": 0.00010371580719947815,
+            "holm_p_across_training_seeds": 0.00031114742159843445
+          }
+        }
+      },
+      "outer_quadrants": {
+        "bc_only": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          }
+        },
+        "always_sac": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 1,
+            "regressions": 5,
+            "sac_episodes": 338
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 1,
+            "regressions": 20,
+            "sac_episodes": 338
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 3,
+            "regressions": 5,
+            "sac_episodes": 302
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 23,
+            "regressions": 0,
+            "sac_episodes": 334
+          }
+        },
+        "safety": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 1,
+            "regressions": 5,
+            "sac_episodes": 338
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          }
+        },
+        "balanced": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 1,
+            "regressions": 5,
+            "sac_episodes": 338
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 23,
+            "regressions": 0,
+            "sac_episodes": 334
+          }
+        }
+      }
+    },
+    "123": {
+      "evaluation_csv": "bc_results/sac_C_seed123_gate_multiseed_final2000.csv",
+      "evaluation_seeds": [
+        170000,
+        171999
+      ],
+      "methods": {
+        "bc_only": {
+          "successes": 1850,
+          "rescues": 0,
+          "regressions": 0,
+          "sac_episodes": 0,
+          "episodes": 2000,
+          "success_rate": 0.925,
+          "delta_vs_bc_pp": 0.0,
+          "mcnemar_p_vs_bc": 1.0,
+          "rescue_count": 0,
+          "regression_count": 0,
+          "net_improvement": 0,
+          "sac_activation_rate": 0.0,
+          "success_rate_vs_always_pp": 0.3,
+          "sac_episodes_saved_vs_always": 2000,
+          "sac_usage_reduction_vs_always": 1.0,
+          "mcnemar_vs_bc": {
+            "wins": 0,
+            "losses": 0,
+            "net": 0,
+            "mcnemar_p": 1.0
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 36,
+            "losses": 30,
+            "net": 6,
+            "mcnemar_p": 0.5385827752459464
+          }
+        },
+        "always_sac": {
+          "successes": 1844,
+          "rescues": 30,
+          "regressions": 36,
+          "sac_episodes": 2000,
+          "episodes": 2000,
+          "success_rate": 0.922,
+          "delta_vs_bc_pp": -0.3,
+          "mcnemar_p_vs_bc": 0.5385827752459464,
+          "rescue_count": 30,
+          "regression_count": 36,
+          "net_improvement": -6,
+          "sac_activation_rate": 1.0,
+          "success_rate_vs_always_pp": 0.0,
+          "sac_episodes_saved_vs_always": 0,
+          "sac_usage_reduction_vs_always": 0.0,
+          "mcnemar_vs_bc": {
+            "wins": 30,
+            "losses": 36,
+            "net": -6,
+            "mcnemar_p": 0.5385827752459464
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 0,
+            "losses": 0,
+            "net": 0,
+            "mcnemar_p": 1.0
+          }
+        },
+        "safety": {
+          "successes": 1850,
+          "rescues": 4,
+          "regressions": 4,
+          "sac_episodes": 338,
+          "episodes": 2000,
+          "success_rate": 0.925,
+          "delta_vs_bc_pp": 0.0,
+          "mcnemar_p_vs_bc": 1.0,
+          "rescue_count": 4,
+          "regression_count": 4,
+          "net_improvement": 0,
+          "sac_activation_rate": 0.169,
+          "success_rate_vs_always_pp": 0.3,
+          "sac_episodes_saved_vs_always": 1662,
+          "sac_usage_reduction_vs_always": 0.831,
+          "mcnemar_vs_bc": {
+            "wins": 4,
+            "losses": 4,
+            "net": 0,
+            "mcnemar_p": 1.0,
+            "holm_p_across_training_seeds": 1.0
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 32,
+            "losses": 26,
+            "net": 6,
+            "mcnemar_p": 0.5118423084381689,
+            "holm_p_across_training_seeds": 1.0
+          }
+        },
+        "balanced": {
+          "successes": 1830,
+          "rescues": 11,
+          "regressions": 31,
+          "sac_episodes": 672,
+          "episodes": 2000,
+          "success_rate": 0.915,
+          "delta_vs_bc_pp": -1.0,
+          "mcnemar_p_vs_bc": 0.002887247974285856,
+          "rescue_count": 11,
+          "regression_count": 31,
+          "net_improvement": -20,
+          "sac_activation_rate": 0.336,
+          "success_rate_vs_always_pp": -0.7,
+          "sac_episodes_saved_vs_always": 1328,
+          "sac_usage_reduction_vs_always": 0.6639999999999999,
+          "mcnemar_vs_bc": {
+            "wins": 11,
+            "losses": 31,
+            "net": -20,
+            "mcnemar_p": 0.002887247974285856,
+            "holm_p_across_training_seeds": 0.002887247974285856
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 5,
+            "losses": 19,
+            "net": -14,
+            "mcnemar_p": 0.006610751152038574,
+            "holm_p_across_training_seeds": 0.013221502304077148
+          }
+        }
+      },
+      "outer_quadrants": {
+        "bc_only": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          }
+        },
+        "always_sac": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 4,
+            "regressions": 4,
+            "sac_episodes": 338
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 14,
+            "regressions": 0,
+            "sac_episodes": 338
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 5,
+            "regressions": 5,
+            "sac_episodes": 302
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 7,
+            "regressions": 27,
+            "sac_episodes": 334
+          }
+        },
+        "safety": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 4,
+            "regressions": 4,
+            "sac_episodes": 338
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          }
+        },
+        "balanced": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 4,
+            "regressions": 4,
+            "sac_episodes": 338
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 7,
+            "regressions": 27,
+            "sac_episodes": 334
+          }
+        }
+      }
+    },
+    "456": {
+      "evaluation_csv": "bc_results/sac_C_seed456_gate_multiseed_final2000.csv",
+      "evaluation_seeds": [
+        170000,
+        171999
+      ],
+      "methods": {
+        "bc_only": {
+          "successes": 1850,
+          "rescues": 0,
+          "regressions": 0,
+          "sac_episodes": 0,
+          "episodes": 2000,
+          "success_rate": 0.925,
+          "delta_vs_bc_pp": 0.0,
+          "mcnemar_p_vs_bc": 1.0,
+          "rescue_count": 0,
+          "regression_count": 0,
+          "net_improvement": 0,
+          "sac_activation_rate": 0.0,
+          "success_rate_vs_always_pp": -1.8,
+          "sac_episodes_saved_vs_always": 2000,
+          "sac_usage_reduction_vs_always": 1.0,
+          "mcnemar_vs_bc": {
+            "wins": 0,
+            "losses": 0,
+            "net": 0,
+            "mcnemar_p": 1.0
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 17,
+            "losses": 53,
+            "net": -36,
+            "mcnemar_p": 1.919969240032143e-05
+          }
+        },
+        "always_sac": {
+          "successes": 1886,
+          "rescues": 53,
+          "regressions": 17,
+          "sac_episodes": 2000,
+          "episodes": 2000,
+          "success_rate": 0.943,
+          "delta_vs_bc_pp": 1.8,
+          "mcnemar_p_vs_bc": 1.919969240032143e-05,
+          "rescue_count": 53,
+          "regression_count": 17,
+          "net_improvement": 36,
+          "sac_activation_rate": 1.0,
+          "success_rate_vs_always_pp": 0.0,
+          "sac_episodes_saved_vs_always": 0,
+          "sac_usage_reduction_vs_always": 0.0,
+          "mcnemar_vs_bc": {
+            "wins": 53,
+            "losses": 17,
+            "net": 36,
+            "mcnemar_p": 1.919969240032143e-05
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 0,
+            "losses": 0,
+            "net": 0,
+            "mcnemar_p": 1.0
+          }
+        },
+        "safety": {
+          "successes": 1882,
+          "rescues": 32,
+          "regressions": 0,
+          "sac_episodes": 338,
+          "episodes": 2000,
+          "success_rate": 0.941,
+          "delta_vs_bc_pp": 1.6,
+          "mcnemar_p_vs_bc": 4.656612873077393e-10,
+          "rescue_count": 32,
+          "regression_count": 0,
+          "net_improvement": 32,
+          "sac_activation_rate": 0.169,
+          "success_rate_vs_always_pp": -0.2,
+          "sac_episodes_saved_vs_always": 1662,
+          "sac_usage_reduction_vs_always": 0.831,
+          "mcnemar_vs_bc": {
+            "wins": 32,
+            "losses": 0,
+            "net": 32,
+            "mcnemar_p": 4.656612873077393e-10,
+            "holm_p_across_training_seeds": 1.3969838619232178e-09
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 17,
+            "losses": 21,
+            "net": -4,
+            "mcnemar_p": 0.6271025701571489,
+            "holm_p_across_training_seeds": 1.0
+          }
+        },
+        "balanced": {
+          "successes": 1894,
+          "rescues": 44,
+          "regressions": 0,
+          "sac_episodes": 672,
+          "episodes": 2000,
+          "success_rate": 0.947,
+          "delta_vs_bc_pp": 2.2,
+          "mcnemar_p_vs_bc": 1.1368683772161603e-13,
+          "rescue_count": 44,
+          "regression_count": 0,
+          "net_improvement": 44,
+          "sac_activation_rate": 0.336,
+          "success_rate_vs_always_pp": 0.4,
+          "sac_episodes_saved_vs_always": 1328,
+          "sac_usage_reduction_vs_always": 0.6639999999999999,
+          "mcnemar_vs_bc": {
+            "wins": 44,
+            "losses": 0,
+            "net": 44,
+            "mcnemar_p": 1.1368683772161603e-13,
+            "holm_p_across_training_seeds": 3.410605131648481e-13
+          },
+          "mcnemar_vs_always_sac": {
+            "wins": 17,
+            "losses": 9,
+            "net": 8,
+            "mcnemar_p": 0.16863754391670227,
+            "holm_p_across_training_seeds": 0.16863754391670227
+          }
+        }
+      },
+      "outer_quadrants": {
+        "bc_only": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          }
+        },
+        "always_sac": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 32,
+            "regressions": 0,
+            "sac_episodes": 338
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 4,
+            "regressions": 15,
+            "sac_episodes": 338
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 5,
+            "regressions": 2,
+            "sac_episodes": 302
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 12,
+            "regressions": 0,
+            "sac_episodes": 334
+          }
+        },
+        "safety": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 32,
+            "regressions": 0,
+            "sac_episodes": 338
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          }
+        },
+        "balanced": {
+          "EN": {
+            "episodes": 338,
+            "rescues": 32,
+            "regressions": 0,
+            "sac_episodes": 338
+          },
+          "ES": {
+            "episodes": 338,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WN": {
+            "episodes": 302,
+            "rescues": 0,
+            "regressions": 0,
+            "sac_episodes": 0
+          },
+          "WS": {
+            "episodes": 334,
+            "rescues": 12,
+            "regressions": 0,
+            "sac_episodes": 334
+          }
+        }
+      }
+    }
+  },
+  "holm_adjusted_p_values_across_training_seeds": {
+    "safety": {
+      "456": 1.3969838619232178e-09,
+      "42": 0.4375,
+      "123": 1.0
+    },
+    "balanced": {
+      "456": 3.410605131648481e-13,
+      "42": 0.0010922253131866455,
+      "123": 0.002887247974285856
+    },
+    "safety_vs_always": {
+      "123": 1.0,
+      "456": 1.0,
+      "42": 1.0
+    },
+    "balanced_vs_always": {
+      "42": 0.00031114742159843445,
+      "123": 0.013221502304077148,
+      "456": 0.16863754391670227
+    }
+  },
+  "interpretation_note": "Episode-level exact McNemar tests are conditional on each frozen model and shared evaluation positions. They do not make the three SAC training seeds independent replicates of the initial positions; cross-training-seed generalization is descriptive with only three model seeds."
+}

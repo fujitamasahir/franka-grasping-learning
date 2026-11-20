@@ -1,0 +1,109 @@
+{
+  "study": "SAC Regression Diagnostics & Controlled Regularization Experiment",
+  "base_commit": "3037449bb64eb188627ac7b0a7804b34b40e5c54",
+  "seeds": [
+    907,
+    911,
+    919,
+    929,
+    937
+  ],
+  "arms": {
+    "A": 0.005,
+    "B": 0.02
+  },
+  "validation_seed_range": [
+    230000,
+    230499
+  ],
+  "final_seed_range": [
+    240000,
+    241999
+  ],
+  "excluded_prior_final_ranges": [
+    [
+      150000,
+      151999
+    ],
+    [
+      170000,
+      171999
+    ],
+    [
+      190000,
+      191999
+    ],
+    [
+      220000,
+      221999
+    ]
+  ],
+  "shared_final_bc_successes": 1842,
+  "shared_final_bc_episodes": 2000,
+  "primary_arm_b_minus_arm_a_seed_level_deltas": {
+    "success_rate_difference_pp": {
+      "mean": 2.770000000000001,
+      "sample_sd": 5.505406433679532,
+      "minimum": -2.399999999999991,
+      "maximum": 11.050000000000004,
+      "per_seed": [
+        0.7000000000000006,
+        11.050000000000004,
+        -1.0000000000000009,
+        5.499999999999994,
+        -2.399999999999991
+      ]
+    },
+    "regression_difference": {
+      "mean": -55.4,
+      "sample_sd": 83.54818968715001,
+      "minimum": -184,
+      "maximum": 16,
+      "per_seed": [
+        -3,
+        -184,
+        -11,
+        -95,
+        16
+      ]
+    },
+    "rescue_difference": {
+      "mean": 0.0,
+      "sample_sd": 30.4138126514911,
+      "minimum": -32,
+      "maximum": 37,
+      "per_seed": [
+        11,
+        37,
+        -31,
+        15,
+        -32
+      ]
+    }
+  },
+  "decision_criteria": {
+    "regression_decreases_in_at_least_n_of_5_seeds": 4,
+    "mean_final_success_rate_drop_maximum_percentage_points": 0.5,
+    "operational_rescue_preservation_tolerance": "Mean decrease no greater than 10 rescue episodes per 2,000 positions; this operationalizes the otherwise qualitative phrase 'no large rescue decrease'."
+  },
+  "decision_criteria_result": {
+    "regression_decreases_in_at_least_4_of_5": true,
+    "regression_decrease_count": 4,
+    "mean_success_drop_within_0_5_pp": true,
+    "mean_success_rate_difference_pp": 2.770000000000001,
+    "rescue_preservation_within_tolerance": true,
+    "mean_rescue_difference": 0.0,
+    "all_criteria_met": true
+  },
+  "test_families": {
+    "primary_overall_success": "Holm correction across five training seeds",
+    "primary_regression_given_bc_success": "Holm correction across five training seeds",
+    "primary_rescue_given_bc_failure": "Holm correction across five training seeds",
+    "selected_overall_success": "Holm correction across five training seeds",
+    "selected_regression_given_bc_success": "Holm correction across five training seeds",
+    "selected_rescue_given_bc_failure": "Holm correction across five training seeds"
+  },
+  "cross_model_position_rows_treated_as_independent": false,
+  "td_error_directly_measured": false,
+  "causal_claim_from_training_metric_correlation": false
+}

@@ -23,3 +23,13 @@ tensorboard_logs/
 autonomous_eval/
 autonomous_v2_eval/
 bc_residual_sac_eval/
+# Separate SAC experiment artifacts
+bc_residual_sac_runs/
+
+# Action-chunking experiment: local-only model, replay, resume and partial files
+bc_results/action_chunking_sac/**/replay_buffer_*.pkl
+bc_results/action_chunking_sac/**/resume_state_*.pkl
+bc_results/action_chunking_eval/*.partial.csv
+bc_results/action_chunking_eval/invalid_pre_scale_fix/
+bc_results/action_chunking_eval/invalid_pre_paired_baseline/
+bc_results/action_chunking_sac/invalid_pre_paired_baseline/

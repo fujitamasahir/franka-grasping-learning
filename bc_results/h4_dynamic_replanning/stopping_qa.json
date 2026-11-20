@@ -1,0 +1,16 @@
+{
+  "calibration_episodes": 0,
+  "diagnostic_png_svg_figures": 12,
+  "final_episodes": 0,
+  "gate_blocks_calibration_and_final": true,
+  "historical_tracked_files_verified_unchanged": 1206,
+  "model_hashes_unchanged": true,
+  "partial_files": 0,
+  "planned_final_performance_figures_unavailable": true,
+  "protocol_sha256": "bd1a33cba0299b40402ce4f4af4d4f9e552fd391b5306f60c9ea4166ceb6c21e",
+  "smoke_cells": 48,
+  "smoke_episodes": 960,
+  "sop_word_count": 89,
+  "unit_tests_passed": 44,
+  "writer_locks": 0
+}

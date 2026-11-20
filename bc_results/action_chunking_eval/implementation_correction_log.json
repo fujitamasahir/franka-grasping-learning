@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-06",
+  "issue": "BC evaluation initially retained FrankaAutonomousEnv defaults (max_move 0.025 m and max_time 12 s) instead of the frozen checkpoint settings (0.15 m and 16 s). This made those initial validation rollouts invalid.",
+  "correction": "Set max_move and max_time from the frozen BC checkpoint before corrected validation; reran all six BC policies on their prescribed validation seed range.",
+  "final_seed_range_touched": false,
+  "training_or_model_selection_changed": false,
+  "excluded_files": [
+    {
+      "path": "bc_results/action_chunking_eval/invalid_pre_scale_fix/bc_validation_H1_seed123.csv",
+      "sha256": "65a9cb05a055c7b35b85ce133659ab9458ab8c0e0de69bde59364691d483391d",
+      "episodes": 225,
+      "disposition": "excluded from all analyses"
+    },
+    {
+      "path": "bc_results/action_chunking_eval/invalid_pre_scale_fix/bc_validation_H1_seed42.csv",
+      "sha256": "cd260284615e8a41822240f64a8a55a5453601419541bca035c63bfcf3a1858f",
+      "episodes": 500,
+      "disposition": "excluded from all analyses"
+    }
+  ],
+  "checkpoint_pairing_issue": {
+    "issue": "The first SAC checkpoint callback attempted to pair 280000-280499 SAC validation rows with BC rows from 270000-270499, causing a seed-key mismatch before any checkpoint selection statistic was computed.",
+    "protocol_amendment": "The preregistration now requires BC rollouts on the same 280000-280499 SAC validation positions for the paired regression criterion; all other conditions and Final seeds remain unchanged.",
+    "outcome_inspection_before_amendment": false,
+    "checkpoint_attempt_status": "abandoned and excluded; the first H1/BC42/SAC1103 run was trained to 10000 steps and is being retrained under the amended paired-baseline procedure.",
+    "preserved_artifacts": [
+      {
+        "path": "bc_results/action_chunking_sac/invalid_pre_paired_baseline/H1_bc42_sac1103/config.json",
+        "sha256": "6f18e71ab5a2662ce1c99fd73aeb4ed8074f2de656b8a819591c871ec80accbf",
+        "bytes": 614
+      },
+      {
+        "path": "bc_results/action_chunking_sac/invalid_pre_paired_baseline/H1_bc42_sac1103/checkpoint_10000.zip",
+        "sha256": "5e3c9be0fa293add73a1a39c7e4e4def799e769a660864b0784ae251c42c34f9",
+        "bytes": 3196529
+      },
+      {
+        "path": "bc_results/action_chunking_sac/invalid_pre_paired_baseline/H1_bc42_sac1103/validation_episodes_10000.csv",
+        "sha256": "670e902a0982000fb0182d0b6d7d346b8a9a292ba979940ff17c0c63e66c8e02",
+        "bytes": 98582
+      },
+      {
+        "path": "bc_results/action_chunking_eval/invalid_pre_paired_baseline/H1_bc42_sac1103_step10000.csv",
+        "sha256": "670e902a0982000fb0182d0b6d7d346b8a9a292ba979940ff17c0c63e66c8e02",
+        "bytes": 98582
+      }
+    ]
+  },
+  "final_evaluation_startup_issue": {
+    "issue": "The SAC Final orchestrator referenced sha256 for frozen checkpoint verification without importing the shared helper, so it stopped before opening or rolling out any SAC Final model.",
+    "correction": "Imported the existing action_chunking.sha256 helper. No rollout row, model score, or Final success outcome had been read when fixing this startup-only NameError.",
+    "final_seed_range_touched": false,
+    "training_or_model_selection_changed": false,
+    "duplicate_rollout_cleanup": {
+      "path": "bc_results/action_chunking_eval/sac_final_fixed30k_H1_bc42_sac1103.csv",
+      "rows_before": 2042,
+      "duplicate_seed_rows_removed": 42,
+      "rows_after": 2000,
+      "unique_seed_range": [
+        290000,
+        291999
+      ],
+      "method": "Kept the first appended row for each protocol seed; no success or performance fields were used to choose rows."
+  },
+  "report_generation_issue": {
+    "issue": "The report renderer cast a fractional mean BC inference-call count to int and displayed total SAC inference calls across 2,000 episodes under a per-episode heading.",
+    "correction": "Changed the renderer to parse mean_bc_calls as float, divide SAC call totals by episode count, and regenerated the report.",
+    "evaluation_or_analysis_data_changed": false
+  }
+  }
+}

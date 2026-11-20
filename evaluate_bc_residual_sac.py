@@ -9,7 +9,7 @@ from stable_baselines3 import SAC
 from franka_bc_residual_env import BCResidualEnv
 
 
-def run_episode(env, seed, model=None):
+def run_episode(env, seed, model=None, include_diagnostics=False):
     obs, _ = env.reset(seed=seed)
 
     cube_x = float(env.env.cube_x)
@@ -18,6 +18,16 @@ def run_episode(env, seed, model=None):
     steps = 0
     max_lift = 0.0
     residual_total = 0.0
+    diagnostics = {
+        "residual_action_norm": [],
+        "residual_norm_mm": [],
+        "applied_residual_norm_mm": [],
+        "clip_difference_norm_mm": [],
+        "action_saturated": [],
+        "task_reward": [],
+        "shaping_reward": [],
+        "residual_action_penalty": [],
+    }
 
     while True:
         if model is None:
@@ -38,11 +48,20 @@ def run_episode(env, seed, model=None):
             float(info["lift_height"]),
         )
         residual_total += info["residual_norm"]
+        if include_diagnostics:
+            diagnostics["residual_action_norm"].append(info["residual_action_norm"])
+            diagnostics["residual_norm_mm"].append(info["residual_norm"] * 1000.0)
+            diagnostics["applied_residual_norm_mm"].append(info["applied_residual_norm_m"] * 1000.0)
+            diagnostics["clip_difference_norm_mm"].append(info["residual_clip_difference_norm_m"] * 1000.0)
+            diagnostics["action_saturated"].append(float(info["action_saturated"]))
+            diagnostics["task_reward"].append(info["task_reward"])
+            diagnostics["shaping_reward"].append(info["shaping_reward"])
+            diagnostics["residual_action_penalty"].append(info["residual_action_penalty"])
 
         if terminated or truncated:
             break
 
-    return {
+    result = {
         "seed": seed,
         "cube_x": cube_x,
         "cube_y": cube_y,
@@ -51,6 +70,23 @@ def run_episode(env, seed, model=None):
         "max_lift": max_lift,
         "mean_residual_m": residual_total / steps,
     }
+    if include_diagnostics:
+        result.update({
+            "mean_residual_action_norm": float(np.mean(diagnostics["residual_action_norm"])),
+            "max_residual_action_norm": float(np.max(diagnostics["residual_action_norm"])),
+            "mean_residual_norm_mm": float(np.mean(diagnostics["residual_norm_mm"])),
+            "max_residual_norm_mm": float(np.max(diagnostics["residual_norm_mm"])),
+            "mean_applied_residual_norm_mm": float(np.mean(diagnostics["applied_residual_norm_mm"])),
+            "mean_clip_difference_norm_mm": float(np.mean(diagnostics["clip_difference_norm_mm"])),
+            "action_saturation_frequency": float(np.mean(diagnostics["action_saturated"])),
+            "mean_task_reward_per_step": float(np.mean(diagnostics["task_reward"])),
+            "mean_shaping_reward_per_step": float(np.mean(diagnostics["shaping_reward"])),
+            "mean_residual_action_penalty_per_step": float(np.mean(diagnostics["residual_action_penalty"])),
+            "total_task_reward": float(np.sum(diagnostics["task_reward"])),
+            "total_shaping_reward": float(np.sum(diagnostics["shaping_reward"])),
+            "total_residual_action_penalty": float(np.sum(diagnostics["residual_action_penalty"])),
+        })
+    return result
 
 
 def main(args):

@@ -1,0 +1,23 @@
+{
+  "study": "Frozen H4 BC Replanning Frequency Ablation",
+  "authorization_source": "User explicitly selected '同条件で再実行（推奨）' after being informed of the duplicate partial CSV and the preregistered stop condition.",
+  "date": "2026-11-06",
+  "protocol_sha256": "682633025a7e80ec4f50ea03a905b28b2ff1d6d4cf9b2c312004ec32cfe25a8b",
+  "affected_configuration": {
+    "model_seed": 456,
+    "interval": 1,
+    "seed_range_inclusive": [310000, 311999],
+    "corrupt_partial_path": "bc_results/h4_replanning/final_H4_seed456_R1.partial.csv",
+    "corrupt_partial_sha256": "3822fb58c4b8c4a827f1ffdfa9a4a337b738f46c0a1057c98fd2a4dc00cb2054",
+    "corrupt_data_rows": 2062,
+    "unique_seed_count": 2000,
+    "duplicate_seed_range_inclusive": [311938, 311999],
+    "recovery_output_label": "recovery1",
+    "recovery_output_path": "bc_results/h4_replanning/final_H4_seed456_R1_recovery1.csv"
+  },
+  "recovery_method": "Run a fresh complete 2000-episode cell at the original preregistered conditions and fixed seed range. Do not reuse or deduplicate any row from the corrupt partial CSV. Preserve the corrupt file byte-for-byte. Use an exclusive per-configuration writer lock.",
+  "conditions_changed": false,
+  "data_exposure": "During diagnosis, two example duplicated records (seeds 311938 and 311939) were directly inspected and both showed success. Duplicate-row comparisons found non-timing fields matched across the 62 duplicated seeds. No aggregate condition comparison was computed, no interval/model was selected or tuned, and no setting was changed. Report this limited outcome exposure in the final report.",
+  "remaining_final_configurations_after_recovery": ["H4 seed 456 R2", "H4 seed 456 R4"],
+  "analysis_rule": "Analyze only the clean recovery1 file for H4 seed 456 R1. Exclude the corrupt partial CSV from all outcome estimates. Keep the preregistered outcome and test definitions unchanged."
+}

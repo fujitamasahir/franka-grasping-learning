@@ -1,0 +1,610 @@
+{
+  "purpose": "Freeze checkpoint choices before final outcomes are evaluated",
+  "base_commit": "3037449bb64eb188627ac7b0a7804b34b40e5c54",
+  "bc_checkpoint": "bc_models/fair_wide_expert_seed42.pt",
+  "bc_checkpoint_sha256": "576746e46fee14ac7281b8cbec449b95e766564952c96533fa49a7c84cdb5b8b",
+  "validation_seed_range": [
+    230000,
+    230499
+  ],
+  "final_seed_range": [
+    240000,
+    241999
+  ],
+  "excluded_prior_final_ranges": [
+    [
+      150000,
+      151999
+    ],
+    [
+      170000,
+      171999
+    ],
+    [
+      190000,
+      191999
+    ],
+    [
+      220000,
+      221999
+    ]
+  ],
+  "checkpoint_selection_rule": [
+    "highest Validation B success rate",
+    "fewest paired regressions vs BC Only",
+    "shortest mean successful episode steps",
+    "earliest training checkpoint"
+  ],
+  "exploratory_decision_criteria": {
+    "regression_decreases_in_at_least_n_of_5_seeds": 4,
+    "mean_final_success_rate_drop_maximum_percentage_points": 0.5,
+    "operational_rescue_preservation_tolerance": "Mean decrease no greater than 10 rescue episodes per 2,000 positions; this operationalizes the otherwise qualitative phrase 'no large rescue decrease'."
+  },
+  "candidates": [
+    10000,
+    20000,
+    30000
+  ],
+  "selections": [
+    {
+      "sac_seed": 907,
+      "arm": "A",
+      "selected_step": 30000,
+      "selected_checkpoint_sha256": "3e0b465cf16a755770221148828a72d371bef0f80efde4292a9da97b221514be",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed907/checkpoint_10000.zip",
+          "checkpoint_sha256": "b07396d7cd2c01ce5a9bbc1b5b81d0fa5f968c76f1ec35f1da9efcd4dfc93cb9",
+          "validation_csv": "bc_results/sac_regdiag_seed907_armA_step10000_validationB500.csv",
+          "validation_csv_sha256": "7303073459a33c45101f7ee7afe647ee16f57c27f6b027e62c08ae31108175b1",
+          "episodes": 500,
+          "successes": 458,
+          "success_rate": 0.916,
+          "rescue_count": 1,
+          "regression_count": 1,
+          "net_improvement": 0,
+          "mean_successful_episode_steps": 119.43668122270742,
+          "mean_residual_norm_mm": 0.6773400138278315,
+          "action_saturation_frequency": 0.0
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed907/checkpoint_20000.zip",
+          "checkpoint_sha256": "4a51150d8a72075e5ed2712394d029dda9b2d369ca1d0dff4130ad44a184b529",
+          "validation_csv": "bc_results/sac_regdiag_seed907_armA_step20000_validationB500.csv",
+          "validation_csv_sha256": "aa6353606a86a8fd6b2b2c88e5a8e642b0049002f151870d780599263d1d1698",
+          "episodes": 500,
+          "successes": 463,
+          "success_rate": 0.926,
+          "rescue_count": 8,
+          "regression_count": 3,
+          "net_improvement": 5,
+          "mean_successful_episode_steps": 111.53347732181426,
+          "mean_residual_norm_mm": 4.219027133435971,
+          "action_saturation_frequency": 0.042078250106323205
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed907/checkpoint_30000.zip",
+          "checkpoint_sha256": "3e0b465cf16a755770221148828a72d371bef0f80efde4292a9da97b221514be",
+          "validation_csv": "bc_results/sac_regdiag_seed907_armA_step30000_validationB500.csv",
+          "validation_csv_sha256": "621c82f9da0afca2ee8dc701dc3a0c6aceab4de81b6dfc33970e78076e72d64f",
+          "episodes": 500,
+          "successes": 468,
+          "success_rate": 0.936,
+          "rescue_count": 13,
+          "regression_count": 3,
+          "net_improvement": 10,
+          "mean_successful_episode_steps": 116.22435897435898,
+          "mean_residual_norm_mm": 4.088790648067197,
+          "action_saturation_frequency": 0.06819234371564369
+        }
+      ]
+    },
+    {
+      "sac_seed": 907,
+      "arm": "B",
+      "selected_step": 30000,
+      "selected_checkpoint_sha256": "7199181ce4c51eed216ff624777e64099c5ef93d884f50bb5b2681a79ec3d0f0",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed907/checkpoint_10000.zip",
+          "checkpoint_sha256": "0fd22d1ca166dcc650737f54e73be9fcfa6eecc05118df8057b3cd22d20544fd",
+          "validation_csv": "bc_results/sac_regdiag_seed907_armB_step10000_validationB500.csv",
+          "validation_csv_sha256": "6cbeaa441d0d78da8fc07e1a33b7f8462817417f7d7f17f73433abc93cb30dc2",
+          "episodes": 500,
+          "successes": 458,
+          "success_rate": 0.916,
+          "rescue_count": 1,
+          "regression_count": 1,
+          "net_improvement": 0,
+          "mean_successful_episode_steps": 119.41484716157206,
+          "mean_residual_norm_mm": 0.5134392759197912,
+          "action_saturation_frequency": 0.0007875
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed907/checkpoint_20000.zip",
+          "checkpoint_sha256": "e294c0ce111ab17bbaf89ba9b6fbd7bc6c504952cd5a2ee9c2fb1ccd71764730",
+          "validation_csv": "bc_results/sac_regdiag_seed907_armB_step20000_validationB500.csv",
+          "validation_csv_sha256": "ba1ac4f071bdc2adcc8dafd78ad6f0ef4cff2b31927153bc9ffe18050068ba9c",
+          "episodes": 500,
+          "successes": 445,
+          "success_rate": 0.89,
+          "rescue_count": 0,
+          "regression_count": 13,
+          "net_improvement": -13,
+          "mean_successful_episode_steps": 118.69438202247191,
+          "mean_residual_norm_mm": 3.11030847847974,
+          "action_saturation_frequency": 0.021518282663172676
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed907/checkpoint_30000.zip",
+          "checkpoint_sha256": "7199181ce4c51eed216ff624777e64099c5ef93d884f50bb5b2681a79ec3d0f0",
+          "validation_csv": "bc_results/sac_regdiag_seed907_armB_step30000_validationB500.csv",
+          "validation_csv_sha256": "7c9df01adeb20ddd611b957bb6bf8d650248f0cc631c4eaa615316adb21601a9",
+          "episodes": 500,
+          "successes": 475,
+          "success_rate": 0.95,
+          "rescue_count": 18,
+          "regression_count": 1,
+          "net_improvement": 17,
+          "mean_successful_episode_steps": 113.38526315789474,
+          "mean_residual_norm_mm": 3.2300065987604274,
+          "action_saturation_frequency": 0.08327227591519508
+        }
+      ]
+    },
+    {
+      "sac_seed": 911,
+      "arm": "A",
+      "selected_step": 20000,
+      "selected_checkpoint_sha256": "8a9f21302d02da9d29244727732622f1b0a293f201ca570d7eca7c4d38c60cf8",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed911/checkpoint_10000.zip",
+          "checkpoint_sha256": "83a8616c37f2056c5e6ee49eb7949d399ac2a092ab7e28e33555a089c3117baa",
+          "validation_csv": "bc_results/sac_regdiag_seed911_armA_step10000_validationB500.csv",
+          "validation_csv_sha256": "1256ff7045d9701eb63d5325be7bc8ab9c4042e4f2b68be89a3a90fd5e31f7e2",
+          "episodes": 500,
+          "successes": 457,
+          "success_rate": 0.914,
+          "rescue_count": 2,
+          "regression_count": 3,
+          "net_improvement": -1,
+          "mean_successful_episode_steps": 120.12035010940919,
+          "mean_residual_norm_mm": 0.7332965813399216,
+          "action_saturation_frequency": 0.0
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed911/checkpoint_20000.zip",
+          "checkpoint_sha256": "8a9f21302d02da9d29244727732622f1b0a293f201ca570d7eca7c4d38c60cf8",
+          "validation_csv": "bc_results/sac_regdiag_seed911_armA_step20000_validationB500.csv",
+          "validation_csv_sha256": "00b255f5877413fc520f206085feef468f025551d5b16d0f160ebc1f97dca6a5",
+          "episodes": 500,
+          "successes": 460,
+          "success_rate": 0.92,
+          "rescue_count": 13,
+          "regression_count": 11,
+          "net_improvement": 2,
+          "mean_successful_episode_steps": 117.90217391304348,
+          "mean_residual_norm_mm": 3.0819865864906344,
+          "action_saturation_frequency": 0.0325502160450078
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed911/checkpoint_30000.zip",
+          "checkpoint_sha256": "5ed7f15f01e16d585c90c3398a3fa6e3bcc6e0146174f52f397caf3b543d2281",
+          "validation_csv": "bc_results/sac_regdiag_seed911_armA_step30000_validationB500.csv",
+          "validation_csv_sha256": "c8a9edd40bd63bc12a5f68cdbd3ba97683702410132d513bddb757c86bf41f8c",
+          "episodes": 500,
+          "successes": 408,
+          "success_rate": 0.816,
+          "rescue_count": 10,
+          "regression_count": 60,
+          "net_improvement": -50,
+          "mean_successful_episode_steps": 117.62254901960785,
+          "mean_residual_norm_mm": 4.407611868984867,
+          "action_saturation_frequency": 0.04594610390759854
+        }
+      ]
+    },
+    {
+      "sac_seed": 911,
+      "arm": "B",
+      "selected_step": 10000,
+      "selected_checkpoint_sha256": "4a32802088ae59f54296e367edba514f3a6f0661ad622ed58aa2a660152ca18e",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed911/checkpoint_10000.zip",
+          "checkpoint_sha256": "4a32802088ae59f54296e367edba514f3a6f0661ad622ed58aa2a660152ca18e",
+          "validation_csv": "bc_results/sac_regdiag_seed911_armB_step10000_validationB500.csv",
+          "validation_csv_sha256": "f20ad62c589605f8bb01f17b52bbe8d6f3a1abd5476e39bd56cf85ed86ed8199",
+          "episodes": 500,
+          "successes": 459,
+          "success_rate": 0.918,
+          "rescue_count": 2,
+          "regression_count": 1,
+          "net_improvement": 1,
+          "mean_successful_episode_steps": 119.32244008714596,
+          "mean_residual_norm_mm": 0.5983199668509711,
+          "action_saturation_frequency": 0.0
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed911/checkpoint_20000.zip",
+          "checkpoint_sha256": "532d7f5ba36f7c90a4bebc1d5857dee40cd07fb69842b7bb37aea4b325351b9a",
+          "validation_csv": "bc_results/sac_regdiag_seed911_armB_step20000_validationB500.csv",
+          "validation_csv_sha256": "dacb96c2daaf21d891637ec11cc12914d2b18ba0198b52cdf650022a96efb6d4",
+          "episodes": 500,
+          "successes": 448,
+          "success_rate": 0.896,
+          "rescue_count": 1,
+          "regression_count": 11,
+          "net_improvement": -10,
+          "mean_successful_episode_steps": 118.703125,
+          "mean_residual_norm_mm": 2.9235409311771154,
+          "action_saturation_frequency": 0.04844614448470425
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed911/checkpoint_30000.zip",
+          "checkpoint_sha256": "d04e5ffd1ebc5cd740128459294e900842bca9d928cb9b1888294ff0ae0cb0db",
+          "validation_csv": "bc_results/sac_regdiag_seed911_armB_step30000_validationB500.csv",
+          "validation_csv_sha256": "2e7712d3fc9da054b20af17223f6034eae433356e7833e961409d7d6f700d4d0",
+          "episodes": 500,
+          "successes": 452,
+          "success_rate": 0.904,
+          "rescue_count": 7,
+          "regression_count": 13,
+          "net_improvement": -6,
+          "mean_successful_episode_steps": 113.50884955752213,
+          "mean_residual_norm_mm": 3.797205647064131,
+          "action_saturation_frequency": 0.1080387886179504
+        }
+      ]
+    },
+    {
+      "sac_seed": 919,
+      "arm": "A",
+      "selected_step": 30000,
+      "selected_checkpoint_sha256": "4002ef9ebc4b24e501a7d4c1d9a9088d721f6a5151d49a00f48123896f8d5fef",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed919/checkpoint_10000.zip",
+          "checkpoint_sha256": "18662eb4c430f044a82981b1da80bf5fe83028fa36c48224d95a2182ae53b19a",
+          "validation_csv": "bc_results/sac_regdiag_seed919_armA_step10000_validationB500.csv",
+          "validation_csv_sha256": "e4080788c6ecfc94e0f8999e124a44e7a587390bf5f35fa1767c683dfbabbd37",
+          "episodes": 500,
+          "successes": 459,
+          "success_rate": 0.918,
+          "rescue_count": 2,
+          "regression_count": 1,
+          "net_improvement": 1,
+          "mean_successful_episode_steps": 119.60566448801742,
+          "mean_residual_norm_mm": 0.6413009449366487,
+          "action_saturation_frequency": 0.0
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed919/checkpoint_20000.zip",
+          "checkpoint_sha256": "06b38ab2b84a31993db389fd5fde54f62a503d0a28b93427d1a12f7be0d6d989",
+          "validation_csv": "bc_results/sac_regdiag_seed919_armA_step20000_validationB500.csv",
+          "validation_csv_sha256": "86c5ee9d65394709d79e12f4c63944e6148564e5516f1c4b879096b6f359e372",
+          "episodes": 500,
+          "successes": 453,
+          "success_rate": 0.906,
+          "rescue_count": 9,
+          "regression_count": 14,
+          "net_improvement": -5,
+          "mean_successful_episode_steps": 117.01324503311258,
+          "mean_residual_norm_mm": 2.409628229375086,
+          "action_saturation_frequency": 0.03548718385003275
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed919/checkpoint_30000.zip",
+          "checkpoint_sha256": "4002ef9ebc4b24e501a7d4c1d9a9088d721f6a5151d49a00f48123896f8d5fef",
+          "validation_csv": "bc_results/sac_regdiag_seed919_armA_step30000_validationB500.csv",
+          "validation_csv_sha256": "fb2e217539548fec0d19d7d98dc34104e5ae1e99ae8955970657c5a48fd43e2e",
+          "episodes": 500,
+          "successes": 462,
+          "success_rate": 0.924,
+          "rescue_count": 17,
+          "regression_count": 13,
+          "net_improvement": 4,
+          "mean_successful_episode_steps": 117.5108225108225,
+          "mean_residual_norm_mm": 3.8301179989115175,
+          "action_saturation_frequency": 0.102873876206971
+        }
+      ]
+    },
+    {
+      "sac_seed": 919,
+      "arm": "B",
+      "selected_step": 20000,
+      "selected_checkpoint_sha256": "ebc5767b2656427e7ad14d5320e42f051cf5ef88d67b9d564124a69063cb3d30",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed919/checkpoint_10000.zip",
+          "checkpoint_sha256": "062772339dec132644d55594d2c2a62b24411cada21fcd4c0aced34b58c70401",
+          "validation_csv": "bc_results/sac_regdiag_seed919_armB_step10000_validationB500.csv",
+          "validation_csv_sha256": "1cbf09391f6069279a0d25aeb55ac69c2e399af9c36cc23b2a97627217ed693a",
+          "episodes": 500,
+          "successes": 459,
+          "success_rate": 0.918,
+          "rescue_count": 1,
+          "regression_count": 0,
+          "net_improvement": 1,
+          "mean_successful_episode_steps": 119.58169934640523,
+          "mean_residual_norm_mm": 0.6818058624180978,
+          "action_saturation_frequency": 0.0
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed919/checkpoint_20000.zip",
+          "checkpoint_sha256": "ebc5767b2656427e7ad14d5320e42f051cf5ef88d67b9d564124a69063cb3d30",
+          "validation_csv": "bc_results/sac_regdiag_seed919_armB_step20000_validationB500.csv",
+          "validation_csv_sha256": "86e485db8b62f103989e07e852cfbf7a6a3610ad18b77842c9afb16b328d15b6",
+          "episodes": 500,
+          "successes": 461,
+          "success_rate": 0.922,
+          "rescue_count": 4,
+          "regression_count": 1,
+          "net_improvement": 3,
+          "mean_successful_episode_steps": 117.17570498915401,
+          "mean_residual_norm_mm": 2.329431781803253,
+          "action_saturation_frequency": 0.004401266826448891
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed919/checkpoint_30000.zip",
+          "checkpoint_sha256": "bca6892f84593e13f2ce74739a99e755c629867871a4a32412b5a06b6c708121",
+          "validation_csv": "bc_results/sac_regdiag_seed919_armB_step30000_validationB500.csv",
+          "validation_csv_sha256": "5c29455dd746b9b7c64383920dbfc74c9dd4908e580b4813c6c2f72d231b3198",
+          "episodes": 500,
+          "successes": 461,
+          "success_rate": 0.922,
+          "rescue_count": 15,
+          "regression_count": 12,
+          "net_improvement": 3,
+          "mean_successful_episode_steps": 118.80260303687636,
+          "mean_residual_norm_mm": 3.087556366768692,
+          "action_saturation_frequency": 0.016273026006714302
+        }
+      ]
+    },
+    {
+      "sac_seed": 929,
+      "arm": "A",
+      "selected_step": 10000,
+      "selected_checkpoint_sha256": "0cf408ff5995f9a34b4418527dbdf93933b9d116a4e6697905b7f1b0c6fd7556",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed929/checkpoint_10000.zip",
+          "checkpoint_sha256": "0cf408ff5995f9a34b4418527dbdf93933b9d116a4e6697905b7f1b0c6fd7556",
+          "validation_csv": "bc_results/sac_regdiag_seed929_armA_step10000_validationB500.csv",
+          "validation_csv_sha256": "93f90d25122711a683f323f202a0fdc867560c2f478a3771c33daa50054cfba8",
+          "episodes": 500,
+          "successes": 458,
+          "success_rate": 0.916,
+          "rescue_count": 2,
+          "regression_count": 2,
+          "net_improvement": 0,
+          "mean_successful_episode_steps": 119.53930131004367,
+          "mean_residual_norm_mm": 0.5476229240006818,
+          "action_saturation_frequency": 0.0
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed929/checkpoint_20000.zip",
+          "checkpoint_sha256": "dd1f092bc2b5790a3c1fc20b0aeaf0f8118b40d5bb00150f5321b35ad49a876d",
+          "validation_csv": "bc_results/sac_regdiag_seed929_armA_step20000_validationB500.csv",
+          "validation_csv_sha256": "988f8d74f4eef47cc68cad6695ba430a7cd9f5adc4d7d3f269e8c7f121b279d3",
+          "episodes": 500,
+          "successes": 441,
+          "success_rate": 0.882,
+          "rescue_count": 0,
+          "regression_count": 17,
+          "net_improvement": -17,
+          "mean_successful_episode_steps": 119.16780045351474,
+          "mean_residual_norm_mm": 2.5467427002256597,
+          "action_saturation_frequency": 0.018240697280176806
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed929/checkpoint_30000.zip",
+          "checkpoint_sha256": "b438b0b25cfcecaf14a58414091288466eaf7a90f7b92a5cc14196260dd0b33a",
+          "validation_csv": "bc_results/sac_regdiag_seed929_armA_step30000_validationB500.csv",
+          "validation_csv_sha256": "8b5a5244d355bafa4a597ab1542382b7306a76c6063719ee96aa8442103480aa",
+          "episodes": 500,
+          "successes": 425,
+          "success_rate": 0.85,
+          "rescue_count": 7,
+          "regression_count": 40,
+          "net_improvement": -33,
+          "mean_successful_episode_steps": 117.74117647058823,
+          "mean_residual_norm_mm": 3.7241816082071284,
+          "action_saturation_frequency": 0.04551343264735429
+        }
+      ]
+    },
+    {
+      "sac_seed": 929,
+      "arm": "B",
+      "selected_step": 10000,
+      "selected_checkpoint_sha256": "d80f8b9396d32987f1ad6b1e253f815fb856cf00014a2299b0c0d732b490642c",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed929/checkpoint_10000.zip",
+          "checkpoint_sha256": "d80f8b9396d32987f1ad6b1e253f815fb856cf00014a2299b0c0d732b490642c",
+          "validation_csv": "bc_results/sac_regdiag_seed929_armB_step10000_validationB500.csv",
+          "validation_csv_sha256": "753aa12e21e9cb7c12b96fe0a21ba3a84e8a429e0bfbb68cd59f27ee18b04e40",
+          "episodes": 500,
+          "successes": 460,
+          "success_rate": 0.92,
+          "rescue_count": 3,
+          "regression_count": 1,
+          "net_improvement": 2,
+          "mean_successful_episode_steps": 119.6195652173913,
+          "mean_residual_norm_mm": 0.5101516190373636,
+          "action_saturation_frequency": 0.0
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed929/checkpoint_20000.zip",
+          "checkpoint_sha256": "628af3243979b392a965ff5b79cbe45ceb17c913822ee4b319b640df7e8db278",
+          "validation_csv": "bc_results/sac_regdiag_seed929_armB_step20000_validationB500.csv",
+          "validation_csv_sha256": "eb9f7f4430c0dcfeb255df458e1581c11fe8feaa33130394a51cf18266c666d9",
+          "episodes": 500,
+          "successes": 426,
+          "success_rate": 0.852,
+          "rescue_count": 0,
+          "regression_count": 32,
+          "net_improvement": -32,
+          "mean_successful_episode_steps": 120.28169014084507,
+          "mean_residual_norm_mm": 2.9509246882448994,
+          "action_saturation_frequency": 0.0083625
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed929/checkpoint_30000.zip",
+          "checkpoint_sha256": "e2cfcaade3066865a45ea772612c5f65752c1b3c12c6013cae323d9f3bc9b324",
+          "validation_csv": "bc_results/sac_regdiag_seed929_armB_step30000_validationB500.csv",
+          "validation_csv_sha256": "0fca2c32ad55114507cc90db3b3c6c7bab37d79079f0d738e643699572846819",
+          "episodes": 500,
+          "successes": 446,
+          "success_rate": 0.892,
+          "rescue_count": 5,
+          "regression_count": 17,
+          "net_improvement": -12,
+          "mean_successful_episode_steps": 120.28026905829596,
+          "mean_residual_norm_mm": 2.7392835252622967,
+          "action_saturation_frequency": 0.020927034508959587
+        }
+      ]
+    },
+    {
+      "sac_seed": 937,
+      "arm": "A",
+      "selected_step": 30000,
+      "selected_checkpoint_sha256": "79a2024ab409a7d6b3ae60f9a2e038f202b50d68c44c2405273572d4c8a99021",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed937/checkpoint_10000.zip",
+          "checkpoint_sha256": "42ceaf201f3be9e7b2c9122ea429b6739803eea29c1f70fb7539e65d30be74ed",
+          "validation_csv": "bc_results/sac_regdiag_seed937_armA_step10000_validationB500.csv",
+          "validation_csv_sha256": "7a7fb112f0f18a3a680da8f6699d5434344698d26222a62eb9e32f726fe7f24a",
+          "episodes": 500,
+          "successes": 462,
+          "success_rate": 0.924,
+          "rescue_count": 4,
+          "regression_count": 0,
+          "net_improvement": 4,
+          "mean_successful_episode_steps": 119.22510822510823,
+          "mean_residual_norm_mm": 0.5244225656420338,
+          "action_saturation_frequency": 0.0
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed937/checkpoint_20000.zip",
+          "checkpoint_sha256": "b47e7c656497929d0e8586d35f54593aac79d609ed724ace630704d9ff3d2122",
+          "validation_csv": "bc_results/sac_regdiag_seed937_armA_step20000_validationB500.csv",
+          "validation_csv_sha256": "12ebe9edbcbd2fdb73af4c908f86d6c794268286ec0a180c00993858cf479bbd",
+          "episodes": 500,
+          "successes": 466,
+          "success_rate": 0.932,
+          "rescue_count": 12,
+          "regression_count": 4,
+          "net_improvement": 8,
+          "mean_successful_episode_steps": 116.90128755364807,
+          "mean_residual_norm_mm": 2.9583338166293185,
+          "action_saturation_frequency": 0.00303958527586345
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_A_seed937/checkpoint_30000.zip",
+          "checkpoint_sha256": "79a2024ab409a7d6b3ae60f9a2e038f202b50d68c44c2405273572d4c8a99021",
+          "validation_csv": "bc_results/sac_regdiag_seed937_armA_step30000_validationB500.csv",
+          "validation_csv_sha256": "1d42534c74a0b98acbbb81e4e9ec602de1da280c8bbf6c3e57e57aff32acaf0a",
+          "episodes": 500,
+          "successes": 481,
+          "success_rate": 0.962,
+          "rescue_count": 23,
+          "regression_count": 0,
+          "net_improvement": 23,
+          "mean_successful_episode_steps": 117.76507276507276,
+          "mean_residual_norm_mm": 4.189939173163199,
+          "action_saturation_frequency": 0.09821510553833346
+        }
+      ]
+    },
+    {
+      "sac_seed": 937,
+      "arm": "B",
+      "selected_step": 30000,
+      "selected_checkpoint_sha256": "6e653b9aef3c49f6b9d288a916717f7305f5e6e11a8dac200a869fdc8c827eae",
+      "candidates": [
+        {
+          "timesteps": 10000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed937/checkpoint_10000.zip",
+          "checkpoint_sha256": "94cb6aea17c4ace0dee0a4ff4dd4d3227f021d0fc21dc1e9946860dd159eea66",
+          "validation_csv": "bc_results/sac_regdiag_seed937_armB_step10000_validationB500.csv",
+          "validation_csv_sha256": "6785bf0c22267c86d08d70ad0f8620c805396d50c164e618d3325bfae9f82c89",
+          "episodes": 500,
+          "successes": 460,
+          "success_rate": 0.92,
+          "rescue_count": 2,
+          "regression_count": 0,
+          "net_improvement": 2,
+          "mean_successful_episode_steps": 119.33260869565217,
+          "mean_residual_norm_mm": 0.4590002427677442,
+          "action_saturation_frequency": 0.0
+        },
+        {
+          "timesteps": 20000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed937/checkpoint_20000.zip",
+          "checkpoint_sha256": "a6d1505aa557f5226475d4f7453e865a5bd7a028e0200b981feb39004871d14d",
+          "validation_csv": "bc_results/sac_regdiag_seed937_armB_step20000_validationB500.csv",
+          "validation_csv_sha256": "2e9d7c5bb87c6158ac656b172732b695c6d30b2d324ac5c5a24837e6bfdb7c56",
+          "episodes": 500,
+          "successes": 462,
+          "success_rate": 0.924,
+          "rescue_count": 9,
+          "regression_count": 5,
+          "net_improvement": 4,
+          "mean_successful_episode_steps": 116.1926406926407,
+          "mean_residual_norm_mm": 2.2288272703972725,
+          "action_saturation_frequency": 0.0010625
+        },
+        {
+          "timesteps": 30000,
+          "checkpoint_path": "bc_residual_sac_runs/regdiag_B_seed937/checkpoint_30000.zip",
+          "checkpoint_sha256": "6e653b9aef3c49f6b9d288a916717f7305f5e6e11a8dac200a869fdc8c827eae",
+          "validation_csv": "bc_results/sac_regdiag_seed937_armB_step30000_validationB500.csv",
+          "validation_csv_sha256": "ad929d68e84d8c8ae270d90e487882a2a496223ef73c327b10542b4ba31bfce2",
+          "episodes": 500,
+          "successes": 469,
+          "success_rate": 0.938,
+          "rescue_count": 17,
+          "regression_count": 6,
+          "net_improvement": 11,
+          "mean_successful_episode_steps": 120.24307036247335,
+          "mean_residual_norm_mm": 2.8575223871022257,
+          "action_saturation_frequency": 0.0052875
+        }
+      ]
+    }
+  ]
+}

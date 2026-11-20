@@ -1,0 +1,59 @@
+{
+  "purpose": "software compatibility only; excluded from new research outcomes",
+  "seed_range_inclusive": [
+    290000,
+    290019
+  ],
+  "models": {
+    "42": {
+      "episodes_compared": 20,
+      "all_checks_passed": true,
+      "checks": [
+        "success",
+        "steps",
+        "initial cube x/y",
+        "first close",
+        "first lift",
+        "inference calls",
+        "terminal cache index",
+        "closed fraction",
+        "return"
+      ]
+    },
+    "123": {
+      "episodes_compared": 20,
+      "all_checks_passed": true,
+      "checks": [
+        "success",
+        "steps",
+        "initial cube x/y",
+        "first close",
+        "first lift",
+        "inference calls",
+        "terminal cache index",
+        "closed fraction",
+        "return"
+      ]
+    },
+    "456": {
+      "episodes_compared": 20,
+      "all_checks_passed": true,
+      "checks": [
+        "success",
+        "steps",
+        "initial cube x/y",
+        "first close",
+        "first lift",
+        "inference calls",
+        "terminal cache index",
+        "closed fraction",
+        "return"
+      ]
+    }
+  },
+  "saved_trace_seed_290042": {
+    "model_seed": 42,
+    "steps": 121,
+    "xyz_gripper_and_chunk_index_match_exactly_within_1e-7": true
+  }
+}

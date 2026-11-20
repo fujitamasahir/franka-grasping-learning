@@ -1,0 +1,7 @@
+{
+  "event": "pre-Final reporting correction",
+  "issue": "Initial implementation derived the CSV region label from terminal cube coordinates, whereas regional results must stratify by initial cube position.",
+  "change": "Before Final starts, the evaluator now derives the region label from the cube position immediately after reset(seed); terminal cube_x/cube_y remain separate terminal-state diagnostics. The Final audit reconstructs the seeded initial position and verifies each region label.",
+  "data_impact": "Calibration threshold selection does not use region; no Calibration success outcomes or threshold decisions change. Final has not started. Existing preliminary/smoke outputs are retained with their original metadata.",
+  "experimental_conditions_changed": false
+}

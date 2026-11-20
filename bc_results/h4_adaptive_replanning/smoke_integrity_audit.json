@@ -1,0 +1,244 @@
+{
+  "adaptive_threshold_used_for_smoke_m": 0.0075,
+  "base_noise_paired_across_all_conditions": true,
+  "cells": 27,
+  "configurations": [
+    {
+      "controller": "R1",
+      "csv_sha256": "cc1c36a404b094715ad6372c960714f7cd463ab5daf587ca5aea29716c7afb33",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "2dd1bbc5d082cc10ef67c799476dcd0427d18c8da868ccd262c3c5aee7f49b99",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "70405ec6ae57bb8c87d34e38afc8b00a0dda74ada93f163cfd10a192704e4efa",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "72c60c37d9d429e672ee4a5df66c8d60d3817af0f78b3a1c009467279c99e75d",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "57b64e6190a19574846a13f579437c10cfec7b3cdd574068483eb8ee08a4fa03",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "9cf6badb0e7ea7e34602645b0965840a8b1d8f17c7b289a66a14551fd906e515",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 10
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "8210a9a88269c2f70163d308c9ee0f48316dda57f622b555875c388dba220e98",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 0
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "4520b2bcab5d36b7c7d2a885e86a1076a931e32bcf0954b85037de3e9857839a",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 5
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "b39a3578e1ea37aacf0e6f5f63806863820341c44e8b20f2c5fa31bb7d911a6a",
+      "episodes": 20,
+      "model_seed": 42,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "56dd40c584163d187238f9cdde6a3d7d956c10f5cede3c57914fad120c1a9743",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "015e8407eaedbca22e5113f9f626533b6d71737d65b1394ab34f19cddbbb25d1",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "2fe403d3c2addecc1675f324c7c66bd22806a5b3f184319b48be77a674724add",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "f23eb84652c7fcd282712d17f3137319a603d64251c0880725c018a54afb15a0",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "95c27ad7f06ef8b70861f2aa1709073ddfd26583312ca44003ecec7a91130fb0",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "f7fd861b9ea7a26e1f8f07864754c5156f3bf07f1097a1478fa1f32be42fbbc1",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 10
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "4ffe8dfb40cca8408c9c8235e6aedb83815fe79dd6d6902279c7dce3c6bb1fd7",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 0
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "79f1aee0717e366fb5329ded2059cc76a78f4e6ccbd1942268b9b8c4215c48d1",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 5
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "07212872425f0fb35b9718f51104733823c1a895909a7ecd130f433eb3c7f77e",
+      "episodes": 20,
+      "model_seed": 123,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "26dcb8ec144e4b731821978b2c2fbcb2494bc078e98627fc4c0d3ea4a9dc58a7",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "417ba201f3cec32994e786e2f1f56eaeb38c1f453383b2f79035e9b7ae0e94de",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R1",
+      "csv_sha256": "ceefcc9c66d99e33170eec690386e71d5a5654c589d2afeb10aac6428ede78d8",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 10
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "0b66482ba82341975497c144dae65458b2a81d0a43934e90a31a55ccedf17b3c",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 0
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "037486b1ff0f66735ba07d0a620bcbff692b4de55ea6a78cc90f390568d9609e",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 5
+    },
+    {
+      "controller": "R4",
+      "csv_sha256": "d499264f00103647552071c20cc7adff8a5d7a5e8f0495e6f1b153c43ec0a8a1",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 10
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "17fd48144151a955954602fcba5b0c736620db9ec64c0ff7b7d88c7890af760b",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 0
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "eeaac950f06928b35d31017f1b1a41a5df8938e90863f2cdfe553045327c4f00",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 5
+    },
+    {
+      "controller": "Adaptive",
+      "csv_sha256": "985e495b3e415cdc30afac9d3924e464c5f64ef5de298f813bd35777a3e5fe24",
+      "episodes": 20,
+      "model_seed": 456,
+      "noise_mm": 10
+    }
+  ],
+  "episodes": 540,
+  "estimated_sigma_summary_m": {
+    "0": {
+      "max": 2.6890626355211503e-09,
+      "median": 0.0,
+      "min": 0.0,
+      "n": 60
+    },
+    "10": {
+      "max": 0.011408262259671334,
+      "median": 0.010074445426584701,
+      "min": 0.007262865616574011,
+      "n": 60
+    },
+    "5": {
+      "max": 0.005704130903421391,
+      "median": 0.005037220940449823,
+      "min": 0.0036314321067776453,
+      "n": 60
+    }
+  },
+  "max_ground_truth_cube_displacement_first_20_steps_m": 1.89584575754026e-10,
+  "positions_paired_across_all_conditions": true,
+  "seed_range_inclusive": [
+    332000,
+    332001,
+    332002,
+    332003,
+    332004,
+    332005,
+    332006,
+    332007,
+    332008,
+    332009,
+    332010,
+    332011,
+    332012,
+    332013,
+    332014,
+    332015,
+    332016,
+    332017,
+    332018,
+    332019
+  ],
+  "smoke_outcomes_not_used_for_threshold_selection": true,
+  "smoke_passed": true,
+  "stationarity_criterion_m": 0.001
+}

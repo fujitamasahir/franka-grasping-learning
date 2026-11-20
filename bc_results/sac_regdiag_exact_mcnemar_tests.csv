@@ -1,0 +1,31 @@
+family,sac_seed,comparison,b_favorable_discordances,b_unfavorable_discordances,p_exact,p_holm
+primary_overall_success,907,Arm A 30k vs Arm B 30k,28,14,0.04355852192384191,0.08711704384768382
+primary_regression_given_bc_success,907,Arm A 30k vs Arm B 30k,4,1,0.375,0.5672142168109708
+primary_rescue_given_bc_failure,907,Arm A 30k vs Arm B 30k,24,13,0.09887174959294498,0.09887174959294498
+selected_overall_success,907,Arm A selected 30000 vs Arm B selected 30000,28,14,0.04355852192384191,0.13067556577152573
+selected_regression_given_bc_success,907,Arm A selected 30000 vs Arm B selected 30000,4,1,0.375,0.4375
+selected_rescue_given_bc_failure,907,Arm A selected 30000 vs Arm B selected 30000,24,13,0.09887174959294498,0.19774349918588996
+primary_overall_success,911,Arm A 30k vs Arm B 30k,298,77,8.626502190266291e-32,4.313251095133145e-31
+primary_regression_given_bc_success,911,Arm A 30k vs Arm B 30k,246,62,4.330770009522957e-27,2.1653850047614786e-26
+primary_rescue_given_bc_failure,911,Arm A 30k vs Arm B 30k,52,15,6.459072791237881e-06,2.5836291164951525e-05
+selected_overall_success,911,Arm A selected 20000 vs Arm B selected 10000,26,16,0.16414940178310644,0.3282988035662129
+selected_regression_given_bc_success,911,Arm A selected 20000 vs Arm B selected 10000,24,0,1.1920928955078125e-07,4.76837158203125e-07
+selected_rescue_given_bc_failure,911,Arm A selected 20000 vs Arm B selected 10000,2,16,0.001312255859375,0.003936767578125
+primary_overall_success,919,Arm A 30k vs Arm B 30k,59,79,0.10545402577641182,0.10545402577641182
+primary_regression_given_bc_success,919,Arm A 30k vs Arm B 30k,49,38,0.2836071084054854,0.5672142168109708
+primary_rescue_given_bc_failure,919,Arm A 30k vs Arm B 30k,10,41,1.4737715885004832e-05,4.4213147655014495e-05
+selected_overall_success,919,Arm A selected 30000 vs Arm B selected 20000,63,40,0.029682214631626732,0.11872885852650693
+selected_regression_given_bc_success,919,Arm A selected 30000 vs Arm B selected 20000,58,4,2.5917592724744587e-13,1.2958796362372293e-12
+selected_rescue_given_bc_failure,919,Arm A selected 30000 vs Arm B selected 20000,5,36,7.84157236921601e-07,3.136628947686404e-06
+primary_overall_success,929,Arm A 30k vs Arm B 30k,156,46,3.4121383803968978e-15,1.3648553521587591e-14
+primary_regression_given_bc_success,929,Arm A 30k vs Arm B 30k,137,42,5.912231641908609e-13,2.3648926567634434e-12
+primary_rescue_given_bc_failure,929,Arm A 30k vs Arm B 30k,19,4,0.002599477767944336,0.005198955535888672
+selected_overall_success,929,Arm A selected 10000 vs Arm B selected 10000,6,3,0.5078125,0.5078125
+selected_regression_given_bc_success,929,Arm A selected 10000 vs Arm B selected 10000,5,1,0.21875,0.4375
+selected_rescue_given_bc_failure,929,Arm A selected 10000 vs Arm B selected 10000,1,2,1.0,1.0
+primary_overall_success,937,Arm A 30k vs Arm B 30k,0,48,7.105427357601002e-15,2.1316282072803006e-14
+primary_regression_given_bc_success,937,Arm A 30k vs Arm B 30k,0,16,3.0517578125e-05,9.1552734375e-05
+primary_rescue_given_bc_failure,937,Arm A 30k vs Arm B 30k,0,32,4.656612873077393e-10,2.3283064365386963e-09
+selected_overall_success,937,Arm A selected 30000 vs Arm B selected 30000,0,48,7.105427357601002e-15,3.552713678800501e-14
+selected_regression_given_bc_success,937,Arm A selected 30000 vs Arm B selected 30000,0,16,3.0517578125e-05,9.1552734375e-05
+selected_rescue_given_bc_failure,937,Arm A selected 30000 vs Arm B selected 30000,0,32,4.656612873077393e-10,2.3283064365386963e-09

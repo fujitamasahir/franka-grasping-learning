@@ -1,0 +1,8 @@
+{
+  "architecture": "H1",
+  "bc_seed": 456,
+  "sac_seed": 1103,
+  "total_timesteps": 30000,
+  "accumulated_seconds": 789.7410370829748,
+  "completed": true
+}

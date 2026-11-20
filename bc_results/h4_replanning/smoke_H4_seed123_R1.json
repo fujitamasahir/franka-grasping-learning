@@ -1,0 +1,23 @@
+{
+  "checkpoint_path": "bc_models/action_chunking/H4_seed123.pt",
+  "checkpoint_sha256": "5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c",
+  "environment": {
+    "checkpoint_training_position_range": 0.12,
+    "control_dt": 0.1,
+    "dynamics": "existing FrankaAutonomousEnv, unchanged",
+    "initial_positions": "same deterministic reset seeds across all model/interval cells",
+    "max_move": 0.15,
+    "max_time": 16.0,
+    "position_range": 0.2,
+    "success": "existing FrankaAutonomousEnv criterion: lift >= 0.10m sustained for >=5 control steps"
+  },
+  "horizon": 4,
+  "interval": 1,
+  "model_seed": 123,
+  "phase": "smoke",
+  "protocol_sha256": "682633025a7e80ec4f50ea03a905b28b2ff1d6d4cf9b2c312004ec32cfe25a8b",
+  "seed_range_inclusive": [
+    312000,
+    312019
+  ]
+}

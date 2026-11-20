@@ -1,0 +1,14 @@
+{
+  "checkpoint_sha256": "649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706",
+  "controller": "Adaptive",
+  "model_seed": 456,
+  "noise_generation_seed": 20261106,
+  "noise_sigma_m": 0.01,
+  "phase": "smoke2",
+  "protocol_sha256": "a212e07da4b00b4c444454482b8547b4058c518076991e09c5038edcd728df0f",
+  "seed_range_inclusive": [
+    333000,
+    333019
+  ],
+  "threshold_m": 0.0075
+}

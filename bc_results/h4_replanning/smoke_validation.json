@@ -1,0 +1,11 @@
+{
+  "smoke_configs": 9,
+  "episodes": 180,
+  "seed_range_inclusive": [
+    312000,
+    312019
+  ],
+  "same_initial_positions_across_all_configs": true,
+  "deterministic_repeat_model_seed42_R1_seed312000": true,
+  "comparison_excludes_timing_fields": true
+}

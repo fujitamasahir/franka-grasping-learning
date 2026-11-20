@@ -1,0 +1,145 @@
+{
+  "acceleration_stress": "No new stress set or graphs in this independent evaluation; synthetic tests only during implementation.",
+  "aggregation": "Window-weighted criteria as Stage1. Also20 seed-equal metrics and paired seed-bootstrap MAE differences, sampling same reset/noise index jointly across model/source/profile/estimator. Missing coverage or undefined denominator fails; no NaN JSON.",
+  "base_commit": "88780a764895a46d33a3753d0458f649aa3f997b",
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261109,
+  "change_step": 40,
+  "decision_steps": "20,24,... through last available complete observation window; includes actual moving phases beyond80; this does not resume or extend the stopped controller",
+  "design": "Estimator-only offline replay of newly collected actual MuJoCo cube trajectories. Clean-observation frozen R1/R4 policies generate motion independently of candidate estimates. Replay identical observed trajectories/noise to both estimators; no estimator controls actions. No grasp success labels recorded or analyzed.",
+  "detection_definition": "Legacy actual switch at or after40 into desired interval; report already-correct-at40 separately. No switch by trajectory end is a miss. Overlapping windows are dependent.",
+  "development_reset_seeds": [
+    350000,
+    350019
+  ],
+  "development_stress_seeds": [
+    351000,
+    351019
+  ],
+  "estimators": {
+    "kalman": {
+      "Q": "acceleration_std\u00b2 * outer([dt\u00b2/2,dt],[dt\u00b2/2,dt])",
+      "acceleration_std_m_s2": 0.05,
+      "dt_s": 0.1,
+      "function": "kalman_noise(noisy_xy) with defaults, sigma_m output",
+      "initial_covariance": "position variance R per candidate; velocity variance0.1\u00b2; zero covariance",
+      "initial_velocity_m_s": 0.0,
+      "internal_R_floor_m2": 1e-12,
+      "no_parameter_changes_after_Final": true,
+      "sigma_grid_m": [
+        0.0,
+        0.03,
+        0.00025
+      ],
+      "window": 20
+    },
+    "position_variance": "sqrt(mean(axis sample variance ddof1)), same previous estimator",
+    "second_difference_MAD": "d=diff(y,n=2,axis=0); per-axis median absolute deviation around median(d); sigma_axis=MAD/(0.6744897501960817*sqrt(6)); pool sqrt(mean(sigma_axis**2)). 18 correlated differences from20 observations; no empirical tuning or finite-sample correction."
+  },
+  "examples": {
+    "model": 42,
+    "motion_source": "R4",
+    "seed": 350000
+  },
+  "forbidden": "No training, no Final grasp evaluation, no historical edits, no threshold tuning, no restarting failed study.",
+  "frozen_models": {
+    "123": {
+      "path": "bc_models/action_chunking/H4_seed123.pt",
+      "sha256": "5dc02a9b9cce85b93beb18288c0681c90e5174181210cd4c0c23d518d653495c"
+    },
+    "42": {
+      "path": "bc_models/action_chunking/H4_seed42.pt",
+      "sha256": "41cda0af609e3064ba8e485a4ef81289c319472b08d1f710d96b30f6cb470557"
+    },
+    "456": {
+      "path": "bc_models/action_chunking/H4_seed456.pt",
+      "sha256": "649e42de42f0a04a2dc180dfa513afbbc52aba2e78f4f6c28a3deb41eb3cd706"
+    }
+  },
+  "frozen_source_sha256": {
+    "action_chunking.py": "442217081eaa59a0560f9fcd8ddf56cf537f3a6b55a7e5c8a7f8f47c5ccb9d02",
+    "analyze_h4_motion_estimator_stage1.py": "8fd5a2779306375ad7a3cf7cd0b69a2619b9a8a45f93a0a5b361cdae8954057b",
+    "franka_autonomous_env.py": "a82a0beca99f37574ac33a8cc078ca7f90d422c30b5f6ac92d42c050b283c39f",
+    "kalman_noise_estimator.py": "9b78ed1b5213397fdbb566e5faca95446fea4e698e945cb6392cea012ea8efae",
+    "motion_aware_noise_estimator.py": "e72084e5a6e03878df5661464c4d21419efeb697795353100d54cd960ed96284",
+    "run_h4_motion_estimator_stage1.py": "f98772f9fc842326fd3a4e0014f3dfdb5ff2779cf89ca81d4d993334089869b2"
+  },
+  "input_restriction": "Only finite noisy cube XY array shape(20,2); no truth, sigma, RNG seed, labels or motion annotation.",
+  "limitations": "Second differences cancel affine motion but not acceleration/impacts. IID Gaussian sensor noise has variance6*sigma\u00b2 after difference, with correlated adjacent differences. MAD assumes centered Gaussian scale and may underestimate at n18. Noise transitions yield mixed heteroskedastic windows. Offline replay does not establish closed-loop reliability.",
+  "metrics": "MAE and bias vs window injected RMS sigma; classification at7.5mm for pure windows only; false switch decisions and actual hysteresis switches at fixed7.5initial /6.5/8.5mm. Mixed windows reported separately. Detection delay at dynamic change from first appropriate actual switch; misses separate. Position-shared paired episode bootstrap conditional on policies.",
+  "models": [
+    42,
+    123,
+    456
+  ],
+  "motion_diagnostic": "Post-estimation maximum pairwise true XY diameter: stationary<=1mm, moving>1mm. Also true acceleration RMS and XYZ diameter. Ground truth only after estimates generated.",
+  "motion_sources": [
+    "R1",
+    "R4"
+  ],
+  "no_execution_during_preparation": true,
+  "noise_seed": 20261109,
+  "output_directory": "bc_results/h4_kalman_independent_validation",
+  "pass_criteria": {
+    "all_required": true,
+    "coverage": "At least100 moving pure-noise windows for each0/10mm and100 stationary pure windows each; all120 complete independent trajectories and480 paired sequences",
+    "dynamic_switch_detection_p90_steps_max_each_direction": 24,
+    "dynamic_switch_miss_fraction_max_each_direction": 0.05,
+    "moving_MAE_mm_max_each_noise": 2.0,
+    "moving_MAE_relative_reduction_vs_position_min": 0.25,
+    "moving_classification_accuracy_min_each_noise": 0.95,
+    "moving_false_selected_interval_fraction_max_each_noise": 0.05,
+    "moving_wrong_direction_actual_switch_rate_per_decision_max_each_noise": 0.05,
+    "stationary_MAE_mm_max_each_noise": 2.0,
+    "thresholds_fixed_before_data": true
+  },
+  "pass_criteria_reuse": "Exact copy of source Stage1 pass_criteria; apply every gate to each estimator with position as relative-MAE baseline. Position baseline necessarily fails the25% relative-improvement gate. Only Kalman all-pass is candidate acceptance; no automatic control experiment.",
+  "primary_candidate": "kalman",
+  "profiles": {
+    "clean": [
+      0,
+      0
+    ],
+    "clean_to_noisy": [
+      0,
+      0.01
+    ],
+    "noisy": [
+      0.01,
+      0.01
+    ],
+    "noisy_to_clean": [
+      0.01,
+      0
+    ]
+  },
+  "seeds": [
+    352000,
+    352001,
+    352002,
+    352003,
+    352004,
+    352005,
+    352006,
+    352007,
+    352008,
+    352009,
+    352010,
+    352011,
+    352012,
+    352013,
+    352014,
+    352015,
+    352016,
+    352017,
+    352018,
+    352019
+  ],
+  "sequence_count": 480,
+  "source_stage1_protocol_sha256": "a3affb02d28299088ecadea7669559d489f38fd4ec61ed597948e3069933b3f3",
+  "stage": "independent_estimator_final",
+  "stage2": "Not implemented or authorized here; separate preregistration and decision required after independent diagnostic results. No Final-based retuning.",
+  "study": "Independent estimator diagnostic Final: fixed CV Kalman vs position variance and second-difference MAD",
+  "trajectory_count": 120,
+  "window": 20
+}

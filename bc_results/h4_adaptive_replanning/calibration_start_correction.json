@@ -1,0 +1,11 @@
+{
+  "additional_change": "Only append a threshold suffix when a non-null threshold exists.",
+  "additional_data_impact": "The second failed startup stopped before metadata or row creation; still zero calibration outcomes.",
+  "additional_issue": "Cell tag formatting also assumed a candidate threshold during Calibration, although Calibration evaluates complete branch controllers and has no threshold argument.",
+  "change": "Updated only the evaluator range lookup to read the existing preregistered field.",
+  "data_impact": "The failed process stopped before the first calibration rollout; no calibration CSV rows or outcomes were created.",
+  "event": "pre-calibration start correction",
+  "experimental_conditions_changed": false,
+  "issue": "Evaluator initially attempted to read calibration_seed_range_inclusive from the evaluation section; the preregistered range is correctly stored under calibration.seed_range_inclusive.",
+  "protocol_sha256": "a212e07da4b00b4c444454482b8547b4058c518076991e09c5038edcd728df0f"
+}

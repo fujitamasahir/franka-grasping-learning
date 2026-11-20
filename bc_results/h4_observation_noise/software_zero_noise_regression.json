@@ -1,0 +1,2077 @@
+{
+  "all_outcome_timing_metrics_match": true,
+  "episodes_compared": 120,
+  "intervals": [
+    1,
+    4
+  ],
+  "metrics": [
+    "success",
+    "steps",
+    "initial cube position",
+    "close/lift step",
+    "closed fraction",
+    "inference calls",
+    "terminal chunk index",
+    "return"
+  ],
+  "models": [
+    42,
+    123,
+    456
+  ],
+  "per_episode_checks": [
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310000
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310001
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310002
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310003
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310004
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310005
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310006
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310007
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310008
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310009
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310010
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310011
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310012
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310013
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310014
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310015
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310016
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310017
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310018
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 42,
+      "seed": 310019
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310000
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310001
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310002
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310003
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310004
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310005
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310006
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310007
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310008
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310009
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310010
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310011
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310012
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310013
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310014
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310015
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310016
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310017
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310018
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 42,
+      "seed": 310019
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310000
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310001
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310002
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310003
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310004
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310005
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310006
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310007
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310008
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310009
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310010
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310011
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310012
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310013
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310014
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310015
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310016
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310017
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310018
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 123,
+      "seed": 310019
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310000
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310001
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310002
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310003
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310004
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310005
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310006
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310007
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310008
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310009
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310010
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310011
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310012
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310013
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310014
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310015
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310016
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310017
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310018
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 123,
+      "seed": 310019
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310000
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310001
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310002
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310003
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310004
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310005
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310006
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310007
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310008
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310009
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310010
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310011
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310012
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310013
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310014
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310015
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310016
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310017
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310018
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 1,
+      "model_seed": 456,
+      "seed": 310019
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310000
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310001
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310002
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310003
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310004
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310005
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310006
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310007
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310008
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310009
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310010
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310011
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310012
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310013
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310014
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310015
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310016
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310017
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310018
+    },
+    {
+      "checks": {
+        "closed_fraction": true,
+        "cube_x": true,
+        "cube_y": true,
+        "first_close_step": true,
+        "first_lift_step": true,
+        "inference_calls": true,
+        "return": true,
+        "steps": true,
+        "success": true,
+        "terminal_chunk_index": true
+      },
+      "interval": 4,
+      "model_seed": 456,
+      "seed": 310019
+    }
+  ],
+  "prior_final_seed_range_inclusive": [
+    310000,
+    310019
+  ],
+  "purpose": "software regression only; excluded from new noise-study outcomes",
+  "shared_schedule_hashes_match_between_R1_and_R4_per_seed": 60,
+  "software_check_correction": "An initial verifier assertion incorrectly expected the base standard-normal schedule hash to equal the applied zero-noise schedule hash. The verifier now checks that both hashes are paired identically between R1 and R4 for the same episode seed. No evaluation condition or Final data changed.",
+  "stepwise_saved_R4_trace_seed_290042": {
+    "model_seed": 42,
+    "steps": 121,
+    "xyz_gripper_chunk_timing_match_atol_1e_7": true
+  }
+}

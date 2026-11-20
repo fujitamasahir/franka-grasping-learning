@@ -1,0 +1,550 @@
+{
+  "bc_checkpoint": "bc_models/fair_wide_expert_seed42.pt",
+  "bc_sha256": "576746e46fee14ac7281b8cbec449b95e766564952c96533fa49a7c84cdb5b8b",
+  "software": {
+    "python": "3.12.10",
+    "machine": "arm64",
+    "numpy": "2.5.4",
+    "gymnasium": "1.4.0",
+    "mujoco": "3.17.0",
+    "stable_baselines3": "2.9.2",
+    "torch": "2.15.0",
+    "device": "cpu"
+  },
+  "validation_a_seeds": [
+    61000,
+    61039
+  ],
+  "validation_b_seed_range": [
+    210000,
+    210499
+  ],
+  "final_seed_range": [
+    220000,
+    221999
+  ],
+  "forbidden_prior_final_ranges": [
+    [
+      150000,
+      151999
+    ],
+    [
+      170000,
+      171999
+    ],
+    [
+      190000,
+      191999
+    ]
+  ],
+  "validation_sets_disjoint": true,
+  "old_models": [
+    {
+      "seed": 7,
+      "config": {
+        "run_name": "C_hard_shaped_seed7",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 7,
+        "eval_freq": 10000,
+        "eval_episodes": 40
+      },
+      "eval_history": [
+        {
+          "timesteps": "10000",
+          "successes": "39",
+          "episodes": "40",
+          "success_rate": "0.975",
+          "mean_steps_success": "120.56410256410257",
+          "mean_episode_reward": "21.05927380984468"
+        },
+        {
+          "timesteps": "20000",
+          "successes": "38",
+          "episodes": "40",
+          "success_rate": "0.95",
+          "mean_steps_success": "120.13157894736842",
+          "mean_episode_reward": "20.16253032488138"
+        },
+        {
+          "timesteps": "30000",
+          "successes": "38",
+          "episodes": "40",
+          "success_rate": "0.95",
+          "mean_steps_success": "118.36842105263158",
+          "mean_episode_reward": "20.04940642044826"
+        }
+      ],
+      "checkpoints": {
+        "best_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed7/best_model.zip",
+          "sha256": "35200bb580ad11bb96e560d5390a968faf55b8613ae8c57c3976f95fb0e8aa12",
+          "size_bytes": 3140023
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed7/final_model.zip",
+          "sha256": "cf5db68fa42ef277f3ba2776f1cde54908b78af46d97d234a9b78239a95259dd",
+          "size_bytes": 3140922
+        }
+      },
+      "best_checkpoint_steps": 10000
+    },
+    {
+      "seed": 19,
+      "config": {
+        "run_name": "C_hard_shaped_seed19",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 19,
+        "eval_freq": 10000,
+        "eval_episodes": 40
+      },
+      "eval_history": [
+        {
+          "timesteps": "10000",
+          "successes": "39",
+          "episodes": "40",
+          "success_rate": "0.975",
+          "mean_steps_success": "120.02564102564102",
+          "mean_episode_reward": "21.05716181134821"
+        },
+        {
+          "timesteps": "20000",
+          "successes": "38",
+          "episodes": "40",
+          "success_rate": "0.95",
+          "mean_steps_success": "116.57894736842105",
+          "mean_episode_reward": "20.137195206058315"
+        },
+        {
+          "timesteps": "30000",
+          "successes": "36",
+          "episodes": "40",
+          "success_rate": "0.9",
+          "mean_steps_success": "120.25",
+          "mean_episode_reward": "18.384564440360965"
+        }
+      ],
+      "checkpoints": {
+        "best_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed19/best_model.zip",
+          "sha256": "91c5320567917027d2a058b8fe2c3a311380e219618d5303e644b5edd18f8f33",
+          "size_bytes": 3140105
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed19/final_model.zip",
+          "sha256": "0d7e219d7f1bf747819cd96934ad5644abcb2e7b446254f0d03a4355ad0c051e",
+          "size_bytes": 3140920
+        }
+      },
+      "best_checkpoint_steps": 10000
+    },
+    {
+      "seed": 73,
+      "config": {
+        "run_name": "C_hard_shaped_seed73",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 73,
+        "eval_freq": 10000,
+        "eval_episodes": 40
+      },
+      "eval_history": [
+        {
+          "timesteps": "10000",
+          "successes": "39",
+          "episodes": "40",
+          "success_rate": "0.975",
+          "mean_steps_success": "120.07692307692308",
+          "mean_episode_reward": "21.050921726099205"
+        },
+        {
+          "timesteps": "20000",
+          "successes": "38",
+          "episodes": "40",
+          "success_rate": "0.95",
+          "mean_steps_success": "121.34210526315789",
+          "mean_episode_reward": "20.241391814493596"
+        },
+        {
+          "timesteps": "30000",
+          "successes": "34",
+          "episodes": "40",
+          "success_rate": "0.85",
+          "mean_steps_success": "118.41176470588235",
+          "mean_episode_reward": "16.937474231902478"
+        }
+      ],
+      "checkpoints": {
+        "best_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed73/best_model.zip",
+          "sha256": "76864760310ac2566f39162b9f8c438f4033d69cb36401fde4f35ed79ee28031",
+          "size_bytes": 3140025
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed73/final_model.zip",
+          "sha256": "b9e0aa896662baf9f4534b45e19e0ece4223352b32423ea4444a088686fce258",
+          "size_bytes": 3140924
+        }
+      },
+      "best_checkpoint_steps": 10000
+    },
+    {
+      "seed": 202,
+      "config": {
+        "run_name": "C_hard_shaped_seed202",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 202,
+        "eval_freq": 10000,
+        "eval_episodes": 40
+      },
+      "eval_history": [
+        {
+          "timesteps": "10000",
+          "successes": "39",
+          "episodes": "40",
+          "success_rate": "0.975",
+          "mean_steps_success": "119.35897435897436",
+          "mean_episode_reward": "21.078583905063475"
+        },
+        {
+          "timesteps": "20000",
+          "successes": "39",
+          "episodes": "40",
+          "success_rate": "0.975",
+          "mean_steps_success": "121.41025641025641",
+          "mean_episode_reward": "20.8650158857011"
+        },
+        {
+          "timesteps": "30000",
+          "successes": "37",
+          "episodes": "40",
+          "success_rate": "0.925",
+          "mean_steps_success": "118.08108108108108",
+          "mean_episode_reward": "19.358291436528354"
+        }
+      ],
+      "checkpoints": {
+        "best_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed202/best_model.zip",
+          "sha256": "3fd1cb3e3f91cab9c222eb0dc4126cce49f7b9795fa6ef34362de3ba55093988",
+          "size_bytes": 3140067
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed202/final_model.zip",
+          "sha256": "f2a1ae92a0a369b2c260d26d5cc1f2e425763e99ebbc0dc6a65db9b443bfc6c6",
+          "size_bytes": 3140922
+        }
+      },
+      "best_checkpoint_steps": 10000
+    },
+    {
+      "seed": 314,
+      "config": {
+        "run_name": "C_hard_shaped_seed314",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 314,
+        "eval_freq": 10000,
+        "eval_episodes": 40
+      },
+      "eval_history": [
+        {
+          "timesteps": "10000",
+          "successes": "39",
+          "episodes": "40",
+          "success_rate": "0.975",
+          "mean_steps_success": "120.15384615384616",
+          "mean_episode_reward": "21.097936287501476"
+        },
+        {
+          "timesteps": "20000",
+          "successes": "38",
+          "episodes": "40",
+          "success_rate": "0.95",
+          "mean_steps_success": "120.34210526315789",
+          "mean_episode_reward": "20.177530369922902"
+        },
+        {
+          "timesteps": "30000",
+          "successes": "39",
+          "episodes": "40",
+          "success_rate": "0.975",
+          "mean_steps_success": "117.84615384615384",
+          "mean_episode_reward": "20.68074147803073"
+        }
+      ],
+      "checkpoints": {
+        "best_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed314/best_model.zip",
+          "sha256": "207ccce4a6918989d4228ebccdeccb552b242e1fba5d353b80e2c35b219352c0",
+          "size_bytes": 3140944
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/C_hard_shaped_seed314/final_model.zip",
+          "sha256": "680a4acdb9d35bc51b38ca9db9a03c0f02e24b8559790f11896c05ecbf8d9886",
+          "size_bytes": 3140926
+        }
+      },
+      "best_checkpoint_steps": 30000
+    }
+  ],
+  "new_models": [
+    {
+      "seed": 811,
+      "config": {
+        "run_name": "stability_C_seed811",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 811,
+        "eval_freq": 10000,
+        "eval_episodes": 40,
+        "save_trajectory_checkpoints": true
+      },
+      "checkpoints": {
+        "10000": {
+          "path": "bc_residual_sac_runs/stability_C_seed811/checkpoint_10000.zip",
+          "sha256": "b7458b2aa43244c646715932a8203656b378f8ffd0d06c775219c15570eb7b17",
+          "size_bytes": 3140109
+        },
+        "20000": {
+          "path": "bc_residual_sac_runs/stability_C_seed811/checkpoint_20000.zip",
+          "sha256": "692688a9f0d436e85060cd45a415ad7a22c1727d240bc50dbd70da674a2edf86",
+          "size_bytes": 3140939
+        },
+        "30000": {
+          "path": "bc_residual_sac_runs/stability_C_seed811/checkpoint_30000.zip",
+          "sha256": "c676357e20e90dabe18e3d153035f2ea61d869ec25f8215199a5d6764b4e6249",
+          "size_bytes": 3140942
+        },
+        "best_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed811/best_model.zip",
+          "sha256": "bd138f620144b90a11a7d65e6b3a496730370e449bc50c0c231620cfc9bc59be",
+          "size_bytes": 3140942
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed811/final_model.zip",
+          "sha256": "ebef528a6ff78cde463f2cd8a82f889eacf6caedd0af67af30a2713679d70397",
+          "size_bytes": 3140924
+        }
+      }
+    },
+    {
+      "seed": 823,
+      "config": {
+        "run_name": "stability_C_seed823",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 823,
+        "eval_freq": 10000,
+        "eval_episodes": 40,
+        "save_trajectory_checkpoints": true
+      },
+      "checkpoints": {
+        "10000": {
+          "path": "bc_residual_sac_runs/stability_C_seed823/checkpoint_10000.zip",
+          "sha256": "153420743b13bbbad781c1ced50a8d59d378a48071ad07cb5aee32aaa40618ac",
+          "size_bytes": 3140105
+        },
+        "20000": {
+          "path": "bc_residual_sac_runs/stability_C_seed823/checkpoint_20000.zip",
+          "sha256": "f8519dac187eb999f5da07e9611d17634c01b764bc314d0daf2fe9a8e024b236",
+          "size_bytes": 3140935
+        },
+        "30000": {
+          "path": "bc_residual_sac_runs/stability_C_seed823/checkpoint_30000.zip",
+          "sha256": "e7512752fc1eee1b7d4ac1b098189f44d7b14d828af6068a467e2211aaf1e2ea",
+          "size_bytes": 3140938
+        },
+        "best_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed823/best_model.zip",
+          "sha256": "41230daf33da524fbbf5cd67cf67acf3bc5171f83ee31db7e8c9f37cc55ba1cd",
+          "size_bytes": 3140935
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed823/final_model.zip",
+          "sha256": "570844c35be067731e7d7fea28bd4f693d4cfe5e1141ab0f65e1c3c3e3478f16",
+          "size_bytes": 3140920
+        }
+      }
+    },
+    {
+      "seed": 827,
+      "config": {
+        "run_name": "stability_C_seed827",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 827,
+        "eval_freq": 10000,
+        "eval_episodes": 40,
+        "save_trajectory_checkpoints": true
+      },
+      "checkpoints": {
+        "10000": {
+          "path": "bc_residual_sac_runs/stability_C_seed827/checkpoint_10000.zip",
+          "sha256": "0f20660ec055b2f554668ee7677bf549f7848738c3e7bc53ec100fcf157c8c9e",
+          "size_bytes": 3140109
+        },
+        "20000": {
+          "path": "bc_residual_sac_runs/stability_C_seed827/checkpoint_20000.zip",
+          "sha256": "7a1ad288f3b29873a5fa2cf54e65acecc1eaa74de4ec5fa67b94f480e11bc0ae",
+          "size_bytes": 3140939
+        },
+        "30000": {
+          "path": "bc_residual_sac_runs/stability_C_seed827/checkpoint_30000.zip",
+          "sha256": "0424ca6a5eb7c64beca6cb7b1e2c41dacd28c12c14e14a3bc4c189f96be8c072",
+          "size_bytes": 3140942
+        },
+        "best_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed827/best_model.zip",
+          "sha256": "111cccbe0f91be72f672f0c546000924a25339b8b32be1a27c952f98e64d6aa1",
+          "size_bytes": 3140109
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed827/final_model.zip",
+          "sha256": "2a8640e25ece1ab932cb43b27a30238a8cc858858bd42f87857bb8fa1cb4f731",
+          "size_bytes": 3140924
+        }
+      }
+    },
+    {
+      "seed": 829,
+      "config": {
+        "run_name": "stability_C_seed829",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 829,
+        "eval_freq": 10000,
+        "eval_episodes": 40,
+        "save_trajectory_checkpoints": true
+      },
+      "checkpoints": {
+        "10000": {
+          "path": "bc_residual_sac_runs/stability_C_seed829/checkpoint_10000.zip",
+          "sha256": "f438fbd669e0c67ebe9310fd6cae2b7c10bec7b16fc69ccf378608a2192b6093",
+          "size_bytes": 3140105
+        },
+        "20000": {
+          "path": "bc_residual_sac_runs/stability_C_seed829/checkpoint_20000.zip",
+          "sha256": "101cd1912c7a1cdbb90ec391fbf83da42de020e1aa5f3cb80d009163af9799de",
+          "size_bytes": 3140935
+        },
+        "30000": {
+          "path": "bc_residual_sac_runs/stability_C_seed829/checkpoint_30000.zip",
+          "sha256": "f6a778745da5ee677e5b1467a0125defcddaf6b28d3f02b1c2331aedb0b824f3",
+          "size_bytes": 3140938
+        },
+        "best_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed829/best_model.zip",
+          "sha256": "5ef946875d25f900bdeac7fde9b784cf1174a4c9333fa515c5b21e671a1aadc2",
+          "size_bytes": 3140935
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed829/final_model.zip",
+          "sha256": "95969797617429627f4a104d5402064ed634816ec97a9c7624e1c7217bea81f1",
+          "size_bytes": 3140920
+        }
+      }
+    },
+    {
+      "seed": 839,
+      "config": {
+        "run_name": "stability_C_seed839",
+        "bc_model": "bc_models/fair_wide_expert_seed42.pt",
+        "position_range": 0.2,
+        "residual_meters": 0.005,
+        "sampling_mode": "hard",
+        "hard_inner_range": 0.12,
+        "hard_fraction": 0.9,
+        "reward_mode": "shaped",
+        "timesteps": 30000,
+        "seed": 839,
+        "eval_freq": 10000,
+        "eval_episodes": 40,
+        "save_trajectory_checkpoints": true
+      },
+      "checkpoints": {
+        "10000": {
+          "path": "bc_residual_sac_runs/stability_C_seed839/checkpoint_10000.zip",
+          "sha256": "83956dbf0606c38be7a9b3fd7bf32883d32598a9a7238291a89f3c157c7493bf",
+          "size_bytes": 3140109
+        },
+        "20000": {
+          "path": "bc_residual_sac_runs/stability_C_seed839/checkpoint_20000.zip",
+          "sha256": "ff08ecf52f4d6b91c2814a9f8f7023418c60b4b929705b74e9da560ba94f06f0",
+          "size_bytes": 3140939
+        },
+        "30000": {
+          "path": "bc_residual_sac_runs/stability_C_seed839/checkpoint_30000.zip",
+          "sha256": "0e0c4aa6721ef53003f77641705903640ba326f8c9c1ee784117fdc3111fdb14",
+          "size_bytes": 3140942
+        },
+        "best_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed839/best_model.zip",
+          "sha256": "f88488def344b6016670588f8a646ee0731e4ab750312bd68d5f14fd6e1a27db",
+          "size_bytes": 3140942
+        },
+        "final_model": {
+          "path": "bc_residual_sac_runs/stability_C_seed839/final_model.zip",
+          "sha256": "1386d2d3c2695e0686b7fec8b1a26e8f14c015a4a71916843c274e4bcd7acba2",
+          "size_bytes": 3140924
+        }
+      }
+    }
+  ]
+}
