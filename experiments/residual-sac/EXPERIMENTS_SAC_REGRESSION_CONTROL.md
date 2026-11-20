@@ -146,16 +146,16 @@ The experiment branch is `experiment/sac-regression-diagnostics`, based on commi
 
 ```bash
 MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python -m unittest \
-  test_selective_residual_gate.py test_policy_specific_gate.py \
-  test_sac_stability.py test_sac_regression_control.py
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python analyze_sac_regression_diagnostics.py
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python run_sac_regression_training.py
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python run_sac_regression_evaluations.py validation
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python freeze_sac_regression_selection.py
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python run_sac_regression_evaluations.py final
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python analyze_sac_regression_results.py
+  scripts.residual_sac.test_selective_residual_gate scripts.residual_sac.test_policy_specific_gate \
+  scripts.residual_sac.test_sac_stability scripts.residual_sac.test_sac_regression_control
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/analyze_sac_regression_diagnostics.py
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/run_sac_regression_training.py
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/run_sac_regression_evaluations.py validation
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/freeze_sac_regression_selection.py
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/run_sac_regression_evaluations.py final
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/analyze_sac_regression_results.py
 MPLBACKEND=Agg MPLCONFIGDIR=/private/tmp/mplcache \
-  .venv/bin/python plot_sac_regression_results.py
+  .venv/bin/python scripts/run.py residual_sac/plot_sac_regression_results.py
 ```
 
 `run_sac_regression_evaluations.py` resumes incomplete candidate CSVs and checks the frozen selection manifest. The output records include `sac_regdiag_validation_metrics.csv`, `sac_regdiag_checkpoint_selection_freeze.json`, final per-checkpoint paired CSVs, `sac_regdiag_final_checkpoint_metrics.csv`, `sac_regdiag_primary_seed_comparisons.csv`, `sac_regdiag_selected_seed_comparisons.csv`, `sac_regdiag_exact_mcnemar_tests.csv`, `sac_regdiag_regional_outcomes.csv`, `sac_regdiag_training_diagnostics.csv`, and `sac_regdiag_analysis_summary.json`. Five figures are saved as PNG and SVG in `bc_results/sac_regression_control/sac_regdiag_figures/`. Model checkpoints and replay buffers are excluded from version control.

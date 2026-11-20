@@ -4,6 +4,8 @@ This page is the index for the project's experiments and their results. The stud
 
 ## Where to start
 
+- Browse [Python scripts by role](PYTHON.md) for training, evaluation, analysis, audit, and utility code.
+
 - Read the study note for the question, protocol, conclusion and reproduction steps.
 - Open the linked result folder for raw rollouts, audits, summaries and figures.
 - Files named `protocol` and their `.sha256` files capture the preregistered design; `final` files are held-out results; `smoke`, `development`, `calibration`, and `validation` are supporting phases with distinct roles.

@@ -17,9 +17,9 @@ All arms use the same BC checkpoint, 3D residual action bound of +/-5 mm
 per axis, SAC hyperparameters and training seed 42.
 
 ```bash
-mjpython train_bc_residual_sac.py --run-name A_uniform_sparse_seed42 --sampling-mode uniform --reward-mode sparse --seed 42
-mjpython train_bc_residual_sac.py --run-name B_hard_sparse_seed42 --sampling-mode hard --reward-mode sparse --seed 42
-mjpython train_bc_residual_sac.py --run-name C_hard_shaped_seed42 --sampling-mode hard --reward-mode shaped --seed 42
+mjpython scripts/run.py residual_sac/train_bc_residual_sac.py --run-name A_uniform_sparse_seed42 --sampling-mode uniform --reward-mode sparse --seed 42
+mjpython scripts/run.py residual_sac/train_bc_residual_sac.py --run-name B_hard_sparse_seed42 --sampling-mode hard --reward-mode sparse --seed 42
+mjpython scripts/run.py residual_sac/train_bc_residual_sac.py --run-name C_hard_shaped_seed42 --sampling-mode hard --reward-mode shaped --seed 42
 ```
 
 For hard sampling, 90% of training initial positions are uniformly sampled
@@ -43,9 +43,9 @@ Run each evaluation with the same 200 seeds (90000-90199), with uniform
 sampling. Example:
 
 ```bash
-mjpython evaluate_bc_residual_sac.py --bc-model bc_models/fair_wide_expert_seed42.pt --sac-model bc_residual_sac_runs/A_uniform_sparse_seed42/best_model.zip --position-range 0.20 --residual-meters 0.005 --episodes 200 --seed 90000 --output bc_results/residual_sac/sac_A_uniform_sparse_seed42.csv
-mjpython evaluate_bc_residual_sac.py --bc-model bc_models/fair_wide_expert_seed42.pt --sac-model bc_residual_sac_runs/B_hard_sparse_seed42/best_model.zip --position-range 0.20 --residual-meters 0.005 --episodes 200 --seed 90000 --output bc_results/residual_sac/sac_B_hard_sparse_seed42.csv
-mjpython evaluate_bc_residual_sac.py --bc-model bc_models/fair_wide_expert_seed42.pt --sac-model bc_residual_sac_runs/C_hard_shaped_seed42/best_model.zip --position-range 0.20 --residual-meters 0.005 --episodes 200 --seed 90000 --output bc_results/residual_sac/sac_C_hard_shaped_seed42.csv
+mjpython scripts/run.py residual_sac/evaluate_bc_residual_sac.py --bc-model bc_models/fair_wide_expert_seed42.pt --sac-model bc_residual_sac_runs/A_uniform_sparse_seed42/best_model.zip --position-range 0.20 --residual-meters 0.005 --episodes 200 --seed 90000 --output bc_results/residual_sac/sac_A_uniform_sparse_seed42.csv
+mjpython scripts/run.py residual_sac/evaluate_bc_residual_sac.py --bc-model bc_models/fair_wide_expert_seed42.pt --sac-model bc_residual_sac_runs/B_hard_sparse_seed42/best_model.zip --position-range 0.20 --residual-meters 0.005 --episodes 200 --seed 90000 --output bc_results/residual_sac/sac_B_hard_sparse_seed42.csv
+mjpython scripts/run.py residual_sac/evaluate_bc_residual_sac.py --bc-model bc_models/fair_wide_expert_seed42.pt --sac-model bc_residual_sac_runs/C_hard_shaped_seed42/best_model.zip --position-range 0.20 --residual-meters 0.005 --episodes 200 --seed 90000 --output bc_results/residual_sac/sac_C_hard_shaped_seed42.csv
 ```
 
 Compare paired outcomes (BC-only vs SAC-only successes) and results
@@ -64,5 +64,5 @@ held-out test set.
   assistant; run the smoke test below before full training.
 
 ```bash
-mjpython train_bc_residual_sac.py --run-name smoke_test --sampling-mode hard --reward-mode shaped --timesteps 100 --eval-freq 50 --eval-episodes 2
+mjpython scripts/run.py residual_sac/train_bc_residual_sac.py --run-name smoke_test --sampling-mode hard --reward-mode shaped --timesteps 100 --eval-freq 50 --eval-episodes 2
 ```

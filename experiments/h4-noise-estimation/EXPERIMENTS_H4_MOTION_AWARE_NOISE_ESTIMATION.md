@@ -120,13 +120,13 @@ Limitations include20 shared reset/noise seeds, three fixed policies, clean-poli
 
 ## 13. Reproduction and Artifacts
 
-New code is isolated in `motion_aware_noise_estimator.py`, `run_h4_motion_estimator_stage1.py`, `analyze_h4_motion_estimator_stage1.py`, `audit_h4_motion_estimator_stage1.py`, and `test_motion_aware_noise_estimator.py`. Raw physical trajectories, diagnostic observations/estimates, stress tests, window CSV, gate summary, integrity audit and6 PNG/SVG figures live in `bc_results/h4_noise_estimation/motion_aware/h4_motion_estimator/`. The invalid archive is excluded from all active analysis. Requirements and exact frozen assets are inherited from the base repository; no model binaries are committed.
+New code is isolated in `motion_aware_noise_estimator.py`, `run_h4_motion_estimator_stage1.py`, `analyze_h4_motion_estimator_stage1.py`, `audit_h4_motion_estimator_stage1.py`, and `scripts.h4_noise_estimation.test_motion_aware_noise_estimator`. Raw physical trajectories, diagnostic observations/estimates, stress tests, window CSV, gate summary, integrity audit and6 PNG/SVG figures live in `bc_results/h4_noise_estimation/motion_aware/h4_motion_estimator/`. The invalid archive is excluded from all active analysis. Requirements and exact frozen assets are inherited from the base repository; no model binaries are committed.
 
 ```sh
 MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python -m unittest discover
 MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python run_h4_motion_estimator_stage1.py
 MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python analyze_h4_motion_estimator_stage1.py
-MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python audit_h4_motion_estimator_stage1.py
+MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python scripts/run.py h4_noise_estimation/audit_h4_motion_estimator_stage1.py
 ```
 
 Run reproduction in a separate checkout with a fresh Stage 1 output directory; writers refuse to overwrite completed analysis or replay files. The collector validates existing physical-trajectory provenance before skipping. The original stopped study output directories and report must remain intact. One Stage 1 lock prevents concurrent data writers. Protocol SHA-256: `a3affb02d28299088ecadea7669559d489f38fd4ec61ed597948e3069933b3f3`.

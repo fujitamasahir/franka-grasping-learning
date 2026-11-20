@@ -173,14 +173,14 @@ From the repository root with the project virtual environment and MuJoCo assets 
 
 ```bash
 MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python -m unittest \
-  test_selective_residual_gate.py test_policy_specific_gate.py test_sac_stability.py
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python run_sac_stability_training.py
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python run_sac_stability_evaluations.py validation-b
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python freeze_sac_checkpoint_selection.py
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python run_sac_stability_evaluations.py final
-MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python analyze_sac_stability.py
+  scripts.residual_sac.test_selective_residual_gate scripts.residual_sac.test_policy_specific_gate scripts.residual_sac.test_sac_stability
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/run_sac_stability_training.py
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/run_sac_stability_evaluations.py validation-b
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/freeze_sac_checkpoint_selection.py
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/run_sac_stability_evaluations.py final
+MPLCONFIGDIR=/private/tmp/mplcache .venv/bin/python scripts/run.py residual_sac/analyze_sac_stability.py
 MPLBACKEND=Agg MPLCONFIGDIR=/private/tmp/mplcache \
-  .venv/bin/python plot_sac_stability.py
+  .venv/bin/python scripts/run.py residual_sac/plot_sac_stability.py
 ```
 
 Training/evaluation scripts preserve complete prior outputs and reject incomplete or differing existing files rather than overwriting them. Model binaries remain local and are excluded from version control. CSV/JSON metrics, the frozen selection manifest, source, figures, and this report are the shareable experiment record.

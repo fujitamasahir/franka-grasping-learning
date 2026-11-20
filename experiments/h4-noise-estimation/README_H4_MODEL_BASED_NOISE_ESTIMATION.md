@@ -63,7 +63,7 @@ Run related small tests only:
 Run a bounded development comparison of the first four existing sequences:
 
 ```sh
-.venv/bin/python compare_h4_noise_estimators.py \
+.venv/bin/python scripts/run.py h4_noise_estimation/compare_h4_noise_estimators.py \
   --input bc_results/h4_noise_estimation/motion_aware/h4_motion_estimator/diagnostic_sequences.jsonl \
   --limit 4 --role development \
   --output /private/tmp/h4_kalman_development.json

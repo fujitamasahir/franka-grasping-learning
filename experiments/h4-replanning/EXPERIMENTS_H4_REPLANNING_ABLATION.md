@@ -183,17 +183,17 @@ From the repository root on branch `experiment/h4-replanning-ablation`:
 
 ```bash
 ./.venv/bin/python -m unittest discover -v
-./.venv/bin/python evaluate_h4_replanning.py --phase final --model-seed 42 --interval 1
-./.venv/bin/python evaluate_h4_replanning.py --phase final --model-seed 42 --interval 2
-./.venv/bin/python evaluate_h4_replanning.py --phase final --model-seed 42 --interval 4
-./.venv/bin/python evaluate_h4_replanning.py --phase final --model-seed 123 --interval 1
-./.venv/bin/python evaluate_h4_replanning.py --phase final --model-seed 123 --interval 2
-./.venv/bin/python evaluate_h4_replanning.py --phase final --model-seed 123 --interval 4
-./.venv/bin/python evaluate_h4_replanning.py --phase final --model-seed 456 --interval 1 --run-label recovery1
-./.venv/bin/python evaluate_h4_replanning.py --phase final --model-seed 456 --interval 2
-./.venv/bin/python evaluate_h4_replanning.py --phase final --model-seed 456 --interval 4
-MPLCONFIGDIR=/private/tmp/matplotlib-h4 ./.venv/bin/python analyze_h4_replanning.py
-./.venv/bin/python write_h4_replanning_report.py
+./.venv/bin/python scripts/run.py h4_replanning/evaluate_h4_replanning.py --phase final --model-seed 42 --interval 1
+./.venv/bin/python scripts/run.py h4_replanning/evaluate_h4_replanning.py --phase final --model-seed 42 --interval 2
+./.venv/bin/python scripts/run.py h4_replanning/evaluate_h4_replanning.py --phase final --model-seed 42 --interval 4
+./.venv/bin/python scripts/run.py h4_replanning/evaluate_h4_replanning.py --phase final --model-seed 123 --interval 1
+./.venv/bin/python scripts/run.py h4_replanning/evaluate_h4_replanning.py --phase final --model-seed 123 --interval 2
+./.venv/bin/python scripts/run.py h4_replanning/evaluate_h4_replanning.py --phase final --model-seed 123 --interval 4
+./.venv/bin/python scripts/run.py h4_replanning/evaluate_h4_replanning.py --phase final --model-seed 456 --interval 1 --run-label recovery1
+./.venv/bin/python scripts/run.py h4_replanning/evaluate_h4_replanning.py --phase final --model-seed 456 --interval 2
+./.venv/bin/python scripts/run.py h4_replanning/evaluate_h4_replanning.py --phase final --model-seed 456 --interval 4
+MPLCONFIGDIR=/private/tmp/matplotlib-h4 ./.venv/bin/python scripts/run.py h4_replanning/analyze_h4_replanning.py
+./.venv/bin/python scripts/run.py h4_replanning/write_h4_replanning_report.py
 ```
 
 Completed output CSVs validate against the expected unique seed set and provenance hashes. Do not run duplicate processes for the same configuration. The `recovery1` label is specific to the documented seed-456/R1 recovery and keeps the preserved corrupt partial separate.

@@ -45,19 +45,19 @@ The following perform the actual experiment when the user runs them:
 
 ```sh
 #240 Smoke episodes; only one compact completion/interruption JSON.
-.venv/bin/python kalman_online_experiment.py run --phase smoke
+.venv/bin/python scripts/run.py h4_noise_estimation/kalman_online_experiment.py run --phase smoke
 
 #Software integrity/finite estimates/windows/chunks/noise/prefix audit; no rates.
-.venv/bin/python kalman_online_experiment.py audit --phase smoke
+.venv/bin/python scripts/run.py h4_noise_estimation/kalman_online_experiment.py audit --phase smoke
 
 #Requires complete passing Smoke audit and unchanged evidence.
-.venv/bin/python kalman_online_experiment.py run --phase final
+.venv/bin/python scripts/run.py h4_noise_estimation/kalman_online_experiment.py run --phase final
 
 #Requires all24 complete cells and passing Smoke evidence.
-.venv/bin/python kalman_online_experiment.py audit --phase final
+.venv/bin/python scripts/run.py h4_noise_estimation/kalman_online_experiment.py audit --phase final
 
 #Requires complete passing Final audit; no analysis of partial outcomes.
-.venv/bin/python kalman_online_experiment.py analyze
+.venv/bin/python scripts/run.py h4_noise_estimation/kalman_online_experiment.py analyze
 ```
 
 Output directory: `bc_results/h4_noise_estimation/kalman_online/h4_kalman_online_dynamic/`. Final results are
@@ -70,7 +70,7 @@ refuse replacement. Do not change settings after inspecting Final outcomes.
 Count-only progress, if operationally needed:
 
 ```sh
-.venv/bin/python kalman_online_experiment.py audit --phase final --allow-incomplete
+.venv/bin/python scripts/run.py h4_noise_estimation/kalman_online_experiment.py audit --phase final --allow-incomplete
 ```
 
 This validates written data and records exact partial counts without calculating

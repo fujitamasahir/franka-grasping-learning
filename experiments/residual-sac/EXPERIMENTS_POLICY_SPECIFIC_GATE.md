@@ -23,7 +23,7 @@ These are evaluated as written. Calibration thresholds and quadrant definitions 
 - All five models used paired calibration positions 180000–180499 (500 per model) and paired final evaluation positions 190000–191999 (2,000 per model). All models used the same initial positions and had identical BC outcomes on them.
 - Final evaluation positions were not used for calibration or checkpoint selection. The final evaluation files were only analyzed after all five policy-specific gate JSON files were written and the freeze manifest recorded their hashes.
 - Fixed Safety remained EN; Fixed Balanced remained EN/WS from the existing Seed 456 gate JSON. No existing CSV, JSON, gate, or model was overwritten.
-- The 8 tests in `test_selective_residual_gate.py` and `test_policy_specific_gate.py` passed.
+- The 8 tests in `scripts.residual_sac.test_selective_residual_gate` and `scripts.residual_sac.test_policy_specific_gate` passed.
 
 ### Calibration Procedure
 
@@ -159,4 +159,4 @@ Proceed to **Adaptive Gate Learning** as a research prototype, not as a deployme
 - Per-model live MuJoCo verification: `bc_results/selective_gate/policy_specific_gate_seed{7,19,73,202,314}_live_verify.csv`.
 - Final method and quadrant metrics: `bc_results/selective_gate/policy_specific_gate_final_methods.csv`, `bc_results/selective_gate/policy_specific_gate_final_quadrants.csv`, and `bc_results/selective_gate/policy_specific_gate_final_summary.json`.
 - Code: `calibrate_policy_specific_gate.py`, `analyze_policy_specific_gate.py`, and `verify_policy_specific_gate_live.py`.
-- Tests: `python3 -m unittest test_selective_residual_gate.py test_policy_specific_gate.py`.
+- Tests: `python3 -m unittest scripts.residual_sac.test_selective_residual_gate scripts.residual_sac.test_policy_specific_gate`.

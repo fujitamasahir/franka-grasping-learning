@@ -239,12 +239,12 @@ Use these results to decide whether a small ACT or diffusion-policy baseline is 
 
 1. Use branch `experiment/action-chunked-bc-residual-rl` at source base `10d607fe7cacaae3004c8a291348c5022e41f4a9`.
 2. Verify the protocol SHA in `bc_results/action_chunking/action_chunking_protocol.sha256` and the dataset audit hashes.
-3. Run `.venv/bin/python -m unittest discover -p 'test_*.py' -v`.
-4. Train BC: `.venv/bin/python train_action_chunk_bc.py`.
-5. Generate BC architecture validation rollouts: `.venv/bin/python evaluate_action_chunking.py --phase bc-validation`; generate paired BC checkpoint-selection baselines: `.venv/bin/python evaluate_action_chunking.py --phase bc-sac-validation`.
-6. Train the 18 crossed SAC runs: `.venv/bin/python train_action_chunk_sac.py`; resume an interrupted run with `--resume --arch H1 --bc-seed 42 --sac-seed 1103` (choose the interrupted tuple).
-7. Freeze validation selections: `.venv/bin/python freeze_action_chunk_selections.py`.
-8. Run BC Final and then SAC Final: `.venv/bin/python evaluate_action_chunking.py --phase bc-final`; `.venv/bin/python evaluate_action_chunking.py --phase sac-final`.
-9. Analyze and create report figures: `.venv/bin/python analyze_action_chunking.py`; `.venv/bin/python plot_action_chunking.py`; `.venv/bin/python write_action_chunking_report.py`.
+3. Run `.venv/bin/python -m unittest scripts.action_chunking.test_action_chunking -v`.
+4. Train BC: `.venv/bin/python scripts/run.py action_chunking/train_action_chunk_bc.py`.
+5. Generate BC architecture validation rollouts: `.venv/bin/python scripts/run.py action_chunking/evaluate_action_chunking.py --phase bc-validation`; generate paired BC checkpoint-selection baselines: `.venv/bin/python scripts/run.py action_chunking/evaluate_action_chunking.py --phase bc-sac-validation`.
+6. Train the 18 crossed SAC runs: `.venv/bin/python scripts/run.py action_chunking/train_action_chunk_sac.py`; resume an interrupted run with `--resume --arch H1 --bc-seed 42 --sac-seed 1103` (choose the interrupted tuple).
+7. Freeze validation selections: `.venv/bin/python scripts/run.py action_chunking/freeze_action_chunk_selections.py`.
+8. Run BC Final and then SAC Final: `.venv/bin/python scripts/run.py action_chunking/evaluate_action_chunking.py --phase bc-final`; `.venv/bin/python scripts/run.py action_chunking/evaluate_action_chunking.py --phase sac-final`.
+9. Analyze and create report figures: `.venv/bin/python scripts/run.py action_chunking/analyze_action_chunking.py`; `.venv/bin/python scripts/run.py action_chunking/plot_action_chunking.py`; `.venv/bin/python scripts/run.py action_chunking/write_action_chunking_report.py`.
 
 Protocol SHA-256: `90eec69f7852c34f2685cef291b0a03a5e8dcd8885279ba279ef61ad21a09638`. Selection manifest SHA-256 is recorded in `bc_results/action_chunking/action_chunking_checkpoint_selections.sha256`. Final tables and analysis live under `bc_results/action_chunking/action_chunking_analysis/`; SVG/PNG figures are under `bc_results/action_chunking/action_chunking_figures/`.

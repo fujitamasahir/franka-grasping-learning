@@ -15,7 +15,7 @@ The primary hypothesis was that the frozen Safety Gate (SAC only in EN) would re
 - Four methods per SAC seed: BC only, always BC+SAC, frozen Safety Gate, and frozen Balanced Gate.
 - Each SAC checkpoint was evaluated on the same 2,000 initial positions, seeds 170000–171999. The existing paired evaluator ran both BC and BC+SAC for every position. Maximum residual correction was 5 mm per axis and the position range was ±20 cm.
 - The existing `bc_results/selective_gate/selective_gate_exploratory1000_gate.json` was used unchanged: Safety = EN; Balanced = EN and WS. Its calibration remains the earlier Seed 456 data; it was not refit here.
-- `test_selective_residual_gate.py`: 5 tests passed.
+- `scripts.residual_sac.test_selective_residual_gate`: 5 tests passed.
 - The three evaluation files were checked to have identical seed lists, cube coordinates, and BC outcomes. The repeated positions are shared observations, not three independent samples.
 - Exact two-sided McNemar tests compare paired binary outcomes. Holm adjustment is reported across the three SAC training seeds separately for each gate versus BC family and each gate versus Always SAC family. These tests are conditional on the tested checkpoints and positions; they do not establish a population-level effect over SAC training seeds.
 

@@ -45,25 +45,25 @@ existing `.venv`, frozen checkpoints and Menagerie assets.
 1. Generate120 physical trajectories and480 replay sequences:
 
 ```sh
-.venv/bin/python validate_h4_kalman_independent.py generate
+.venv/bin/python scripts/run.py h4_noise_estimation/validate_h4_kalman_independent.py generate
 ```
 
 2. Audit all new data, including full reconstruction of noise and estimates:
 
 ```sh
-.venv/bin/python validate_h4_kalman_independent.py audit
+.venv/bin/python scripts/run.py h4_noise_estimation/validate_h4_kalman_independent.py audit
 ```
 
 3. Compute all estimator metrics, gates and20-seed summaries (no plots):
 
 ```sh
-.venv/bin/python validate_h4_kalman_independent.py analyze
+.venv/bin/python scripts/run.py h4_noise_estimation/validate_h4_kalman_independent.py analyze
 ```
 
 4. Display the compact JSON summary:
 
 ```sh
-.venv/bin/python validate_h4_kalman_independent.py summary
+.venv/bin/python scripts/run.py h4_noise_estimation/validate_h4_kalman_independent.py summary
 ```
 
 Full results: `bc_results/h4_noise_estimation/independent_validation/h4_kalman_independent_validation/summary.json`.

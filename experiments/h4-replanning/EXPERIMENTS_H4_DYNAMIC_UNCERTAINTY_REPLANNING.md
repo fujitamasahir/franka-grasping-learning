@@ -132,7 +132,7 @@ The next question is whether an observable, motion-aware uncertainty estimator c
 Use the same3 checkpoint files and verify their hashes; reuse the previous environment requirements and Menagerie commit above. Existing complete smoke data must not be removed or overwritten. The following evaluator invocation validates/skips the completed48 cells:
 
 ```sh
-MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python evaluate_h4_dynamic_replanning.py --phase smoke
+MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python scripts/run.py h4_replanning/evaluate_h4_dynamic_replanning.py --phase smoke
 MPLCONFIGDIR=/private/tmp/matplotlib-h4 .venv/bin/python -m unittest discover -v
 ```
 

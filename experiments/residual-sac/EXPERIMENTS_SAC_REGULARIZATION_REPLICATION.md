@@ -130,7 +130,7 @@ Replicate the penalty comparison with a larger preregistered set of independent 
 - Frozen checkpoint selection and model hashes: [`bc_results/sac_regularization_replication/sac_regularization_replication_checkpoint_freeze.json`](../../bc_results/sac_regularization_replication/sac_regularization_replication_checkpoint_freeze.json).
 - Selection metrics: [`bc_results/sac_regularization_replication/sac_regularization_replication_validation_metrics.csv`](../../bc_results/sac_regularization_replication/sac_regularization_replication_validation_metrics.csv).
 - Per-seed and regional metrics, paired tests, bootstrap summaries, training diagnostics, and full machine-readable summary are under `bc_results/sac_regularization_replication/sac_regularization_replication_*.csv` and [`bc_results/sac_regularization_replication/sac_regularization_replication_final_summary.json`](../../bc_results/sac_regularization_replication/sac_regularization_replication_final_summary.json).
-- Evaluation runner: [`run_sac_regularization_replication_evaluations.py`](../../run_sac_regularization_replication_evaluations.py); analysis runner: [`analyze_sac_regularization_replication.py`](../../analyze_sac_regularization_replication.py).
+- Evaluation runner: [`run_sac_regularization_replication_evaluations.py`](../../scripts/residual_sac/run_sac_regularization_replication_evaluations.py); analysis runner: [`analyze_sac_regularization_replication.py`](../../scripts/residual_sac/analyze_sac_regularization_replication.py).
 - Figures are saved in `bc_results/sac_regularization_replication/sac_regularization_replication_figures/` in PNG and SVG formats.
 
 ### Fixed-30k success by SAC seed

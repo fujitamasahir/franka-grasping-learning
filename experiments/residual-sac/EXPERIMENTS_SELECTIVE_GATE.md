@@ -78,7 +78,7 @@ Run from the repository root on branch
 ### Step 0 — Check the gate logic (no MuJoCo needed)
 
 ```bash
-python3 -m unittest test_selective_residual_gate.py
+python3 -m unittest scripts.residual_sac.test_selective_residual_gate
 ```
 
 ### Step 1 — Calibrate and freeze the gate
@@ -88,7 +88,7 @@ previously inspected 1,000-position file is used only for an
 exploratory check, never for tuning.
 
 ```bash
-python3 analyze_selective_residual_gate.py \
+python3 scripts/run.py residual_sac/analyze_selective_residual_gate.py \
   --calibration bc_results/residual_sac/sac_C_hard_shaped_seed456_test500.csv \
   --evaluation bc_results/selective_gate/sac_C_seed456_final1000.csv \
   --stage exploratory \
@@ -105,7 +105,7 @@ Expected choices: safety = EN; balanced = EN and WS.
 **No SAC retraining needed.** Keep the same frozen C / Seed 456 model.
 
 ```bash
-mjpython evaluate_bc_residual_sac.py \
+mjpython scripts/run.py residual_sac/evaluate_bc_residual_sac.py \
   --bc-model bc_models/fair_wide_expert_seed42.pt \
   --sac-model bc_residual_sac_runs/C_hard_shaped_seed456/best_model.zip \
   --position-range 0.20 \
@@ -121,7 +121,7 @@ position, paired by seed.
 ### Step 3 — Evaluate the FROZEN gate (do not refit)
 
 ```bash
-python3 analyze_selective_residual_gate.py \
+python3 scripts/run.py residual_sac/analyze_selective_residual_gate.py \
   --gate-config bc_results/selective_gate/selective_gate_exploratory1000_gate.json \
   --evaluation bc_results/selective_gate/sac_C_seed456_gate_final2000.csv \
   --stage confirmatory \
@@ -140,7 +140,7 @@ Offline evaluation is valid when the paired deterministic rollouts
 reproduce the chosen policy. Verify the first 20 new test positions:
 
 ```bash
-mjpython evaluate_selective_residual_sac.py \
+mjpython scripts/run.py residual_sac/evaluate_selective_residual_sac.py \
   --gate-config bc_results/selective_gate/selective_gate_exploratory1000_gate.json \
   --mode safety \
   --episodes 20 \
