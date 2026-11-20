@@ -14,8 +14,8 @@ import analyze_h4_motion_estimator_stage1 as analysis
 from evaluate_h4_replanning import exclusive_run_lock
 from kalman_noise_estimator import kalman_noise
 
-PROTOCOL=Path('bc_results/h4_kalman_independent_protocol.json')
-OUT=Path('bc_results/h4_kalman_independent_validation')
+PROTOCOL=Path('bc_results/h4_noise_estimation/independent_validation/h4_kalman_independent_protocol.json')
+OUT=Path('bc_results/h4_noise_estimation/independent_validation/h4_kalman_independent_validation')
 ESTIMATORS={**stage.ESTIMATORS,'kalman':lambda xy:kalman_noise(xy)['sigma_m']}
 
 
@@ -34,7 +34,7 @@ def load_protocol():
     committed=subprocess.check_output(['git','show',f'HEAD:{PROTOCOL}'])
     if hashlib.sha256(committed).hexdigest()!=ph:raise ValueError('Preregistration must be committed before execution')
     if p['seeds']!=list(range(352000,352020)) or p['noise_seed']!=20261109:raise ValueError('Independent seed specification changed')
-    old=json.loads(Path('bc_results/h4_motion_estimator_protocol.json').read_text())
+    old=json.loads(Path('bc_results/h4_noise_estimation/motion_aware/h4_motion_estimator_protocol.json').read_text())
     if p['pass_criteria']!=old['pass_criteria']:raise ValueError('Stage1 criteria changed')
     for filename,digest in p['frozen_source_sha256'].items():
         if sha256(filename)!=digest:raise ValueError(f'Frozen implementation changed: {filename}')

@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 
-OUT = Path("bc_results")
+OUT = Path("bc_results/sac_regularization_replication")
 RUNS = Path("bc_residual_sac_runs")
 PROTOCOL = OUT / "sac_regularization_replication_protocol.json"
 PROTOCOL_HASH_FILE = OUT / "sac_regularization_replication_protocol.sha256"

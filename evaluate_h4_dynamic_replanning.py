@@ -18,9 +18,9 @@ from evaluate_h4_replanning import exclusive_run_lock
 from franka_autonomous_env import FrankaAutonomousEnv
 from h4_dynamic_controller import RollingReplanningRule, advance_at_boundary
 
-PROTOCOL = Path('bc_results/h4_dynamic_replanning_protocol.json')
+PROTOCOL = Path('bc_results/h4_replanning/dynamic/h4_dynamic_replanning_protocol.json')
 PROTOCOL_SHA = PROTOCOL.with_suffix('.sha256')
-OUT = Path('bc_results/h4_dynamic_replanning')
+OUT = Path('bc_results/h4_replanning/dynamic/h4_dynamic_replanning')
 MODELS = (42, 123, 456)
 PROFILES = ('clean', 'noisy', 'clean_to_noisy', 'noisy_to_clean')
 CONTROLLERS = ('R1', 'R4', 'OneShot', 'Online')

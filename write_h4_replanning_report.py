@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).parent
 DATA=ROOT/'bc_results/h4_replanning'
-REPORT=ROOT/'EXPERIMENTS_H4_REPLANNING_ABLATION.md'
+REPORT=ROOT/'experiments/h4-replanning/EXPERIMENTS_H4_REPLANNING_ABLATION.md'
 
 
 def pct(x): return f'{x:.2f}'
@@ -56,7 +56,7 @@ def main():
     add('| BC training seed | Checkpoint | SHA-256 | Parameters |')
     add('|---:|---|---|---:|')
     for seed in (42,123,456):
-        entry=json.loads((ROOT/f'bc_results/action_chunking_bc_runs/H4_seed{seed}/summary.json').read_text())
+        entry=json.loads((ROOT/f'bc_results/action_chunking/action_chunking_bc_runs/H4_seed{seed}/summary.json').read_text())
         ck=json.loads((DATA/'final_integrity_audit.json').read_text())
         model=next(x for x in integrity['configurations'] if x['model_seed']==seed)
         add(f'| {seed} | `bc_models/action_chunking/H4_seed{seed}.pt` | `{model["checkpoint_sha256"]}` | {entry["parameter_count"]:,} |')

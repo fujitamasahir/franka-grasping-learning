@@ -66,7 +66,7 @@ def main():
     parser.add_argument("--residual-meters", type=float, default=0.005)
     parser.add_argument("--episodes", type=int, default=20)
     parser.add_argument("--seed", type=int, default=160000)
-    parser.add_argument("--output", default="bc_results/selective_gate_live_smoke.csv")
+    parser.add_argument("--output", default="bc_results/selective_gate/selective_gate_live_smoke.csv")
     parser.add_argument(
         "--paired-reference",
         default=None,

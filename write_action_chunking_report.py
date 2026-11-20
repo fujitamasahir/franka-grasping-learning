@@ -3,7 +3,7 @@ import csv,json
 from pathlib import Path
 import numpy as np
 
-ROOT=Path('bc_results/action_chunking_analysis');REPORT=Path('EXPERIMENTS_ACTION_CHUNKED_BC_RESIDUAL_RL.md')
+ROOT=Path('bc_results/action_chunking/action_chunking_analysis');REPORT=Path('experiments/residual-sac/EXPERIMENTS_ACTION_CHUNKED_BC_RESIDUAL_RL.md')
 def read(p):
     with Path(p).open(newline='') as f:return list(csv.DictReader(f))
 def pct(x):return f'{100*float(x):.2f}%'
@@ -14,8 +14,8 @@ def main():
     bc=read(ROOT/'bc_final_metrics.csv');cells=read(ROOT/'final_cell_metrics.csv');gains=read(ROOT/'difference_in_gains.csv')
     boot=read(ROOT/'difference_in_gains_bootstrap.csv');tests=read(ROOT/'paired_mcnemar.csv');bct=read(ROOT/'h1_vs_h4_bc_mcnemar.csv')
     variability=read(ROOT/'seed_variability.csv');regions=read(ROOT/'regional_rescue_regression.csv');sel=read(ROOT/'checkpoint_selection_effect.csv')
-    protocol=json.loads(Path('bc_results/action_chunking_protocol.json').read_text());freeze=json.loads(Path('bc_results/action_chunking_checkpoint_selections.json').read_text())
-    correction=json.loads(Path('bc_results/action_chunking_eval/implementation_correction_log.json').read_text())
+    protocol=json.loads(Path('bc_results/action_chunking/action_chunking_protocol.json').read_text());freeze=json.loads(Path('bc_results/action_chunking/action_chunking_checkpoint_selections.json').read_text())
+    correction=json.loads(Path('bc_results/action_chunking/action_chunking_eval/implementation_correction_log.json').read_text())
     # BC architecture-level descriptive results.
     bc_table=[]
     for h in ('H1','H4'):
@@ -52,11 +52,11 @@ def main():
             f'{np.mean([float(r["mean_episode_seconds"]) for r in rr]):.3f}',
             f'{np.mean([float(r["always_on_sac_calls"])/int(r["episodes"]) for r in rr]):.1f}'])
         for b in (42,123,456):
-            summary=json.loads(Path(f'bc_results/action_chunking_bc_runs/{h}_seed{b}/summary.json').read_text())
+            summary=json.loads(Path(f'bc_results/action_chunking/action_chunking_bc_runs/{h}_seed{b}/summary.json').read_text())
             bc_train.append([h,b,num(summary['training_seconds']),summary['best_epoch']])
         for b in (42,123,456):
             for s in (1103,1117,1123):
-                q=Path(f'bc_results/action_chunking_sac/{h}_bc{b}_sac{s}/training_runtime.json')
+                q=Path(f'bc_results/action_chunking/action_chunking_sac/{h}_bc{b}_sac{s}/training_runtime.json')
                 if q.exists():sac_hours.append(float(json.loads(q.read_text())['accumulated_seconds']))
     bg={r['checkpoint']:r for r in boot}
     significance=sum(float(x['p_holm'])<.05 for x in tests)
@@ -98,7 +98,7 @@ Chunking may improve temporal consistency or reduce closed-loop responsiveness. 
 
 ## Dataset Audit and Data Integrity
 
-The study uses the original unsampled `demonstrations/franka_expert_train.npz` and `demonstrations/franka_expert_wide.npz`: 200 and 100 additional successful episodes, respectively, with 35,377 observations total. Observation/action row counts aligned; all 12D observations and 4D actions were finite; gripper labels were `+1=open`, `-1=closed`; `max_move=0.15 m`, `max_time=16 s`, and `control_dt=0.1 s` matched. Within every episode, rows were contiguous and normalized observation time advanced by 0.1 s within 1e-4 s. The original wide file had 100 additional trajectories and no exact duplicates of the narrow file. Source hashes and the full audit are in `bc_results/action_chunking_data_audit.json`.
+The study uses the original unsampled `demonstrations/franka_expert_train.npz` and `demonstrations/franka_expert_wide.npz`: 200 and 100 additional successful episodes, respectively, with 35,377 observations total. Observation/action row counts aligned; all 12D observations and 4D actions were finite; gripper labels were `+1=open`, `-1=closed`; `max_move=0.15 m`, `max_time=16 s`, and `control_dt=0.1 s` matched. Within every episode, rows were contiguous and normalized observation time advanced by 0.1 s within 1e-4 s. The original wide file had 100 additional trajectories and no exact duplicates of the narrow file. Source hashes and the full audit are in `bc_results/action_chunking/action_chunking_data_audit.json`.
 
 The historical `fair_wide_expert.npz` is excluded from chunk targets because random row subsampling left 73 nonconsecutive control intervals. Episode IDs were remapped for the wide source, then 30 of the 300 episodes were held out with fixed NumPy seed 20261106. H1 and H4 use the same 31,029 training windows and 3,448 validation starts; windows never cross episode boundaries or temporal gaps. H1 supervises one action per start (31,029 targets); H4 supervises four (124,116 targets). This extra future-action supervision is a method difference. The split lists, hashes, and audit are committed in the preregistration.
 
@@ -146,7 +146,7 @@ The primary differential benefit is computed from each architecture's own BC bas
 
 ## Rescue and Regression
 
-For each rollout pair, rescue is a BC failure corrected to success, and regression is a BC success changed to failure. Their difference equals the paired success-count difference. Conditional rates use BC-failure and BC-success denominators respectively. H1 and H4 have different baseline failure sets, so all residual results are paired only with their own BC policy. `bc_results/action_chunking_analysis/final_cell_metrics.csv` contains exact per-cell denominators and counts.
+For each rollout pair, rescue is a BC failure corrected to success, and regression is a BC success changed to failure. Their difference equals the paired success-count difference. Conditional rates use BC-failure and BC-success denominators respectively. H1 and H4 have different baseline failure sets, so all residual results are paired only with their own BC policy. `bc_results/action_chunking/action_chunking_analysis/final_cell_metrics.csv` contains exact per-cell denominators and counts.
 
 Regional paired rescue/regression counts for selected checkpoints:
 
@@ -208,7 +208,7 @@ Use these results to decide whether a small ACT or diffusion-policy baseline is 
 ## Reproduction Instructions
 
 1. Use branch `experiment/action-chunked-bc-residual-rl` at source base `10d607fe7cacaae3004c8a291348c5022e41f4a9`.
-2. Verify the protocol SHA in `bc_results/action_chunking_protocol.sha256` and the dataset audit hashes.
+2. Verify the protocol SHA in `bc_results/action_chunking/action_chunking_protocol.sha256` and the dataset audit hashes.
 3. Run `.venv/bin/python -m unittest discover -p 'test_*.py' -v`.
 4. Train BC: `.venv/bin/python train_action_chunk_bc.py`.
 5. Generate BC architecture validation rollouts: `.venv/bin/python evaluate_action_chunking.py --phase bc-validation`; generate paired BC checkpoint-selection baselines: `.venv/bin/python evaluate_action_chunking.py --phase bc-sac-validation`.
@@ -217,7 +217,7 @@ Use these results to decide whether a small ACT or diffusion-policy baseline is 
 8. Run BC Final and then SAC Final: `.venv/bin/python evaluate_action_chunking.py --phase bc-final`; `.venv/bin/python evaluate_action_chunking.py --phase sac-final`.
 9. Analyze and create report figures: `.venv/bin/python analyze_action_chunking.py`; `.venv/bin/python plot_action_chunking.py`; `.venv/bin/python write_action_chunking_report.py`.
 
-Protocol SHA-256: `{freeze['protocol_sha256']}`. Selection manifest SHA-256 is recorded in `bc_results/action_chunking_checkpoint_selections.sha256`. Final tables and analysis live under `bc_results/action_chunking_analysis/`; SVG/PNG figures are under `bc_results/action_chunking_figures/`.
+Protocol SHA-256: `{freeze['protocol_sha256']}`. Selection manifest SHA-256 is recorded in `bc_results/action_chunking/action_chunking_checkpoint_selections.sha256`. Final tables and analysis live under `bc_results/action_chunking/action_chunking_analysis/`; SVG/PNG figures are under `bc_results/action_chunking/action_chunking_figures/`.
 '''
     REPORT.write_text(report,encoding='utf-8');print(f'Wrote {REPORT}',flush=True)
 if __name__=='__main__':main()

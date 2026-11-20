@@ -236,7 +236,7 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "--output",
-        default="bc_results/residual_comparison.csv",
+        default="bc_results/residual_sac/residual_comparison.csv",
     )
 
     main(parser.parse_args())

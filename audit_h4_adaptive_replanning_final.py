@@ -25,11 +25,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--allow-incomplete', action='store_true')
     args = parser.parse_args()
-    protocol_path = Path('bc_results/h4_adaptive_replanning_protocol.json')
+    protocol_path = Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.json')
     protocol = json.loads(protocol_path.read_text())
     if protocol['noise']['generation_seed']!=NOISE_SEED:
         raise RuntimeError('Evaluator noise seed differs from preregistration')
-    protocol_hash = Path('bc_results/h4_adaptive_replanning_protocol.sha256').read_text().split()[0]
+    protocol_hash = Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.sha256').read_text().split()[0]
     if sha256(protocol_path) != protocol_hash:
         raise RuntimeError('Protocol hash mismatch')
     expected = list(range(331000, 332000))

@@ -8,7 +8,7 @@ from stable_baselines3.common.monitor import Monitor
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
 from action_chunking import sha256,verify_protocol,pair_rollout_rows,validate_rollout_seed_set
 
-ROOT=Path('bc_results/action_chunking_sac');SEEDS=(1103,1117,1123);BCSEEDS=(42,123,456)
+ROOT=Path('bc_results/action_chunking/action_chunking_sac');SEEDS=(1103,1117,1123);BCSEEDS=(42,123,456)
 
 def env(path):return Monitor(FrankaChunkAwareResidualEnv(path,.20,.005,'hard',.12,.90,'shaped',.005))
 def write_rows(path,rows):
@@ -29,7 +29,7 @@ def write_milestone_once(path,row):
     write_rows(path,[row])
 
 def load_bc_rows(arch,bcs):
-    path=Path(f'bc_results/action_chunking_eval/bc_sac_validation_{arch}_seed{bcs}.csv')
+    path=Path(f'bc_results/action_chunking/action_chunking_eval/bc_sac_validation_{arch}_seed{bcs}.csv')
     with path.open(newline='') as f:return list(csv.DictReader(f))
 
 class Milestones(BaseCallback):
@@ -91,7 +91,7 @@ def run(arch,bcs,sacs,resume=False):
     bc_path=Path(f'bc_models/action_chunking/{arch}_seed{bcs}.pt')
     run=ROOT/f'{arch}_bc{bcs}_sac{sacs}';run.mkdir(parents=True,exist_ok=True)
     protocol,_=verify_protocol();cfg={'architecture':arch,'bc_seed':bcs,'sac_seed':sacs,'timesteps':30000,'checkpoint_steps':[10000,20000,30000],
-      'bc_sha256':sha256(bc_path),'protocol_sha256':sha256('bc_results/action_chunking_protocol.json'),'settings':protocol['sac']['hyperparameters']}
+      'bc_sha256':sha256(bc_path),'protocol_sha256':sha256('bc_results/action_chunking/action_chunking_protocol.json'),'settings':protocol['sac']['hyperparameters']}
     cp=run/'config.json'
     if cp.exists():
         if json.loads(cp.read_text())!=cfg:raise RuntimeError(f'Run configuration mismatch: {run}')

@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 
-RESULTS = Path("bc_results")
+RESULTS = Path("bc_results/sac_training_stability")
 RUNS = Path("bc_residual_sac_runs")
 SEEDS = (811, 823, 827, 829, 839)
 STEPS = (10_000, 20_000, 30_000)

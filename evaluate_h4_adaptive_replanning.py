@@ -10,9 +10,9 @@ from evaluate_h4_observation_noise import (make_noise_schedule, apply_observatio
 from evaluate_h4_replanning import exclusive_run_lock
 from franka_autonomous_env import FrankaAutonomousEnv
 
-PROTOCOL=Path('bc_results/h4_adaptive_replanning_protocol.json')
-PROTOCOL_SHA=Path('bc_results/h4_adaptive_replanning_protocol.sha256')
-OUT=Path('bc_results/h4_adaptive_replanning')
+PROTOCOL=Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.json')
+PROTOCOL_SHA=Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.sha256')
+OUT=Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning')
 FIELDS=['seed','model_seed','controller','threshold_m','noise_sigma_m','noise_generation_seed','success','steps','return',
  'cube_x','cube_y','region','first_close_step','first_lift_step','closed_fraction','bc_inference_calls','bc_total_inference_ms',
  'bc_mean_latency_ms','episode_wall_seconds','estimated_sigma_m','chosen_interval','decision_made','steps_before_decision',

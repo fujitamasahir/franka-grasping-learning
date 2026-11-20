@@ -17,7 +17,7 @@ class IndependentValidationTests(unittest.TestCase):
 
     def test_fixed_sources_criteria_and_disjoint_seeds(self):
         p,ph=validation.load_protocol()
-        old=json.loads(Path('bc_results/h4_motion_estimator_protocol.json').read_text())
+        old=json.loads(Path('bc_results/h4_noise_estimation/motion_aware/h4_motion_estimator_protocol.json').read_text())
         self.assertEqual(p['pass_criteria'],old['pass_criteria'])
         self.assertFalse(set(p['seeds'])&set(old['seeds']))
         self.assertNotEqual(p['noise_seed'],old['noise_seed'])

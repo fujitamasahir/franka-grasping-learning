@@ -108,7 +108,7 @@ def main():
      regions[str(m)][reg][str(n)][c]={'n':len(vals),'successes':sum(vals),'success_rate_pct':100*np.mean(vals) if vals else None}
     regions[str(m)][reg][str(n)]['adaptive_vs_fixed_R1']=transitions(np.asarray([int(cells[m,'R1',n][s]['success']) for s in keys]),np.asarray([int(cells[m,'Adaptive',n][s]['success']) for s in keys]))
     regions[str(m)][reg][str(n)]['adaptive_vs_fixed_R4']=transitions(np.asarray([int(cells[m,'R4',n][s]['success']) for s in keys]),np.asarray([int(cells[m,'Adaptive',n][s]['success']) for s in keys]))
- summary={'protocol_sha256':Path('bc_results/h4_adaptive_replanning_protocol.sha256').read_text().split()[0],'final_integrity_audit_sha256':sha256(OUT/'final_integrity_audit.json'),
+ summary={'protocol_sha256':Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.sha256').read_text().split()[0],'final_integrity_audit_sha256':sha256(OUT/'final_integrity_audit.json'),
   'analysis':{'episodes_per_cell':1000,'model_seeds':list(MODELS),'noise_mm':list(NOISE),'controllers':list(CONTROLLERS),'paired_bootstrap_replicates':B,'bootstrap_seed':BOOT_SEED,'equal_weighting':'nine model_seed x noise cells','trained_policy_n':3,'unit':'paired evaluation seed within frozen model'},
   'overall_equal_weighted_success_rate_pct':overall,'adaptive_minus_fixed_overall':paired_overall,'calibration_selected_fixed_baseline':baseline,
   'equal_weighted_success_by_model_seed':by_model,'training_seed_level_descriptives':seed_level,

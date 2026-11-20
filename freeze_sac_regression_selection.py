@@ -13,7 +13,7 @@ STEPS = (10_000, 20_000, 30_000)
 VAL_SEEDS = set(range(230_000, 230_500))
 FINAL_SEEDS = set(range(240_000, 242_000))
 BC_PATH = Path("bc_models/fair_wide_expert_seed42.pt")
-OUT = Path("bc_results")
+OUT = Path("bc_results/sac_regression_control")
 
 
 def sha256(path):

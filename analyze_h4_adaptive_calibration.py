@@ -12,7 +12,7 @@ def read(m,controller,mm):
  if (OUT/f'calibration_H4_seed{m}_{controller}_noise{mm}mm.partial.csv').exists():
   raise RuntimeError(f'Partial file exists for an apparently complete calibration cell: {p}')
  meta=json.loads((OUT/f'calibration_H4_seed{m}_{controller}_noise{mm}mm.json').read_text())
- proto=json.loads(Path('bc_results/h4_adaptive_replanning_protocol.json').read_text());ph=Path('bc_results/h4_adaptive_replanning_protocol.sha256').read_text().split()[0]
+ proto=json.loads(Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.json').read_text());ph=Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.sha256').read_text().split()[0]
  ck=Path(f'bc_models/action_chunking/H4_seed{m}.pt')
  if sha256(ck)!=proto['frozen_models'][str(m)]['sha256'] or meta['checkpoint_sha256']!=sha256(ck):raise ValueError(f'Checkpoint provenance mismatch: {p}')
  if meta['protocol_sha256']!=ph or meta['phase']!='calibration' or meta['threshold_m'] is not None:raise ValueError(f'Calibration metadata mismatch: {p}')
@@ -26,8 +26,8 @@ def read(m,controller,mm):
  return {int(x['seed']):x for x in rows}
 
 def main():
- proto=json.loads(Path('bc_results/h4_adaptive_replanning_protocol.json').read_text());ph=Path('bc_results/h4_adaptive_replanning_protocol.sha256').read_text().split()[0]
- if sha256(Path('bc_results/h4_adaptive_replanning_protocol.json'))!=ph:raise RuntimeError('Protocol SHA mismatch')
+ proto=json.loads(Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.json').read_text());ph=Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.sha256').read_text().split()[0]
+ if sha256(Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.json'))!=ph:raise RuntimeError('Protocol SHA mismatch')
  if tuple(proto['candidate_thresholds_m'])!=CANDIDATES or proto['calibration']['seed_range_inclusive']!=[330000,330299]:raise RuntimeError('Analysis constants differ from preregistration')
  data={(m,c,n):read(m,c,n) for m in MODELS for c in ('R1','R4','WarmupR1') for n in NOISE}
  base_hashes={};applied_hashes={}

@@ -6,7 +6,7 @@ import torch
 from torch.utils.data import DataLoader, TensorDataset
 from action_chunking import ActionChunkBC, compute_chunk_loss, build_windows, load_demonstrations, sha256
 
-OUT=Path('bc_results/action_chunking_bc_runs'); MODELS=Path('bc_models/action_chunking')
+OUT=Path('bc_results/action_chunking/action_chunking_bc_runs'); MODELS=Path('bc_models/action_chunking')
 SEEDS=(42,123,456)
 
 def write_history(path, rows):
@@ -64,5 +64,5 @@ def main():
         checkpoint={'model_state_dict':model.state_dict(),'obs_mean':torch.from_numpy(mean),'obs_std':torch.from_numpy(std),'horizon':horizon,'seed':seed,'best_epoch':best_epoch,'best_validation_loss':best,'max_move':0.15,'max_time':16.0,'control_dt':0.1,'position_range':0.12,'parameter_count':cfg['parameter_count'],'training_seconds':elapsed,'training_episode_ids':tr_ids,'validation_episode_ids':va_ids,'protocol_sha256':cfg['protocol_sha256'],'dataset_sha256':cfg['dataset_sources'],'training_windows':len(x_train),'training_action_targets':len(y_train)*horizon,'validation_windows':len(x_val),'validation_action_targets':len(y_val)*horizon,'normalization_episode_ids':tr_ids,'settings':settings}
         temp=model_path.with_suffix('.pt.tmp');torch.save(checkpoint,temp);temp.replace(model_path);write_history(hist_path,history)
         print(f'Completed {name}: epoch={best_epoch} val={best:.6f} parameters={cfg["parameter_count"]} seconds={elapsed:.1f}',flush=True)
-def protocol_hash():return sha256('bc_results/action_chunking_protocol.json')
+def protocol_hash():return sha256('bc_results/action_chunking/action_chunking_protocol.json')
 if __name__=='__main__':main()

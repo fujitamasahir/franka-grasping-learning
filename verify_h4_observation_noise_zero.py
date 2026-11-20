@@ -49,13 +49,13 @@ def main():
     # The preserved original H4 R4 action trace supplies a stepwise action check.
     model,ck=load_bc_policy('bc_models/action_chunking/H4_seed42.pt')
     actual,trace=rollout(model,ck,42,4,0.,290042,sha256('bc_models/action_chunking/H4_seed42.pt'),'0'*64,trace=True)
-    original=json.loads(Path('bc_results/action_chunking_eval/trajectory_bc_final_H4_seed42_BC.json').read_text())['steps']
+    original=json.loads(Path('bc_results/action_chunking/action_chunking_eval/trajectory_bc_final_H4_seed42_BC.json').read_text())['steps']
     assert len(trace)==len(original)==121
     for step,(new,old) in enumerate(zip(trace,original)):
         assert new['chunk_index']==old['chunk_index']==step%4
         assert all(math.isclose(a,b,abs_tol=1e-7) for a,b in zip(new['planned_action'][:3],old['planned_xyz']))
         assert math.isclose(new['planned_action'][3],old['gripper'],abs_tol=1e-7)
-    out=Path('bc_results/h4_observation_noise/software_zero_noise_regression.json')
+    out=Path('bc_results/h4_replanning/observation_noise/software_zero_noise_regression.json')
     data={'purpose':'software regression only; excluded from new noise-study outcomes',
       'prior_final_seed_range_inclusive':[310000,310019],'models':[42,123,456],'intervals':[1,4],
       'episodes_compared':len(all_checks),'all_outcome_timing_metrics_match':True,

@@ -7,7 +7,7 @@ from evaluate_h4_replanning import exclusive_run_lock
 from franka_autonomous_env import FrankaAutonomousEnv
 from motion_aware_noise_estimator import position_variance,second_difference_mad
 
-OUT=Path('bc_results/h4_motion_estimator');PROTOCOL=Path('bc_results/h4_motion_estimator_protocol.json')
+OUT=Path('bc_results/h4_noise_estimation/motion_aware/h4_motion_estimator');PROTOCOL=Path('bc_results/h4_noise_estimation/motion_aware/h4_motion_estimator_protocol.json')
 ESTIMATORS={'position':position_variance,'motion_MAD':second_difference_mad}
 
 

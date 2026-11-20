@@ -5,7 +5,7 @@ from action_chunking import sha256
 from evaluate_h4_adaptive_replanning import OUT,FIELDS
 
 def main():
-    protocol=json.loads(Path('bc_results/h4_adaptive_replanning_protocol.json').read_text())
+    protocol=json.loads(Path('bc_results/h4_replanning/adaptive/h4_adaptive_replanning_protocol.json').read_text())
     expected=list(range(333000,333020)); positions={}; noise={}; applied={}; cells=[]; displacement=[]; estimates={}; rows_by={}
     for m in (42,123,456):
       for ctrl in ('R1','R4','Adaptive','WarmupR1'):

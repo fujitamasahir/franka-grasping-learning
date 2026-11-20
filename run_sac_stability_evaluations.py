@@ -73,7 +73,7 @@ def complete_csv(path, expected_rows):
 
 
 def run_group(entries, label, seed, episodes):
-    out_dir = Path("bc_results")
+    out_dir = Path("bc_results/sac_training_stability")
     out_dir.mkdir(parents=True, exist_ok=True)
     for name, checkpoint in entries:
         if not checkpoint.is_file():
@@ -111,7 +111,7 @@ def run_group(entries, label, seed, episodes):
 
 def run_final_group(entries):
     """Reuse one BC-only baseline across paired final checkpoint evaluations."""
-    out_dir = Path("bc_results")
+    out_dir = Path("bc_results/sac_training_stability")
     out_dir.mkdir(parents=True, exist_ok=True)
     baseline_path = out_dir / "sac_stability_final_bc_baseline.csv"
     if baseline_path.exists():
@@ -201,11 +201,11 @@ def main():
             VALIDATION_B_SEED, VALIDATION_B_EPISODES,
         )
     elif mode == "final":
-        freeze = Path("bc_results/sac_stability_selection_freeze.json")
+        freeze = Path("bc_results/sac_training_stability/sac_stability_selection_freeze.json")
         if not freeze.is_file():
             raise RuntimeError(
                 "Final evaluation is blocked until all Selection A/B choices "
-                "are frozen in bc_results/sac_stability_selection_freeze.json"
+                "are frozen in bc_results/sac_training_stability/sac_stability_selection_freeze.json"
             )
         manifest = json.loads(freeze.read_text(encoding="utf-8"))
         if [row["sac_seed"] for row in manifest["selections"]] != [811, 823, 827, 829, 839]:
@@ -215,7 +215,7 @@ def main():
             for candidate in selection["candidates"]:
                 step = candidate["timesteps"]
                 checkpoint = Path("bc_residual_sac_runs") / f"stability_C_seed{seed}" / f"checkpoint_{step}.zip"
-                validation = Path("bc_results") / f"sac_stability_seed{seed}_step{step}_validationB500.csv"
+                validation = Path("bc_results/sac_training_stability") / f"sac_stability_seed{seed}_step{step}_validationB500.csv"
                 history = Path("bc_residual_sac_runs") / f"stability_C_seed{seed}" / "eval_history.csv"
                 if sha256(checkpoint) != candidate["checkpoint_sha256"]:
                     raise AssertionError(f"Checkpoint changed after selection freeze: {checkpoint}")

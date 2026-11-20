@@ -19,8 +19,8 @@ from h4_kalman_online_rule import KalmanReplanningRule
 from kalman_noise_estimator import kalman_noise
 from analyze_h4_replanning import exact_mcnemar,holm
 
-PROTOCOL=Path('bc_results/h4_kalman_online_protocol.json')
-OUT=Path('bc_results/h4_kalman_online_dynamic')
+PROTOCOL=Path('bc_results/h4_noise_estimation/kalman_online/h4_kalman_online_protocol.json')
+OUT=Path('bc_results/h4_noise_estimation/kalman_online/h4_kalman_online_dynamic')
 MODELS=(42,123,456);PROFILES=('clean_to_noisy','noisy_to_clean');CONTROLLERS=('R1','R4','OneShot','Online')
 ORIGINAL_WINDOW=legacy.window_diagnostic
 

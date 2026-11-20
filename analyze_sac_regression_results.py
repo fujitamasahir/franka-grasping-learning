@@ -20,7 +20,7 @@ FORBIDDEN = (
     set(range(150_000, 152_000)) | set(range(170_000, 172_000))
     | set(range(190_000, 192_000)) | set(range(220_000, 222_000))
 )
-OUT = Path("bc_results")
+OUT = Path("bc_results/sac_regression_control")
 RUNS = Path("bc_residual_sac_runs")
 TAGS = {
     "actor_loss": "train/actor_loss",

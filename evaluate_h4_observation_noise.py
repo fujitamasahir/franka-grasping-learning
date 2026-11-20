@@ -15,9 +15,9 @@ from evaluate_h4_replanning import exclusive_run_lock
 from franka_autonomous_env import FrankaAutonomousEnv
 
 
-PROTOCOL=Path('bc_results/h4_observation_noise_protocol.json')
-PROTOCOL_SHA=Path('bc_results/h4_observation_noise_protocol.sha256')
-OUT=Path('bc_results/h4_observation_noise')
+PROTOCOL=Path('bc_results/h4_replanning/h4_observation_noise_protocol.json')
+PROTOCOL_SHA=Path('bc_results/h4_replanning/h4_observation_noise_protocol.sha256')
+OUT=Path('bc_results/h4_replanning/observation_noise')
 NOISE_SEED=20261106
 FIELDS=['seed','model_seed','replan_interval','noise_sigma_m','noise_generation_seed','success','steps','return',
         'cube_x','cube_y','region','first_close_step','first_lift_step','closed_fraction','bc_inference_calls',

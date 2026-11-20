@@ -151,7 +151,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=9000)
     parser.add_argument(
         "--output",
-        default="bc_results/franka_bc_eval.csv",
+        default="bc_results/baselines/franka_bc_eval.csv",
     )
 
     main(parser.parse_args())

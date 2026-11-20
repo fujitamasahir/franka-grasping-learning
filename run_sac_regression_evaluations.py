@@ -73,7 +73,7 @@ def eval_command(policy, seed, episodes, output, checkpoint=None, coefficient=0.
 
 
 def ensure_baseline(label, seed, episodes):
-    baseline = Path("bc_results") / f"sac_regdiag_bc_{label}.csv"
+    baseline = Path("bc_results/sac_regression_control") / f"sac_regdiag_bc_{label}.csv"
     if baseline.exists():
         if len(rows(baseline)) != episodes:
             raise RuntimeError(f"Refusing incomplete baseline {baseline}")
@@ -90,7 +90,7 @@ def validation_candidates():
 
 
 def run_validation():
-    results = Path("bc_results")
+    results = Path("bc_results/sac_regression_control")
     results.mkdir(exist_ok=True)
     val_seeds = set(range(VALIDATION_SEED, VALIDATION_SEED + VALIDATION_EPISODES))
     final_seeds = set(range(FINAL_SEED, FINAL_SEED + FINAL_EPISODES))
@@ -119,7 +119,7 @@ def run_validation():
 
 
 def run_final():
-    results = Path("bc_results")
+    results = Path("bc_results/sac_regression_control")
     freeze_path = results / "sac_regdiag_checkpoint_selection_freeze.json"
     if not freeze_path.is_file():
         raise RuntimeError("Final evaluation requires frozen Validation B selection")

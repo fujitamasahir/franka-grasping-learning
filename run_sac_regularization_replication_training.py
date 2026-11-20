@@ -7,8 +7,8 @@ import sys
 from pathlib import Path
 
 
-PROTOCOL = Path("bc_results/sac_regularization_replication_protocol.json")
-PROTOCOL_HASH = Path("bc_results/sac_regularization_replication_protocol.sha256")
+PROTOCOL = Path("bc_results/sac_regularization_replication/sac_regularization_replication_protocol.json")
+PROTOCOL_HASH = Path("bc_results/sac_regularization_replication/sac_regularization_replication_protocol.sha256")
 RUNS = Path("bc_residual_sac_runs")
 SEEDS = (1009, 1013, 1019, 1021, 1031, 1033, 1039, 1049, 1051, 1061)
 ARMS = (("A", 0.005), ("B", 0.020))

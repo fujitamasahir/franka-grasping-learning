@@ -99,7 +99,7 @@ def summarize(rows):
     for model_seed in MODEL_SEEDS:
         baseline=rows[(model_seed,1)]
         cell={}
-        prior_path=Path(f'bc_results/action_chunking_eval/bc_final_H4_seed{model_seed}.csv')
+        prior_path=Path(f'bc_results/action_chunking/action_chunking_eval/bc_final_H4_seed{model_seed}.csv')
         with prior_path.open(newline='',encoding='utf-8') as f: prior=list(csv.DictReader(f))
         prior_success=sum(int(r['success']) for r in prior)
         for interval in INTERVALS:

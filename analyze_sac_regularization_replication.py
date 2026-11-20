@@ -7,7 +7,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from analyze_sac_stability import exact_mcnemar, holm_adjust
 
-OUT=Path('bc_results'); FIG=OUT/'sac_regularization_replication_figures'
+OUT=Path('bc_results/sac_regularization_replication'); FIG=OUT/'sac_regularization_replication_figures'
 SEEDS=(1009,1013,1019,1021,1031,1033,1039,1049,1051,1061)
 ARMS=('A','B'); REGIONS=('ES','WS')
 FINAL=range(260000,262000)

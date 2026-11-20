@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-SUMMARY = Path("bc_results/sac_stability_analysis_summary.json")
-OUT = Path("bc_results/sac_stability_figures")
+SUMMARY = Path("bc_results/sac_training_stability/sac_stability_analysis_summary.json")
+OUT = Path("bc_results/sac_training_stability/sac_stability_figures")
 SEED_COLORS = {
     811: "#0072B2", 823: "#D55E00", 827: "#009E73",
     829: "#CC79A7", 839: "#E69F00",

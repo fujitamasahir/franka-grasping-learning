@@ -15,8 +15,8 @@ from action_chunking import BCActionChunkController, load_bc_policy, sha256
 from franka_autonomous_env import FrankaAutonomousEnv
 
 
-PROTOCOL = Path('bc_results/h4_replanning_protocol.json')
-PROTOCOL_SHA = Path('bc_results/h4_replanning_protocol.sha256')
+PROTOCOL = Path('bc_results/h4_replanning/h4_replanning_protocol.json')
+PROTOCOL_SHA = Path('bc_results/h4_replanning/h4_replanning_protocol.sha256')
 OUT = Path('bc_results/h4_replanning')
 FIELDS = ['seed','model_seed','replan_interval','success','steps','return','cube_x','cube_y','region',
           'first_close_step','first_lift_step','closed_fraction','bc_inference_calls',

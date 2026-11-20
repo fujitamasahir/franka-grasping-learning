@@ -8,7 +8,7 @@ from franka_autonomous_env import FrankaAutonomousEnv
 from action_chunking import load_bc_policy,BCActionChunkController,sha256
 from franka_chunk_aware_residual_env import FrankaChunkAwareResidualEnv
 
-OUT=Path('bc_results/action_chunking_eval')
+OUT=Path('bc_results/action_chunking/action_chunking_eval')
 FIELDS=['seed','success','steps','return','cube_x','cube_y','region','first_close_step','closed_fraction',
         'bc_inference_calls','bc_mean_latency_ms','episode_wall_seconds','sac_inference_calls','sac_mean_latency_ms',
         'mean_residual_norm_m','saturation_rate','intervention_rate','first_lift_step','terminal_chunk_index']
@@ -121,7 +121,7 @@ def main():
     elif a.phase=='sac-validation':
         raise RuntimeError('Use train_action_chunk_sac.py milestone validation or provide explicit checkpoint orchestration')
     else:
-        manifest=Path('bc_results/action_chunking_checkpoint_selections.json');side=manifest.with_suffix('.sha256')
+        manifest=Path('bc_results/action_chunking/action_chunking_checkpoint_selections.json');side=manifest.with_suffix('.sha256')
         if not manifest.is_file() or not side.is_file():raise FileNotFoundError('Freeze all validation selections before touching Final positions')
         expected=side.read_text().split()[0];actual=hashlib.sha256(manifest.read_bytes()).hexdigest()
         if expected!=actual:raise RuntimeError('Selection manifest SHA256 mismatch')
@@ -133,7 +133,7 @@ def main():
             if a.bc_seed and item['bc_seed']!=a.bc_seed:continue
             if a.sac_seed and item['sac_seed']!=a.sac_seed:continue
             arch=item['architecture'];bc=item['bc_seed'];sac=item['sac_seed'];bcpath=f'bc_models/action_chunking/{arch}_seed{bc}.pt'
-            fixed=Path(f'bc_results/action_chunking_sac/{arch}_bc{bc}_sac{sac}/checkpoint_30000.zip')
+            fixed=Path(f'bc_results/action_chunking/action_chunking_sac/{arch}_bc{bc}_sac{sac}/checkpoint_30000.zip')
             candidates=[('fixed30k',fixed)]
             chosen=Path(item['model_path'])
             if item['selected_step']!=30000:candidates.append((f'selected{item["selected_step"]}',chosen))

@@ -3,7 +3,7 @@ import csv,json,hashlib
 from pathlib import Path
 from action_chunking import sha256,verify_protocol
 
-ROOT=Path('bc_results/action_chunking_sac');OUT=Path('bc_results/action_chunking_checkpoint_selections.json')
+ROOT=Path('bc_results/action_chunking/action_chunking_sac');OUT=Path('bc_results/action_chunking/action_chunking_checkpoint_selections.json')
 def main():
     protocol,_=verify_protocol(); selections=[]
     for arch in ('H1','H4'):
@@ -27,7 +27,7 @@ def main():
             'selection_regressions':int(chosen['regression']),'selection_mean_success_steps':chosen['mean_success_steps'],
             'model_path':str(model),'model_sha256':sha256(model),'validation_csv_sha256':sha256(run/'validation.csv'),
             'checkpoint_hashes':checkpoint_hashes,'bc_model_sha256':sha256(f'bc_models/action_chunking/{arch}_seed{bc}.pt')})
-    result={'protocol_sha256':sha256('bc_results/action_chunking_protocol.json'),
+    result={'protocol_sha256':sha256('bc_results/action_chunking/action_chunking_protocol.json'),
       'protocol_selection_rule':protocol['evaluation']['checkpoint_rule'],
       'frozen_before_final_evaluation':True,'selections':selections}
     data=json.dumps(result,indent=2,sort_keys=True)+'\n'

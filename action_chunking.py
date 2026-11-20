@@ -8,9 +8,9 @@ import numpy as np
 import torch
 from torch import nn
 
-PROTOCOL_PATH = Path('bc_results/action_chunking_protocol.json')
-PROTOCOL_SHA_PATH = Path('bc_results/action_chunking_protocol.sha256')
-AUDIT_PATH = Path('bc_results/action_chunking_data_audit.json')
+PROTOCOL_PATH = Path('bc_results/action_chunking/action_chunking_protocol.json')
+PROTOCOL_SHA_PATH = Path('bc_results/action_chunking/action_chunking_protocol.sha256')
+AUDIT_PATH = Path('bc_results/action_chunking/action_chunking_data_audit.json')
 SOURCE_FILES = (Path('demonstrations/franka_expert_train.npz'), Path('demonstrations/franka_expert_wide.npz'))
 
 

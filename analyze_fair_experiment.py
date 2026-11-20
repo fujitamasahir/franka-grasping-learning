@@ -171,6 +171,6 @@ mean_summary.to_csv(
 )
 
 print("\n===== SAVED =====")
-print("bc_results/all_fair_results.csv")
-print("bc_results/fair_model_summary.csv")
-print("bc_results/fair_mean_summary.csv")
+print("bc_results/baselines/all_fair_results.csv")
+print("bc_results/baselines/fair_model_summary.csv")
+print("bc_results/baselines/fair_mean_summary.csv")

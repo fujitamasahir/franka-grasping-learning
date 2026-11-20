@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-OUT = Path("bc_results")
+OUT = Path("bc_results/sac_regression_control")
 FIG = OUT / "sac_regdiag_figures"
 FIG.mkdir(exist_ok=True)
 SEEDS = (907, 911, 919, 929, 937)

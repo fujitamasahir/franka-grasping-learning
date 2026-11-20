@@ -24,7 +24,7 @@ UNAVAILABLE = (
     "task_reward_component", "shaping_reward_component",
     "residual_action_penalty_component", "TD_error", "Q1_Q2_disagreement",
 )
-OUTPUT = Path("bc_results")
+OUTPUT = Path("bc_results/sac_regression_control")
 
 
 def write_csv(path, rows, fields=None):

@@ -5,7 +5,7 @@ from collections import defaultdict
 import numpy as np
 from action_chunking import sha256,verify_protocol
 
-ROOT=Path('bc_results/action_chunking_eval');OUT=Path('bc_results/action_chunking_analysis')
+ROOT=Path('bc_results/action_chunking/action_chunking_eval');OUT=Path('bc_results/action_chunking/action_chunking_analysis')
 BCS=(42,123,456);SACS=(1103,1117,1123)
 
 def read(path):
@@ -34,7 +34,7 @@ def main():
     # Final rows: BC only and final policies.
     bc={ (h,b):file_bc('final',h,b) for h in ('H1','H4') for b in BCS }
     candidates=[]
-    manifest=json.loads(Path('bc_results/action_chunking_checkpoint_selections.json').read_text())
+    manifest=json.loads(Path('bc_results/action_chunking/action_chunking_checkpoint_selections.json').read_text())
     selected={ (x['architecture'],x['bc_seed'],x['sac_seed']):x['selected_step'] for x in manifest['selections'] }
     final={}
     for h in ('H1','H4'):
@@ -158,7 +158,7 @@ def main():
     # Checkpoint selection effect and learning curve summaries.
     curves=[];selection=[]
     for row in manifest['selections']:
-        h,b,s=row['architecture'],row['bc_seed'],row['sac_seed'];run=Path('bc_results/action_chunking_sac')/f'{h}_bc{b}_sac{s}'
+        h,b,s=row['architecture'],row['bc_seed'],row['sac_seed'];run=Path('bc_results/action_chunking/action_chunking_sac')/f'{h}_bc{b}_sac{s}'
         for v in read(run/'validation.csv'):curves.append({'architecture':h,'bc_seed':b,'sac_seed':s,**v})
         f=next(x for x in candidates if x['architecture']==h and x['bc_seed']==b and x['sac_seed']==s and x['checkpoint']=='fixed30k')
         chosen=next(x for x in candidates if x['architecture']==h and x['bc_seed']==b and x['sac_seed']==s and x['checkpoint']=='selected')
@@ -168,7 +168,7 @@ def main():
             'fixed30k_rescue':f['rescue'],'fixed30k_regression':f['regression'],
             'selected_rescue':chosen['rescue'],'selected_regression':chosen['regression']})
     write_csv(OUT/'checkpoint_learning_curves.csv',curves);write_csv(OUT/'checkpoint_selection_effect.csv',selection)
-    summary_json={'protocol_sha256':sha256('bc_results/action_chunking_protocol.json'),'selection_manifest_sha256':sha256('bc_results/action_chunking_checkpoint_selections.json'),
+    summary_json={'protocol_sha256':sha256('bc_results/action_chunking/action_chunking_protocol.json'),'selection_manifest_sha256':sha256('bc_results/action_chunking/action_chunking_checkpoint_selections.json'),
       'bc':bc_rows,'final_cell_metrics':candidates,'difference_in_gains_bootstrap':summary,'limits':'Three crossed BC seeds and three SAC seeds; shared positions are paired outcomes, not independent training replications.'}
     (OUT/'summary.json').write_text(json.dumps(summary_json,indent=2)+'\n')
     print(f'Wrote action-chunking analysis to {OUT}',flush=True)

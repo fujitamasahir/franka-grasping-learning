@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-A=Path('bc_results/action_chunking_analysis');E=Path('bc_results/action_chunking_eval');OUT=Path('bc_results/action_chunking_figures')
+A=Path('bc_results/action_chunking/action_chunking_analysis');E=Path('bc_results/action_chunking/action_chunking_eval');OUT=Path('bc_results/action_chunking/action_chunking_figures')
 plt.rcParams.update({'font.size':10,'axes.titlesize':12,'figure.dpi':120,'savefig.dpi':180})
 def rows(p):
     with Path(p).open(newline='') as f:return list(csv.DictReader(f))

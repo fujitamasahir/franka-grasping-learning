@@ -15,7 +15,7 @@ import torch
 
 
 ROOT = Path("bc_residual_sac_runs")
-RESULTS = Path("bc_results")
+RESULTS = Path("bc_results/sac_training_stability")
 BC_CHECKPOINT = Path("bc_models/fair_wide_expert_seed42.pt")
 NEW_SEEDS = (811, 823, 827, 829, 839)
 OLD_SEEDS = (7, 19, 73, 202, 314)

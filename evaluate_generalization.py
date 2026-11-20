@@ -219,7 +219,7 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "--output",
-        default="bc_results/generalization.csv",
+        default="bc_results/baselines/generalization.csv",
     )
 
     main(parser.parse_args())
