@@ -1,6 +1,6 @@
 {
   "study": "Frozen H4 BC Replanning Frequency Ablation",
-  "authorization_source": "User explicitly selected '同条件で再実行（推奨）' after being informed of the duplicate partial CSV and the preregistered stop condition.",
+  "authorization_source": "User explicitly selected 'rerun under the same conditions (recommended)' after being informed about the duplicate partial CSV and the preregistered stop condition.",
   "date": "2026-11-06",
   "protocol_sha256": "682633025a7e80ec4f50ea03a905b28b2ff1d6d4cf9b2c312004ec32cfe25a8b",
   "affected_configuration": {
